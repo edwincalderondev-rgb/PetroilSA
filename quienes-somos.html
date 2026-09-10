@@ -39,6 +39,26 @@
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <div class="scroll-progress" id="scrollProgress"></div>
 
+<header class="navbar" id="siteHeader">
+  <div class="navbar-top"><div class="navbar-top-inner">
+    <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
+    <div class="nav-utility">
+      <a href="index.html#productos" class="portal-link">Productos</a>
+      <a href="quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
+      <a href="portal-clientes.html" class="portal-link">Portal de clientes</a>
+      <div class="lang-select" id="langSelect"><button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button><div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div></div>
+      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
+    </div>
+  </div></div>
+  <div class="navbar-route"><nav class="nav-links" id="navLinks" aria-label="Navegación de esta página"><span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
+    <a href="#proposito" class="route-link" data-section="#proposito"><span class="route-label">Propósito</span><span class="route-node" aria-hidden="true"></span></a>
+    <a href="#estrategia" class="route-link" data-section="#estrategia"><span class="route-label">Estrategia</span><span class="route-node" aria-hidden="true"></span></a>
+    <a href="#ruta" class="route-link" data-section="#ruta"><span class="route-label">Ruta 2031</span><span class="route-node" aria-hidden="true"></span></a>
+    <a href="#liderazgo" class="route-link" data-section="#liderazgo"><span class="route-label">Equipo</span><span class="route-node" aria-hidden="true"></span></a>
+  </nav></div>
+</header>
+<!-- Legacy single-row header retained for reference during the pilot.
 <header class="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -71,7 +91,19 @@
       </button>
     </div>
   </div>
-</header>
+</header> -->
+
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+  <div class="drawer-top"><span class="drawer-logo-wrap"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo"></span><button class="drawer-close" id="drawerClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav class="drawer-route" aria-label="Navegación de esta página"><span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+    <a href="#proposito" class="drawer-link" data-section="#proposito"><span class="drawer-node" aria-hidden="true"></span>Propósito</a>
+    <a href="#estrategia" class="drawer-link" data-section="#estrategia"><span class="drawer-node" aria-hidden="true"></span>Estrategia</a>
+    <a href="#ruta" class="drawer-link" data-section="#ruta"><span class="drawer-node" aria-hidden="true"></span>Ruta 2031</a>
+    <a href="#liderazgo" class="drawer-link" data-section="#liderazgo"><span class="drawer-node" aria-hidden="true"></span>Equipo</a>
+  </nav>
+  <div class="drawer-footer"><a href="portal-clientes.html" class="drawer-portal">Portal de clientes</a><a href="quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a><a href="index.html#contacto" class="btn-contacto">Contacto</a></div>
+</aside>
 
 <main id="main">
 
@@ -125,7 +157,7 @@
   </section>
 
   <!-- ================= ESENCIA: PROPÓSITO + VISIÓN ================= -->
-  <section class="qs-esencia reveal">
+  <section class="qs-esencia reveal" id="proposito">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Nuestra esencia</span>
@@ -171,7 +203,7 @@
   </section>
 
   <!-- ================= CINCO FUERZAS ================= -->
-  <section class="qs-forces reveal">
+  <section class="qs-forces reveal" id="estrategia">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Orientación estratégica</span>
@@ -227,7 +259,7 @@
   </section>
 
   <!-- ================= LA RUTA A 2031 (elemento distintivo) ================= -->
-  <section class="qs-route reveal">
+  <section class="qs-route reveal" id="ruta">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Pilar 1 · Crecimiento rentable</span>

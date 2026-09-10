@@ -16,6 +16,22 @@
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <div class="scroll-progress" id="scrollProgress"></div>
 
+<header class="navbar" id="siteHeader">
+  <div class="navbar-top"><div class="navbar-top-inner">
+    <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
+    <div class="nav-utility"><a href="index.html#productos" class="portal-link">Productos</a><a href="quienes-somos.html" class="portal-link">¿Quiénes somos?</a><a href="portal-clientes.html" class="portal-link">Portal de clientes</a>
+      <div class="lang-select" id="langSelect"><button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button><div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div></div>
+      <a href="index.html#contacto" class="btn-contacto">Contacto</a><button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
+    </div>
+  </div></div>
+  <div class="navbar-route"><nav class="nav-links" id="navLinks" aria-label="Navegación de esta página"><span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
+    <a href="#compromiso" class="route-link" data-section="#compromiso"><span class="route-label">Compromiso</span><span class="route-node" aria-hidden="true"></span></a>
+    <a href="#programas" class="route-link" data-section="#programas"><span class="route-label">Programas</span><span class="route-node" aria-hidden="true"></span></a>
+    <a href="#impacto" class="route-link" data-section="#impacto"><span class="route-label">Impacto</span><span class="route-node" aria-hidden="true"></span></a>
+    <a href="#galeria" class="route-link" data-section="#galeria"><span class="route-label">Galería</span><span class="route-node" aria-hidden="true"></span></a>
+  </nav></div>
+</header>
+<!-- Legacy single-row header retained for reference during the pilot.
 <header class="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
@@ -39,7 +55,19 @@
       <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
   </div>
-</header>
+</header> -->
+
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+  <div class="drawer-top"><span class="drawer-logo-wrap"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo"></span><button class="drawer-close" id="drawerClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav class="drawer-route" aria-label="Navegación de esta página"><span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+    <a href="#compromiso" class="drawer-link" data-section="#compromiso"><span class="drawer-node" aria-hidden="true"></span>Compromiso</a>
+    <a href="#programas" class="drawer-link" data-section="#programas"><span class="drawer-node" aria-hidden="true"></span>Programas</a>
+    <a href="#impacto" class="drawer-link" data-section="#impacto"><span class="drawer-node" aria-hidden="true"></span>Impacto</a>
+    <a href="#galeria" class="drawer-link" data-section="#galeria"><span class="drawer-node" aria-hidden="true"></span>Galería</a>
+  </nav>
+  <div class="drawer-footer"><a href="portal-clientes.html" class="drawer-portal">Portal de clientes</a><a href="quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a><a href="index.html#contacto" class="btn-contacto">Contacto</a></div>
+</aside>
 
 <main id="main">
   <section class="page-hero" style="--hero-img:url('img/freedom250-foto3-v2.jpg')">
@@ -57,7 +85,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
         Página de ejemplo — programas, cifras y fotografías son ilustrativos, no información oficial de Petroil S.A.
       </div>
-      <div class="article-grid" style="margin-top:30px;">
+      <div class="article-grid article-grid--full" style="margin-top:30px;">
+        <!--
         <nav class="toc">
           <span>En esta página</span>
           <a href="#compromiso">Nuestro compromiso</a>
@@ -65,6 +94,7 @@
           <a href="#impacto">Impacto (ejemplo)</a>
           <a href="#galeria">Galería</a>
         </nav>
+        -->
         <div class="prose">
           <h2 id="compromiso">Nuestro compromiso</h2>
           <p>Como refinería asentada en Santa Marta, entendemos que nuestra licencia social para operar depende de una relación cercana y transparente con las comunidades del sector de Mamatoco y su área de influencia. Por eso destinamos recursos y tiempo del equipo a programas que van más allá del cumplimiento normativo.</p>

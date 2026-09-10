@@ -314,11 +314,29 @@ window.addEventListener('load', () => {
 // Pequeño "ping" visual sobre el nodo al hacer clic en un tramo de la ruta
 if(!prefersReducedMotion){
   routeLinksAll.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', event => {
+      const target = document.querySelector(link.dataset.section);
+      if(target){
+        event.preventDefault();
+        const markerY = window.innerHeight * 0.35;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: Math.max(0, targetTop - markerY), behavior: 'smooth' });
+      }
       link.classList.remove('pulse');
       void link.offsetWidth;
       link.classList.add('pulse');
       setTimeout(() => link.classList.remove('pulse'), 550);
+    });
+  });
+} else {
+  routeLinksAll.forEach(link => {
+    link.addEventListener('click', event => {
+      const target = document.querySelector(link.dataset.section);
+      if(!target) return;
+      event.preventDefault();
+      const markerY = window.innerHeight * 0.35;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo(0, Math.max(0, targetTop - markerY));
     });
   });
 }

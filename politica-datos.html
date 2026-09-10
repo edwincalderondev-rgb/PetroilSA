@@ -16,30 +16,88 @@
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<header class="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html#productos">Productos</a>
-      <a href="index.html#servicios">Servicios</a>
-      <a href="index.html#innovacion">Innovación</a>
-      <a href="portal-clientes.html">Clientes<span class="badge-soon">Nuevo</span></a>
-      <a href="index.html#nosotros">¿Quiénes somos?</a>
-      <a href="index.html#noticias">Noticias</a>
-    </nav>
-    <div class="nav-right">
-      <div class="lang-select" id="langSelect">
-        <button class="lang-btn" id="langBtn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
-          ES <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+<header class="navbar" id="siteHeader">
+  <div class="navbar-top">
+    <div class="navbar-top-inner">
+      <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
+      <div class="nav-utility">
+        <a href="index.html#productos" class="portal-link">Productos</a>
+        <a href="quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
+        <a href="portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <div class="lang-select" id="langSelect">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button>
+          <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+        </div>
+        <a href="#contacto" class="btn-contacto">Contacto</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
       </div>
-      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
   </div>
+  <div class="navbar-route">
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
+      <a href="#responsable" class="route-link" data-section="#responsable">
+        <span class="route-label">1. Responsable del tratamiento</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#marco" class="route-link" data-section="#marco">
+        <span class="route-label">2. Marco legal de referencia</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#finalidades" class="route-link" data-section="#finalidades">
+        <span class="route-label">3. Finalidades del tratamiento</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#derechos" class="route-link" data-section="#derechos">
+        <span class="route-label">4. Derechos de los titulares</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#procedimiento" class="route-link" data-section="#procedimiento">
+        <span class="route-label">5. Procedimiento para ejercer sus derechos</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
 </header>
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+  <div class="drawer-top">
+    <span class="drawer-logo-wrap"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo"></span>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav class="drawer-route" aria-label="Navegación principal móvil">
+    <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+    <a href="#responsable" class="drawer-link" data-section="#responsable">
+      <span class="drawer-node" aria-hidden="true"></span>
+      1. Responsable del tratamiento
+    </a>
+    <a href="#marco" class="drawer-link" data-section="#marco">
+      <span class="drawer-node" aria-hidden="true"></span>
+      2. Marco legal de referencia
+    </a>
+    <a href="#finalidades" class="drawer-link" data-section="#finalidades">
+      <span class="drawer-node" aria-hidden="true"></span>
+      3. Finalidades del tratamiento
+    </a>
+    <a href="#derechos" class="drawer-link" data-section="#derechos">
+      <span class="drawer-node" aria-hidden="true"></span>
+      4. Derechos de los titulares
+    </a>
+    <a href="#procedimiento" class="drawer-link" data-section="#procedimiento">
+      <span class="drawer-node" aria-hidden="true"></span>
+      5. Procedimiento para ejercer sus derechos
+    </a>
+  </nav>
+  <div class="drawer-footer">
+    <a href="portal-clientes.html" class="drawer-portal">Portal de clientes</a>
+    <a href="quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
+    <a href="#contacto" class="btn-contacto">Contacto</a>
+    <div class="lang-select drawer-lang" id="langSelectDrawer">
+      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">ES</button>
+      <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+    </div>
+  </div>
+</aside>
 
 <main id="main">
   <section class="page-hero">

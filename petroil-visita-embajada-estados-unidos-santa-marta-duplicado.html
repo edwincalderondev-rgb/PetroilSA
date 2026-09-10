@@ -48,30 +48,88 @@
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<header class="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html#productos">Productos</a>
-      <a href="index.html#servicios">Servicios</a>
-      <a href="index.html#innovacion">Innovación</a>
-      <a href="portal-clientes.html">Clientes<span class="badge-soon">Nuevo</span></a>
-      <a href="index.html#nosotros">¿Quiénes somos?</a>
-      <a href="index.html#noticias" class="current">Noticias</a>
-    </nav>
-    <div class="nav-right">
-      <div class="lang-select" id="langSelect">
-        <button class="lang-btn" id="langBtn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
-          ES <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+<header class="navbar" id="siteHeader">
+  <div class="navbar-top">
+    <div class="navbar-top-inner">
+      <a href="index.html" class="nav-logo"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
+      <div class="nav-utility">
+        <a href="index.html#productos" class="portal-link">Productos</a>
+        <a href="quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
+        <a href="portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <div class="lang-select" id="langSelect">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button>
+          <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+        </div>
+        <a href="#contacto" class="btn-contacto">Contacto</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
       </div>
-      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
   </div>
+  <div class="navbar-route">
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
+      <a href="#crecimiento" class="route-link" data-section="#crecimiento">
+        <span class="route-label">Una compañía que sigue creciendo en Colombia</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#inversion" class="route-link" data-section="#inversion">
+        <span class="route-label">Una visión de inversión para el futuro</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#caribe" class="route-link" data-section="#caribe">
+        <span class="route-label">El Caribe colombiano como punto estratégico</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#alianzas" class="route-link" data-section="#alianzas">
+        <span class="route-label">Alianzas que construyen oportunidades</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#futuro" class="route-link" data-section="#futuro">
+        <span class="route-label">Seguimos construyendo el futuro energético de Colombia</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
 </header>
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+  <div class="drawer-top">
+    <span class="drawer-logo-wrap"><img src="img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo"></span>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav class="drawer-route" aria-label="Navegación principal móvil">
+    <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+    <a href="#crecimiento" class="drawer-link" data-section="#crecimiento">
+      <span class="drawer-node" aria-hidden="true"></span>
+      Una compañía que sigue creciendo en Colombia
+    </a>
+    <a href="#inversion" class="drawer-link" data-section="#inversion">
+      <span class="drawer-node" aria-hidden="true"></span>
+      Una visión de inversión para el futuro
+    </a>
+    <a href="#caribe" class="drawer-link" data-section="#caribe">
+      <span class="drawer-node" aria-hidden="true"></span>
+      El Caribe colombiano como punto estratégico
+    </a>
+    <a href="#alianzas" class="drawer-link" data-section="#alianzas">
+      <span class="drawer-node" aria-hidden="true"></span>
+      Alianzas que construyen oportunidades
+    </a>
+    <a href="#futuro" class="drawer-link" data-section="#futuro">
+      <span class="drawer-node" aria-hidden="true"></span>
+      Seguimos construyendo el futuro energético de Colombia
+    </a>
+  </nav>
+  <div class="drawer-footer">
+    <a href="portal-clientes.html" class="drawer-portal">Portal de clientes</a>
+    <a href="quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
+    <a href="#contacto" class="btn-contacto">Contacto</a>
+    <div class="lang-select drawer-lang" id="langSelectDrawer">
+      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">ES</button>
+      <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+    </div>
+  </div>
+</aside>
 
 <main id="main">
   <section class="page-hero" style="--hero-img:url('img/noticias/embajada-eeuu-reunion-santa-marta.jpg')">

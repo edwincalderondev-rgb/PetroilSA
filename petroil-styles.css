@@ -946,6 +946,7 @@ body.nav-drawer-open{overflow:hidden;}
 /* ARTICLE LAYOUT (sidebar TOC + prose) */
 .article-wrap{padding:60px 0 100px; background:#fff;}
 .article-grid{display:grid; grid-template-columns:220px 1fr; gap:56px; align-items:start;}
+.article-grid--full{grid-template-columns:minmax(0,1fr);}
 .toc{position:sticky; top:100px; display:flex; flex-direction:column; gap:3px; padding-right:10px; border-right:1px solid var(--line);}
 .toc span{font-family:'Poppins',sans-serif; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.12em; color:var(--steel); margin-bottom:8px;}
 .toc a{font-size:.86rem; color:var(--steel); padding:7px 0 7px 14px; border-left:2px solid transparent; transition:.2s;}
