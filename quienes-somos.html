@@ -89,11 +89,9 @@
       - Fondo estático (por defecto, cero riesgo de parpadeo):
         <img src="img/Petroil_fotosplanta_60.jpg" alt="" ...>
 
-      - Fondo animado (si lo necesitas), la opción robusta es VIDEO,
-        no webp animado — se decodifica por hardware y no parpadea:
+      - Fondo animado (si lo necesitas), la opción robusta es VIDEO:
         <video autoplay muted loop playsinline poster="img/Petroil_fotosplanta_60.jpg">
-          <source src="img/hero-loop.webm" type="video/webm">
-          <source src="img/hero-loop.mp4" type="video/mp4">
+          <source src="vids/quienes-somos.mp4" type="video/mp4">
         </video>
 
       - Si de verdad necesitas el .webp animado, cárgalo como <img>
@@ -102,7 +100,10 @@
         varios MB — ese peso es la otra causa típica del parpadeo.
     -->
     <div class="qs-hero-media">
-      <img src="img/Petroil_fotosplanta_46.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
+      <!-- <img src="img/Petroil_fotosplanta_46.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"> -->
+      <video autoplay muted loop playsinline poster="img/Petroil_fotosplanta_46.jpg" aria-hidden="true">
+        <source src="vids/quienes-somos.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero-particles" id="heroParticles"></div>
     <div class="container qs-hero-content">
@@ -534,7 +535,7 @@
         <li><a href="politica-datos.html">Política de protección de datos</a></li>
         <li><a href="pqrsf.html">PQRSF</a></li>
         <li><a href="astm-d1500-color-tool.html">Herramienta</a></li>
-        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="portal-clientes.html">Clientes</a></li>
         <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
         <li><a href="index.html#noticias">Noticias</a></li>
       </ul>
