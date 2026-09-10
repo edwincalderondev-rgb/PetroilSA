@@ -1,0 +1,76 @@
+/* ============================================
+   PQRSF — formulario (legal/pqrsf.html)
+   ============================================ */
+.pqrsf-layout{display:grid; grid-template-columns:1.6fr .9fr; gap:32px; align-items:start; margin-top:34px;}
+.pqrsf-form{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:34px; box-shadow:var(--shadow-soft);}
+.pqrsf-type-label{display:block; font-size:.86rem; font-weight:600; color:var(--navy); margin-bottom:12px;}
+.pqrsf-type-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:28px;}
+.pqrsf-type-card{
+  position:relative; display:flex; flex-direction:column; align-items:center; gap:8px; padding:16px 8px;
+  border:1.5px solid var(--line); border-radius:12px; cursor:pointer; text-align:center; font-size:.78rem;
+  font-weight:600; color:var(--steel); transition:.2s ease;
+}
+.pqrsf-type-card input{position:absolute; opacity:0; width:1px; height:1px;}
+.pqrsf-type-card svg{width:20px; height:20px; color:var(--steel); transition:.2s ease;}
+.pqrsf-type-card:hover{border-color:var(--teal-light);}
+.pqrsf-type-card.selected{border-color:var(--teal); background:rgba(15,140,130,.07); color:var(--navy);}
+.pqrsf-type-card.selected svg{color:var(--teal);}
+.pqrsf-field-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+.pqrsf-field{display:flex; flex-direction:column; gap:6px;}
+.pqrsf-field-full{grid-column:1/-1; margin-bottom:18px;}
+.pqrsf-field label{font-size:.82rem; font-weight:600; color:var(--navy);}
+.pqrsf-field input, .pqrsf-field select, .pqrsf-field textarea{
+  border:1.5px solid var(--line); border-radius:10px; padding:11px 14px; font-family:inherit; font-size:.92rem;
+  color:var(--ink); background:#fff; transition:border-color .2s, box-shadow .2s;
+}
+.pqrsf-field input:focus, .pqrsf-field select:focus, .pqrsf-field textarea:focus{
+  outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(15,140,130,.15);
+}
+.pqrsf-field textarea{resize:vertical; min-height:120px;}
+.pqrsf-check{display:flex; align-items:flex-start; gap:10px; font-size:.82rem; color:var(--steel); line-height:1.5; margin-bottom:22px;}
+.pqrsf-check input{margin-top:3px;}
+.pqrsf-submit{
+  background:var(--navy); color:#fff; border:none; padding:14px 30px; border-radius:30px; font-weight:700; font-size:.94rem;
+  display:inline-flex; align-items:center; gap:8px; cursor:pointer; transition:background .2s ease, transform .2s ease;
+}
+.pqrsf-submit:hover{background:var(--teal); transform:translateY(-2px);}
+.pqrsf-note{font-size:.76rem; color:var(--steel); margin-top:16px; line-height:1.5;}
+.pqrsf-info{display:flex; flex-direction:column; gap:16px; position:sticky; top:100px;}
+.pqrsf-info-card{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:22px;}
+.pqrsf-info-card h4{font-size:.96rem; color:var(--navy); margin-bottom:14px;}
+.pqrsf-info-card ul li{display:flex; justify-content:space-between; gap:10px; font-size:.82rem; color:var(--steel); padding:8px 0; border-bottom:1px dashed var(--line);}
+.pqrsf-info-card ul li:last-child{border-bottom:none;}
+.pqrsf-info-card ul li b{color:var(--navy); font-weight:700; white-space:nowrap;}
+.pqrsf-info-card.dark{background:var(--navy); color:#fff;}
+.pqrsf-info-card.dark h4{color:#fff;}
+.pqrsf-info-card .wa-btn{width:100%; justify-content:center; margin-top:4px;}
+.pqrsf-info-card .mail-line{display:flex; align-items:center; gap:8px; font-size:.84rem; color:#cbd5e1; margin-top:12px;}
+.pqrsf-info-card.confidential{display:flex; gap:12px; align-items:flex-start; background:rgba(15,140,130,.08); border-color:rgba(15,140,130,.3);}
+.pqrsf-info-card.confidential svg{width:22px; height:22px; color:var(--teal); flex-shrink:0;}
+.pqrsf-info-card.confidential p{font-size:.8rem; color:var(--steel); line-height:1.5;}
+.pqrsf-success{
+  display:none; text-align:center; padding:50px 30px; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-soft);
+}
+.pqrsf-success.show{display:block; animation:popIn .3s ease-out;}
+.pqrsf-success .check-circle{
+  width:64px; height:64px; border-radius:50%; background:rgba(15,140,130,.12); color:var(--teal); display:flex;
+  align-items:center; justify-content:center; margin:0 auto 18px;
+}
+.pqrsf-success .check-circle svg{width:30px; height:30px;}
+.pqrsf-success h3{font-size:1.3rem; color:var(--navy); margin-bottom:10px;}
+.pqrsf-success p{color:var(--steel); font-size:.92rem; max-width:420px; margin:0 auto 6px;}
+.pqrsf-success .radicado{font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:.02em; color:var(--teal); font-size:1.05rem; margin:14px 0;}
+.pqrsf-success button{margin-top:18px; background:none; border:1.5px solid var(--line); color:var(--navy); padding:10px 22px; border-radius:24px; font-weight:600; font-size:.86rem; cursor:pointer; transition:.2s;}
+.pqrsf-success button:hover{border-color:var(--teal); color:var(--teal);}
+
+/* RESPONSIVE — depende de @keyframes popIn, definida en chatbot.css
+   (siempre cargado junto a este archivo, ver la tabla de módulos por página). */
+@media (max-width:980px){
+  .pqrsf-layout{grid-template-columns:1fr;}
+  .pqrsf-info{position:relative; top:0;}
+}
+@media (max-width:720px){
+  .pqrsf-type-grid{grid-template-columns:repeat(3,1fr);}
+  .pqrsf-field-grid{grid-template-columns:1fr;}
+}

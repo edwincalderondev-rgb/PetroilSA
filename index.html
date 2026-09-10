@@ -4,13 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Petroil S.A | Mejorando el aire que respiramos</title>
-<link rel="icon" type="image/png" sizes="270x270" href="img/cropped-favicon-petroil-270x270.png">
-<link rel="apple-touch-icon" href="img/cropped-favicon-petroil-270x270.png">
+<link rel="icon" type="image/png" sizes="270x270" href="assets/img/cropped-favicon-petroil-270x270.png">
+<link rel="apple-touch-icon" href="assets/img/cropped-favicon-petroil-270x270.png">
 <meta name="theme-color" content="#0A2A43">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="petroil-styles.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/header-nav.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/chatbot.css">
+  <link rel="stylesheet" href="assets/css/cursor.css">
 </head>
 <body>
 
@@ -23,12 +29,12 @@
   <div class="navbar-top">
     <div class="navbar-top-inner">
       <a href="index.html" class="nav-logo">
-        <img src="img/cropped-logo-petroil.png" alt="Petroil S.A.">
+        <img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
       </a>
       <div class="nav-utility">
         <a href="index.html#productos" class="portal-link">Productos</a>
-        <a href="quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
-        <a href="portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <a href="nosotros/quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
+        <a href="portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a>
         <div class="lang-select" id="langSelect">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
@@ -81,7 +87,7 @@
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
   <div class="drawer-top">
     <span class="drawer-logo-wrap">
-      <img src="img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
+      <img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
     </span>
     <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -113,8 +119,8 @@
   </nav>
 
   <div class="drawer-footer">
-    <a href="portal-clientes.html" class="drawer-portal">Portal de clientes</a>
-    <a href="quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
+    <a href="portal-clientes/portal-clientes.html" class="drawer-portal">Portal de clientes</a>
+    <a href="nosotros/quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
     <a href="#contacto" class="btn-contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
       <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
@@ -135,7 +141,7 @@
 
   <section class="hero hero-video-mode">
     <video class="hero-bg-media" autoplay loop muted playsinline poster="img/hero-poster.jpg">
-      <source src="petroil-hero.mp4" type="video/mp4">
+      <source src="assets/vids/petroil-hero.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-particles" id="heroParticles"></div>
@@ -164,17 +170,17 @@
       </div>
       <div class="pillars-grid">
         <div class="pillar-card">
-          <div class="pillar-media"><div class="pillar-blob"></div><img referrerpolicy="no-referrer" src="img/ave1.png" alt="Protege"></div>
+          <div class="pillar-media"><div class="pillar-blob"></div><img referrerpolicy="no-referrer" src="assets/img/ave1.png" alt="Protege"></div>
           <h3>Protege</h3>
           <p>Petroil es la primera refinería de América Latina dedicada a diseñar y fabricar combustibles amigables con el medio ambiente.</p>
         </div>
         <div class="pillar-card">
-          <div class="pillar-media"><div class="pillar-blob"></div><img src="img/ave3.png" alt="Preserva"></div>
+          <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave3.png" alt="Preserva"></div>
           <h3>Preserva</h3>
           <p>Aportamos soluciones innovadoras para el desarrollo sostenible.</p>
         </div>
         <div class="pillar-card">
-          <div class="pillar-media"><div class="pillar-blob"></div><img src="img/ave4.png" alt="Cuida"></div>
+          <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave4.png" alt="Cuida"></div>
           <h3>Cuida</h3>
           <p>Trabajamos para hacer combustibles mejores y más limpios, cuidando cada etapa del proceso de refinación.</p>
         </div>
@@ -187,28 +193,28 @@
     <span class="eyebrow">Alianzas estratégicas</span>
     <div class="marquee">
       <div class="marquee-track">
-        <img src="img/alianza-ecos.png" alt="Ecos">
-        <img src="img/alianza-ecopetrol.png" alt="Ecopetrol">
-        <img src="img/alianza-logo3.avif" alt="Aliado">
-        <img src="img/alianza-grupo2.png" alt="Grupo">
-        <img src="img/alianza-hocol.jpg" alt="Hocol">
-        <img src="img/alianza-logo7.png" alt="Aliado">
-        <img src="img/alianza-petrobras.gif" alt="Petrobras">
-        <img src="img/alianza-primax2.png" alt="Primax">
-        <img src="img/alianza-esquivensa.png" alt="Esquivensa">
-        <img src="img/alianza-logo11.webp" alt="Aliado">
-        <img src="img/alianza-logo14.png" alt="Aliado">
-        <img src="img/alianza-ecos.png" alt="Ecos">
-        <img src="img/alianza-ecopetrol.png" alt="Ecopetrol">
-        <img src="img/alianza-logo3.avif" alt="Aliado">
-        <img src="img/alianza-grupo2.png" alt="Grupo">
-        <img src="img/alianza-hocol.jpg" alt="Hocol">
-        <img src="img/alianza-logo7.png" alt="Aliado">
-        <img src="img/alianza-petrobras.gif" alt="Petrobras">
-        <img src="img/alianza-primax2.png" alt="Primax">
-        <img src="img/alianza-esquivensa.png" alt="Esquivensa">
-        <img src="img/alianza-logo11.webp" alt="Aliado">
-        <img src="img/alianza-logo14.png" alt="Aliado">
+        <img src="assets/img/alianza-ecos.png" alt="Ecos">
+        <img src="assets/img/alianza-ecopetrol.png" alt="Ecopetrol">
+        <img src="assets/img/alianza-logo3.avif" alt="Aliado">
+        <img src="assets/img/alianza-grupo2.png" alt="Grupo">
+        <img src="assets/img/alianza-hocol.jpg" alt="Hocol">
+        <img src="assets/img/alianza-logo7.png" alt="Aliado">
+        <img src="assets/img/alianza-petrobras.gif" alt="Petrobras">
+        <img src="assets/img/alianza-primax2.png" alt="Primax">
+        <img src="assets/img/alianza-esquivensa.png" alt="Esquivensa">
+        <img src="assets/img/alianza-logo11.webp" alt="Aliado">
+        <img src="assets/img/alianza-logo14.png" alt="Aliado">
+        <img src="assets/img/alianza-ecos.png" alt="Ecos">
+        <img src="assets/img/alianza-ecopetrol.png" alt="Ecopetrol">
+        <img src="assets/img/alianza-logo3.avif" alt="Aliado">
+        <img src="assets/img/alianza-grupo2.png" alt="Grupo">
+        <img src="assets/img/alianza-hocol.jpg" alt="Hocol">
+        <img src="assets/img/alianza-logo7.png" alt="Aliado">
+        <img src="assets/img/alianza-petrobras.gif" alt="Petrobras">
+        <img src="assets/img/alianza-primax2.png" alt="Primax">
+        <img src="assets/img/alianza-esquivensa.png" alt="Esquivensa">
+        <img src="assets/img/alianza-logo11.webp" alt="Aliado">
+        <img src="assets/img/alianza-logo14.png" alt="Aliado">
       </div>
     </div>
   </section>
@@ -222,7 +228,7 @@
       </div>
       <div class="uses-grid">
         <a class="use-card" href="https://petroilsa.com/servicios/">
-          <div class="use-media"><img src="img/3.png" alt="Uso marino" loading="lazy"></div>
+          <div class="use-media"><img src="assets/img/3.png" alt="Uso marino" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v9m0 0l-4 3m4-3l4 3M5 14c0 4 3 7 7 8 4-1 7-4 7-8"/></svg></div>
           <div class="use-body">
             <h4>Uso marino</h4>
@@ -230,7 +236,7 @@
           </div>
         </a>
         <a class="use-card" href="https://petroilsa.com/servicios/">
-          <div class="use-media"><img src="img/4.png" alt="Uso industrial" loading="lazy"></div>
+          <div class="use-media"><img src="assets/img/4.png" alt="Uso industrial" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9l6 3V9l6 3V6l6 3v12H3z"/></svg></div>
           <div class="use-body">
             <h4>Uso industrial</h4>
@@ -238,7 +244,7 @@
           </div>
         </a>
         <a class="use-card" href="https://petroilsa.com/servicios/">
-          <div class="use-media"><img src="img/Petroil_fotosplanta_60.jpg" alt="Equipos de minería" loading="lazy"></div>
+          <div class="use-media"><img src="assets/img/Petroil_fotosplanta_60.jpg" alt="Equipos de minería" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20l6-11 4 6 3-4 5 9H3z"/></svg></div>
           <div class="use-body">
             <h4>Equipos de minería</h4>
@@ -246,7 +252,7 @@
           </div>
         </a>
         <a class="use-card" href="https://petroilsa.com/servicios/">
-          <div class="use-media"><img src="img/Petroil_fotosplanta_46.jpg" alt="Motores estacionarios" loading="lazy"></div>
+          <div class="use-media"><img src="assets/img/Petroil_fotosplanta_46.jpg" alt="Motores estacionarios" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.56V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.56 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.56-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.56-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.56V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.56 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.56 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.56 1z"/></svg></div>
           <div class="use-body">
             <h4>Motores estacionarios</h4>
@@ -267,11 +273,11 @@
 
       <div class="products-grid">
         
-        <a class="product-card" href="ficha-tecnica-petroil-40-a-max.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-40-a-max.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-a-max.png" alt="Petroil 40 A MAX" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-a-max.png" alt="Petroil 40 A MAX" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-a-max.png">
-              <source src="vids/petroil-a-max.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-a-max.mp4" type="video/mp4">
             </video>
           </div>
           <div class="product-info">
@@ -281,11 +287,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-50-10.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-50-10.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-50-10.webp" alt="Petroil 50 10 – ULSD Premium" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-50-10.webp" alt="Petroil 50 10 – ULSD Premium" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-50-10.webp">
-              <source src="vids/petroil-50-10.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-50-10.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -295,11 +301,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-60.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-60.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-60-nafta-virgen.png" alt="Nafta Virgen" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-60-nafta-virgen.png" alt="Nafta Virgen" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-60-nafta-virgen.png">
-              <source src="vids/petroil-60-nafta-virgen.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-60-nafta-virgen.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -309,11 +315,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-90.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-90.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-90-gasolina-premium.png" alt="Gasolina premium" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-90-gasolina-premium.png" alt="Gasolina premium" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-90-gasolina-premium.png">
-              <source src="vids/petroil-90-gasolina-premium.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-90-gasolina-premium.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -323,11 +329,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-100-mifos.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-100-mifos.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-100-mejorador-de-ifos.png" alt="Mejorador de IFOS" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-100-mejorador-de-ifos.png" alt="Mejorador de IFOS" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-100-mejorador-de-ifos.png">
-              <source src="vids/petroil-100-mejorador-de-ifos.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-100-mejorador-de-ifos.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -337,9 +343,9 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-250.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-250.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-250-fuel-oil.png" alt="Fuel Oil #4" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-250-fuel-oil.png" alt="Fuel Oil #4" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-code">P-250</div>
@@ -348,11 +354,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-300.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-300.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-300-vls-fuel-oil.png" alt="VLS Fuel Oil" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-300-vls-fuel-oil.png" alt="VLS Fuel Oil" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-300-vls-fuel-oil.png">
-              <source src="vids/petroil-300-vls-fuel-oil.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-300-vls-fuel-oil.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -362,11 +368,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-500.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-500.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-500-marine.png" alt="Marine MGO F.O.4" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-500-marine.png" alt="Marine MGO F.O.4" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-500-marine.png">
-              <source src="vids/petroil-500-marine.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-500-marine.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -376,11 +382,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-800-g.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-800-g.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-800-g.png" alt="Petroil 800 G Green" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-800-g.png" alt="Petroil 800 G Green" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-800-g.png">
-              <source src="vids/petroil-800-g.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-800-g.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -390,11 +396,11 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-800-hc.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-800-hc.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/petroil-800-hci.png" alt="Petroil 800 HCl" loading="lazy">
+            <img class="product-poster" src="assets/img/petroil-800-hci.png" alt="Petroil 800 HCl" loading="lazy">
             <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-800-hci.png">
-              <source src="vids/petroil-800-hci.mp4" type="video/mp4">
+              <source src="assets/vids/petroil-800-hci.mp4" type="video/mp4">
             </video>          
           </div>
           <div class="product-info">
@@ -404,9 +410,9 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-87-r.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-87-r.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/en-desarrollo.png" alt="Petroil 87 R Gasolina Corriente" loading="lazy">
+            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 87 R Gasolina Corriente" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-code">P-87 R</div>
@@ -415,9 +421,9 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-rf-110.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-rf-110.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/en-desarrollo.png" alt="Petroil RF 110+ Racing Fuel" loading="lazy">
+            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil RF 110+ Racing Fuel" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-code">RF-110+</div>
@@ -426,9 +432,9 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-100-plus-racing.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-100-plus-racing.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/en-desarrollo.png" alt="Petroil 100+ Racing Fuel" loading="lazy">
+            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 100+ Racing Fuel" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-code">RF-100+</div>
@@ -437,9 +443,9 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-230-ms.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-230-ms.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/en-desarrollo.png" alt="Petroil 230 MS Varsol" loading="lazy">
+            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 230 MS Varsol" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-code">P-230</div>
@@ -448,9 +454,9 @@
           </div>
         </a>
 
-        <a class="product-card" href="ficha-tecnica-petroil-70-kerosene.html">
+        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-70-kerosene.html">
           <div class="product-img-wrap">
-            <img class="product-poster" src="img/en-desarrollo.png" alt="Petroil 70 Kerosene" loading="lazy">
+            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 70 Kerosene" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-code">P-70</div>
@@ -473,37 +479,37 @@
       <div class="commit-grid">
         <div class="commit-card">
           <div class="commit-thumb">
-            <img src="img/Petroil_fotosplanta_29.jpg" alt="Sistema de Gestión Integrada SGI" loading="lazy">
+            <img src="assets/img/Petroil_fotosplanta_29.jpg" alt="Sistema de Gestión Integrada SGI" loading="lazy">
             <span class="tag">SGI</span>
           </div>
           <div class="commit-body">
             <h3>Sistema de Gestión Integrada</h3>
             <p>Nuestro Sistema de Gestión Integrada articula la calidad, la seguridad y la gestión ambiental bajo un mismo marco de trabajo, alineado con las normas ISO 9001, ISO 45001 e ISO 14001 que hoy nos certifican.</p>
-            <a href="sgi.html">Ver más información →</a>
+            <a href="sostenibilidad/sgi.html">Ver más información →</a>
           </div>
         </div>
 
         <div class="commit-card">
           <div class="commit-thumb">
-            <img src="img/equipo-3.jpg" alt="Compromiso social corporativo" loading="lazy">
+            <img src="assets/img/equipo-3.jpg" alt="Compromiso social corporativo" loading="lazy">
             <span class="tag">Comunidad</span>
           </div>
           <div class="commit-body">
             <h3>Compromiso social corporativo</h3>
             <p>Impulsamos programas de formación técnica, apoyamos iniciativas locales de emprendimiento y destinamos recursos a proyectos de infraestructura comunitaria en Santa Marta y su área de influencia.</p>
-            <a href="compromiso-social.html">Ver más información →</a>
+            <a href="sostenibilidad/compromiso-social.html">Ver más información →</a>
           </div>
         </div>
 
         <div class="commit-card">
           <div class="commit-thumb">
-            <img src="img/Petroil_fotosplanta_48.jpg" alt="Responsabilidad ambiental" loading="lazy">
+            <img src="assets/img/Petroil_fotosplanta_48.jpg" alt="Responsabilidad ambiental" loading="lazy">
             <span class="tag">Ambiental</span>
           </div>
           <div class="commit-body">
             <h3>Responsabilidad ambiental</h3>
             <p>Monitoreamos de forma permanente las emisiones de nuestros procesos de refinación, con la meta de reducir año a año la huella de carbono de nuestros combustibles.</p>
-            <a href="responsabilidad-ambiental.html">Ver más información →</a>
+            <a href="sostenibilidad/responsabilidad-ambiental.html">Ver más información →</a>
           </div>
         </div>
       </div>
@@ -519,38 +525,38 @@
       <div class="news-grid">
         <div class="news-card">
           <div class="news-thumb">
-            <img src="img/noticias/euro-vi-petroil-50-10-refineria.jpg" alt="Euro VI y la calidad del combustible" loading="lazy">
+            <img src="assets/img/noticias/euro-vi-petroil-50-10-refineria.jpg" alt="Euro VI y la calidad del combustible" loading="lazy">
             <span>Calidad del combustible</span>
           </div>
           <div class="news-body">
             <h3>Euro VI: por qué la calidad del combustible importa tanto como la tecnología del motor</h3>
-            <a class="readmore" href="euro-vi-calidad-combustible-tecnologia-motor.html">Ver noticia »</a>
+            <a class="readmore" href="noticias/euro-vi-calidad-combustible-tecnologia-motor.html">Ver noticia »</a>
           </div>
         </div>
         <div class="news-card">
           <div class="news-thumb">
-            <img src="img/noticias/embajada-eeuu-reunion-santa-marta.jpg" alt="Visita de la Embajada de Estados Unidos a Petroil" loading="lazy">
+            <img src="assets/img/noticias/embajada-eeuu-reunion-santa-marta.jpg" alt="Visita de la Embajada de Estados Unidos a Petroil" loading="lazy">
             <span>Institucional</span>
           </div>
           <div class="news-body">
             <h3>Petroil recibe visita de la Embajada de Estados Unidos en Santa Marta</h3>
-            <a class="readmore" href="petroil-visita-embajada-estados-unidos-santa-marta.html">Ver noticia »</a>
+            <a class="readmore" href="noticias/petroil-visita-embajada-estados-unidos-santa-marta.html">Ver noticia »</a>
           </div>
         </div>
         <div class="news-card">
           <div class="news-thumb">
-            <img src="img/noticias/euro6-refineria-petroil.jpg" alt="Euro 6 y la calidad del aire" loading="lazy">
+            <img src="assets/img/noticias/euro6-refineria-petroil.jpg" alt="Euro 6 y la calidad del aire" loading="lazy">
             <span>Calidad del aire</span>
           </div>
           <div class="news-body">
             <h3>Euro 6: ¿qué es y por qué importa para la calidad del aire?</h3>
-            <a class="readmore" href="euro-6-que-es-calidad-del-aire.html">Ver noticia »</a>
+            <a class="readmore" href="noticias/euro-6-que-es-calidad-del-aire.html">Ver noticia »</a>
           </div>
         </div>
         <!--
         <div class="news-card">
           <div class="news-thumb">
-            <img src="img/freedom250-portada-final.jpg" alt="Freedom 250" loading="lazy">
+            <img src="assets/img/freedom250-portada-final.jpg" alt="Freedom 250" loading="lazy">
             <span>Institucional</span>
           </div>
           <div class="news-body">
@@ -560,7 +566,7 @@
         </div>
         <div class="news-card">
           <div class="news-thumb">
-            <img src="img/Petroil_fotosplanta_60.jpg" alt="Ministerio de Minas y Energía" loading="lazy">
+            <img src="assets/img/Petroil_fotosplanta_60.jpg" alt="Ministerio de Minas y Energía" loading="lazy">
             <span>Regulatorio</span>
           </div>
           <div class="news-body">
@@ -570,7 +576,7 @@
         </div>
         <div class="news-card">
           <div class="news-thumb">
-            <img src="img/Petroil_fotosplanta_29.jpg" alt="Certificación ISO" loading="lazy">
+            <img src="assets/img/Petroil_fotosplanta_29.jpg" alt="Certificación ISO" loading="lazy">
             <span>Certificación</span>
           </div>
           <div class="news-body">
@@ -589,17 +595,17 @@
   <section class="about reveal" id="nosotros">
     <div class="container about-grid">
       <div class="about-photos">
-        <img src="img/equipo-1.png" alt="Equipo Petroil">
-        <img src="img/equipo-2.jpg" alt="Equipo Petroil">
-        <img src="img/equipo-3.jpg" alt="Equipo Petroil">
+        <img src="assets/img/equipo-1.png" alt="Equipo Petroil">
+        <img src="assets/img/equipo-2.jpg" alt="Equipo Petroil">
+        <img src="assets/img/equipo-3.jpg" alt="Equipo Petroil">
       </div>
       <div class="about-text">
         <span class="eyebrow">Sobre nosotros · Visión 2031</span>
         <h2>Una compañía energética integrada, confiable y con rumbo propio</h2>
         <p>Nuestro compromiso va más allá de prestar servicios de calidad a nuestros clientes: trabajamos con una visión estratégica clara hacia 2031, liderada por un equipo con décadas de trayectoria en energía e hidrocarburos.</p>
-        <a href="quienes-somos.html" class="btn-primary" style="margin-top:24px; background:var(--navy); color:#fff;">Conócenos</a>
+        <a href="nosotros/quienes-somos.html" class="btn-primary" style="margin-top:24px; background:var(--navy); color:#fff;">Conócenos</a>
         <div class="iso-row">
-          <img src="img/logo-iso.png" alt="Certificación ISO">
+          <img src="assets/img/logo-iso.png" alt="Certificación ISO">
           <p style="max-width:340px;">Sistema de gestión integrado certificado en Calidad ISO 9001, Salud y Seguridad ISO 45001 y Gestión Ambiental ISO 14001.</p>
         </div>
       </div>
@@ -748,7 +754,7 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
       </div>
       <h2>Clientes</h2>
       <p>Esta sección está en construcción. Muy pronto encontrarás aquí a las empresas que confían en Petroil y sus historias de éxito.</p>
-      <a href="portal-clientes.html" class="btn-outline" style="margin-top:22px; display:inline-flex;">Ver la página</a>
+      <a href="portal-clientes/portal-clientes.html" class="btn-outline" style="margin-top:22px; display:inline-flex;">Ver la página</a>
     </div>
   </section> -->
 
@@ -758,7 +764,7 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
   <div class="footer-top-line"></div>
   <div class="container footer-main">
     <div class="footer-brand">
-      <img src="img/Petroil-logo-blanco.png" alt="Petroil S.A.">
+      <img src="assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
       <p>Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
@@ -770,12 +776,12 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
     <div class="footer-links-col">
       <h4>Enlaces</h4>
       <ul class="footer-links">
-        <li><a href="politica-datos.html">Política de protección de datos</a></li>
-        <li><a href="pqrsf.html">PQRSF</a></li>
-        <li><a href="astm-d1500-color-tool.html">Herramienta</a></li>
-        <li><a href="portal-clientes.html">Clientes</a></li>
-        <li><a href="ala-de-sable.html">¿Quiénes somos?</a></li>
-        <li><a href="ala-de-sable.html">Noticias</a></li>
+        <li><a href="legal/politica-datos.html">Política de protección de datos</a></li>
+        <li><a href="legal/pqrsf.html">PQRSF</a></li>
+        <li><a href="herramientas/astm-d1500-color-tool.html">Herramienta</a></li>
+        <li><a href="portal-clientes/portal-clientes.html">Clientes</a></li>
+        <li><a href="nosotros/ala-de-sable.html">¿Quiénes somos?</a></li>
+        <li><a href="nosotros/ala-de-sable.html">Noticias</a></li>
       </ul>
     </div>
     <div class="footer-contact">
@@ -809,20 +815,20 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
     <span>© 2026 Petroil S.A. Todos los derechos reservados.</span>
     <div class="footer-bottom-links">
       <a>Comprometidos con el medio ambiente</a>
-      <a href="pqrsf.html">PQRSF</a>
+      <a href="legal/pqrsf.html">PQRSF</a>
     </div>
   </div>
 </footer>
 
 <button class="chat-launcher" id="chatLauncher" aria-label="Abrir chat con AIRA, asistente virtual de Petroil">
   <span class="demo-dot">DEMO</span>
-  <img class="launcher-avatar" src="img/aira-avatar.webp" alt="" width="60" height="60">
+  <img class="launcher-avatar" src="assets/img/aira-avatar.webp" alt="" width="60" height="60">
 </button>
 
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
     <div class="chat-avatar-wrap">
-      <img class="chat-avatar" src="img/aira-avatar.webp" alt="" width="40" height="40">
+      <img class="chat-avatar" src="assets/img/aira-avatar.webp" alt="" width="40" height="40">
       <span class="dot" aria-hidden="true"></span>
     </div>
     <div>
@@ -851,6 +857,11 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
 
 <div class="toast" id="toast"></div>
 
-<script src="petroil-app.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/hero-particles.js"></script>
+<script src="assets/js/home.js"></script>
+<script src="assets/js/footer-map.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/cursor.js"></script>
 </body>
 </html>

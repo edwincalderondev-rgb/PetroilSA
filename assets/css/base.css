@@ -1,0 +1,93 @@
+/* ============================================
+   BASE — variables globales, reset, tipografía y
+   componentes atómicos reutilizados en todo el sitio
+   (botones .btn-primary/.btn-outline, .container, etc.)
+   Se carga primero en TODAS las páginas.
+   ============================================ */
+:root{
+  --navy:#0A2A43;
+  --navy-deep:#071B2C;
+  --teal:#0F8C82;
+  --teal-light:#4CC2B4;
+  --amber:#E8871E;
+  --mist:#F4F8F8;
+  --steel:#5C6B73;
+  --ink:#0D1B24;
+  --white:#FFFFFF;
+  --line:#DCE4E6;
+  --radius:14px;
+  --flow-gradient:linear-gradient(90deg,var(--navy) 0%, var(--teal) 55%, var(--amber) 100%);
+  --shadow-soft:0 10px 30px -12px rgba(10,42,67,.25);
+
+  /* Paleta complementaria del logo — usada exclusivamente en el navbar y la
+     barra de progreso líquida, sin tocar los colores globales del resto del
+     sitio (hero, CTAs, badges, etc.). Ya no se usa naranja en estos componentes. */
+  --route-navy:#080C41;
+  --route-blue:#154772;
+  --route-green:#1D5949;
+  --route-lime:#C7F547;
+  --route-sky:#359ACC;
+  /* Blanco y gris "en negativo" del logo, pensados para usarse sobre
+     fondos oscuros (como la nueva franja inferior del navbar). */
+  --route-white-neg:#FBFEFF;
+  --route-gray-neg:#BEBEBE;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+/* Alinea el salto de los enlaces ancla (#servicios, #productos...) con la
+   misma línea marcadora que usa el scroll-spy de la ruta de navegación
+   (markerY = 35% del alto del viewport, en nav.js). Sin esto, el
+   navegador lleva la sección al TOPE del viewport al hacer clic, que no
+   coincide con el punto que el JS usa para decidir "current" — por eso la
+   gota quedaba corrida hacia el siguiente nodo en vez de caer justo en el
+   círculo. Si cambias el 0.35 en JS (markerY), cambia también este 35vh. */
+#servicios, #productos, #innovacion, #noticias, #nosotros{
+  scroll-margin-top: 35vh;
+}
+body{
+  margin:0; font-family:'Poppins',system-ui,sans-serif; font-weight:400; color:var(--ink);
+  background:var(--white); line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif; margin:0;}
+h1{font-weight:700; letter-spacing:-0.02em;}
+h2{font-weight:700; letter-spacing:-0.015em;}
+h3{font-weight:600; letter-spacing:-0.01em;}
+h4{font-weight:600; letter-spacing:-0.005em;}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+ul{margin:0; padding:0; list-style:none;}
+img{max-width:100%; display:block;}
+button{font-family:inherit; cursor:pointer;}
+.mono{font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:.03em;}
+.eyebrow{
+  font-family:'Poppins',sans-serif; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--teal); font-weight:600;
+}
+.container{max-width:1200px; margin:0 auto; padding:0 32px;}
+.skip-link{
+  position:absolute; left:-999px; top:0; background:var(--navy); color:#fff; padding:10px 16px; z-index:999;
+  border-radius:0 0 8px 0;
+}
+.skip-link:focus{left:0;}
+:focus-visible{outline:3px solid var(--amber); outline-offset:2px;}
+
+/* Botones genéricos — usados en nav, hero, artículos, fichas técnicas,
+   footer, chatbot... prácticamente en todas las páginas del sitio. */
+.btn-primary{
+  background:var(--amber); color:#0D1B24; padding:14px 26px; border-radius:30px; font-weight:700; font-size:.94rem;
+  display:inline-flex; align-items:center; gap:8px; transition:transform .18s ease, background .2s ease; border:none;
+}
+.btn-primary:hover{background:#fff; transform:translateY(-2px);}
+.btn-outline{
+  border:1.5px solid rgba(255,255,255,.65); color:#fff; padding:14px 26px; border-radius:30px; font-weight:600; font-size:.94rem;
+  display:inline-flex; align-items:center; gap:8px; transition:.2s ease;
+}
+.btn-outline.dark{border-color:var(--navy); color:var(--navy);}
+.btn-outline.dark:hover{background:var(--navy); color:#fff;}
+.btn-outline:hover{background:#fff; color:var(--navy);}
+
+/* Animación compartida por componentes independientes entre sí (tarjetas de
+   "pilares" en home.css y la tarjeta visual de ficha-tecnica.css, además del
+   ave de ala-de-sable.css): se define una sola vez aquí para no duplicarla
+   en cada archivo que la usa. */
+@keyframes pillarFloat{0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);}}

@@ -1,0 +1,124 @@
+/* ============================================
+   INNER PAGE HERO (SGI, Compromiso, Ambiental, PQRSF, Política, Noticias)
+   + layout de artículo (TOC + prosa) y componentes reutilizados en esas
+   páginas: icon-grid, process-flow, stat-row, doc-card, chart-wrap,
+   photo-gallery, disclaimer.
+   ============================================ */
+.page-hero{
+  position:relative; overflow:hidden; padding:158px 0 74px; color:#fff;
+  background-color:var(--navy-deep);
+  background-image:
+    linear-gradient(135deg, rgba(7,27,44,.93) 0%, rgba(10,42,67,.87) 55%, rgba(15,140,130,.5) 100%),
+    var(--hero-img, none);
+  background-size:cover; background-position:center;
+}
+.page-hero::before{
+  content:''; position:absolute; inset:0; z-index:1; opacity:.5; pointer-events:none;
+  background-image:repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 2px, transparent 2px 30px);
+}
+.page-hero .container{position:relative; z-index:2;}
+.page-hero .breadcrumb{
+  font-family:'Poppins',sans-serif; font-size:.74rem; font-weight:500; color:#9fb4c2; margin-bottom:20px; letter-spacing:.02em;
+}
+.page-hero .breadcrumb a{color:#cfe3ea; transition:color .2s;}
+.page-hero .breadcrumb a:hover{color:var(--teal-light);}
+.page-hero h1{font-size:clamp(2rem,3.6vw,2.85rem); color:#fff; line-height:1.16; margin-bottom:16px; max-width:760px;}
+.page-hero p{color:#dbe6ec; max-width:640px; font-size:1.02rem; line-height:1.6;}
+.page-hero .hero-graphic{
+  position:absolute; right:-40px; bottom:-60px; z-index:1; opacity:.14; width:340px; height:340px; pointer-events:none;
+}
+
+/* EXAMPLE BANNER (fixed: was rendering a huge unstyled icon) */
+.example-banner{
+  display:flex; align-items:flex-start; gap:12px; background:rgba(232,135,30,.1); border:1px solid rgba(232,135,30,.35);
+  color:#92400e; padding:14px 18px; border-radius:12px; font-size:.86rem; line-height:1.5; max-width:900px;
+}
+.example-banner svg{width:20px; height:20px; flex-shrink:0; margin-top:1px; color:var(--amber);}
+
+/* ARTICLE LAYOUT (sidebar TOC + prose) */
+.article-wrap{padding:60px 0 100px; background:#fff;}
+.article-grid{display:grid; grid-template-columns:220px 1fr; gap:56px; align-items:start;}
+.article-grid--full{grid-template-columns:minmax(0,1fr);}
+.toc{position:sticky; top:100px; display:flex; flex-direction:column; gap:3px; padding-right:10px; border-right:1px solid var(--line);}
+.toc span{font-family:'Poppins',sans-serif; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.12em; color:var(--steel); margin-bottom:8px;}
+.toc a{font-size:.86rem; color:var(--steel); padding:7px 0 7px 14px; border-left:2px solid transparent; transition:.2s;}
+.toc a:hover{color:var(--navy);}
+.toc a.active{color:var(--teal); border-left-color:var(--teal); font-weight:600;}
+.prose h2{font-size:1.45rem; color:var(--navy); margin:44px 0 16px;}
+.prose h2:first-child{margin-top:0;}
+.prose p{color:var(--steel); line-height:1.72; margin-bottom:16px; font-size:.98rem;}
+.prose ul{margin:16px 0 22px;}
+.prose ul li{position:relative; padding-left:26px; margin-bottom:10px; color:var(--steel); line-height:1.6; font-size:.96rem;}
+.prose ul li::before{content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--teal);}
+.prose blockquote{
+  border-left:3px solid var(--teal); background:var(--mist); padding:18px 22px; margin:28px 0; font-style:italic;
+  color:var(--navy); font-size:1.05rem; border-radius:0 10px 10px 0;
+}
+.prose a{color:var(--teal); font-weight:600;}
+.prose a:hover{color:var(--navy);}
+
+/* ICON GRID (reused across SGI, compromiso, ambiental) */
+.icon-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin:26px 0 10px;}
+.icon-item{display:flex; gap:14px; padding:18px; background:var(--mist); border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
+.icon-item:hover{border-color:var(--teal); transform:translateY(-2px); box-shadow:var(--shadow-soft);}
+.icon-item .icon-wrap{
+  width:40px; height:40px; min-width:40px; border-radius:10px; background:var(--navy); color:#fff; display:flex;
+  align-items:center; justify-content:center;
+}
+.icon-item .icon-wrap svg{width:18px; height:18px;}
+.icon-item h4{font-size:.96rem; color:var(--navy); margin-bottom:5px;}
+.icon-item p{font-size:.84rem; color:var(--steel); line-height:1.5;}
+
+/* PROCESS FLOW (PQRSF, SGI PHVA cycle) */
+.process-flow{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px 0 10px;}
+.process-step{position:relative; padding:22px 18px; background:#fff; border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
+.process-step:hover{border-color:var(--teal); box-shadow:var(--shadow-soft);}
+.process-step:not(:last-child)::after{content:''; position:absolute; top:30px; right:-18px; width:18px; height:2px; background:var(--line);}
+.step-num{font-family:'Poppins',sans-serif; font-size:.72rem; color:var(--teal); font-weight:700; letter-spacing:.02em;}
+.process-step h4{font-size:.96rem; color:var(--navy); margin:8px 0 6px;}
+.process-step p{font-size:.82rem; color:var(--steel); line-height:1.5;}
+
+/* STAT ROW */
+.stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:26px 0;}
+.stat-card{background:var(--navy); color:#fff; padding:26px 20px; border-radius:14px; text-align:center;}
+.stat-card .num{font-family:'Poppins',sans-serif; font-size:2.1rem; font-weight:800; letter-spacing:-0.01em; color:var(--teal-light);}
+.stat-card .label{font-size:.8rem; color:#cbd5e1; margin-top:6px; line-height:1.4;}
+
+/* DOC CARD (SGI documents list) */
+.doc-card{display:flex; gap:14px; align-items:center; padding:16px 18px; background:var(--mist); border:1px solid var(--line); border-radius:12px; margin-bottom:12px; transition:.2s ease;}
+.doc-card:hover{border-color:var(--teal);}
+.doc-card .icon-wrap{width:38px; height:38px; min-width:38px; border-radius:8px; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center;}
+.doc-card .icon-wrap svg{width:16px; height:16px;}
+.doc-card h4{font-size:.92rem; color:var(--navy);}
+.doc-card p{font-size:.8rem; color:var(--steel); margin-top:2px;}
+
+/* CHART WRAP (responsabilidad ambiental) */
+.chart-wrap{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:22px; margin:22px 0;}
+.chart-wrap svg{width:100%; height:auto; display:block;}
+
+/* PHOTO GALLERY (compromiso social) */
+.photo-gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:22px 0;}
+.photo-gallery img{width:100%; height:200px; object-fit:cover; border-radius:12px; transition:transform .3s ease;}
+.photo-gallery img:hover{transform:scale(1.03);}
+
+/* DISCLAIMER */
+.disclaimer-full{margin-top:40px; padding-top:24px; border-top:1px solid var(--line); font-size:.78rem; color:var(--steel); font-style:italic; line-height:1.6;}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .article-grid{grid-template-columns:1fr;}
+  .toc{position:relative; top:0; border-right:none; border-bottom:1px solid var(--line); padding-bottom:16px; flex-direction:row; flex-wrap:wrap; gap:10px;}
+  .toc a{border-left:none; padding:5px 10px; background:var(--mist); border-radius:20px;}
+  .toc a.active{background:var(--teal); color:#fff;}
+  .icon-grid{grid-template-columns:1fr;}
+  .process-flow{grid-template-columns:1fr 1fr;}
+  .process-step:nth-child(2)::after{display:none;}
+  .stat-row{grid-template-columns:1fr;}
+  .photo-gallery{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:720px){
+  .page-hero{padding:130px 0 56px;}
+  .process-flow{grid-template-columns:1fr;}
+  .process-step::after{display:none;}
+  .photo-gallery{grid-template-columns:1fr;}
+}

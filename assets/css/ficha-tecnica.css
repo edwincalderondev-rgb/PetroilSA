@@ -1,0 +1,124 @@
+/* ============================================
+   PRODUCT DATA SHEET (Ficha técnica de producto)
+   ============================================ */
+
+/* Hero: texto + tarjeta flotante del producto */
+.pds-hero{padding-bottom:64px;}
+.pds-hero-grid{display:flex; align-items:center; justify-content:space-between; gap:44px; flex-wrap:wrap;}
+.pds-hero-text{flex:1 1 480px; max-width:640px;}
+.pds-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+.pds-badge{
+  font-family:'Poppins',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  padding:5px 13px; border-radius:20px; border:1px solid rgba(255,255,255,.28); color:#dbe6ec; background:rgba(255,255,255,.06);
+}
+.pds-badge.accent{background:rgba(76,194,180,.18); border-color:rgba(76,194,180,.55); color:var(--teal-light);}
+.pds-hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+.pds-hero-visual{flex:0 0 300px; position:relative; display:flex; justify-content:center;}
+.pds-visual-glow{
+  position:absolute; inset:-50px; background:radial-gradient(circle, rgba(76,194,180,.38), transparent 68%);
+  filter:blur(6px); z-index:0;
+}
+.pds-visual-card{
+  position:relative; z-index:1; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(8px); border-radius:20px; padding:30px 30px 24px; text-align:center;
+  animation:pillarFloat 6s ease-in-out infinite; box-shadow:0 30px 60px -20px rgba(7,27,44,.6);
+}
+.pds-visual-card img{width:370px; height:170px; object-fit:contain; margin:0 auto 16px; filter:drop-shadow(0 18px 20px rgba(7,27,44,.5));}
+.pds-visual-card .pds-code{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.35rem; color:#fff; letter-spacing:.02em;}
+.pds-visual-card .pds-code-label{font-size:.72rem; color:#9fb4c2; margin-top:4px; letter-spacing:.03em;}
+.pds-visual-card .pds-divider{height:1px; background:rgba(255,255,255,.15); margin:16px 0;}
+.pds-visual-mini{display:flex; justify-content:center; gap:18px;}
+.pds-visual-mini div{text-align:center;}
+.pds-visual-mini b{display:block; font-family:'Poppins',sans-serif; font-weight:600; font-size:.92rem; color:var(--teal-light);}
+.pds-visual-mini span{font-size:.64rem; color:#9fb4c2;}
+
+/* Layout principal: contenido + barra lateral */
+.pds-layout{padding:70px 0 100px; background:#fff;}
+.pds-grid{display:grid; grid-template-columns:1fr 328px; gap:50px; align-items:start;}
+.pds-section{margin-bottom:56px;}
+.pds-section:last-child{margin-bottom:0;}
+.pds-section-title{display:flex; align-items:center; gap:12px; margin-bottom:22px;}
+.pds-section-title .num{
+  font-family:'Poppins',sans-serif; font-size:.76rem; font-weight:600; color:var(--teal); border:1px solid var(--line);
+  border-radius:20px; padding:3px 11px; flex-shrink:0;
+}
+.pds-section-title h2{font-size:1.5rem; color:var(--navy);}
+
+/* Aplicaciones y beneficios */
+.pds-benefits{display:flex; flex-direction:column; gap:14px;}
+.pds-benefit{display:flex; gap:16px; padding:20px 22px; background:var(--mist); border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
+.pds-benefit:hover{border-color:var(--teal-light);}
+.pds-benefit .icon-wrap{width:40px; height:40px; min-width:40px; border-radius:10px; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;}
+.pds-benefit .icon-wrap svg{width:19px; height:19px;}
+.pds-benefit h4{font-size:.96rem; color:var(--navy); margin-bottom:4px;}
+.pds-benefit p{color:var(--steel); font-size:.9rem; line-height:1.55;}
+
+/* Tabla de características técnicas */
+.pds-table-wrap{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-soft);}
+.pds-table-scroll{overflow-x:auto;}
+table.pds-table{width:100%; border-collapse:collapse; min-width:660px;}
+table.pds-table thead th{
+  background:var(--navy); color:#fff; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;
+  font-weight:600; padding:15px 18px; text-align:left; white-space:nowrap;
+}
+table.pds-table thead th.pds-num-head{text-align:center;}
+table.pds-table td{padding:13px 18px; font-size:.87rem; color:var(--ink); border-bottom:1px solid var(--line);}
+table.pds-table td.pds-param{color:var(--navy); font-weight:600;}
+table.pds-table td.pds-unit{color:var(--steel); white-space:nowrap;}
+table.pds-table td.pds-method{color:var(--steel); font-size:.8rem; white-space:nowrap;}
+table.pds-table td.pds-num{font-family:'Poppins',sans-serif; text-align:center; color:var(--navy); font-weight:600;}
+table.pds-table td.pds-num.empty{color:var(--line); font-weight:400;}
+table.pds-table tbody tr:nth-child(even):not(.pds-group){background:var(--mist);}
+table.pds-table tbody tr.pds-group td{
+  background:var(--navy-deep); color:#fff; font-weight:600; letter-spacing:.04em; font-family:'Poppins',sans-serif;
+  font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; padding:10px 18px;
+}
+table.pds-table tbody tr:not(.pds-group):hover td{background:rgba(15,140,130,.08);}
+table.pds-table tbody tr:last-child td{border-bottom:none;}
+
+/* Tarjeta de seguridad / CAS */
+.pds-safety{display:flex; gap:16px; padding:22px 24px; border-radius:14px; background:rgba(232,135,30,.09); border:1px solid rgba(232,135,30,.32);}
+.pds-safety .icon-wrap{width:42px; height:42px; min-width:42px; border-radius:12px; background:var(--amber); color:#fff; display:flex; align-items:center; justify-content:center;}
+.pds-safety .icon-wrap svg{width:20px; height:20px;}
+.pds-safety h4{color:var(--navy); font-size:.96rem; margin-bottom:6px;}
+.pds-safety p{color:var(--steel); font-size:.86rem; line-height:1.55;}
+.pds-safety .cas{font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:.02em; color:var(--navy);}
+
+/* Barra lateral */
+.pds-side{display:flex; flex-direction:column; gap:16px; position:sticky; top:100px;}
+.pds-side-card{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:24px;}
+.pds-side-card h4{font-size:.94rem; color:var(--navy); margin-bottom:8px;}
+.pds-side-card p{font-size:.82rem; color:var(--steel); line-height:1.5; margin-bottom:16px;}
+.pds-side-card .btn-download{
+  width:100%; justify-content:center; display:inline-flex; align-items:center; gap:8px; background:var(--navy);
+  color:#fff !important; padding:12px 18px; border-radius:30px; font-weight:600; font-size:.86rem; transition:.2s ease;
+}
+.pds-side-card .btn-download:hover{background:var(--teal); transform:translateY(-2px);}
+.pds-side-card.dark{background:var(--navy); color:#fff;}
+.pds-side-card.dark h4{color:#fff;}
+.pds-side-card.dark p{color:#cbd5e1;}
+.pds-side-card .wa-btn{width:100%; justify-content:center;}
+.pds-side-list li{display:flex; justify-content:space-between; gap:10px; font-size:.82rem; color:var(--steel); padding:9px 0; border-bottom:1px dashed var(--line);}
+.pds-side-list li:last-child{border-bottom:none;}
+.pds-side-list b{color:var(--navy); font-weight:700; white-space:nowrap;}
+
+/* Franja de productos relacionados */
+.pds-related{margin-top:74px; padding-top:52px; border-top:1px solid var(--line);}
+.pds-related-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:26px; flex-wrap:wrap;}
+.pds-related-head h3{font-size:1.3rem; color:var(--navy);}
+.pds-related-head a{font-size:.86rem; font-weight:600; color:var(--teal);}
+.pds-related-head a:hover{color:var(--navy);}
+
+@media (max-width:980px){
+  .pds-grid{grid-template-columns:1fr;}
+  .pds-side{position:relative; top:0; flex-direction:row; flex-wrap:wrap;}
+  .pds-side-card{flex:1 1 260px;}
+  .pds-hero-grid{flex-direction:column; text-align:center;}
+  .pds-hero-text{max-width:100%;}
+  .pds-badges, .pds-hero-ctas{justify-content:center;}
+  .pds-hero-visual{order:-1;}
+}
+@media (max-width:720px){
+  .pds-benefit{flex-direction:column;}
+  .pds-side{flex-direction:column;}
+}
