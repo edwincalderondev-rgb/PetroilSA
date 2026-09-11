@@ -91,3 +91,23 @@ button{font-family:inherit; cursor:pointer;}
    ave de ala-de-sable.css): se define una sola vez aquí para no duplicarla
    en cada archivo que la usa. */
 @keyframes pillarFloat{0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);}}
+
+/* Reveal on scroll — usado en index.html, nosotros/quienes-somos.html y
+   nosotros/ala-de-sable.html (secciones, tarjetas y bloques de contenido).
+   nav.js agrega la clase .in mediante IntersectionObserver la primera vez
+   que el elemento entra en el viewport (una sola vez, nunca se revierte).
+   Solo anima opacidad/transform (compuesto por GPU, sin recalcular layout),
+   así que el costo de rendimiento es mínimo aunque haya varios elementos
+   en pantalla a la vez. */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.in{
+  opacity:1;
+  transform:translateY(0);
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
