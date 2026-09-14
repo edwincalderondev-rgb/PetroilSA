@@ -34,7 +34,7 @@
         <img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
       </a>
       <div class="nav-utility">
-        <a href="index.html#productos" class="portal-link">Productos</a>
+        <a href="productos.html" class="portal-link">Productos</a>
         <a href="nosotros/quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
         <a href="portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a>
         <div class="lang-select" id="langSelect">
@@ -270,15 +270,15 @@
       <div class="section-head">
         <span class="eyebrow">Portafolio</span>
         <h2>Nuestros productos</h2>
-        <p>Cada línea Petroil se identifica con un código propio de nuestro sistema de clasificación de combustibles.</p>
+        <p>Cada línea Petroil se identifica con un código propio de nuestro sistema de clasificación de combustibles. Estos son algunos destacados del portafolio.</p>
       </div>
 
       <div class="products-grid">
-        
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-40-a-max.html">
+
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-40-a-max.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-a-max.png" alt="Petroil 40 A MAX" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-a-max.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-a-max.png">
               <source src="assets/vids/petroil-a-max.mp4" type="video/mp4">
             </video>
           </div>
@@ -289,12 +289,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-50-10.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-50-10.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-50-10.webp" alt="Petroil 50 10 – ULSD Premium" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-50-10.webp">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-50-10.webp">
               <source src="assets/vids/petroil-50-10.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-50/10</div>
@@ -303,12 +303,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-60.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-60.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-60-nafta-virgen.png" alt="Nafta Virgen" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-60-nafta-virgen.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-60-nafta-virgen.png">
               <source src="assets/vids/petroil-60-nafta-virgen.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-60</div>
@@ -317,12 +317,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-90.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-90.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-90-gasolina-premium.png" alt="Gasolina premium" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-90-gasolina-premium.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-90-gasolina-premium.png">
               <source src="assets/vids/petroil-90-gasolina-premium.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-90</div>
@@ -331,12 +331,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-100-mifos.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-100-mifos.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-100-mejorador-de-ifos.png" alt="Mejorador de IFOS" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-100-mejorador-de-ifos.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-100-mejorador-de-ifos.png">
               <source src="assets/vids/petroil-100-mejorador-de-ifos.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-100</div>
@@ -345,9 +345,16 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-250.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-250.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-250-fuel-oil.png" alt="Fuel Oil #4" loading="lazy">
+            <!-- P-250 reutiliza el video de P-40 A MAX a propósito: el
+                 líquido que se ve (color, viscosidad, forma del chorro) es
+                 prácticamente idéntico, así que no vale la pena grabar/pedir
+                 uno nuevo solo para este producto. -->
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-250-fuel-oil.png">
+              <source src="assets/vids/petroil-a-max.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-250</div>
@@ -356,12 +363,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-300.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-300.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-300-vls-fuel-oil.png" alt="VLS Fuel Oil" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-300-vls-fuel-oil.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-300-vls-fuel-oil.png">
               <source src="assets/vids/petroil-300-vls-fuel-oil.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-300</div>
@@ -370,12 +377,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-500.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-500.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-500-marine.png" alt="Marine MGO F.O.4" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-500-marine.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-500-marine.png">
               <source src="assets/vids/petroil-500-marine.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-500</div>
@@ -384,12 +391,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-800-g.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-800-g.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-800-g.png" alt="Petroil 800 G Green" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-800-g.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-800-g.png">
               <source src="assets/vids/petroil-800-g.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-800 G</div>
@@ -398,12 +405,12 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-800-hc.html">
+        <a class="product-card has-video" href="fichas-tecnicas/ficha-tecnica-petroil-800-hc.html">
           <div class="product-img-wrap">
             <img class="product-poster" src="assets/img/petroil-800-hci.png" alt="Petroil 800 HCl" loading="lazy">
-            <video class="product-video" loop muted playsinline preload="none" poster="img/petroil-800-hci.png">
+            <video class="product-video" loop muted playsinline preload="none" poster="assets/img/petroil-800-hci.png">
               <source src="assets/vids/petroil-800-hci.mp4" type="video/mp4">
-            </video>          
+            </video>
           </div>
           <div class="product-info">
             <div class="product-code">P-800 HCl</div>
@@ -412,61 +419,10 @@
           </div>
         </a>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-87-r.html">
-          <div class="product-img-wrap">
-            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 87 R Gasolina Corriente" loading="lazy">
-          </div>
-          <div class="product-info">
-            <div class="product-code">P-87 R</div>
-            <div class="product-name">87 R Gasolina Corriente</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
-          </div>
-        </a>
+      </div>
 
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-rf-110.html">
-          <div class="product-img-wrap">
-            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil RF 110+ Racing Fuel" loading="lazy">
-          </div>
-          <div class="product-info">
-            <div class="product-code">RF-110+</div>
-            <div class="product-name">RF 110+ Racing Fuel</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
-          </div>
-        </a>
-
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-100-plus-racing.html">
-          <div class="product-img-wrap">
-            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 100+ Racing Fuel" loading="lazy">
-          </div>
-          <div class="product-info">
-            <div class="product-code">RF-100+</div>
-            <div class="product-name">100+ Racing Fuel</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
-          </div>
-        </a>
-
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-230-ms.html">
-          <div class="product-img-wrap">
-            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 230 MS Varsol" loading="lazy">
-          </div>
-          <div class="product-info">
-            <div class="product-code">P-230</div>
-            <div class="product-name">230 MS · Varsol</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
-          </div>
-        </a>
-
-        <a class="product-card" href="fichas-tecnicas/ficha-tecnica-petroil-70-kerosene.html">
-          <div class="product-img-wrap">
-            <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 70 Kerosene" loading="lazy">
-          </div>
-          <div class="product-info">
-            <div class="product-code">P-70</div>
-            <div class="product-name">70 Kerosene</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
-          </div>
-        </a>
-
+      <div class="news-foot">
+        <a class="btn-outline dark" href="productos.html">Ver el portafolio completo (15 productos) →</a>
       </div>
     </div>
   </section>
@@ -790,6 +746,7 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
       <h4>Contacto</h4>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><span>contacto@petroilsa.com</span></p>
       <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
@@ -801,6 +758,7 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
       <div class="map-tabs">
         <button class="map-tab active" data-map="bogota">Oficina Bogotá</button>
         <button class="map-tab" data-map="santamarta">Refinería Santa Marta</button>
+        <button class="map-tab" data-map="esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
         <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"

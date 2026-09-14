@@ -1,4 +1,4 @@
-// Footer map tabs (Bogotá / Santa Marta) — presente en el footer sitewide
+// Footer map tabs (Bogotá / Santa Marta / Esquivensa Barranquilla) — presente en el footer sitewide
 const mapFrame = document.getElementById('mapFrame');
 const gmapsLink = document.getElementById('gmapsLink');
 const maps = {
@@ -9,6 +9,10 @@ const maps = {
   santamarta: {
     src: "https://www.openstreetmap.org/export/embed.html?bbox=-74.1806%2C11.2195%2C-74.1606%2C11.2395&layer=mapnik&marker=11.2295%2C-74.1706",
     gmaps: "https://www.google.com/maps/search/?api=1&query=Carrera+57A+%2330-399+Mamatoco+Santa+Marta"
+  },
+  esquivensa: {
+    src: "https://www.openstreetmap.org/export/embed.html?bbox=-74.7711%2C10.9473%2C-74.7511%2C10.9673&layer=mapnik&marker=10.9573%2C-74.7611",
+    gmaps: "https://www.google.com/maps/search/?api=1&query=Esquivensa+Calle+1c+%235-231+Zona+Franca+Barranquilla"
   }
 };
 if(mapFrame){

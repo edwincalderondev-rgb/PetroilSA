@@ -1,5 +1,7 @@
 // Product videos: se reproducen con el cursor (desktop) o con el toque (móvil).
-// El resto del tiempo se ve la imagen (.product-poster). Solo existe en index.html.
+// El resto del tiempo se ve la imagen (.product-poster). Lo usan index.html
+// (tarjetas de home.css) y productos.html (tarjetas propias de productos.css):
+// ambas conservan los mismos nombres de clase para reutilizar esta lógica.
 const productVideos = document.querySelectorAll('.product-video');
 if(productVideos.length){
 

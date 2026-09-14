@@ -44,7 +44,12 @@
 }
 .qs-hero-media::after{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(135deg, rgba(7,27,44,.93) 0%, rgba(10,42,67,.87) 55%, rgba(15,140,130,.4) 100%);
+  /* Antes usaba la paleta operativa (navy-deep/navy/teal), que no
+     corresponde a ningún color del manual de marca. Ahora: azul oscuro →
+     azul petróleo → azul cielo, la misma fórmula de .page-hero
+     (article.css) y de .prod-hero (productos.css), para que todos los
+     heros oscuros del sitio compartan la misma paleta 100% oficial. */
+  background:linear-gradient(135deg, rgba(8,12,65,.93) 0%, rgba(21,71,114,.87) 55%, rgba(53,154,204,.4) 100%);
 }
 .qs-hero h1{font-size:clamp(2.3rem,3.6vw,3.9rem); line-height:1.1;}
 .qs-hero .lead{max-width:680px;}

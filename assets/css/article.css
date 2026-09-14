@@ -5,13 +5,26 @@
    photo-gallery, disclaimer.
    ============================================ */
 .page-hero{
+  /* Degradado en paleta 100% oficial de marca (azul oscuro → azul
+     petróleo → azul cielo), como custom property para no repetirlo: la
+     heredan tanto el fondo propio de .page-hero (páginas sin foto, como
+     las fichas técnicas) como .page-hero-bg::after (páginas con foto). */
+  --ph-gradient: linear-gradient(135deg, rgba(8,12,65,.93) 0%, rgba(21,71,114,.85) 55%, rgba(53,154,204,.42) 100%);
   position:relative; overflow:hidden; padding:158px 0 74px; color:#fff;
-  background-color:var(--navy-deep);
-  background-image:
-    linear-gradient(135deg, rgba(7,27,44,.93) 0%, rgba(10,42,67,.87) 55%, rgba(15,140,130,.5) 100%),
-    var(--hero-img, none);
+  background-color:#080C41;
+  background-image:var(--ph-gradient);
   background-size:cover; background-position:center;
 }
+/* Fondo fotográfico OPCIONAL. Es un <img> real dentro de .page-hero-bg —
+   nunca un url() metido en una custom property (background-image:var(...)):
+   un url() relativo dentro de una custom property se resuelve contra la
+   hoja CSS, no contra el HTML, así que la foto se perdía en silencio y solo
+   quedaba el degradado (bug real, confirmado renderizando en Edge y ya
+   corregido primero en productos.html). Las páginas sin foto (fichas
+   técnicas) no incluyen este div y se quedan con el degradado de arriba. */
+.page-hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+.page-hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+.page-hero-bg::after{content:''; position:absolute; inset:0; background:var(--ph-gradient);}
 .page-hero::before{
   content:''; position:absolute; inset:0; z-index:1; opacity:.5; pointer-events:none;
   background-image:repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 2px, transparent 2px 30px);

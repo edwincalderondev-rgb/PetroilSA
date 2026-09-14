@@ -103,16 +103,20 @@
 }
 /* Imagen: visible por defecto, se apaga al pasar el cursor */
 .product-poster{ opacity:1; }
-.product-card:hover .product-poster,
-.product-card:focus .product-poster{ opacity:0; }
+/* Solo se apaga la foto fija si la tarjeta SÍ tiene video (.has-video):
+   si no, hover dejaba la tarjeta en blanco (la foto se ocultaba y no había
+   nada detrás). Las tarjetas "en desarrollo" no llevan <video>, así que se
+   quedan sin esta clase y su cover permanece visible siempre. */
+.product-card.has-video:hover .product-poster,
+.product-card.has-video:focus .product-poster{ opacity:0; }
 
 /* Video: superpuesto sobre la imagen, oculto por defecto, visible solo en hover/focus */
 .product-video{
   position:absolute; top:0; left:0; right:0; bottom:0; margin:auto;
   opacity:0;
 }
-.product-card:hover .product-video,
-.product-card:focus .product-video{ opacity:1; }
+.product-card.has-video:hover .product-video,
+.product-card.has-video:focus .product-video{ opacity:1; }
 
 .product-card:hover .product-img-wrap img,
 .product-card:hover .product-img-wrap .product-video { transform:scale(1.08); }
