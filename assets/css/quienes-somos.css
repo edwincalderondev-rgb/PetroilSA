@@ -6,20 +6,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&display=swap');
 
-:root{
-  /* Colores institucionales Petroil.
-     Positivo: #3499CC (azul) y #080C41 (navy).
-     Negativo: #FBFEFF (blanco) y #BEBEBE (gris).
-     No es una paleta cerrada para toda la interfaz — se usa como línea
-     de referencia para evitar acentos que choquen con la marca (p. ej.
-     verdes saturados). El teal/ámbar ya existentes en petroil-styles.css
-     se mantienen porque son parte del sistema visual aprobado del sitio. */
-  --ib-blue:#3499CC;
-  --ib-navy:#080C41;
-  --ib-white:#FBFEFF;
-  --ib-gray:#BEBEBE;
-  --ink-soft:#3A4A52;
-}
+/* Los --ib-* que vivían aquí (azul/navy/blanco/gris "institucionales")
+   quedaron redundantes: son exactamente los mismos 8 colores que ahora
+   vive en :root de base.css como --brand-* (fuente única de verdad para
+   toda la paleta de marca). Se usa var(--brand-blue) directamente donde
+   antes se usaba var(--ib-blue), var(--navy) donde antes var(--ib-navy),
+   etc. --ink-soft se quitó por no usarse en ningún lado (código muerto). */
 
 /* ---------- breadcrumb sobre hero oscuro ---------- */
 .qs-breadcrumb{
@@ -83,7 +75,7 @@
   display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%;
   font-family:'Poppins',sans-serif; font-weight:700; font-size:.85rem; margin-bottom:22px;
 }
-.qs-essence-card.dark .qs-essence-num{background:var(--ib-blue); color:var(--ib-navy);}
+.qs-essence-card.dark .qs-essence-num{background:var(--brand-blue); color:var(--navy);}
 .qs-essence-card.light .qs-essence-num{background:var(--navy); color:#fff;}
 .qs-essence-tag{font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600; opacity:.7; display:block; margin-bottom:6px;}
 .qs-essence-card h3{font-size:1.45rem; line-height:1.28; margin-bottom:16px;}
@@ -112,7 +104,7 @@
 .qs-principle{
   background:var(--navy-deep); color:#fff; border-radius:16px; padding:22px 26px; margin-left:26px; min-width:220px;
 }
-.qs-principle span{display:block; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ib-blue); font-weight:700; margin-bottom:8px;}
+.qs-principle span{display:block; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-blue); font-weight:700; margin-bottom:8px;}
 .qs-principle p{font-size:.9rem; line-height:1.5; color:#e2e8f0; margin:0;}
 
 /* ---------- CINCO FUERZAS ---------- */
@@ -123,19 +115,25 @@
   justify-content:space-between; transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
   position:relative; overflow:hidden;
 }
-.qs-force:hover{transform:translateY(-8px); box-shadow:0 24px 44px -16px rgba(10,42,67,.4);}
+.qs-force:hover{transform:translateY(-8px); box-shadow:0 24px 44px -16px rgba(8,12,65,.4);}
 .qs-force-num{font-family:'Poppins',sans-serif; font-weight:800; font-size:1.6rem; opacity:.5;}
 .qs-force h4{font-size:1.02rem; margin:18px 0 6px; line-height:1.3;}
 .qs-force .verb{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; opacity:.85; display:block; margin-bottom:10px;}
 .qs-force p{font-size:.82rem; line-height:1.5; opacity:.92;}
-/* Escala de profundidad institucional: de azul claro a navy oscuro,
-   a medida que las fuerzas ganan intensidad (mismo lenguaje visual
-   que "La ruta a 2031"). Sin verdes ni colores fuera de marca. */
-.qs-force-1{background:linear-gradient(150deg,#5CB3DB 0%, var(--ib-blue) 100%);}
-.qs-force-2{background:linear-gradient(150deg,var(--ib-blue) 0%, #2678A0 100%);}
-.qs-force-3{background:linear-gradient(150deg,#1F5C82 0%, var(--navy) 100%);}
-.qs-force-4{background:linear-gradient(150deg,var(--navy) 0%, var(--navy-deep) 100%);}
-.qs-force-5{background:linear-gradient(150deg,var(--navy-deep) 0%, var(--ib-navy) 100%);}
+/* Escala de profundidad institucional: de azul cielo a navy oscuro, a
+   medida que las fuerzas ganan intensidad (mismo lenguaje visual que "La
+   ruta a 2031"). Antes usaba 3 tonos intermedios inventados (#5CB3DB,
+   #2678A0, #1F5C82) que no salían de la paleta oficial — la escala ahora
+   solo usa los 4 azules reales del manual (cielo/claro, petróleo,
+   oscuro). Como el oficial no tiene un azul más oscuro que #080C41, la
+   escala llega a su punto más profundo en la fuerza 3 y se queda sólida
+   (navy) en las fuerzas 4 y 5 — no hay hacia dónde seguir oscureciendo
+   sin salirse de marca. */
+.qs-force-1{background:linear-gradient(150deg, var(--teal-light) 0%, var(--brand-blue) 100%);}
+.qs-force-2{background:linear-gradient(150deg, var(--brand-blue) 0%, var(--teal) 100%);}
+.qs-force-3{background:linear-gradient(150deg, var(--teal) 0%, var(--navy) 100%);}
+.qs-force-4{background:var(--navy);}
+.qs-force-5{background:var(--navy);}
 .qs-forces-foot{
   margin-top:32px; text-align:center; font-size:.95rem; color:var(--navy); font-weight:500;
 }
@@ -150,7 +148,7 @@
 .qs-route .section-head{position:relative; z-index:2;}
 .qs-route .section-head h2{color:#fff;}
 .qs-route .section-head p{color:#9fb4c2;}
-.qs-route .eyebrow{color:var(--ib-blue);}
+.qs-route .eyebrow{color:var(--brand-blue);}
 
 /* La ruta a 2031: escalera ascendente inequívoca de izquierda (2026, abajo)
    a derecha (2031, arriba).
@@ -173,7 +171,7 @@
 .qs-route-line{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
 .qs-route-axis{
   display:flex; justify-content:space-between; max-width:1120px; margin:0 auto 20px; position:relative; z-index:2;
-  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ib-gray); font-weight:600;
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-gray); font-weight:600;
 }
 .qs-route-axis span{display:flex; align-items:center; gap:6px;}
 .qs-route-axis svg{width:13px; height:13px;}
@@ -189,12 +187,12 @@
 
 .qs-route-dot{
   width:18px; height:18px; border-radius:50%; background:var(--teal-light); border:3px solid var(--navy-deep);
-  box-shadow:0 0 0 3px rgba(76,194,180,.35); margin-bottom:14px; transition:transform .3s ease; flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(53,154,204,.35); margin-bottom:14px; transition:transform .3s ease; flex-shrink:0;
 }
-.qs-route-stop.step-5 .qs-route-dot{background:var(--ib-blue); box-shadow:0 0 0 4px rgba(52,153,204,.35), 0 0 30px rgba(52,153,204,.55); width:22px; height:22px;}
+.qs-route-stop.step-5 .qs-route-dot{background:var(--brand-blue); box-shadow:0 0 0 4px rgba(52,153,204,.35), 0 0 30px rgba(52,153,204,.55); width:22px; height:22px;}
 .qs-route-stop:hover .qs-route-dot{transform:scale(1.3);}
 .qs-route-year{font-family:'Poppins',sans-serif; font-size:.68rem; color:var(--teal-light); font-weight:700; letter-spacing:.06em; margin-bottom:6px;}
-.qs-route-stop.step-5 .qs-route-year{color:var(--ib-blue);}
+.qs-route-stop.step-5 .qs-route-year{color:var(--brand-blue);}
 .qs-route-card{
   background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(6px);
   border-radius:12px; padding:0 0 14px; width:100%; overflow:hidden;
@@ -208,7 +206,7 @@
 }
 .qs-summit-badge{
   display:inline-flex; align-items:center; gap:8px; background:rgba(52,153,204,.14); border:1px solid rgba(52,153,204,.4);
-  color:var(--ib-blue); font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:7px 16px; border-radius:30px;
+  color:var(--brand-blue); font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:7px 16px; border-radius:30px;
   margin-bottom:20px;
 }
 .qs-summit h3{font-size:clamp(1.5rem,2.6vw,2.1rem); color:#fff; line-height:1.3; max-width:680px; margin:0 auto 40px;}
@@ -238,7 +236,7 @@
 .leader-card:first-child .leader-chip{background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.2);}
 .leader-card:first-child .bio-toggle{color:var(--teal-light);}
 
-.leader-photo{position:relative; aspect-ratio:4/5; overflow:hidden; background:linear-gradient(160deg,#1a3b52,#0A2A43);}
+.leader-photo{position:relative; aspect-ratio:4/5; overflow:hidden; background:linear-gradient(160deg,#1a3b52,#080C41);}
 .leader-photo img{width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .5s ease;}
 .leader-card:hover .leader-photo img{transform:scale(1.045);}
 .leader-body{padding:24px 24px 26px;}
@@ -285,7 +283,7 @@
   box-shadow:0 30px 70px -20px rgba(0,0,0,.45);
 }
 .leader-modal-overlay.open .leader-modal{transform:translateY(0) scale(1); opacity:1;}
-.leader-modal-photo{background:linear-gradient(160deg,#1a3b52,#0A2A43); min-height:100%;}
+.leader-modal-photo{background:linear-gradient(160deg,#1a3b52,#080C41); min-height:100%;}
 .leader-modal-photo img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; min-height:280px;}
 .leader-modal-body{padding:36px 36px 40px; position:relative;}
 .leader-modal-close{

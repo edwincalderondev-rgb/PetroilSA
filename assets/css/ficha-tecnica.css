@@ -11,19 +11,19 @@
   font-family:'Poppins',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
   padding:5px 13px; border-radius:20px; border:1px solid rgba(255,255,255,.28); color:#dbe6ec; background:rgba(255,255,255,.06);
 }
-.pds-badge.accent{background:rgba(76,194,180,.18); border-color:rgba(76,194,180,.55); color:var(--teal-light);}
+.pds-badge.accent{background:rgba(53,154,204,.18); border-color:rgba(53,154,204,.55); color:var(--teal-light);}
 .pds-hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
 .pds-hero-visual{flex:0 0 300px; position:relative; display:flex; justify-content:center;}
 .pds-visual-glow{
-  position:absolute; inset:-50px; background:radial-gradient(circle, rgba(76,194,180,.38), transparent 68%);
+  position:absolute; inset:-50px; background:radial-gradient(circle, rgba(53,154,204,.38), transparent 68%);
   filter:blur(6px); z-index:0;
 }
 .pds-visual-card{
   position:relative; z-index:1; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
   backdrop-filter:blur(8px); border-radius:20px; padding:30px 30px 24px; text-align:center;
-  animation:pillarFloat 6s ease-in-out infinite; box-shadow:0 30px 60px -20px rgba(7,27,44,.6);
+  animation:pillarFloat 6s ease-in-out infinite; box-shadow:0 30px 60px -20px rgba(8,12,65,.6);
 }
-.pds-visual-card img{width:370px; height:170px; object-fit:contain; margin:0 auto 16px; filter:drop-shadow(0 18px 20px rgba(7,27,44,.5));}
+.pds-visual-card img{width:370px; height:170px; object-fit:contain; margin:0 auto 16px; filter:drop-shadow(0 18px 20px rgba(8,12,65,.5));}
 .pds-visual-card .pds-code{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.35rem; color:#fff; letter-spacing:.02em;}
 .pds-visual-card .pds-code-label{font-size:.72rem; color:#9fb4c2; margin-top:4px; letter-spacing:.03em;}
 .pds-visual-card .pds-divider{height:1px; background:rgba(255,255,255,.15); margin:16px 0;}
@@ -73,12 +73,14 @@ table.pds-table tbody tr.pds-group td{
   background:var(--navy-deep); color:#fff; font-weight:600; letter-spacing:.04em; font-family:'Poppins',sans-serif;
   font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; padding:10px 18px;
 }
-table.pds-table tbody tr:not(.pds-group):hover td{background:rgba(15,140,130,.08);}
+table.pds-table tbody tr:not(.pds-group):hover td{background:rgba(21,71,114,.08);}
 table.pds-table tbody tr:last-child td{border-bottom:none;}
 
-/* Tarjeta de seguridad / CAS */
+/* Tarjeta de seguridad / CAS — usa --warn (aviso de precaución), no
+   --amber: --amber ahora es verde lima, un color de marca/CTA, no de
+   advertencia. Mezclarlos aquí dejaría el ícono lima y el fondo naranja. */
 .pds-safety{display:flex; gap:16px; padding:22px 24px; border-radius:14px; background:rgba(232,135,30,.09); border:1px solid rgba(232,135,30,.32);}
-.pds-safety .icon-wrap{width:42px; height:42px; min-width:42px; border-radius:12px; background:var(--amber); color:#fff; display:flex; align-items:center; justify-content:center;}
+.pds-safety .icon-wrap{width:42px; height:42px; min-width:42px; border-radius:12px; background:var(--warn); color:#fff; display:flex; align-items:center; justify-content:center;}
 .pds-safety .icon-wrap svg{width:20px; height:20px;}
 .pds-safety h4{color:var(--navy); font-size:.96rem; margin-bottom:6px;}
 .pds-safety p{color:var(--steel); font-size:.86rem; line-height:1.55;}

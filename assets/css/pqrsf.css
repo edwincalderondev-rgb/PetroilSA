@@ -13,7 +13,7 @@
 .pqrsf-type-card input{position:absolute; opacity:0; width:1px; height:1px;}
 .pqrsf-type-card svg{width:20px; height:20px; color:var(--steel); transition:.2s ease;}
 .pqrsf-type-card:hover{border-color:var(--teal-light);}
-.pqrsf-type-card.selected{border-color:var(--teal); background:rgba(15,140,130,.07); color:var(--navy);}
+.pqrsf-type-card.selected{border-color:var(--teal); background:rgba(21,71,114,.07); color:var(--navy);}
 .pqrsf-type-card.selected svg{color:var(--teal);}
 .pqrsf-field-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
 .pqrsf-field{display:flex; flex-direction:column; gap:6px;}
@@ -24,7 +24,7 @@
   color:var(--ink); background:#fff; transition:border-color .2s, box-shadow .2s;
 }
 .pqrsf-field input:focus, .pqrsf-field select:focus, .pqrsf-field textarea:focus{
-  outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(15,140,130,.15);
+  outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(21,71,114,.15);
 }
 .pqrsf-field textarea{resize:vertical; min-height:120px;}
 .pqrsf-check{display:flex; align-items:flex-start; gap:10px; font-size:.82rem; color:var(--steel); line-height:1.5; margin-bottom:22px;}
@@ -45,7 +45,7 @@
 .pqrsf-info-card.dark h4{color:#fff;}
 .pqrsf-info-card .wa-btn{width:100%; justify-content:center; margin-top:4px;}
 .pqrsf-info-card .mail-line{display:flex; align-items:center; gap:8px; font-size:.84rem; color:#cbd5e1; margin-top:12px;}
-.pqrsf-info-card.confidential{display:flex; gap:12px; align-items:flex-start; background:rgba(15,140,130,.08); border-color:rgba(15,140,130,.3);}
+.pqrsf-info-card.confidential{display:flex; gap:12px; align-items:flex-start; background:rgba(21,71,114,.08); border-color:rgba(21,71,114,.3);}
 .pqrsf-info-card.confidential svg{width:22px; height:22px; color:var(--teal); flex-shrink:0;}
 .pqrsf-info-card.confidential p{font-size:.8rem; color:var(--steel); line-height:1.5;}
 .pqrsf-success{
@@ -54,7 +54,7 @@
 }
 .pqrsf-success.show{display:block; animation:popIn .3s ease-out;}
 .pqrsf-success .check-circle{
-  width:64px; height:64px; border-radius:50%; background:rgba(15,140,130,.12); color:var(--teal); display:flex;
+  width:64px; height:64px; border-radius:50%; background:rgba(21,71,114,.12); color:var(--teal); display:flex;
   align-items:center; justify-content:center; margin:0 auto 18px;
 }
 .pqrsf-success .check-circle svg{width:30px; height:30px;}

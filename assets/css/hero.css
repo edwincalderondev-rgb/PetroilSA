@@ -23,11 +23,16 @@
   position: absolute;
   inset: 0;
   z-index: 2;
+  /* Antes con rgba() sueltos (navy-deep/navy/teal viejos, con espacios
+     tras cada coma — por eso se me escapó en la primera pasada de la
+     migración de paleta: el grep no toleraba esa variante de formato).
+     Ahora en paleta oficial, misma fórmula que .page-hero (article.css)
+     y .qs-hero-media (quienes-somos.css): azul oscuro → petróleo → cielo. */
   background: linear-gradient(
     135deg,
-    rgba(7, 27, 44, 0.88) 0%,
-    rgba(10, 42, 67, 0.78) 55%,
-    rgba(15, 140, 130, 0.45) 100%
+    rgba(8, 12, 65, 0.88) 0%,
+    rgba(21, 71, 114, 0.78) 55%,
+    rgba(53, 154, 204, 0.45) 100%
   );
 }
 .hero-particles {
@@ -39,7 +44,7 @@
 .particle {
   position: absolute; bottom: -20px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(76,194,180,.8), rgba(76,194,180,0) 70%);
+  background: radial-gradient(circle, rgba(53,154,204,.8), rgba(53,154,204,0) 70%);
   animation: rise linear infinite;
 }
 @keyframes rise {

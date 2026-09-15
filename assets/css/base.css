@@ -5,32 +5,60 @@
    Se carga primero en TODAS las páginas.
    ============================================ */
 :root{
-  --navy:#0A2A43;
-  --navy-deep:#071B2C;
-  --teal:#0F8C82;
-  --teal-light:#4CC2B4;
-  --amber:#E8871E;
-  --mist:#F4F8F8;
-  --steel:#5C6B73;
-  --ink:#0D1B24;
+  /* ============================================
+     PALETA OFICIAL DE MARCA — única fuente de verdad para todo el sitio,
+     tomada directamente del manual (logotipo en positivo/negativo +
+     secundarios). Cualquier color "de marca" nuevo debe salir de aquí;
+     no vuelvas a declarar un hex de marca suelto en otro archivo (ya
+     pasó 4 veces: --route-* aquí mismo, --pb-* en productos.css, --ib-*
+     en quienes-somos.css, y valores sueltos repetidos en media hoja de
+     estilos más — todos terminaban redeclarando estos mismos 8 colores). */
+  --brand-navy:#080C41;    /* azul oscuro (positivo) */
+  --brand-blue:#3499CC;    /* azul claro (positivo) */
+  --brand-petrol:#154772;  /* azul petróleo (secundario) */
+  --brand-green:#1D5949;   /* verde institucional (secundario) */
+  --brand-lime:#C7F547;    /* verde lima energético (secundario) */
+  --brand-sky:#359ACC;     /* azul cielo (secundario) — casi idéntico a --brand-blue; así están definidos en el manual */
+  --brand-white:#FBFEFF;   /* blanco (negativo) */
+  --brand-gray:#BEBEBE;    /* gris (negativo) */
+
+  /* Único color del sitio que NO sale del manual de marca: se reserva
+     exclusivamente para avisos/precauciones/ejemplos (fichas técnicas,
+     banners "página de ejemplo", disclaimers del chat). Ninguno de los 8
+     colores oficiales lee como "advertencia", así que aquí sí se
+     mantiene un tono ámbar deliberadamente fuera de paleta — es una
+     excepción funcional (seguridad/UX), no una decisión de marca. */
+  --warn:#E8871E;
+
+  /* Alias operativos: nombres que ya usan cientos de reglas en todo el
+     sitio. NO los renombres (implicaría tocar cada CSS del proyecto) —
+     se mantiene el nombre histórico pero ahora resuelve a la paleta
+     oficial de arriba en vez de colores inventados (antes --navy era
+     #0A2A43, --teal era un turquesa #0F8C82 que no existe en el manual,
+     --amber era un naranja tampoco presente en el manual). */
+  --navy:var(--brand-navy);
+  --navy-deep:var(--brand-navy);
+  --teal:var(--brand-petrol);
+  --teal-light:var(--brand-sky);
+  --amber:var(--brand-lime);
+  --mist:var(--brand-white);
+  --steel:#5C6B73;   /* gris de texto secundario — neutro de UI, no es color de marca */
+  --ink:#0D1B24;     /* texto por defecto del body — neutro de UI, no es color de marca */
   --white:#FFFFFF;
-  --line:#DCE4E6;
+  --line:#DCE4E6;    /* gris de bordes — neutro de UI, no es color de marca */
   --radius:14px;
   --flow-gradient:linear-gradient(90deg,var(--navy) 0%, var(--teal) 55%, var(--amber) 100%);
-  --shadow-soft:0 10px 30px -12px rgba(10,42,67,.25);
+  --shadow-soft:0 10px 30px -12px rgba(8,12,65,.25);
 
-  /* Paleta complementaria del logo — usada exclusivamente en el navbar y la
-     barra de progreso líquida, sin tocar los colores globales del resto del
-     sitio (hero, CTAs, badges, etc.). Ya no se usa naranja en estos componentes. */
-  --route-navy:#080C41;
-  --route-blue:#154772;
-  --route-green:#1D5949;
-  --route-lime:#C7F547;
-  --route-sky:#359ACC;
-  /* Blanco y gris "en negativo" del logo, pensados para usarse sobre
-     fondos oscuros (como la nueva franja inferior del navbar). */
-  --route-white-neg:#FBFEFF;
-  --route-gray-neg:#BEBEBE;
+  /* Compatibilidad: el navbar ya usaba estos nombres apuntando exactamente
+     a estos mismos valores — se dejan como alias, nada cambia ahí. */
+  --route-navy:var(--brand-navy);
+  --route-blue:var(--brand-petrol);
+  --route-green:var(--brand-green);
+  --route-lime:var(--brand-lime);
+  --route-sky:var(--brand-sky);
+  --route-white-neg:var(--brand-white);
+  --route-gray-neg:var(--brand-gray);
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}

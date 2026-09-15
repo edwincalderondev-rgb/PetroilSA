@@ -77,8 +77,15 @@ header.navbar{
   position:sticky; top:0; z-index:1000;
 }
 
-/* Franja superior: logo protagonista + utilidades, efecto vidrio */
+/* Franja superior: logo protagonista + utilidades, efecto vidrio.
+   position+z-index (aunque ya está en flujo normal, no cambia el layout)
+   es necesario porque backdrop-filter crea su propio contexto de apilamiento:
+   sin esto, el desplegable de idioma (.lang-dropdown) queda atrapado dentro
+   de la capa de .navbar-top y .navbar-route —que también tiene
+   backdrop-filter y va después en el DOM— pinta por encima suyo entero,
+   sin importar el z-index interno del dropdown. */
 .navbar-top{
+  position:relative; z-index:2;
   background:rgba(255,255,255,.72);
   backdrop-filter:blur(18px) saturate(160%);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
@@ -302,6 +309,7 @@ header.navbar.navbar-scrolled .navbar-top{
 .lang-select.open .lang-dropdown{display:block;}
 .lang-dropdown a{display:block; padding:9px 14px; font-size:.85rem; transition:background .15s ease;}
 .lang-dropdown a:hover{background:var(--mist); color:var(--route-blue);}
+.lang-dropdown a.active{color:var(--route-blue); font-weight:600;}
 .btn-contacto{
   background:var(--route-navy); color:#fff !important; padding:11px 22px; border-radius:30px; font-weight:600; font-size:.88rem;
   box-shadow:0 10px 22px -10px rgba(8,12,65,.55);
@@ -448,6 +456,7 @@ header.navbar.navbar-scrolled .navbar-top{
 }
 .drawer-lang.open .lang-dropdown{max-height:160px; padding:4px 0;}
 .drawer-lang .lang-dropdown a{color:#dbe6ec;}
+.drawer-lang .lang-dropdown a.active{color:var(--route-sky);}
 .drawer-lang .lang-dropdown a:hover{background:rgba(255,255,255,.08);}
 
 body.nav-drawer-open{overflow:hidden;}

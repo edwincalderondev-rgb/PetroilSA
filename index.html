@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://www.petroilsa.com/index.html">
 <link rel="icon" type="image/png" sizes="270x270" href="assets/img/cropped-favicon-petroil-270x270.png">
 <link rel="apple-touch-icon" href="assets/img/cropped-favicon-petroil-270x270.png">
-<meta name="theme-color" content="#0A2A43">
+<meta name="theme-color" content="#080C41">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="assets/css/chatbot.css">
   <link rel="stylesheet" href="assets/css/cursor.css">
 </head>
-<body>
+<body data-i18n-page="assets/i18n/index.json">
 
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <div class="scroll-track" id="scrollTrack">
@@ -34,22 +34,22 @@
         <img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
       </a>
       <div class="nav-utility">
-        <a href="productos.html" class="portal-link">Productos</a>
-        <a href="nosotros/quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
-        <a href="portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <a href="productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
+        <a href="nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+        <a href="portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a>
         <div class="lang-select" id="langSelect">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
-            ES
+            <span class="lang-current" data-lang-current>ES</span>
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="lang-dropdown">
-            <a href="#">English</a>
-            <a href="#">Español</a>
-            <a href="#">Português</a>
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="es">Español</a>
+            <a href="#" data-lang="pt">Português</a>
           </div>
         </div>
-        <a href="#contacto" class="btn-contacto">Contacto</a>
+        <a href="#contacto" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
           <span></span><span></span><span></span>
         </button>
@@ -61,23 +61,23 @@
     <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
       <a href="#servicios" class="route-link" data-section="#servicios">
-        <span class="route-label">Servicios</span>
+        <span class="route-label" data-i18n="nav.servicios">Servicios</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#productos" class="route-link" data-section="#productos">
-        <span class="route-label">Productos</span>
+        <span class="route-label" data-i18n="nav.productos">Productos</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#innovacion" class="route-link" data-section="#innovacion">
-        <span class="route-label">Innovación</span>
+        <span class="route-label" data-i18n="nav.innovacion">Innovación</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#noticias" class="route-link" data-section="#noticias">
-        <span class="route-label">Noticias</span>
+        <span class="route-label" data-i18n="nav.noticias">Noticias</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#nosotros" class="route-link" data-section="#nosotros">
-        <span class="route-label">Nosotros</span>
+        <span class="route-label" data-i18n="nav.nosotros">Nosotros</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
     </nav>
@@ -100,40 +100,40 @@
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
     <a href="#servicios" class="drawer-link" data-section="#servicios">
       <span class="drawer-node" aria-hidden="true"></span>
-      Servicios
+      <span data-i18n="nav.servicios">Servicios</span>
     </a>
     <a href="#productos" class="drawer-link" data-section="#productos">
       <span class="drawer-node" aria-hidden="true"></span>
-      Productos
+      <span data-i18n="nav.productos">Productos</span>
     </a>
     <a href="#innovacion" class="drawer-link" data-section="#innovacion">
       <span class="drawer-node" aria-hidden="true"></span>
-      Innovación
+      <span data-i18n="nav.innovacion">Innovación</span>
     </a>
     <a href="#noticias" class="drawer-link" data-section="#noticias">
       <span class="drawer-node" aria-hidden="true"></span>
-      Noticias
+      <span data-i18n="nav.noticias">Noticias</span>
     </a>
     <a href="#nosotros" class="drawer-link" data-section="#nosotros">
       <span class="drawer-node" aria-hidden="true"></span>
-      Nosotros
+      <span data-i18n="nav.nosotros">Nosotros</span>
     </a>
   </nav>
 
   <div class="drawer-footer">
-    <a href="portal-clientes/portal-clientes.html" class="drawer-portal">Portal de clientes</a>
-    <a href="nosotros/quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
-    <a href="#contacto" class="btn-contacto">Contacto</a>
+    <a href="portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a>
+    <a href="nosotros/quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+    <a href="#contacto" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
       <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
-        ES
+        <span class="lang-current" data-lang-current>ES</span>
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="lang-dropdown">
-        <a href="#">English</a>
-        <a href="#">Español</a>
-        <a href="#">Português</a>
+        <a href="#" data-lang="en">English</a>
+        <a href="#" data-lang="es">Español</a>
+        <a href="#" data-lang="pt">Português</a>
       </div>
     </div>
   </div>
@@ -150,15 +150,15 @@
 
     <div class="hero-inner">
       <div class="hero-content">
-        <span class="hero-badge"><span class="pulse-dot"></span>Primera refinería en América Latina en producir combustibles de transición</span>
-        <h1>Mejorando el aire que <b>respiramos.</b></h1>
-        <p class="lead">Lideramos una nueva generación de soluciones energéticas. Desarrollamos combustibles más limpios y eficientes, impulsando la innovación, el crecimiento sostenible y el desarrollo energético de Colombia y la región.</p>
+        <span class="hero-badge"><span class="pulse-dot"></span><span data-i18n="hero.badge">Primera refinería en América Latina en producir combustibles de transición</span></span>
+        <h1 data-i18n-html="hero.title">Mejorando el aire que <b>respiramos.</b></h1>
+        <p class="lead" data-i18n="hero.lead">Lideramos una nueva generación de soluciones energéticas. Desarrollamos combustibles más limpios y eficientes, impulsando la innovación, el crecimiento sostenible y el desarrollo energético de Colombia y la región.</p>
         <div class="hero-ctas">
           <a href="#productos" class="btn-primary">
-            Productos
+            <span data-i18n="nav.productos">Productos</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#servicios" class="btn-outline">Innovación</a>
+          <a href="#servicios" class="btn-outline" data-i18n="nav.innovacion">Innovación</a>
         </div>
       </div>
     </div>
@@ -167,32 +167,32 @@
   <section class="pillars reveal">
     <div class="container">
       <div class="pillars-head">
-        <span class="eyebrow">Nuestra filosofía</span>
-        <h2>Líderes en producción de combustibles más limpios</h2>
+        <span class="eyebrow" data-i18n="pillars.eyebrow">Nuestra filosofía</span>
+        <h2 data-i18n="pillars.title">Líderes en producción de combustibles más limpios</h2>
       </div>
       <div class="pillars-grid">
         <div class="pillar-card">
           <div class="pillar-media"><div class="pillar-blob"></div><img referrerpolicy="no-referrer" src="assets/img/ave1.png" alt="Protege"></div>
-          <h3>Protege</h3>
-          <p>Petroil es la primera refinería de América Latina dedicada a diseñar y fabricar combustibles amigables con el medio ambiente.</p>
+          <h3 data-i18n="pillars.card1.title">Protege</h3>
+          <p data-i18n="pillars.card1.desc">Petroil es la primera refinería de América Latina dedicada a diseñar y fabricar combustibles amigables con el medio ambiente.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave3.png" alt="Preserva"></div>
-          <h3>Preserva</h3>
-          <p>Aportamos soluciones innovadoras para el desarrollo sostenible.</p>
+          <h3 data-i18n="pillars.card2.title">Preserva</h3>
+          <p data-i18n="pillars.card2.desc">Aportamos soluciones innovadoras para el desarrollo sostenible.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave4.png" alt="Cuida"></div>
-          <h3>Cuida</h3>
-          <p>Trabajamos para hacer combustibles mejores y más limpios, cuidando cada etapa del proceso de refinación.</p>
+          <h3 data-i18n="pillars.card3.title">Cuida</h3>
+          <p data-i18n="pillars.card3.desc">Trabajamos para hacer combustibles mejores y más limpios, cuidando cada etapa del proceso de refinación.</p>
         </div>
       </div>
-      <p class="pillar-quote">"Petroil trabaja para hacer combustibles mejores y más limpios, mejorando el aire que respiramos."</p>
+      <p class="pillar-quote" data-i18n="pillars.quote">"Petroil trabaja para hacer combustibles mejores y más limpios, mejorando el aire que respiramos."</p>
     </div>
   </section>
 
   <section class="alliances reveal">
-    <span class="eyebrow">Alianzas estratégicas</span>
+    <span class="eyebrow" data-i18n="alliances.eyebrow">Alianzas estratégicas</span>
     <div class="marquee">
       <div class="marquee-track">
         <img src="assets/img/alianza-ecos.png" alt="Ecos">
@@ -224,41 +224,41 @@
   <section class="uses reveal" id="servicios">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Aplicaciones</span>
-        <h2>Combustibles diseñados para cada operación</h2>
-        <p>Trabajamos en el diseño y producción de combustibles cuyo uso contribuye a reducir significativamente las emisiones de gases de efecto invernadero.</p>
+        <span class="eyebrow" data-i18n="uses.eyebrow">Aplicaciones</span>
+        <h2 data-i18n="uses.title">Combustibles diseñados para cada operación</h2>
+        <p data-i18n="uses.desc">Trabajamos en el diseño y producción de combustibles cuyo uso contribuye a reducir significativamente las emisiones de gases de efecto invernadero.</p>
       </div>
       <div class="uses-grid">
         <a class="use-card" href="https://petroilsa.com/servicios/">
           <div class="use-media"><img src="assets/img/3.png" alt="Uso marino" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v9m0 0l-4 3m4-3l4 3M5 14c0 4 3 7 7 8 4-1 7-4 7-8"/></svg></div>
           <div class="use-body">
-            <h4>Uso marino</h4>
-            <p>MGO, VLSFO y HSFO para todo tipo de embarcaciones, bajo la norma ISO 8217/2017 para IMO 2020.</p>
+            <h4 data-i18n="uses.card1.title">Uso marino</h4>
+            <p data-i18n="uses.card1.desc">MGO, VLSFO y HSFO para todo tipo de embarcaciones, bajo la norma ISO 8217/2017 para IMO 2020.</p>
           </div>
         </a>
         <a class="use-card" href="https://petroilsa.com/servicios/">
           <div class="use-media"><img src="assets/img/4.png" alt="Uso industrial" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9l6 3V9l6 3V6l6 3v12H3z"/></svg></div>
           <div class="use-body">
-            <h4>Uso industrial</h4>
-            <p>Combustibles a la medida para transporte de carga, maquinaria, calderas y generación de energía.</p>
+            <h4 data-i18n="uses.card2.title">Uso industrial</h4>
+            <p data-i18n="uses.card2.desc">Combustibles a la medida para transporte de carga, maquinaria, calderas y generación de energía.</p>
           </div>
         </a>
         <a class="use-card" href="https://petroilsa.com/servicios/">
           <div class="use-media"><img src="assets/img/Petroil_fotosplanta_60.jpg" alt="Equipos de minería" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20l6-11 4 6 3-4 5 9H3z"/></svg></div>
           <div class="use-body">
-            <h4>Equipos de minería</h4>
-            <p>Formulaciones de alto rendimiento para maquinaria pesada y operaciones extractivas.</p>
+            <h4 data-i18n="uses.card3.title">Equipos de minería</h4>
+            <p data-i18n="uses.card3.desc">Formulaciones de alto rendimiento para maquinaria pesada y operaciones extractivas.</p>
           </div>
         </a>
         <a class="use-card" href="https://petroilsa.com/servicios/">
           <div class="use-media"><img src="assets/img/Petroil_fotosplanta_46.jpg" alt="Motores estacionarios" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.56V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.56 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.56-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.56-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.56V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.56 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.56 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.56 1z"/></svg></div>
           <div class="use-body">
-            <h4>Motores estacionarios</h4>
-            <p>Soluciones para plantas de generación y motores de operación continua.</p>
+            <h4 data-i18n="uses.card4.title">Motores estacionarios</h4>
+            <p data-i18n="uses.card4.desc">Soluciones para plantas de generación y motores de operación continua.</p>
           </div>
         </a>
       </div>
@@ -268,9 +268,9 @@
   <section class="products-strip reveal" id="productos">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Portafolio</span>
-        <h2>Nuestros productos</h2>
-        <p>Cada línea Petroil se identifica con un código propio de nuestro sistema de clasificación de combustibles. Estos son algunos destacados del portafolio.</p>
+        <span class="eyebrow" data-i18n="products.eyebrow">Portafolio</span>
+        <h2 data-i18n="products.title">Nuestros productos</h2>
+        <p data-i18n="products.desc">Cada línea Petroil se identifica con un código propio de nuestro sistema de clasificación de combustibles. Estos son algunos destacados del portafolio.</p>
       </div>
 
       <div class="products-grid">
@@ -285,7 +285,7 @@
           <div class="product-info">
             <div class="product-code">P-40</div>
             <div class="product-name">Petroil 40 A MAX</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -299,7 +299,7 @@
           <div class="product-info">
             <div class="product-code">P-50/10</div>
             <div class="product-name">50 10 · ULSD Premium</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -313,7 +313,7 @@
           <div class="product-info">
             <div class="product-code">P-60</div>
             <div class="product-name">Nafta Virgen</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -327,7 +327,7 @@
           <div class="product-info">
             <div class="product-code">P-90</div>
             <div class="product-name">Gasolina premium</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -341,7 +341,7 @@
           <div class="product-info">
             <div class="product-code">P-100</div>
             <div class="product-name">Mejorador de IFOS</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -359,7 +359,7 @@
           <div class="product-info">
             <div class="product-code">P-250</div>
             <div class="product-name">Fuel Oil #4</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -373,7 +373,7 @@
           <div class="product-info">
             <div class="product-code">P-300</div>
             <div class="product-name">VLS Fuel Oil</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -387,7 +387,7 @@
           <div class="product-info">
             <div class="product-code">P-500</div>
             <div class="product-name">Marine MGO F.O.4</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -401,7 +401,7 @@
           <div class="product-info">
             <div class="product-code">P-800 G</div>
             <div class="product-name">Green</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
@@ -415,14 +415,14 @@
           <div class="product-info">
             <div class="product-code">P-800 HCl</div>
             <div class="product-name">Petroil 800 HCl</div>
-            <span class="product-arrow">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
           </div>
         </a>
 
       </div>
 
       <div class="news-foot">
-        <a class="btn-outline dark" href="productos.html">Ver el portafolio completo (15 productos) →</a>
+        <a class="btn-outline dark" href="productos.html" data-i18n="products.viewAll">Ver el portafolio completo (15 productos) →</a>
       </div>
     </div>
   </section>
@@ -430,8 +430,8 @@
   <section class="commitments reveal" id="innovacion">
     <div class="container">
       <div class="section-head" style="text-align:left; margin-bottom:36px;">
-        <span class="eyebrow">Gestión y sostenibilidad</span>
-        <h2>Compromisos que sostienen nuestra operación</h2>
+        <span class="eyebrow" data-i18n="commitments.eyebrow">Gestión y sostenibilidad</span>
+        <h2 data-i18n="commitments.title">Compromisos que sostienen nuestra operación</h2>
       </div>
 
       <div class="commit-grid">
@@ -441,9 +441,9 @@
             <span class="tag">SGI</span>
           </div>
           <div class="commit-body">
-            <h3>Sistema de Gestión Integrada</h3>
-            <p>Nuestro Sistema de Gestión Integrada articula la calidad, la seguridad y la gestión ambiental bajo un mismo marco de trabajo, alineado con las normas ISO 9001, ISO 45001 e ISO 14001 que hoy nos certifican.</p>
-            <a href="sostenibilidad/sgi.html">Ver más información →</a>
+            <h3 data-i18n="commitments.card1.title">Sistema de Gestión Integrada</h3>
+            <p data-i18n="commitments.card1.desc">Nuestro Sistema de Gestión Integrada articula la calidad, la seguridad y la gestión ambiental bajo un mismo marco de trabajo, alineado con las normas ISO 9001, ISO 45001 e ISO 14001 que hoy nos certifican.</p>
+            <a href="sostenibilidad/sgi.html" data-i18n="commitments.more">Ver más información →</a>
           </div>
         </div>
 
@@ -453,9 +453,9 @@
             <span class="tag">Comunidad</span>
           </div>
           <div class="commit-body">
-            <h3>Compromiso social corporativo</h3>
-            <p>Impulsamos programas de formación técnica, apoyamos iniciativas locales de emprendimiento y destinamos recursos a proyectos de infraestructura comunitaria en Santa Marta y su área de influencia.</p>
-            <a href="sostenibilidad/compromiso-social.html">Ver más información →</a>
+            <h3 data-i18n="commitments.card2.title">Compromiso social corporativo</h3>
+            <p data-i18n="commitments.card2.desc">Impulsamos programas de formación técnica, apoyamos iniciativas locales de emprendimiento y destinamos recursos a proyectos de infraestructura comunitaria en Santa Marta y su área de influencia.</p>
+            <a href="sostenibilidad/compromiso-social.html" data-i18n="commitments.more">Ver más información →</a>
           </div>
         </div>
 
@@ -465,9 +465,9 @@
             <span class="tag">Ambiental</span>
           </div>
           <div class="commit-body">
-            <h3>Responsabilidad ambiental</h3>
-            <p>Monitoreamos de forma permanente las emisiones de nuestros procesos de refinación, con la meta de reducir año a año la huella de carbono de nuestros combustibles.</p>
-            <a href="sostenibilidad/responsabilidad-ambiental.html">Ver más información →</a>
+            <h3 data-i18n="commitments.card3.title">Responsabilidad ambiental</h3>
+            <p data-i18n="commitments.card3.desc">Monitoreamos de forma permanente las emisiones de nuestros procesos de refinación, con la meta de reducir año a año la huella de carbono de nuestros combustibles.</p>
+            <a href="sostenibilidad/responsabilidad-ambiental.html" data-i18n="commitments.more">Ver más información →</a>
           </div>
         </div>
       </div>
@@ -477,38 +477,38 @@
   <section class="news reveal" id="noticias">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Actualidad</span>
-        <h2>Publicaciones y noticias</h2>
+        <span class="eyebrow" data-i18n="news.eyebrow">Actualidad</span>
+        <h2 data-i18n="news.title">Publicaciones y noticias</h2>
       </div>
       <div class="news-grid">
         <div class="news-card">
           <div class="news-thumb">
             <img src="assets/img/noticias/euro-vi-petroil-50-10-refineria.jpg" alt="Euro VI y la calidad del combustible" loading="lazy">
-            <span>Calidad del combustible</span>
+            <span data-i18n="news.tag1">Calidad del combustible</span>
           </div>
           <div class="news-body">
-            <h3>Euro VI: por qué la calidad del combustible importa tanto como la tecnología del motor</h3>
-            <a class="readmore" href="noticias/euro-vi-calidad-combustible-tecnologia-motor.html">Ver noticia »</a>
+            <h3 data-i18n="news.card1.title">Euro VI: por qué la calidad del combustible importa tanto como la tecnología del motor</h3>
+            <a class="readmore" href="noticias/euro-vi-calidad-combustible-tecnologia-motor.html" data-i18n="news.readmore">Ver noticia »</a>
           </div>
         </div>
         <div class="news-card">
           <div class="news-thumb">
             <img src="assets/img/noticias/embajada-eeuu-reunion-santa-marta.jpg" alt="Visita de la Embajada de Estados Unidos a Petroil" loading="lazy">
-            <span>Institucional</span>
+            <span data-i18n="news.tag2">Institucional</span>
           </div>
           <div class="news-body">
-            <h3>Petroil recibe visita de la Embajada de Estados Unidos en Santa Marta</h3>
-            <a class="readmore" href="noticias/petroil-visita-embajada-estados-unidos-santa-marta.html">Ver noticia »</a>
+            <h3 data-i18n="news.card2.title">Petroil recibe visita de la Embajada de Estados Unidos en Santa Marta</h3>
+            <a class="readmore" href="noticias/petroil-visita-embajada-estados-unidos-santa-marta.html" data-i18n="news.readmore">Ver noticia »</a>
           </div>
         </div>
         <div class="news-card">
           <div class="news-thumb">
             <img src="assets/img/noticias/euro6-refineria-petroil.jpg" alt="Euro 6 y la calidad del aire" loading="lazy">
-            <span>Calidad del aire</span>
+            <span data-i18n="news.tag3">Calidad del aire</span>
           </div>
           <div class="news-body">
-            <h3>Euro 6: ¿qué es y por qué importa para la calidad del aire?</h3>
-            <a class="readmore" href="noticias/euro-6-que-es-calidad-del-aire.html">Ver noticia »</a>
+            <h3 data-i18n="news.card3.title">Euro 6: ¿qué es y por qué importa para la calidad del aire?</h3>
+            <a class="readmore" href="noticias/euro-6-que-es-calidad-del-aire.html" data-i18n="news.readmore">Ver noticia »</a>
           </div>
         </div>
         <!--
@@ -545,7 +545,7 @@
         -->
       </div>
       <div class="news-foot">
-        <a class="btn-outline dark" href="https://petroilsa.com/noticias/">Ver todas las noticias</a>
+        <a class="btn-outline dark" href="https://petroilsa.com/noticias/" data-i18n="news.viewAll">Ver todas las noticias</a>
       </div>
     </div>
   </section>
@@ -558,13 +558,13 @@
         <img src="assets/img/equipo-3.jpg" alt="Equipo Petroil">
       </div>
       <div class="about-text">
-        <span class="eyebrow">Sobre nosotros · Visión 2031</span>
-        <h2>Una compañía energética integrada, confiable y con rumbo propio</h2>
-        <p>Nuestro compromiso va más allá de prestar servicios de calidad a nuestros clientes: trabajamos con una visión estratégica clara hacia 2031, liderada por un equipo con décadas de trayectoria en energía e hidrocarburos.</p>
-        <a href="nosotros/quienes-somos.html" class="btn-primary" style="margin-top:24px; background:var(--navy); color:#fff;">Conócenos</a>
+        <span class="eyebrow" data-i18n="about.eyebrow">Sobre nosotros · Visión 2031</span>
+        <h2 data-i18n="about.title">Una compañía energética integrada, confiable y con rumbo propio</h2>
+        <p data-i18n="about.desc">Nuestro compromiso va más allá de prestar servicios de calidad a nuestros clientes: trabajamos con una visión estratégica clara hacia 2031, liderada por un equipo con décadas de trayectoria en energía e hidrocarburos.</p>
+        <a href="nosotros/quienes-somos.html" class="btn-primary" style="margin-top:24px; background:var(--navy); color:#fff;" data-i18n="about.cta">Conócenos</a>
         <div class="iso-row">
           <img src="assets/img/logo-iso.png" alt="Certificación ISO">
-          <p style="max-width:340px;">Sistema de gestión integrado certificado en Calidad ISO 9001, Salud y Seguridad ISO 45001 y Gestión Ambiental ISO 14001.</p>
+          <p style="max-width:340px;" data-i18n="about.isoText">Sistema de gestión integrado certificado en Calidad ISO 9001, Salud y Seguridad ISO 45001 y Gestión Ambiental ISO 14001.</p>
         </div>
       </div>
     </div>
@@ -573,26 +573,26 @@
   <section class="faq reveal" id="preguntas-frecuentes">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Resolvemos tus dudas</span>
-        <h2>Preguntas frecuentes</h2>
-        <p>Lo que más nos preguntan clientes, proveedores y comunidades sobre nuestra operación como refinería de hidrocarburos.</p>
+        <span class="eyebrow" data-i18n="faq.eyebrow">Resolvemos tus dudas</span>
+        <h2 data-i18n="faq.title">Preguntas frecuentes</h2>
+        <p data-i18n="faq.desc">Lo que más nos preguntan clientes, proveedores y comunidades sobre nuestra operación como refinería de hidrocarburos.</p>
       </div>
       <div class="faq-list">
         <details class="faq-item" open>
-          <summary>¿Qué hace exactamente una refinería de hidrocarburos como Petroil?</summary>
-          <div class="faq-answer"><p>Transformamos crudo y otras materias primas en combustibles terminados —como fuel oil, nafta, gasolina y VLSFO— mediante procesos de destilación, mezcla y tratamiento, ajustando cada producto a las especificaciones técnicas que exige cada industria: marítima, industrial, minera o de generación eléctrica.</p></div>
+          <summary data-i18n="faq.q1.q">¿Qué hace exactamente una refinería de hidrocarburos como Petroil?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q1.a"><p>Transformamos crudo y otras materias primas en combustibles terminados —como fuel oil, nafta, gasolina y VLSFO— mediante procesos de destilación, mezcla y tratamiento, ajustando cada producto a las especificaciones técnicas que exige cada industria: marítima, industrial, minera o de generación eléctrica.</p></div>
         </details>
         <details class="faq-item">
-          <summary>¿Qué diferencia a los combustibles Petroil de los convencionales?</summary>
-          <div class="faq-answer"><p>Diseñamos cada línea de producto para reducir emisiones de gases de efecto invernadero frente a alternativas convencionales, sin sacrificar el rendimiento. Cada combustible se identifica con un código propio dentro de nuestro sistema de clasificación, formulado para el uso específico al que va destinado.</p></div>
+          <summary data-i18n="faq.q2.q">¿Qué diferencia a los combustibles Petroil de los convencionales?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q2.a"><p>Diseñamos cada línea de producto para reducir emisiones de gases de efecto invernadero frente a alternativas convencionales, sin sacrificar el rendimiento. Cada combustible se identifica con un código propio dentro de nuestro sistema de clasificación, formulado para el uso específico al que va destinado.</p></div>
         </details>
         <details class="faq-item">
-          <summary>¿Qué certificaciones respaldan la operación de la refinería?</summary>
-          <div class="faq-answer"><p>Contamos con la trinorma ISO 9001 (Calidad), ISO 45001 (Seguridad y Salud en el Trabajo) e ISO 14001 (Gestión Ambiental), integradas bajo un único Sistema de Gestión Integrada que audita procesos, indicadores y mejora continua de forma periódica.</p></div>
+          <summary data-i18n="faq.q3.q">¿Qué certificaciones respaldan la operación de la refinería?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q3.a"><p>Contamos con la trinorma ISO 9001 (Calidad), ISO 45001 (Seguridad y Salud en el Trabajo) e ISO 14001 (Gestión Ambiental), integradas bajo un único Sistema de Gestión Integrada que audita procesos, indicadores y mejora continua de forma periódica.</p></div>
         </details>
         <details class="faq-item">
-          <summary>¿Qué es la transición energética?</summary>
-          <div class="faq-answer"><p>En 2015, durante la XXI Conferencia sobre Cambio Climático (COP 21), 195 países acordaron el Acuerdo de París, un acuerdo global para abordar el cambio climático, así como sus efectos en el planeta y la sociedad.
+          <summary data-i18n="faq.q4.q">¿Qué es la transición energética?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q4.a"><p>En 2015, durante la XXI Conferencia sobre Cambio Climático (COP 21), 195 países acordaron el Acuerdo de París, un acuerdo global para abordar el cambio climático, así como sus efectos en el planeta y la sociedad.
 El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y limitar el calentamiento global a menos de dos grados centígrados. La transición energética es un proceso de cambio de una forma de producción de energía a otra, e incluye fuentes de energía renovables y no renovables. Entre los cambios se encuentra el reemplazo de combustibles fósiles, como el carbón y el petróleo, por fuentes renovables, como la energía solar y la eólica. La transición de los combustibles fósiles a las fuentes renovables llevará tiempo, pero al final valdrá la pena porque es la clave para mitigar los impactos ambientales de fenómenos como el cambio climático y la contaminación del aire.
 </p></div>
         </details>
@@ -606,15 +606,15 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
         </details> -->
 
 <details class="faq-item">
-  <summary>¿Qué es el Euro 6 o Euro VI?</summary>
-  <div class="faq-answer">
+  <summary data-i18n="faq.q5.q">¿Qué es el Euro 6 o Euro VI?</summary>
+  <div class="faq-answer" data-i18n-html="faq.q5.a">
     <p>Es una norma ambiental de origen europeo que establece límites muy bajos para las emisiones contaminantes de los vehículos con motor diésel. En Colombia aplica desde el 1 de enero de 2023 para todos los vehículos diésel nuevos, incluidos automóviles, buses y camiones.</p>
   </div>
 </details>
 
 <details class="faq-item">
-  <summary>¿Qué productos se producen en Petroil?</summary>
-  <div class="faq-answer">
+  <summary data-i18n="faq.q6.q">¿Qué productos se producen en Petroil?</summary>
+  <div class="faq-answer" data-i18n-html="faq.q6.a">
     <p>Petroil produce combustibles y refinados para diferentes aplicaciones:</p>
     <ul>
       <li><strong>Petroil 40A Max Diesel:</strong> Diésel de uso general con contenidos de base orgánica renovable.</li>
@@ -723,7 +723,7 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
   <div class="container footer-main">
     <div class="footer-brand">
       <img src="assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
-      <p>Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
+      <p data-i18n="footer.tagline">Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
         <a href="https://www.linkedin.com/company/petroilsa/" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
@@ -732,33 +732,33 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
       </div>
     </div>
     <div class="footer-links-col">
-      <h4>Enlaces</h4>
+      <h4 data-i18n="footer.linksHeading">Enlaces</h4>
       <ul class="footer-links">
-        <li><a href="legal/politica-datos.html">Política de protección de datos</a></li>
+        <li><a href="legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a></li>
         <li><a href="legal/pqrsf.html">PQRSF</a></li>
-        <li><a href="herramientas/astm-d1500-color-tool.html">Herramienta</a></li>
-        <li><a href="portal-clientes/portal-clientes.html">Clientes</a></li>
-        <li><a href="nosotros/ala-de-sable.html">¿Quiénes somos?</a></li>
-        <li><a href="nosotros/ala-de-sable.html">Noticias</a></li>
+        <li><a href="herramientas/astm-d1500-color-tool.html" data-i18n="footer.link.herramienta">Herramienta</a></li>
+        <li><a href="portal-clientes/portal-clientes.html" data-i18n="footer.link.clientes">Clientes</a></li>
+        <li><a href="nosotros/ala-de-sable.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <li><a href="nosotros/ala-de-sable.html" data-i18n="nav.noticias">Noticias</a></li>
       </ul>
     </div>
     <div class="footer-contact">
-      <h4>Contacto</h4>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
+      <h4 data-i18n="footer.contactHeading">Contacto</h4>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.office"><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.refineria"><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.aliado"><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><span>contacto@petroilsa.com</span></p>
       <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
-        WhatsApp: +57 311 333 7046
+        <span data-i18n="footer.whatsapp">WhatsApp: +57 311 333 7046</span>
       </a>
     </div>
     <div class="footer-map">
-      <h4>Ubicación</h4>
+      <h4 data-i18n="footer.mapHeading">Ubicación</h4>
       <div class="map-tabs">
-        <button class="map-tab active" data-map="bogota">Oficina Bogotá</button>
-        <button class="map-tab" data-map="santamarta">Refinería Santa Marta</button>
-        <button class="map-tab" data-map="esquivensa">Aliado Barranquilla</button>
+        <button class="map-tab active" data-map="bogota" data-i18n="footer.mapTab.bogota">Oficina Bogotá</button>
+        <button class="map-tab" data-map="santamarta" data-i18n="footer.mapTab.santamarta">Refinería Santa Marta</button>
+        <button class="map-tab" data-map="esquivensa" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
         <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -766,15 +766,15 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
           title="Mapa de ubicación de Petroil"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://maps.google.com/?q=Petroil+SA+Bogota" target="_blank" rel="noopener">
-        Abrir en Google Maps
+        <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 Petroil S.A. Todos los derechos reservados.</span>
+    <span data-i18n="footer.copyright">© 2026 Petroil S.A. Todos los derechos reservados.</span>
     <div class="footer-bottom-links">
-      <a>Comprometidos con el medio ambiente</a>
+      <a data-i18n="footer.bottomTagline">Comprometidos con el medio ambiente</a>
       <a href="legal/pqrsf.html">PQRSF</a>
     </div>
   </div>
@@ -793,30 +793,31 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
     </div>
     <div>
       <strong>AIRA</strong>
-      <span>Asistente virtual de Petroil · En línea</span>
+      <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
     </div>
     <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
   </div>
-  <div class="chat-disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
+  <div class="chat-disclaimer" data-i18n="chat.disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
   <div class="chat-log" id="chatLog">
-    <div class="msg bot">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
+    <div class="msg bot" data-i18n="chat.greeting">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
   </div>
   <div class="chat-quick" id="chatQuick">
-    <button class="quick-btn" data-q="productos">¿Qué productos ofrecen?</button>
-    <button class="quick-btn" data-q="ubicacion">¿Dónde están ubicados?</button>
-    <button class="quick-btn" data-q="certificaciones">Certificaciones ISO</button>
-    <button class="quick-btn" data-q="asesor">Hablar con un asesor</button>
+    <button class="quick-btn" data-q="productos" data-i18n="chat.q1">¿Qué productos ofrecen?</button>
+    <button class="quick-btn" data-q="ubicacion" data-i18n="chat.q2">¿Dónde están ubicados?</button>
+    <button class="quick-btn" data-q="certificaciones" data-i18n="chat.q3">Certificaciones ISO</button>
+    <button class="quick-btn" data-q="asesor" data-i18n="chat.q4">Hablar con un asesor</button>
   </div>
   <div class="chat-wa">
     <a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg>
-      Continuar por WhatsApp
+      <span data-i18n="chat.wa">Continuar por WhatsApp</span>
     </a>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/hero-particles.js"></script>
 <script src="assets/js/home.js"></script>

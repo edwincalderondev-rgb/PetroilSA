@@ -1,22 +1,24 @@
 /* CHATBOT WIDGET — AIRA, asistente virtual de Petroil (sitewide) */
 .chat-launcher{
   position:fixed; bottom:28px; right:28px; width:60px; height:60px; border-radius:50%; background:var(--navy);
-  color:#fff; border:none; padding:0; box-shadow:0 8px 24px rgba(7,27,44,.4); z-index:1100; display:flex; align-items:center; justify-content:center;
+  color:#fff; border:none; padding:0; box-shadow:0 8px 24px rgba(8,12,65,.4); z-index:1100; display:flex; align-items:center; justify-content:center;
   transition:transform .2s ease, box-shadow .2s ease;
 }
-.chat-launcher:hover{transform:scale(1.08); box-shadow:0 10px 30px rgba(15,140,130,.5);}
+.chat-launcher:hover{transform:scale(1.08); box-shadow:0 10px 30px rgba(21,71,114,.5);}
 .launcher-avatar{
   width:100%; height:100%; object-fit:cover; border-radius:50%; pointer-events:none;
   border:2px solid var(--navy); box-sizing:border-box;
 }
 .demo-dot{
-  position:absolute; top:-4px; right:-4px; background:var(--amber); color:#fff; font-size:.58rem; font-weight:700;
+  position:absolute; top:-4px; right:-4px; background:var(--amber); color:var(--navy); font-size:.58rem; font-weight:700;
   padding:2px 6px; border-radius:10px; border:2px solid #fff; font-family:'Poppins',sans-serif; letter-spacing:.03em;
+  /* --amber ahora es verde lima (#C7F547, muy claro): el texto pasó de
+     blanco a var(--navy) porque blanco sobre lima casi no se lee. */
 }
 
 .chat-panel{
   position:fixed; bottom:100px; right:28px; width:360px; height:500px; background:#fff; border-radius:18px;
-  box-shadow:0 14px 40px rgba(7,27,44,.25); z-index:1100; display:none; flex-direction:column; overflow:hidden;
+  box-shadow:0 14px 40px rgba(8,12,65,.25); z-index:1100; display:none; flex-direction:column; overflow:hidden;
   border:1px solid var(--line); animation:popIn .25s ease-out;
 }
 @keyframes popIn{from{opacity:0; transform:translateY(14px) scale(.95);} to{opacity:1; transform:translateY(0) scale(1);}}
@@ -33,7 +35,7 @@
 .chat-head strong{display:block; font-size:.95rem; letter-spacing:.02em;}
 .chat-head span{font-size:.72rem; opacity:.75;}
 .chat-close{position:absolute; right:14px; top:14px; background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;}
-.chat-disclaimer{background:rgba(232,135,30,.15); color:#92400e; font-size:.72rem; padding:8px 14px; text-align:center; font-weight:500;}
+.chat-disclaimer{background:rgba(232,135,30,.15); color:#92400e; font-size:.72rem; padding:8px 14px; text-align:center; font-weight:500;} /* mismo tono que --warn (aviso, no color de marca) */
 .chat-log{flex-grow:1; padding:16px; overflow-y:auto; display:flex; flex-direction:column; gap:10px;}
 .msg{max-width:82%; padding:10px 14px; border-radius:14px; font-size:.86rem; line-height:1.4;}
 .msg.bot{background:var(--mist); color:var(--ink); align-self:flex-start; border-bottom-left-radius:2px;}

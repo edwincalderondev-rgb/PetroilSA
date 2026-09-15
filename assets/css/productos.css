@@ -2,10 +2,15 @@
    PRODUCTOS (productos.html) — catálogo completo del portafolio.
 
    PALETA: esta página usa EXCLUSIVAMENTE los colores corporativos
-   oficiales de Petroil (ver CLAUDE.md). Nada de ámbar/naranja ni del
-   teal heredado de la paleta operativa del resto del sitio. Los tokens
-   --pb-* se definen aquí (no se tocan --navy/--teal/--amber globales,
-   que siguen mandando en el resto de páginas).
+   oficiales de Petroil (ver CLAUDE.md). Nada de ámbar/naranja.
+
+   Los tokens --pb-* siguen viviendo aquí (los usan ~140 reglas de este
+   archivo) pero ya NO redeclaran los hex — son alias de --brand-* en
+   base.css, la única fuente de verdad de la paleta de marca para TODO
+   el sitio. --navy/--teal/--teal-light/--amber globales ahora valen
+   exactamente lo mismo que estos --pb-*, así que en la práctica esta
+   página ya no es una excepción de paleta frente al resto del sitio;
+   los --pb-* se conservan solo por legibilidad semántica del código.
 
    Los únicos valores que no salen literalmente del manual son tintes
    claros derivados del azul de marca (--pb-tint, --pb-tint-2) y el
@@ -14,14 +19,14 @@
    ===================================================================== */
 
 .prod-page{
-  --pb-navy:#080C41;      /* azul oscuro del logo */
-  --pb-blue:#3499CC;      /* azul claro del logo */
-  --pb-sky:#359ACC;       /* azul cielo */
-  --pb-petrol:#154772;    /* azul petróleo */
-  --pb-green:#1D5949;     /* verde institucional */
-  --pb-lime:#C7F547;      /* verde lima energético */
-  --pb-white:#FBFEFF;     /* blanco en negativo */
-  --pb-gray:#BEBEBE;      /* gris en negativo */
+  --pb-navy:var(--brand-navy);      /* azul oscuro del logo */
+  --pb-blue:var(--brand-blue);      /* azul claro del logo */
+  --pb-sky:var(--brand-sky);        /* azul cielo */
+  --pb-petrol:var(--brand-petrol);  /* azul petróleo */
+  --pb-green:var(--brand-green);    /* verde institucional */
+  --pb-lime:var(--brand-lime);      /* verde lima energético */
+  --pb-white:var(--brand-white);    /* blanco en negativo */
+  --pb-gray:var(--brand-gray);      /* gris en negativo */
 
   --pb-ink:rgba(8,12,65,.72);
   --pb-ink-soft:rgba(8,12,65,.56);
@@ -30,8 +35,9 @@
   --pb-tint-2:#EDF3F8;
 }
 
-/* El foco visible global es ámbar (base.css). Dentro del contenido de
-   esta página se reemplaza por el azul de marca. */
+/* El foco visible global ya es verde lima (base.css, también de marca);
+   aquí se prefiere azul claro para que combine mejor con el resto de la
+   página, que es predominantemente azul. */
 .prod-page #main :focus-visible{outline:3px solid var(--pb-blue); outline-offset:2px;}
 
 /* Los anclas (#catalogo, #hablemos...) deben quedar por debajo del
