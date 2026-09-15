@@ -30,29 +30,39 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Productos — Petroil S.A.",
-  "url": "https://petroilsa.com/productos.html",
-  "isPartOf": { "@type": "WebSite", "name": "Petroil S.A.", "url": "https://petroilsa.com/" }
+  "url": "https://www.petroilsa.com/productos.html",
+  "isPartOf": { "@type": "WebSite", "name": "Petroil S.A.", "url": "https://www.petroilsa.com/" }
 }
 </script>
 </head>
-<body class="prod-page">
+<body class="prod-page" data-i18n-page="assets/i18n/productos.json">
 
 <a href="#main" class="skip-link">Saltar al contenido</a>
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-track" id="scrollTrack">
+  <div class="scroll-progress" id="scrollProgress"></div>
+</div>
 
 <header class="navbar" id="siteHeader">
   <div class="navbar-top">
     <div class="navbar-top-inner">
       <a href="index.html" class="nav-logo"><img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
       <div class="nav-utility">
-        <a href="productos.html" class="portal-link">Productos</a>
-        <a href="nosotros/quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
-        <a href="portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <a href="productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
+        <a href="nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+        <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
         <div class="lang-select" id="langSelect">
-          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button>
-          <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+            <span class="lang-current" data-lang-current>ES</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="es">Español</a>
+            <a href="#" data-lang="pt">Português</a>
+          </div>
         </div>
-        <a href="#contacto" class="btn-contacto">Contacto</a>
+        <a href="contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -61,19 +71,19 @@
     <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
       <a href="#portafolio" class="route-link" data-section="#portafolio">
-        <span class="route-label">Portafolio</span>
+        <span class="route-label" data-i18n="nav.portafolio">Portafolio</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#aplicaciones" class="route-link" data-section="#aplicaciones">
-        <span class="route-label">Aplicaciones</span>
+        <span class="route-label" data-i18n="nav.aplicaciones">Aplicaciones</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#catalogo" class="route-link" data-section="#catalogo">
-        <span class="route-label">Catálogo</span>
+        <span class="route-label" data-i18n="nav.catalogo">Catálogo</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#hablemos" class="route-link" data-section="#hablemos">
-        <span class="route-label">Hablemos</span>
+        <span class="route-label" data-i18n="nav.hablemos">Hablemos</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
     </nav>
@@ -87,18 +97,26 @@
   </div>
   <nav class="drawer-route" aria-label="Navegación principal móvil">
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
-    <a href="#portafolio" class="drawer-link" data-section="#portafolio"><span class="drawer-node" aria-hidden="true"></span>Portafolio</a>
-    <a href="#aplicaciones" class="drawer-link" data-section="#aplicaciones"><span class="drawer-node" aria-hidden="true"></span>Aplicaciones</a>
-    <a href="#catalogo" class="drawer-link" data-section="#catalogo"><span class="drawer-node" aria-hidden="true"></span>Catálogo</a>
-    <a href="#hablemos" class="drawer-link" data-section="#hablemos"><span class="drawer-node" aria-hidden="true"></span>Hablemos</a>
+    <a href="#portafolio" class="drawer-link" data-section="#portafolio"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.portafolio">Portafolio</span></a>
+    <a href="#aplicaciones" class="drawer-link" data-section="#aplicaciones"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.aplicaciones">Aplicaciones</span></a>
+    <a href="#catalogo" class="drawer-link" data-section="#catalogo"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.catalogo">Catálogo</span></a>
+    <a href="#hablemos" class="drawer-link" data-section="#hablemos"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.hablemos">Hablemos</span></a>
   </nav>
   <div class="drawer-footer">
-    <a href="portal-clientes/portal-clientes.html" class="drawer-portal">Portal de clientes</a>
-    <a href="nosotros/quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
-    <a href="#contacto" class="btn-contacto">Contacto</a>
+    <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
+    <a href="nosotros/quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+    <a href="contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
-      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">ES</button>
-      <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+        <span class="lang-current" data-lang-current>ES</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-dropdown">
+        <a href="#" data-lang="en">English</a>
+        <a href="#" data-lang="es">Español</a>
+        <a href="#" data-lang="pt">Português</a>
+      </div>
     </div>
   </div>
 </aside>
@@ -113,17 +131,17 @@
     <div class="hero-particles" id="heroParticles"></div>
     <div class="container">
       <div class="pb-breadcrumb">
-        <a href="index.html">Inicio</a>
+        <a href="index.html" data-i18n="breadcrumb.inicio">Inicio</a>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-        <span>Productos</span>
+        <span data-i18n="nav.productos">Productos</span>
       </div>
       <div class="prod-hero-grid">
         <div class="prod-hero-text">
-          <h1>Productos</h1>
-          <p class="lead">Combustibles y soluciones diseñadas para impulsar industrias en movimiento.</p>
-          <p class="note">Un portafolio confiable, eficiente y adaptable a las necesidades de cada operación.</p>
+          <h1 data-i18n="nav.productos">Productos</h1>
+          <p class="lead" data-i18n="hero.lead">Combustibles y soluciones diseñadas para impulsar industrias en movimiento.</p>
+          <p class="note" data-i18n="hero.note">Un portafolio confiable, eficiente y adaptable a las necesidades de cada operación.</p>
         </div>
-        <p class="prod-hero-tag">Energía que impulsa el progreso</p>
+        <p class="prod-hero-tag" data-i18n="hero.tag">Energía que impulsa el progreso</p>
       </div>
     </div>
   </section>
@@ -133,12 +151,12 @@
     <div class="container">
       <div class="prod-portfolio-head">
         <div>
-          <span class="pb-eyebrow">Nuestro portafolio</span>
-          <h2 class="pb-h2">Soluciones energéticas<br>para cada necesidad</h2>
-          <p>Ofrecemos una amplia gama de combustibles, derivados y productos especializados, con altos estándares de calidad y un enfoque en la eficiencia y la sostenibilidad.</p>
+          <span class="pb-eyebrow" data-i18n="portfolio.eyebrow">Nuestro portafolio</span>
+          <h2 class="pb-h2" data-i18n-html="portfolio.title">Soluciones energéticas<br>para cada necesidad</h2>
+          <p data-i18n="portfolio.desc">Ofrecemos una amplia gama de combustibles, derivados y productos especializados, con altos estándares de calidad y un enfoque en la eficiencia y la sostenibilidad.</p>
         </div>
         <div class="prod-portfolio-aside">
-          <p>Trabajamos de la mano con diferentes industrias para proveer soluciones confiables que se adaptan a sus retos y contribuyen al desarrollo de un futuro más seguro y eficiente.</p>
+          <p data-i18n="portfolio.aside">Trabajamos de la mano con diferentes industrias para proveer soluciones confiables que se adaptan a sus retos y contribuyen al desarrollo de un futuro más seguro y eficiente.</p>
         </div>
       </div>
 
@@ -149,10 +167,10 @@
           </div>
           <div class="pb-family-body">
             <span class="pb-family-title">
-              Combustibles
+              <span data-i18n="family.combustibles">Combustibles</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
-            <p>Soluciones para transporte, industria y generación.</p>
+            <p data-i18n="family.combustibles.desc">Soluciones para transporte, industria y generación.</p>
           </div>
         </a>
 
@@ -162,10 +180,10 @@
           </div>
           <div class="pb-family-body">
             <span class="pb-family-title">
-              Fuel Oils
+              <span data-i18n="family.fuelOils">Fuel Oils</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
-            <p>Altos rendimientos para procesos industriales.</p>
+            <p data-i18n="family.fuelOils.desc">Altos rendimientos para procesos industriales.</p>
           </div>
         </a>
 
@@ -175,10 +193,10 @@
           </div>
           <div class="pb-family-body">
             <span class="pb-family-title">
-              Marine
+              <span data-i18n="family.marine">Marine</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
-            <p>Soluciones para el sector marítimo.</p>
+            <p data-i18n="family.marine.desc">Soluciones para el sector marítimo.</p>
           </div>
         </a>
 
@@ -188,10 +206,10 @@
           </div>
           <div class="pb-family-body">
             <span class="pb-family-title">
-              Especializados
+              <span data-i18n="family.especializados">Especializados</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
-            <p>Aditivos y mejoradores para un mayor desempeño.</p>
+            <p data-i18n="family.especializados.desc">Aditivos y mejoradores para un mayor desempeño.</p>
           </div>
         </a>
       </div>
@@ -206,46 +224,46 @@
     <div class="container">
       <div class="prod-sectors-grid">
         <div>
-          <span class="pb-eyebrow">Por aplicación</span>
-          <h2>Energía para<br>cada sector</h2>
-          <p>Nuestros productos están diseñados para responder a las necesidades específicas de diferentes industrias y operaciones.</p>
+          <span class="pb-eyebrow" data-i18n="sectors.eyebrow">Por aplicación</span>
+          <h2 data-i18n-html="sectors.title">Energía para<br>cada sector</h2>
+          <p data-i18n="sectors.desc">Nuestros productos están diseñados para responder a las necesidades específicas de diferentes industrias y operaciones.</p>
         </div>
         <div class="pb-sector-grid">
           <a class="pb-sector" href="#catalogo" data-go-sector="industria">
             <span class="pb-sector-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V10l5 3.2V10l5 3.2V10l5 3.2V21"/><path d="M9 21v-3.4M14 21v-3.4"/></svg>
             </span>
-            <span>Industria</span>
+            <span data-i18n="sector.industria">Industria</span>
           </a>
           <a class="pb-sector" href="#catalogo" data-go-sector="generacion">
             <span class="pb-sector-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
             </span>
-            <span>Generación</span>
+            <span data-i18n="sector.generacion">Generación</span>
           </a>
           <a class="pb-sector" href="#catalogo" data-go-sector="transporte">
             <span class="pb-sector-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 7.5h11.5v8.5H2zM13.5 11h4l2.5 3v2h-6.5"/><circle cx="6" cy="18" r="1.9"/><circle cx="16.5" cy="18" r="1.9"/></svg>
             </span>
-            <span>Transporte</span>
+            <span data-i18n="sector.transporte">Transporte</span>
           </a>
           <a class="pb-sector" href="#catalogo" data-go-sector="maritimo">
             <span class="pb-sector-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 17.5c1.8 0 1.8 1.5 3.6 1.5s1.8-1.5 3.6-1.5 1.8 1.5 3.6 1.5 1.8-1.5 3.6-1.5M5 17l1.4-5.6h11.2L19 17M9 11.4V8h6v3.4M12 5v3"/></svg>
             </span>
-            <span>Marítimo</span>
+            <span data-i18n="sector.maritimo">Marítimo</span>
           </a>
           <a class="pb-sector" href="#catalogo" data-go-sector="construccion">
             <span class="pb-sector-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M6 21V4l13 3.2M6 7.2h13M12 7.6V12m0 0l-2 2.2h4z"/></svg>
             </span>
-            <span>Construcción</span>
+            <span data-i18n="sector.construccion">Construcción</span>
           </a>
           <a class="pb-sector" href="#catalogo" data-go-sector="otros">
             <span class="pb-sector-icon">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg>
             </span>
-            <span>Otros</span>
+            <span data-i18n="sector.otros">Otros</span>
           </a>
         </div>
       </div>
@@ -257,34 +275,34 @@
     <div class="container">
       <div class="prod-catalog-head">
         <div>
-          <span class="pb-eyebrow">Explora nuestros productos</span>
-          <h2 class="pb-h2">Un portafolio que se adapta<br>a tu operación</h2>
+          <span class="pb-eyebrow" data-i18n="catalog.eyebrow">Explora nuestros productos</span>
+          <h2 class="pb-h2" data-i18n-html="catalog.title">Un portafolio que se adapta<br>a tu operación</h2>
         </div>
         <div class="pb-tools">
-          <label class="pb-sr" for="prodSearch">Buscar productos</label>
+          <label class="pb-sr" for="prodSearch" data-i18n="catalog.searchLabel">Buscar productos</label>
           <div class="pb-search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
             <input type="search" id="prodSearch" placeholder="Buscar productos..." autocomplete="off">
           </div>
-          <label class="pb-sr" for="prodSector">Filtrar por sector</label>
+          <label class="pb-sr" for="prodSector" data-i18n="catalog.sectorLabel">Filtrar por sector</label>
           <select class="pb-select" id="prodSector">
-            <option value="todos">Todos los productos</option>
-            <option value="industria">Industria</option>
-            <option value="generacion">Generación</option>
-            <option value="transporte">Transporte</option>
-            <option value="maritimo">Marítimo</option>
-            <option value="construccion">Construcción</option>
-            <option value="otros">Otros</option>
+            <option value="todos" data-i18n="catalog.allProducts">Todos los productos</option>
+            <option value="industria" data-i18n="sector.industria">Industria</option>
+            <option value="generacion" data-i18n="sector.generacion">Generación</option>
+            <option value="transporte" data-i18n="sector.transporte">Transporte</option>
+            <option value="maritimo" data-i18n="sector.maritimo">Marítimo</option>
+            <option value="construccion" data-i18n="sector.construccion">Construcción</option>
+            <option value="otros" data-i18n="sector.otros">Otros</option>
           </select>
         </div>
       </div>
 
       <div class="pb-tabs" role="group" aria-label="Filtrar por familia de producto">
-        <button type="button" class="pb-tab" data-cat="todos" aria-pressed="true">Todos</button>
-        <button type="button" class="pb-tab" data-cat="combustibles" aria-pressed="false">Combustibles</button>
-        <button type="button" class="pb-tab" data-cat="fuel-oils" aria-pressed="false">Fuel Oils</button>
-        <button type="button" class="pb-tab" data-cat="marine" aria-pressed="false">Marine</button>
-        <button type="button" class="pb-tab" data-cat="especializados" aria-pressed="false">Especializados</button>
+        <button type="button" class="pb-tab" data-cat="todos" aria-pressed="true" data-i18n="family.todos">Todos</button>
+        <button type="button" class="pb-tab" data-cat="combustibles" aria-pressed="false" data-i18n="family.combustibles">Combustibles</button>
+        <button type="button" class="pb-tab" data-cat="fuel-oils" aria-pressed="false" data-i18n="family.fuelOils">Fuel Oils</button>
+        <button type="button" class="pb-tab" data-cat="marine" aria-pressed="false" data-i18n="family.marine">Marine</button>
+        <button type="button" class="pb-tab" data-cat="especializados" aria-pressed="false" data-i18n="family.especializados">Especializados</button>
       </div>
 
       <p class="pb-sr" id="prodCount" role="status" aria-live="polite"></p>
@@ -302,9 +320,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-40</span>
-            <span class="product-name">Petroil 40 A MAX</span>
-            <span class="product-desc">Diésel de uso general con base orgánica renovable.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p40.name">Petroil 40 A MAX</span>
+            <span class="product-desc" data-i18n="products.p40.desc">Diésel de uso general con base orgánica renovable.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -319,9 +337,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-50/10</span>
-            <span class="product-name">ULSD Premium</span>
-            <span class="product-desc">Diésel ultra bajo en azufre de alto desempeño.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p5010.name">ULSD Premium</span>
+            <span class="product-desc" data-i18n="products.p5010.desc">Diésel ultra bajo en azufre de alto desempeño.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -336,9 +354,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-60</span>
-            <span class="product-name">Nafta Virgen</span>
-            <span class="product-desc">Materia prima para procesos industriales.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p60.name">Nafta Virgen</span>
+            <span class="product-desc" data-i18n="products.p60.desc">Materia prima para procesos industriales.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -353,9 +371,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-90</span>
-            <span class="product-name">Gasolina premium</span>
-            <span class="product-desc">Alto rendimiento y confiabilidad en carretera.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p90.name">Gasolina premium</span>
+            <span class="product-desc" data-i18n="products.p90.desc">Alto rendimiento y confiabilidad en carretera.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -370,9 +388,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-100</span>
-            <span class="product-name">Mejorador de IFOS</span>
-            <span class="product-desc">Aditivo para la optimización de combustibles.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p100.name">Mejorador de IFOS</span>
+            <span class="product-desc" data-i18n="products.p100.desc">Aditivo para la optimización de combustibles.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -389,9 +407,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-250</span>
-            <span class="product-name">Fuel Oil #4</span>
-            <span class="product-desc">Solución para generación de energía e industria.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p250.name">Fuel Oil #4</span>
+            <span class="product-desc" data-i18n="products.p250.desc">Solución para generación de energía e industria.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -406,9 +424,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-300</span>
-            <span class="product-name">VLS Fuel Oil</span>
-            <span class="product-desc">Fuel oil de muy bajo azufre y alta estabilidad.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p300.name">VLS Fuel Oil</span>
+            <span class="product-desc" data-i18n="products.p300.desc">Fuel oil de muy bajo azufre y alta estabilidad.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -423,9 +441,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-500</span>
-            <span class="product-name">Marine MGO F.O.4</span>
-            <span class="product-desc">Combustible marino de alto rendimiento.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p500.name">Marine MGO F.O.4</span>
+            <span class="product-desc" data-i18n="products.p500.desc">Combustible marino de alto rendimiento.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -440,9 +458,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-800 G</span>
-            <span class="product-name">Green</span>
-            <span class="product-desc">Soluciones más limpias para uso industrial.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p800g.name">Green</span>
+            <span class="product-desc" data-i18n="products.p800g.desc">Soluciones más limpias para uso industrial.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -457,9 +475,9 @@
           </div>
           <div class="product-info">
             <span class="product-code">P-800 HCl</span>
-            <span class="product-name">Petroil 800 HCl</span>
-            <span class="product-desc">Producto especializado para procesos industriales.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p800hcl.name">Petroil 800 HCl</span>
+            <span class="product-desc" data-i18n="products.p800hcl.desc">Producto especializado para procesos industriales.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -467,14 +485,14 @@
            data-cat="combustibles" data-sectors="transporte"
            data-search="p-87 r gasolina corriente">
           <div class="product-img-wrap">
-            <span class="product-tag-dev">En desarrollo</span>
+            <span class="product-tag-dev" data-i18n="products.inDevelopment">En desarrollo</span>
             <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 87 R · Gasolina Corriente" loading="lazy">
           </div>
           <div class="product-info">
             <span class="product-code">P-87 R</span>
-            <span class="product-name">Gasolina Corriente</span>
-            <span class="product-desc">Gasolina de uso corriente para vehículos livianos.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p87r.name">Gasolina Corriente</span>
+            <span class="product-desc" data-i18n="products.p87r.desc">Gasolina de uso corriente para vehículos livianos.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -482,14 +500,14 @@
            data-cat="combustibles" data-sectors="otros"
            data-search="rf-110 racing fuel competencia octanaje">
           <div class="product-img-wrap">
-            <span class="product-tag-dev">En desarrollo</span>
+            <span class="product-tag-dev" data-i18n="products.inDevelopment">En desarrollo</span>
             <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil RF 110+ · Racing Fuel" loading="lazy">
           </div>
           <div class="product-info">
             <span class="product-code">RF-110+</span>
-            <span class="product-name">RF 110+ Racing Fuel</span>
-            <span class="product-desc">Alto octanaje formulado para competencia.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.rf110.name">RF 110+ Racing Fuel</span>
+            <span class="product-desc" data-i18n="products.rf110.desc">Alto octanaje formulado para competencia.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -497,14 +515,14 @@
            data-cat="combustibles" data-sectors="otros"
            data-search="rf-100 racing fuel competencia">
           <div class="product-img-wrap">
-            <span class="product-tag-dev">En desarrollo</span>
+            <span class="product-tag-dev" data-i18n="products.inDevelopment">En desarrollo</span>
             <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 100+ · Racing Fuel" loading="lazy">
           </div>
           <div class="product-info">
             <span class="product-code">RF-100+</span>
-            <span class="product-name">100+ Racing Fuel</span>
-            <span class="product-desc">Combustible de competencia de alto desempeño.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.rf100.name">100+ Racing Fuel</span>
+            <span class="product-desc" data-i18n="products.rf100.desc">Combustible de competencia de alto desempeño.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -512,14 +530,14 @@
            data-cat="especializados" data-sectors="industria construccion"
            data-search="p-230 ms varsol solvente">
           <div class="product-img-wrap">
-            <span class="product-tag-dev">En desarrollo</span>
+            <span class="product-tag-dev" data-i18n="products.inDevelopment">En desarrollo</span>
             <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 230 MS · Varsol" loading="lazy">
           </div>
           <div class="product-info">
             <span class="product-code">P-230</span>
-            <span class="product-name">230 MS · Varsol</span>
-            <span class="product-desc">Solvente para uso industrial y de construcción.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p230.name">230 MS · Varsol</span>
+            <span class="product-desc" data-i18n="products.p230.desc">Solvente para uso industrial y de construcción.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
@@ -527,22 +545,22 @@
            data-cat="especializados" data-sectors="industria otros"
            data-search="p-70 kerosene queroseno">
           <div class="product-img-wrap">
-            <span class="product-tag-dev">En desarrollo</span>
+            <span class="product-tag-dev" data-i18n="products.inDevelopment">En desarrollo</span>
             <img class="product-poster" src="assets/img/en-desarrollo.png" alt="Petroil 70 · Kerosene" loading="lazy">
           </div>
           <div class="product-info">
             <span class="product-code">P-70</span>
-            <span class="product-name">70 Kerosene</span>
-            <span class="product-desc">Kerosene para usos industriales y térmicos.</span>
-            <span class="product-arrow">Ver producto →</span>
+            <span class="product-name" data-i18n="products.p70.name">70 Kerosene</span>
+            <span class="product-desc" data-i18n="products.p70.desc">Kerosene para usos industriales y térmicos.</span>
+            <span class="product-arrow" data-i18n="products.viewProduct">Ver producto →</span>
           </div>
         </a>
 
       </div>
 
       <div class="pb-empty" id="prodEmpty">
-        <b>Sin resultados</b>
-        Ajusta la búsqueda o elige otra familia para ver más productos del portafolio.
+        <b data-i18n="catalog.empty.title">Sin resultados</b>
+        <span data-i18n="catalog.empty.desc">Ajusta la búsqueda o elige otra familia para ver más productos del portafolio.</span>
       </div>
 
       <nav class="pb-pagination" id="prodPagination" aria-label="Paginación del catálogo"></nav>
@@ -557,11 +575,11 @@
     <div class="container">
       <div class="prod-contact-grid">
         <div>
-          <span class="pb-eyebrow">¿No encuentras lo que buscas?</span>
-          <h2>Hablemos</h2>
-          <p>Nuestro equipo está listo para asesorarte y ayudarte a encontrar la mejor solución para tu operación.</p>
-          <a class="pb-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20sobre%20los%20productos%20Petroil." target="_blank" rel="noopener">
-            Solicitar información
+          <span class="pb-eyebrow" data-i18n="contact.eyebrow">¿No encuentras lo que buscas?</span>
+          <h2 data-i18n="nav.hablemos">Hablemos</h2>
+          <p data-i18n="contact.desc">Nuestro equipo está listo para asesorarte y ayudarte a encontrar la mejor solución para tu operación.</p>
+          <a class="pb-btn" href="contacto.html#formulario">
+            <span data-i18n="contact.cta">Solicitar información</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -570,19 +588,19 @@
             <span class="pb-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8.5" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0113 0"/></svg>
             </span>
-            <span>Asesoría especializada</span>
+            <span data-i18n="contact.feature1">Asesoría especializada</span>
           </div>
           <div class="pb-feature">
             <span class="pb-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1v.3a2 2 0 11-4 0V21a1.6 1.6 0 00-2.7-1.2l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.6 1.6 0 003 15a2 2 0 110-4h.1A1.6 1.6 0 004.3 8.3l-.1-.1a2 2 0 112.8-2.8l.1.1A1.6 1.6 0 009.8 4.4a2 2 0 114 0v.1a1.6 1.6 0 002.7 1.2l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 001.1 2.7 2 2 0 110 4h-.3z"/></svg>
             </span>
-            <span>Soluciones a la medida</span>
+            <span data-i18n="contact.feature2">Soluciones a la medida</span>
           </div>
           <div class="pb-feature">
             <span class="pb-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20V13M10 20V9M16 20v-5"/><path d="M14 5h6v6"/><path d="M20 5l-7.5 7.5"/></svg>
             </span>
-            <span>Acompañamiento en todo el proceso</span>
+            <span data-i18n="contact.feature3">Acompañamiento en todo el proceso</span>
           </div>
         </div>
       </div>
@@ -595,8 +613,8 @@
   <div class="footer-top-line"></div>
   <div class="container footer-main">
     <div class="footer-brand">
-      <img src="https://petroilsa.com/wp-content/uploads/2022/09/Petroil-logo-blanco.png" alt="Petroil S.A.">
-      <p>Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
+      <img src="assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
+      <p data-i18n="footer.tagline">Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
         <a href="https://www.linkedin.com/company/petroilsa/" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
@@ -605,32 +623,32 @@
       </div>
     </div>
     <div class="footer-links-col">
-      <h4>Enlaces</h4>
+      <h4 data-i18n="footer.linksHeading">Enlaces</h4>
       <ul class="footer-links">
-        <li><a href="index.html#servicios">Servicios</a></li>
-        <li><a href="index.html#innovacion">Innovación</a></li>
-        <li><a href="portal-clientes/portal-clientes.html">Clientes</a></li>
-        <li><a href="nosotros/quienes-somos.html">¿Quiénes somos?</a></li>
-        <li><a href="index.html#noticias">Noticias</a></li>
+        <li><a href="index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
+        <!-- <li><a href="portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
+        <li><a href="nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <li><a href="index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
       </ul>
     </div>
     <div class="footer-contact">
-      <h4>Contacto</h4>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
+      <h4 data-i18n="footer.contactHeading">Contacto</h4>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.office"><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.refineria"><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.aliado"><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><span>contacto@petroilsa.com</span></p>
       <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
-        WhatsApp: +57 311 333 7046
+        <span data-i18n="footer.whatsapp">WhatsApp: +57 311 333 7046</span>
       </a>
     </div>
     <div class="footer-map">
-      <h4>Ubicación</h4>
+      <h4 data-i18n="footer.mapHeading">Ubicación</h4>
       <div class="map-tabs">
-        <button class="map-tab active" data-map="bogota">Oficina Bogotá</button>
-        <button class="map-tab" data-map="santamarta">Refinería Santa Marta</button>
-        <button class="map-tab" data-map="esquivensa">Aliado Barranquilla</button>
+        <button class="map-tab active" data-map="bogota" data-i18n="footer.mapTab.bogota">Oficina Bogotá</button>
+        <button class="map-tab" data-map="santamarta" data-i18n="footer.mapTab.santamarta">Refinería Santa Marta</button>
+        <button class="map-tab" data-map="esquivensa" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
         <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -638,48 +656,51 @@
           title="Mapa de ubicación de Petroil"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://maps.google.com/?q=Petroil+SA+Bogota" target="_blank" rel="noopener">
-        Abrir en Google Maps
+        <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 Petroil S.A. Todos los derechos reservados.</span>
+    <span data-i18n="footer.copyright">© 2026 Petroil S.A. Todos los derechos reservados.</span>
     <div class="footer-bottom-links">
-      <a href="legal/politica-datos.html">Política de protección de datos</a>
-      <a href="legal/pqrsf.html">PQRSF</a>
+      <a href="legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a>
+      <a href="legal/pqrsf.html" data-i18n="footer.link.pqrsf">PQRSF</a>
     </div>
   </div>
 </footer>
 
-<button class="chat-launcher" id="chatLauncher" aria-label="Abrir asistente virtual">
+<button class="chat-launcher" id="chatLauncher" aria-label="Abrir chat con AIRA, asistente virtual de Petroil">
   <span class="demo-dot">DEMO</span>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1.1-4.2A8 8 0 1121 12z"/></svg>
+  <img class="launcher-avatar" src="assets/img/aira-avatar.webp" alt="" width="60" height="60">
 </button>
 
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <span class="dot"></span>
+    <div class="chat-avatar-wrap">
+      <img class="chat-avatar" src="assets/img/aira-avatar.webp" alt="" width="40" height="40">
+      <span class="dot" aria-hidden="true"></span>
+    </div>
     <div>
-      <strong>Asistente Petroil</strong>
-      <span>En línea · respuestas de ejemplo</span>
+      <strong>AIRA</strong>
+      <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
     </div>
     <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
   </div>
-  <div class="chat-disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
+  <div class="chat-disclaimer" data-i18n="chat.disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
   <div class="chat-log" id="chatLog">
-    <div class="msg bot">Hola 👋 Soy el asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
+    <div class="msg bot" data-i18n="chat.greeting">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
   </div>
   <div class="chat-quick" id="chatQuick">
-    <button class="quick-btn" data-q="productos">¿Qué productos ofrecen?</button>
-    <button class="quick-btn" data-q="ubicacion">¿Dónde están ubicados?</button>
-    <button class="quick-btn" data-q="certificaciones">Certificaciones ISO</button>
-    <button class="quick-btn" data-q="asesor">Hablar con un asesor</button>
+    <button class="quick-btn" data-q="productos" data-i18n="chat.q1">¿Qué productos ofrecen?</button>
+    <button class="quick-btn" data-q="ubicacion" data-i18n="chat.q2">¿Dónde están ubicados?</button>
+    <button class="quick-btn" data-q="certificaciones" data-i18n="chat.q3">Certificaciones ISO</button>
+    <button class="quick-btn" data-q="asesor" data-i18n="chat.q4">Hablar con un asesor</button>
   </div>
   <div class="chat-wa">
     <a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg>
-      Continuar por WhatsApp
+      <span data-i18n="chat.wa">Continuar por WhatsApp</span>
     </a>
   </div>
 </div>
@@ -693,5 +714,6 @@
 <script src="assets/js/chatbot.js"></script>
 <script src="assets/js/cursor.js"></script>
 <script src="assets/js/hero-particles.js"></script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>

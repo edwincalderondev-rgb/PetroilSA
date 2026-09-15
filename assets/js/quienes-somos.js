@@ -1,7 +1,7 @@
 // ============================================================
 // QUIÉNES SOMOS — interacciones propias de la página
-// (se carga después de petroil-app.js, que ya maneja navbar,
-// scroll progress, menú móvil, idioma y chat)
+// (se carga después de nav.js y chatbot.js, que ya manejan navbar,
+// scroll progress, reveal, menú móvil, idioma y chat)
 // ============================================================
 
 // ============================================================
@@ -95,5 +95,5 @@ window.addEventListener('resize', () => {
 });
 
 // Reveal on scroll también aplica a los elementos con clase .reveal
-// dentro de esta página (mismo IntersectionObserver que en petroil-app.js
-// ya cubre document.querySelectorAll('.reveal'), no se duplica aquí).
+// dentro de esta página (el IntersectionObserver de nav.js ya cubre
+// document.querySelectorAll('.reveal'), no se duplica aquí).

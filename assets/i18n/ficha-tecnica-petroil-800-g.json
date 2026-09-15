@@ -1,0 +1,68 @@
+{
+  "breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "hero.badge1": { "es": "Línea Green", "en": "Green Line", "pt": "Linha Green" },
+  "hero.title": { "es": "Petroil 800 G <span style=\"color:var(--teal-light);\">— Green</span>", "en": "Petroil 800 G <span style=\"color:var(--teal-light);\">— Green</span>", "pt": "Petroil 800 G <span style=\"color:var(--teal-light);\">— Green</span>" },
+  "hero.lead": { "es": "Petroil 800 G Green. (Contenido de ejemplo — pendiente ficha oficial con la descripción, aplicaciones y parámetros reales de este producto).", "en": "Petroil 800 G Green. (Sample content — pending the official data sheet with this product's actual description, applications and parameters.)", "pt": "Petroil 800 G Green. (Conteúdo de exemplo — pendente da ficha oficial com a descrição, as aplicações e os parâmetros reais deste produto.)" },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+  "cta.whatsappNumber": { "es": "WhatsApp +57 311 333 7046", "en": "WhatsApp +57 311 333 7046", "pt": "WhatsApp +57 311 333 7046" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.miniLabel": { "es": "Datos de ejemplo", "en": "Sample data", "pt": "Dados de exemplo" },
+
+  "stat.label1": { "es": "Parámetro principal (dato de ejemplo)", "en": "Primary parameter (sample data)", "pt": "Parâmetro principal (dado de exemplo)" },
+  "stat.label2": { "es": "Parámetro secundario (dato de ejemplo)", "en": "Secondary parameter (sample data)", "pt": "Parâmetro secundário (dado de exemplo)" },
+  "stat.label3": { "es": "Parámetro adicional (dato de ejemplo)", "en": "Additional parameter (sample data)", "pt": "Parâmetro adicional (dado de exemplo)" },
+
+  "banner.example": { "es": "Este producto tiene datos como ejemplo, aún no cuenta con ficha técnica oficial cargada. Los parámetros y textos de esta página son <strong>datos de ejemplo</strong> para mantener la estructura del sitio — debemos concretar detalles como multimedia, datos tecnicos, etc, por lo tanto queda en borrador hasta que tengamos la información real 100% disponible.", "en": "This product currently has sample data — no official data sheet has been loaded yet. The parameters and text on this page are <strong>sample data</strong> used to keep the site's structure in place — details such as media and technical data still need to be finalized, so this page remains a draft until the real information is 100% available.", "pt": "Este produto ainda tem dados de exemplo, pois não conta com uma ficha técnica oficial carregada. Os parâmetros e textos desta página são <strong>dados de exemplo</strong> para manter a estrutura do site — ainda precisamos definir detalhes como multimídia, dados técnicos etc., por isso ela permanece em rascunho até que tenhamos a informação real 100% disponível." },
+
+  "section.desc": { "es": "Descripción", "en": "Description", "pt": "Descrição" },
+  "desc.p1": { "es": "<em>Esta página usa contenido de ejemplo porque el documento fuente no incluyó una ficha detallada de Petroil 800 G Green (solo se documentó Petroil 800 HC). Reemplaza este texto por la descripción técnica oficial del producto.</em>", "en": "<em>This page uses sample content because the source document did not include a detailed data sheet for Petroil 800 G Green (only Petroil 800 HC was documented). Replace this text with the product's official technical description.</em>", "pt": "<em>Esta página usa conteúdo de exemplo porque o documento de origem não incluiu uma ficha detalhada do Petroil 800 G Green (apenas o Petroil 800 HC foi documentado). Substitua este texto pela descrição técnica oficial do produto.</em>" },
+
+  "section.benefits": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "benefit1.title": { "es": "Perfil ambiental (ejemplo)", "en": "Environmental profile (sample)", "pt": "Perfil ambiental (exemplo)" },
+  "benefit1.desc": { "es": "Ejemplo: describe aquí el beneficio ambiental que distingue a la línea Green.", "en": "Example: describe here the environmental benefit that sets the Green line apart.", "pt": "Exemplo: descreva aqui o benefício ambiental que diferencia a linha Green." },
+  "benefit2.title": { "es": "Aplicación principal (ejemplo)", "en": "Main application (sample)", "pt": "Aplicação principal (exemplo)" },
+  "benefit2.desc": { "es": "Ejemplo: describe aquí el tipo de motores o procesos recomendados.", "en": "Example: describe here the type of engines or processes recommended.", "pt": "Exemplo: descreva aqui o tipo de motores ou processos recomendados." },
+
+  "section.specs": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "table.paramHead": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Parámetro 1", "en": "Parameter 1", "pt": "Parâmetro 1" },
+  "table.row2": { "es": "Parámetro 2", "en": "Parameter 2", "pt": "Parâmetro 2" },
+  "table.row3": { "es": "Parámetro 3", "en": "Parameter 3", "pt": "Parâmetro 3" },
+
+  "section.safety": { "es": "Precauciones y manejo", "en": "Precautions and handling", "pt": "Precauções e manuseio" },
+  "badge.example": { "es": "Dato de ejemplo", "en": "Sample data", "pt": "Dado de exemplo" },
+  "safety.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "safety.text": { "es": "Clasificación pendiente de confirmar según la norma 321 de la NFPA. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "Classification pending confirmation under NFPA 321. Check the official safety data sheet (MSDS) before handling or transporting this product.", "pt": "Classificação pendente de confirmação conforme a norma 321 da NFPA. Consulte a ficha de segurança (FISPQ/MSDS) oficial antes de manusear ou transportar o produto." },
+  "safety.cas": { "es": "Número CAS: <span class=\"cas\">Por confirmar</span>", "en": "CAS Number: <span class=\"cas\">To be confirmed</span>", "pt": "Número CAS: <span class=\"cas\">A confirmar</span>" },
+
+  "sidebar.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "sidebar.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "sidebar.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 800 G · Green.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 800 G · Green.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho do Petroil 800 G · Green." },
+  "sidebar.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "sidebar.codeLabel": { "es": "Código", "en": "Code", "pt": "Código" },
+  "sidebar.categoryLabel": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "sidebar.statusLabel": { "es": "Estado de ficha", "en": "Data sheet status", "pt": "Status da ficha" },
+  "sidebar.statusValue": { "es": "Pendiente de datos oficiales", "en": "Pending official data", "pt": "Pendente de dados oficiais" },
+  "sidebar.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "sidebar.advisorText": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas sobre disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 800 G · Green?", "en": "Interested in Petroil 800 G · Green?", "pt": "Interessado no Petroil 800 G · Green?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often, and where you'll receive it. A sales advisor will contact you with the quote and the product's official data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial vai contatá-lo com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreFamily": { "es": "Más en Fuel Oils →", "en": "More in Fuel Oils →", "pt": "Mais em Fuel Oils →" },
+  "related.viewAll": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+  "family.fuelOils": { "es": "Fuel Oils", "en": "Fuel Oils", "pt": "Fuel Oils" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "rel1.desc": { "es": "Solución para generación de energía e industria.", "en": "A solution for power generation and industry.", "pt": "Solução para geração de energia e indústria." },
+  "rel2.desc": { "es": "Producto especializado para procesos industriales.", "en": "A specialized product for industrial processes.", "pt": "Produto especializado para processos industriais." },
+  "rel3.desc": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel4.desc": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre de alto desempenho." },
+  "rel.moreLink": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

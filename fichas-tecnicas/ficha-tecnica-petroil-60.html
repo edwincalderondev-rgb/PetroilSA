@@ -6,12 +6,12 @@
 <title>Ficha técnica | Petroil 60 · Nafta Virgen | Petroil S.A.</title>
 <meta name="description" content="Ficha técnica de Petroil 60 Nafta Virgen, destilado liviano para la industria química, disolventes y diluyente de crudos pesados.">
 <link rel="canonical" href="https://www.petroilsa.com/fichas-tecnicas/ficha-tecnica-petroil-60.html">
-<link rel="icon" type="image/png" sizes="270x270" href="https://petroilsa.com/wp-content/uploads/2022/09/cropped-favicon-petroil-270x270.png">
-<link rel="apple-touch-icon" href="https://petroilsa.com/wp-content/uploads/2022/09/cropped-favicon-petroil-270x270.png">
+<link rel="icon" type="image/png" sizes="270x270" href="../assets/img/cropped-favicon-petroil-270x270.png">
+<link rel="apple-touch-icon" href="../assets/img/cropped-favicon-petroil-270x270.png">
 <meta name="theme-color" content="#080C41">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/header-nav.css">
   <link rel="stylesheet" href="../assets/css/article.css">
@@ -24,7 +24,9 @@
 <body>
 
 <a href="#main" class="skip-link">Saltar al contenido</a>
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-track" id="scrollTrack">
+  <div class="scroll-progress" id="scrollProgress"></div>
+</div>
 
 <header class="navbar" id="siteHeader">
   <div class="navbar-top">
@@ -33,12 +35,12 @@
       <div class="nav-utility">
         <a href="../productos.html" class="portal-link">Productos</a>
         <a href="../nosotros/quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
-        <a href="../portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a> -->
         <div class="lang-select" id="langSelect">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button>
           <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
         </div>
-        <a href="#contacto" class="btn-contacto">Contacto</a>
+        <a href="../contacto.html" class="btn-contacto">Contacto</a>
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -46,11 +48,11 @@
   <div class="navbar-route">
     <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
-      <a href="#main" class="route-link" href="#main">
+      <a href="#main" class="route-link" data-section="#main">
         <span class="route-label">Descripción</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
-      <a href="#contacto" class="route-link" href="#contacto">
+      <a href="#contacto" class="route-link" data-section="#contacto">
         <span class="route-label">Contacto</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
@@ -65,19 +67,19 @@
   </div>
   <nav class="drawer-route" aria-label="Navegación principal móvil">
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
-    <a href="#main" class="drawer-link" href="#main">
+    <a href="#main" class="drawer-link" data-section="#main">
       <span class="drawer-node" aria-hidden="true"></span>
-      a
+      Descripción
     </a>
-    <a href="#contacto" class="drawer-link" href="#contacto">
+    <a href="#contacto" class="drawer-link" data-section="#contacto">
       <span class="drawer-node" aria-hidden="true"></span>
-      o
+      Contacto
     </a>
   </nav>
   <div class="drawer-footer">
-    <a href="../portal-clientes/portal-clientes.html" class="drawer-portal">Portal de clientes</a>
+    <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="drawer-portal">Portal de clientes</a> -->
     <a href="../nosotros/quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
-    <a href="#contacto" class="btn-contacto">Contacto</a>
+    <a href="../contacto.html" class="btn-contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
       <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">ES</button>
       <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
@@ -103,11 +105,14 @@
           <h1>Petroil 60 <span style="color:var(--teal-light);">— Nafta Virgen</span></h1>
           <p>Destilado liviano con alto contenido de alifáticos, ideal para la producción de disolventes, pinturas, resinas y acrílicos, además de ser un excelente diluyente para crudos pesados.</p>
           <div class="pds-hero-ctas">
-            <a href="../assets/docs/ficha-tecnica-ejemplo-petroil-50-10-plus-ulsd-premium.pdf" class="btn-primary" download>
-              Descargar ficha en PDF
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+            <a href="../contacto.html?producto=P-60#formulario" class="btn-primary">
+              Solicitar cotización
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20cotizar%20Petroil%2060%20Nafta%20Virgen." target="_blank" rel="noopener" class="btn-outline">Solicitar cotización</a>
+            <a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20cotizar%20Petroil%2060%20Nafta%20Virgen." target="_blank" rel="noopener" class="btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg>
+              Hablar con un asesor
+            </a>
           </div>
         </div>
 
@@ -216,12 +221,13 @@
         </div>
 
         <aside class="pds-side">
-          <div class="pds-side-card">
-            <h4>Ficha técnica completa</h4>
-            <p>Descarga el documento oficial en PDF con todos los parámetros de calidad de Petroil 60 · Nafta Virgen.</p>
-            <a href="../assets/docs/ficha-tecnica-ejemplo-petroil-50-10-plus-ulsd-premium.pdf" class="btn-download" download>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
-              Descargar PDF
+          <div class="pds-side-card quote">
+            <span class="pds-side-eyebrow">Cotización</span>
+            <h4>¿Necesitas la ficha técnica oficial o una cotización?</h4>
+            <p>Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 60 · Nafta Virgen.</p>
+            <a href="../contacto.html?producto=P-60#formulario" class="btn-quote">
+              Solicitar cotización
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
 
@@ -237,8 +243,8 @@
           </div>
 
           <div class="pds-side-card dark">
-            <h4>¿Necesitas este producto?</h4>
-            <p>Habla con un asesor comercial para cotizar volumen, disponibilidad y despacho.</p>
+            <h4>Habla con un asesor</h4>
+            <p>Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.</p>
             <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20cotizar%20Petroil%2060%20Nafta%20Virgen." target="_blank" rel="noopener">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
               WhatsApp: +57 311 333 7046
@@ -248,43 +254,69 @@
 
       </div>
 
+      <section class="pds-quote" aria-labelledby="pdsQuoteTitle">
+        <div class="pds-quote-text">
+          <span class="eyebrow">Cotización · ficha técnica oficial</span>
+          <h3 id="pdsQuoteTitle">¿Te interesa Petroil 60 · Nafta Virgen?</h3>
+          <p>Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.</p>
+        </div>
+        <div class="pds-quote-actions">
+          <a class="btn-primary" href="../contacto.html?producto=P-60#formulario">Solicitar cotización <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="pds-quote-wa" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20cotizar%20Petroil%2060%20Nafta%20Virgen." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg> WhatsApp +57 311 333 7046</a>
+        </div>
+      </section>
+
       <div class="pds-related">
         <div class="pds-related-head">
-          <h3>Otros combustibles Petroil</h3>
-          <a href="../productos.html">Ver todos los productos →</a>
+          <div>
+            <span class="eyebrow">Sigue explorando</span>
+            <h3>Otros combustibles Petroil</h3>
+          </div>
+          <div class="pds-related-links">
+            <a href="../productos.html?cat=especializados#catalogo">Más en Especializados →</a>
+            <a href="../productos.html">Ver todo el portafolio →</a>
+          </div>
         </div>
-        <div class="products-grid" style="grid-template-columns:repeat(4,1fr);">
-          <a class="product-card" href="ficha-tecnica-petroil-90.html">
-            <div class="product-img-wrap"><img src="../assets/img/petroil-90-gasolina-premium.png" alt="Gasolina premium" loading="lazy"></div>
-            <div class="product-info">
-              <div class="product-code">P-90</div>
-              <div class="product-name">Gasolina premium</div>
-              <span class="product-arrow">Ver ficha técnica →</span>
-            </div>
+        <div class="pds-rel-grid">
+          <a class="pds-rel-card" href="ficha-tecnica-petroil-100-mifos.html">
+            <span class="pds-rel-media"><img src="../assets/img/petroil-100-mejorador-de-ifos.png" alt="P-100 · Mejorador de IFOS" loading="lazy"></span>
+            <span class="pds-rel-body">
+              <span class="pds-rel-family">Especializados</span>
+              <span class="pds-rel-code">P-100</span>
+              <span class="pds-rel-name">Mejorador de IFOS</span>
+              <span class="pds-rel-desc">Aditivo para la optimización de combustibles.</span>
+              <span class="pds-rel-more">Conocer más →</span>
+            </span>
           </a>
-          <a class="product-card" href="ficha-tecnica-petroil-500.html">
-            <div class="product-img-wrap"><img src="../assets/img/petroil-500-marine.png" alt="Marine MGO F.O.4" loading="lazy"></div>
-            <div class="product-info">
-              <div class="product-code">P-500</div>
-              <div class="product-name">Marine MGO F.O.4</div>
-              <span class="product-arrow">Ver ficha técnica →</span>
-            </div>
+          <a class="pds-rel-card" href="ficha-tecnica-petroil-40-a-max.html">
+            <span class="pds-rel-media"><img src="../assets/img/petroil-a-max.png" alt="P-40 · Petroil 40 A MAX" loading="lazy"></span>
+            <span class="pds-rel-body">
+              <span class="pds-rel-family">Combustibles</span>
+              <span class="pds-rel-code">P-40</span>
+              <span class="pds-rel-name">Petroil 40 A MAX</span>
+              <span class="pds-rel-desc">Diésel de uso general con base orgánica renovable.</span>
+              <span class="pds-rel-more">Conocer más →</span>
+            </span>
           </a>
-          <a class="product-card" href="ficha-tecnica-petroil-300.html">
-            <div class="product-img-wrap"><img src="../assets/img/petroil-300-vls-fuel-oil.png" alt="VLS Fuel Oil" loading="lazy"></div>
-            <div class="product-info">
-              <div class="product-code">P-300</div>
-              <div class="product-name">VLS Fuel Oil</div>
-              <span class="product-arrow">Ver ficha técnica →</span>
-            </div>
+          <a class="pds-rel-card" href="ficha-tecnica-petroil-50-10.html">
+            <span class="pds-rel-media"><img src="../assets/img/petroil-50-10.webp" alt="P-50/10 · ULSD Premium" loading="lazy"></span>
+            <span class="pds-rel-body">
+              <span class="pds-rel-family">Combustibles</span>
+              <span class="pds-rel-code">P-50/10</span>
+              <span class="pds-rel-name">ULSD Premium</span>
+              <span class="pds-rel-desc">Diésel ultra bajo en azufre de alto desempeño.</span>
+              <span class="pds-rel-more">Conocer más →</span>
+            </span>
           </a>
-          <a class="product-card" href="ficha-tecnica-petroil-250.html">
-            <div class="product-img-wrap"><img src="../assets/img/petroil-250-fuel-oil.png" alt="Fuel Oil #4" loading="lazy"></div>
-            <div class="product-info">
-              <div class="product-code">P-250</div>
-              <div class="product-name">Fuel Oil #4</div>
-              <span class="product-arrow">Ver ficha técnica →</span>
-            </div>
+          <a class="pds-rel-card" href="ficha-tecnica-petroil-90.html">
+            <span class="pds-rel-media"><img src="../assets/img/petroil-90-gasolina-premium.png" alt="P-90 · Gasolina premium" loading="lazy"></span>
+            <span class="pds-rel-body">
+              <span class="pds-rel-family">Combustibles</span>
+              <span class="pds-rel-code">P-90</span>
+              <span class="pds-rel-name">Gasolina premium</span>
+              <span class="pds-rel-desc">Alto rendimiento y confiabilidad en carretera.</span>
+              <span class="pds-rel-more">Conocer más →</span>
+            </span>
           </a>
         </div>
       </div>
@@ -298,7 +330,7 @@
   <div class="footer-top-line"></div>
   <div class="container footer-main">
     <div class="footer-brand">
-      <img src="https://petroilsa.com/wp-content/uploads/2022/09/Petroil-logo-blanco.png" alt="Petroil S.A.">
+      <img src="../assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
       <p>Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
@@ -313,7 +345,7 @@
         <li><a href="../productos.html">Productos</a></li>
         <li><a href="../index.html#servicios">Servicios</a></li>
         <li><a href="../index.html#innovacion">Innovación</a></li>
-        <li><a href="../portal-clientes/portal-clientes.html">Clientes</a></li>
+        <!-- <li><a href="../portal-clientes/portal-clientes.html">Clientes</a></li> -->
         <li><a href="../index.html#nosotros">¿Quiénes somos?</a></li>
         <li><a href="../index.html#noticias">Noticias</a></li>
       </ul>
@@ -356,23 +388,26 @@
   </div>
 </footer>
 
-<button class="chat-launcher" id="chatLauncher" aria-label="Abrir asistente virtual">
+<button class="chat-launcher" id="chatLauncher" aria-label="Abrir chat con AIRA, asistente virtual de Petroil">
   <span class="demo-dot">DEMO</span>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1.1-4.2A8 8 0 1121 12z"/></svg>
+  <img class="launcher-avatar" src="../assets/img/aira-avatar.webp" alt="" width="60" height="60">
 </button>
 
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <span class="dot"></span>
+    <div class="chat-avatar-wrap">
+      <img class="chat-avatar" src="../assets/img/aira-avatar.webp" alt="" width="40" height="40">
+      <span class="dot" aria-hidden="true"></span>
+    </div>
     <div>
-      <strong>Asistente Petroil</strong>
-      <span>En línea · respuestas de ejemplo</span>
+      <strong>AIRA</strong>
+      <span>Asistente virtual de Petroil · En línea</span>
     </div>
     <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
   </div>
   <div class="chat-disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
   <div class="chat-log" id="chatLog">
-    <div class="msg bot">Hola 👋 Soy el asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
+    <div class="msg bot">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
   </div>
   <div class="chat-quick" id="chatQuick">
     <button class="quick-btn" data-q="productos">¿Qué productos ofrecen?</button>

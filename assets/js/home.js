@@ -5,20 +5,31 @@
 const productVideos = document.querySelectorAll('.product-video');
 if(productVideos.length){
 
-  // Precarga anticipada: en cuanto la tarjeta está por entrar en pantalla
-  // (600px antes), empezamos a descargar el video en segundo plano, para que
-  // cuando el usuario realmente llegue a esa tarjeta ya esté listo y no haya
-  // demora al reproducirlo (evita el "stutter" inicial en desktop).
+  // Precarga en dos pasos, para no disparar 10 descargas completas a la vez:
+  //  1) Cuando la tarjeta se acerca a la pantalla (300px antes) solo se
+  //     piden los metadatos (preload="metadata", unos pocos KB).
+  //  2) La descarga completa arranca con la intención real de verlo
+  //     (pointerenter/focus/touch) — ver warmUp() más abajo.
+  // Antes se hacía preload="auto" + load() en todas las tarjetas a 600px:
+  // el navegador abría ~10 peticiones de video simultáneas y, al superar
+  // su límite de conexiones por dominio o al recargar la página, las
+  // abortaba — eran las filas en rojo "(canceled)" del inspector de red.
+  // Nota: los videos siempre pueden mostrar alguna fila "canceled" en
+  // Chrome/Edge: el navegador corta la primera petición y sigue con
+  // peticiones por rangos (206). Eso es normal y no es un error.
   const preloadObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
         const v = entry.target;
-        v.preload = 'auto';
-        v.load();
+        if(v.preload === 'none'){ v.preload = 'metadata'; v.load(); }
         obs.unobserve(v);
       }
     });
-  }, { rootMargin: '600px 0px', threshold: 0 });
+  }, { rootMargin: '300px 0px', threshold: 0 });
+
+  function warmUp(v){
+    if(v.preload !== 'auto'){ v.preload = 'auto'; }
+  }
 
   // Pausa automática cuando la tarjeta sale de pantalla (ahorra batería/datos,
   // sobre todo en móvil donde el video puede quedar reproduciéndose de fondo).
@@ -35,6 +46,7 @@ if(productVideos.length){
     if(!card) return;
 
     function playVideo(){
+      warmUp(v);
       try { v.currentTime = 0; } catch(e) { /* aún sin metadata cargada, se ignora */ }
       const p = v.play();
       if(p && typeof p.catch === 'function') p.catch(() => { /* autoplay bloqueado, sigue la imagen */ });

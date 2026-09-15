@@ -39,23 +39,33 @@
   .article-back{margin-top:28px;}
 </style>
 </head>
-<body>
+<body data-i18n-page="../assets/i18n/euro-vi-calidad-combustible-tecnologia-motor.json">
 <a href="#main" class="skip-link">Saltar al contenido</a>
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-track" id="scrollTrack">
+  <div class="scroll-progress" id="scrollProgress"></div>
+</div>
 
 <header class="navbar" id="siteHeader">
   <div class="navbar-top">
     <div class="navbar-top-inner">
       <a href="../index.html" class="nav-logo"><img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
       <div class="nav-utility">
-        <a href="../productos.html" class="portal-link">Productos</a>
-        <a href="../nosotros/quienes-somos.html" class="portal-link">¿Quiénes somos?</a>
-        <a href="../portal-clientes/portal-clientes.html" class="portal-link">Portal de clientes</a>
+        <a href="../productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
+        <a href="../nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+        <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
         <div class="lang-select" id="langSelect">
-          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">ES</button>
-          <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+            <span class="lang-current" data-lang-current>ES</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="es">Español</a>
+            <a href="#" data-lang="pt">Português</a>
+          </div>
         </div>
-        <a href="#contacto" class="btn-contacto">Contacto</a>
+        <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -64,23 +74,23 @@
     <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
       <a href="#precision" class="route-link" data-section="#precision">
-        <span class="route-label">Euro VI</span>
+        <span class="route-label" data-i18n="nav.euroVI">Euro VI</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#pieza" class="route-link" data-section="#pieza">
-        <span class="route-label">La pieza clave</span>
+        <span class="route-label" data-i18n="nav.piezaClave">La pieza clave</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#colombia" class="route-link" data-section="#colombia">
-        <span class="route-label">Exigencias en Colombia</span>
+        <span class="route-label" data-i18n="nav.exigenciasColombia">Exigencias en Colombia</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#frentes" class="route-link" data-section="#frentes">
-        <span class="route-label">Más allá del azufre</span>
+        <span class="route-label" data-i18n="nav.masAlla">Más allá del azufre</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#petroil5010" class="route-link" data-section="#petroil5010">
-        <span class="route-label">Petroil 50-10</span>
+        <span class="route-label" data-i18n="nav.petroil5010">Petroil 50-10</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
     </nav>
@@ -96,32 +106,40 @@
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
     <a href="#precision" class="drawer-link" data-section="#precision">
       <span class="drawer-node" aria-hidden="true"></span>
-      Euro VI
+      <span data-i18n="nav.euroVI">Euro VI</span>
     </a>
     <a href="#pieza" class="drawer-link" data-section="#pieza">
       <span class="drawer-node" aria-hidden="true"></span>
-      La pieza clave
+      <span data-i18n="nav.piezaClave">La pieza clave</span>
     </a>
     <a href="#colombia" class="drawer-link" data-section="#colombia">
       <span class="drawer-node" aria-hidden="true"></span>
-      Exigencias en Colombia
+      <span data-i18n="nav.exigenciasColombia">Exigencias en Colombia</span>
     </a>
     <a href="#frentes" class="drawer-link" data-section="#frentes">
       <span class="drawer-node" aria-hidden="true"></span>
-      Más allá del azufre
+      <span data-i18n="nav.masAlla">Más allá del azufre</span>
     </a>
     <a href="#petroil5010" class="drawer-link" data-section="#petroil5010">
       <span class="drawer-node" aria-hidden="true"></span>
-      Petroil 50-10
+      <span data-i18n="nav.petroil5010">Petroil 50-10</span>
     </a>
   </nav>
   <div class="drawer-footer">
-    <a href="../portal-clientes/portal-clientes.html" class="drawer-portal">Portal de clientes</a>
-    <a href="../nosotros/quienes-somos.html" class="drawer-portal">¿Quiénes somos?</a>
-    <a href="#contacto" class="btn-contacto">Contacto</a>
+    <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
+    <a href="../nosotros/quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+    <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
-      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">ES</button>
-      <div class="lang-dropdown"><a href="#">English</a><a href="#">Español</a><a href="#">Português</a></div>
+      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+        <span class="lang-current" data-lang-current>ES</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-dropdown">
+        <a href="#" data-lang="en">English</a>
+        <a href="#" data-lang="es">Español</a>
+        <a href="#" data-lang="pt">Português</a>
+      </div>
     </div>
   </div>
 </aside>
@@ -131,10 +149,10 @@
     <div class="page-hero-bg" aria-hidden="true"><img src="../assets/img/noticias/euro-vi-petroil-50-10-refineria.jpg" alt="" loading="eager" fetchpriority="high" decoding="async"></div>
     <div class="hero-particles" id="heroParticles"></div>
     <div class="container">
-      <div class="breadcrumb"><a href="../index.html">Inicio</a> / <a href="../index.html#noticias">Noticias</a> / Euro VI</div>
-      <span class="eyebrow" style="color:var(--teal-light);">Calidad del combustible</span>
-      <h1 style="margin-top:12px;">Euro VI: por qué la calidad del combustible importa tanto como la tecnología del motor</h1>
-      <p>Los motores más avanzados solo cumplen su función si el combustible que los alimenta está a la altura. Así entra en juego Petroil 50-10.</p>
+      <div class="breadcrumb"><a href="../index.html" data-i18n="crumb.home">Inicio</a> / <a href="../index.html#noticias" data-i18n="nav.noticias">Noticias</a> / Euro VI</div>
+      <span class="eyebrow" style="color:var(--teal-light);" data-i18n="hero.eyebrow">Calidad del combustible</span>
+      <h1 style="margin-top:12px;" data-i18n="hero.h1">Euro VI: por qué la calidad del combustible importa tanto como la tecnología del motor</h1>
+      <p data-i18n="hero.lead">Los motores más avanzados solo cumplen su función si el combustible que los alimenta está a la altura. Así entra en juego Petroil 50-10.</p>
     </div>
   </section>
 
@@ -143,83 +161,83 @@
 
       <div class="article-grid" style="margin-top:30px;">
         <nav class="toc">
-          <span>En esta noticia</span>
-          <a href="#precision">Euro VI, con precisión</a>
-          <a href="#pieza">La pieza que nadie menciona</a>
-          <a href="#colombia">Lo que ya exige Colombia</a>
-          <a href="#frentes">Cuatro frentes de calidad</a>
-          <a href="#petroil5010">Petroil 50-10</a>
-          <a href="#conclusion">El motor solo cumple su parte</a>
+          <span data-i18n="toc.heading">En esta noticia</span>
+          <a href="#precision" data-i18n="toc.precision">Euro VI, con precisión</a>
+          <a href="#pieza" data-i18n="toc.pieza">La pieza que nadie menciona</a>
+          <a href="#colombia" data-i18n="toc.colombia">Lo que ya exige Colombia</a>
+          <a href="#frentes" data-i18n="toc.frentes">Cuatro frentes de calidad</a>
+          <a href="#petroil5010" data-i18n="toc.petroil5010">Petroil 50-10</a>
+          <a href="#conclusion" data-i18n="toc.conclusion">El motor solo cumple su parte</a>
         </nav>
 
         <div class="prose">
-          <p class="article-lead">Cuando se habla de Euro VI, la conversación casi siempre gira alrededor del motor: mejores sistemas de inyección, catalizadores más sofisticados, filtros de partículas.</p>
-          <p>Y es cierto que ahí ocurre buena parte de la innovación. Pero hay una pieza que rara vez recibe el mismo protagonismo, y sin la cual toda esa tecnología simplemente no funciona: el combustible.</p>
+          <p class="article-lead" data-i18n="lead.p1">Cuando se habla de Euro VI, la conversación casi siempre gira alrededor del motor: mejores sistemas de inyección, catalizadores más sofisticados, filtros de partículas.</p>
+          <p data-i18n="lead.p2">Y es cierto que ahí ocurre buena parte de la innovación. Pero hay una pieza que rara vez recibe el mismo protagonismo, y sin la cual toda esa tecnología simplemente no funciona: el combustible.</p>
 
-          <h2 id="precision">Euro VI, con precisión</h2>
-          <p>Vale la pena aclarar algo que suele confundirse. Euro VI —en números romanos— es la norma que aplica a vehículos pesados: camiones y buses. Euro 6 —en números arábigos— regula vehículos livianos.</p>
-          <p>Ambas comparten filosofía y van endureciendo los límites de emisiones generación tras generación, pero no son la misma norma. Para el transporte de carga y la operación industrial, que mueven buena parte de la economía del país, es Euro VI la que realmente aplica.</p>
+          <h2 id="precision" data-i18n="precision.h2">Euro VI, con precisión</h2>
+          <p data-i18n="precision.p1">Vale la pena aclarar algo que suele confundirse. Euro VI —en números romanos— es la norma que aplica a vehículos pesados: camiones y buses. Euro 6 —en números arábigos— regula vehículos livianos.</p>
+          <p data-i18n="precision.p2">Ambas comparten filosofía y van endureciendo los límites de emisiones generación tras generación, pero no son la misma norma. Para el transporte de carga y la operación industrial, que mueven buena parte de la economía del país, es Euro VI la que realmente aplica.</p>
 
-          <h2 id="pieza">La pieza que casi nadie menciona</h2>
-          <p>Los motores Euro VI reducen emisiones de óxidos de nitrógeno (NOx) y material particulado mediante tecnologías como los sistemas de reducción catalítica selectiva (SCR) y los filtros de partículas diésel (DPF).</p>
-          <p>El problema es que estos sistemas son extremadamente sensibles al azufre: un combustible con demasiado azufre satura y desactiva el catalizador, y el motor termina emitiendo más de lo que la norma permite, sin importar qué tan avanzada sea su tecnología.</p>
+          <h2 id="pieza" data-i18n="pieza.h2">La pieza que casi nadie menciona</h2>
+          <p data-i18n="pieza.p1">Los motores Euro VI reducen emisiones de óxidos de nitrógeno (NOx) y material particulado mediante tecnologías como los sistemas de reducción catalítica selectiva (SCR) y los filtros de partículas diésel (DPF).</p>
+          <p data-i18n="pieza.p2">El problema es que estos sistemas son extremadamente sensibles al azufre: un combustible con demasiado azufre satura y desactiva el catalizador, y el motor termina emitiendo más de lo que la norma permite, sin importar qué tan avanzada sea su tecnología.</p>
 
           <div class="callout-box">
-            <p>Euro VI no es únicamente una norma de motores. En la práctica, es una norma que exige un combustible distinto.</p>
+            <p data-i18n="callout.text">Euro VI no es únicamente una norma de motores. En la práctica, es una norma que exige un combustible distinto.</p>
           </div>
 
-          <h2 id="colombia">Lo que ya exige Colombia</h2>
-          <p>Esto no es un escenario a futuro. La normativa colombiana que adopta los criterios de Euro VI estableció que, desde el 1 de enero de 2023, el contenido de azufre permitido en el diésel (ACPM) debía estar entre 15 y 10 partes por millón (ppm).</p>
-          <p>Y que a partir del 1 de enero de 2025 ese límite no puede superar las 10 ppm en ningún caso. Para dimensionar el salto: hace apenas un par de décadas, el diésel convencional podía contener miles de ppm de azufre. Hoy la norma exige una fracción mínima de esa cifra.</p>
+          <h2 id="colombia" data-i18n="colombia.h2">Lo que ya exige Colombia</h2>
+          <p data-i18n="colombia.p1">Esto no es un escenario a futuro. La normativa colombiana que adopta los criterios de Euro VI estableció que, desde el 1 de enero de 2023, el contenido de azufre permitido en el diésel (ACPM) debía estar entre 15 y 10 partes por millón (ppm).</p>
+          <p data-i18n="colombia.p2">Y que a partir del 1 de enero de 2025 ese límite no puede superar las 10 ppm en ningún caso. Para dimensionar el salto: hace apenas un par de décadas, el diésel convencional podía contener miles de ppm de azufre. Hoy la norma exige una fracción mínima de esa cifra.</p>
 
           <div class="stat-row">
-            <div class="stat-card"><div class="num">15–10 ppm</div><div class="label">Límite de azufre vigente desde el 1 de enero de 2023</div></div>
-            <div class="stat-card"><div class="num">≤10 ppm</div><div class="label">Límite de azufre exigido desde el 1 de enero de 2025</div></div>
+            <div class="stat-card"><div class="num">15–10 ppm</div><div class="label" data-i18n="stat1.label">Límite de azufre vigente desde el 1 de enero de 2023</div></div>
+            <div class="stat-card"><div class="num">≤10 ppm</div><div class="label" data-i18n="stat2.label">Límite de azufre exigido desde el 1 de enero de 2025</div></div>
           </div>
 
-          <h2 id="frentes">Más allá del azufre: cuatro frentes que definen la calidad de un diésel</h2>
-          <p>El azufre es el parámetro más determinante para Euro VI, pero no el único que define si un combustible está a la altura de un motor moderno. En términos generales, la calidad del diésel se evalúa en cuatro frentes:</p>
+          <h2 id="frentes" data-i18n="frentes.h2">Más allá del azufre: cuatro frentes que definen la calidad de un diésel</h2>
+          <p data-i18n="frentes.intro">El azufre es el parámetro más determinante para Euro VI, pero no el único que define si un combustible está a la altura de un motor moderno. En términos generales, la calidad del diésel se evalúa en cuatro frentes:</p>
 
           <div class="icon-grid">
             <div class="icon-item">
               <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-              <div><h4>Desempeño del motor</h4><p>El número de cetano y la lubricidad determinan qué tan eficiente es la combustión y cuánto desgaste sufren los componentes de inyección.</p></div>
+              <div><h4 data-i18n="feat1.title">Desempeño del motor</h4><p data-i18n="feat1.desc">El número de cetano y la lubricidad determinan qué tan eficiente es la combustión y cuánto desgaste sufren los componentes de inyección.</p></div>
             </div>
             <div class="icon-item">
               <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg></div>
-              <div><h4>Impacto ambiental</h4><p>Además del azufre, factores como los residuos de carbón influyen directamente en las emisiones y en la formación de partículas.</p></div>
+              <div><h4 data-i18n="feat2.title">Impacto ambiental</h4><p data-i18n="feat2.desc">Además del azufre, factores como los residuos de carbón influyen directamente en las emisiones y en la formación de partículas.</p></div>
             </div>
             <div class="icon-item">
               <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg></div>
-              <div><h4>Seguridad industrial</h4><p>El punto de inflamación y la conductividad eléctrica son clave para el manejo, transporte y almacenamiento seguro del combustible.</p></div>
+              <div><h4 data-i18n="feat3.title">Seguridad industrial</h4><p data-i18n="feat3.desc">El punto de inflamación y la conductividad eléctrica son clave para el manejo, transporte y almacenamiento seguro del combustible.</p></div>
             </div>
             <div class="icon-item">
               <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 0114-5M20 12a8 8 0 01-14 5M14 3l4 4-4 4M10 21l-4-4 4-4"/></svg></div>
-              <div><h4>Transición energética</h4><p>Cada contaminante que se reduce hoy en el combustible es una emisión que no habrá que compensar mañana.</p></div>
+              <div><h4 data-i18n="feat4.title">Transición energética</h4><p data-i18n="feat4.desc">Cada contaminante que se reduce hoy en el combustible es una emisión que no habrá que compensar mañana.</p></div>
             </div>
           </div>
 
-          <h2 id="petroil5010">Petroil 50-10: la respuesta en la práctica</h2>
-          <p>Petroil 50-10 es diésel de ultra bajo azufre, con un máximo de 10 ppm — el límite más exigente que contempla la normativa colombiana, y el que efectivamente necesitan los motores Euro VI para que su tecnología de control de emisiones funcione como fue diseñada.</p>
-          <p>No es una cifra decorativa: es la diferencia entre un catalizador que cumple su función durante toda la vida útil del motor y uno que se degrada antes de tiempo.</p>
+          <h2 id="petroil5010" data-i18n="petroil5010.h2">Petroil 50-10: la respuesta en la práctica</h2>
+          <p data-i18n="petroil5010.p1">Petroil 50-10 es diésel de ultra bajo azufre, con un máximo de 10 ppm — el límite más exigente que contempla la normativa colombiana, y el que efectivamente necesitan los motores Euro VI para que su tecnología de control de emisiones funcione como fue diseñada.</p>
+          <p data-i18n="petroil5010.p2">No es una cifra decorativa: es la diferencia entre un catalizador que cumple su función durante toda la vida útil del motor y uno que se degrada antes de tiempo.</p>
 
           <figure class="article-figure">
             <img src="../assets/img/noticias/euro-vi-infografia-azufre.jpg" alt="Infografía: bajo contenido de azufre y control de emisiones de NOx y partículas — Petroil 50-10" loading="lazy">
-            <figcaption>Petroil 50-10: diésel ultra bajo azufre, con un máximo de 10 ppm.</figcaption>
+            <figcaption data-i18n="figure1.caption">Petroil 50-10: diésel ultra bajo azufre, con un máximo de 10 ppm.</figcaption>
           </figure>
 
-          <h2 id="conclusion">El motor solo cumple su parte</h2>
-          <p>La transición hacia un transporte más limpio no depende únicamente de fabricar mejores motores. Depende, en igual medida, de qué combustible los alimenta.</p>
-          <p>Euro VI lo exige por norma; en Petroil lo asumimos como estándar.</p>
+          <h2 id="conclusion" data-i18n="conclusion.h2">El motor solo cumple su parte</h2>
+          <p data-i18n="conclusion.p1">La transición hacia un transporte más limpio no depende únicamente de fabricar mejores motores. Depende, en igual medida, de qué combustible los alimenta.</p>
+          <p data-i18n="conclusion.p2">Euro VI lo exige por norma; en Petroil lo asumimos como estándar.</p>
 
           <div class="article-share">
-            <span>Comparte esta noticia:</span>
-            <a href="https://api.whatsapp.com/send?text=Euro%20VI%3A%20por%20qu%C3%A9%20la%20calidad%20del%20combustible%20importa%20tanto%20como%20la%20tecnolog%C3%ADa%20del%20motor" target="_blank" rel="noopener" aria-label="Compartir en WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://petroilsa.com/euro-vi-calidad-combustible-tecnologia-motor/" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
+            <span data-i18n="share.label">Comparte esta noticia:</span>
+            <a href="https://api.whatsapp.com/send?text=Euro%20VI%3A%20por%20qu%C3%A9%20la%20calidad%20del%20combustible%20importa%20tanto%20como%20la%20tecnolog%C3%ADa%20del%20motor%20https%3A%2F%2Fwww.petroilsa.com%2Fnoticias%2Feuro-vi-calidad-combustible-tecnologia-motor.html" target="_blank" rel="noopener" aria-label="Compartir en WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.petroilsa.com%2Fnoticias%2Feuro-vi-calidad-combustible-tecnologia-motor.html" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
           </div>
 
           <div class="article-back">
-            <a href="../index.html#noticias" class="btn-outline dark">← Volver a Noticias</a>
+            <a href="../index.html#noticias" class="btn-outline dark" data-i18n="back.toNews">← Volver a Noticias</a>
           </div>
         </div>
       </div>
@@ -232,7 +250,7 @@
   <div class="container footer-main">
     <div class="footer-brand">
       <img src="../assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
-      <p>Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
+      <p data-i18n="footer.tagline">Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
         <a href="https://www.linkedin.com/company/petroilsa/" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
@@ -241,33 +259,33 @@
       </div>
     </div>
     <div class="footer-links-col">
-      <h4>Enlaces</h4>
+      <h4 data-i18n="footer.linksHeading">Enlaces</h4>
       <ul class="footer-links">
-        <li><a href="../productos.html">Productos</a></li>
-        <li><a href="../index.html#servicios">Servicios</a></li>
-        <li><a href="../index.html#innovacion">Innovación</a></li>
-        <li><a href="../portal-clientes/portal-clientes.html">Clientes</a></li>
-        <li><a href="../index.html#nosotros">¿Quiénes somos?</a></li>
-        <li><a href="../index.html#noticias">Noticias</a></li>
+        <li><a href="../productos.html" data-i18n="nav.productos">Productos</a></li>
+        <li><a href="../index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="../index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
+        <!-- <li><a href="../portal-clientes/portal-clientes.html" data-i18n="footer.link.clientes">Clientes</a></li> -->
+        <li><a href="../index.html#nosotros" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <li><a href="../index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
       </ul>
     </div>
     <div class="footer-contact">
-      <h4>Contacto</h4>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
+      <h4 data-i18n="footer.contactHeading">Contacto</h4>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.office"><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.refineria"><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.aliado"><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><span>contacto@petroilsa.com</span></p>
       <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
-        WhatsApp: +57 311 333 7046
+        <span data-i18n="footer.whatsapp">WhatsApp: +57 311 333 7046</span>
       </a>
     </div>
     <div class="footer-map">
-      <h4>Ubicación</h4>
+      <h4 data-i18n="footer.mapHeading">Ubicación</h4>
       <div class="map-tabs">
-        <button class="map-tab active" data-map="bogota">Oficina Bogotá</button>
-        <button class="map-tab" data-map="santamarta">Refinería Santa Marta</button>
-        <button class="map-tab" data-map="esquivensa">Aliado Barranquilla</button>
+        <button class="map-tab active" data-map="bogota" data-i18n="footer.mapTab.bogota">Oficina Bogotá</button>
+        <button class="map-tab" data-map="santamarta" data-i18n="footer.mapTab.santamarta">Refinería Santa Marta</button>
+        <button class="map-tab" data-map="esquivensa" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
         <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -275,35 +293,45 @@
           title="Mapa de ubicación de Petroil"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://www.google.com/maps/search/?api=1&query=Torre+Empresarial+Pacific+Calle+110+%239-25+Bogota" target="_blank" rel="noopener">
-        Abrir en Google Maps
+        <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 Petroil S.A. Todos los derechos reservados.</span>
+    <span data-i18n="footer.copyright">© 2026 Petroil S.A. Todos los derechos reservados.</span>
     <div class="footer-bottom-links">
-      <a href="../legal/politica-datos.html">Política de protección de datos</a>
-      <a href="../legal/pqrsf.html">PQRSF</a>
+      <a href="../legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a>
+      <a href="../legal/pqrsf.html" data-i18n="footer.link.pqrsf">PQRSF</a>
     </div>
   </div>
 </footer>
 
-<button class="chat-launcher" id="chatLauncher" aria-label="Abrir asistente virtual">
+<button class="chat-launcher" id="chatLauncher" aria-label="Abrir chat con AIRA, asistente virtual de Petroil">
   <span class="demo-dot">DEMO</span>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1.1-4.2A8 8 0 1121 12z"/></svg>
+  <img class="launcher-avatar" src="../assets/img/aira-avatar.webp" alt="" width="60" height="60">
 </button>
 <div class="chat-panel" id="chatPanel">
-  <div class="chat-head"><span class="dot"></span><div><strong>Asistente Petroil</strong><span>En línea · respuestas de ejemplo</span></div><button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button></div>
-  <div class="chat-disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
-  <div class="chat-log" id="chatLog"><div class="msg bot">Hola 👋 Soy el asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div></div>
-  <div class="chat-quick" id="chatQuick">
-    <button class="quick-btn" data-q="productos">¿Qué productos ofrecen?</button>
-    <button class="quick-btn" data-q="ubicacion">¿Dónde están ubicados?</button>
-    <button class="quick-btn" data-q="certificaciones">Certificaciones ISO</button>
-    <button class="quick-btn" data-q="asesor">Hablar con un asesor</button>
+  <div class="chat-head">
+    <div class="chat-avatar-wrap">
+      <img class="chat-avatar" src="../assets/img/aira-avatar.webp" alt="" width="40" height="40">
+      <span class="dot" aria-hidden="true"></span>
+    </div>
+    <div>
+      <strong>AIRA</strong>
+      <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
   </div>
-  <div class="chat-wa"><a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg>Continuar por WhatsApp</a></div>
+  <div class="chat-disclaimer" data-i18n="chat.disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
+  <div class="chat-log" id="chatLog"><div class="msg bot" data-i18n="chat.greeting">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div></div>
+  <div class="chat-quick" id="chatQuick">
+    <button class="quick-btn" data-q="productos" data-i18n="chat.q1">¿Qué productos ofrecen?</button>
+    <button class="quick-btn" data-q="ubicacion" data-i18n="chat.q2">¿Dónde están ubicados?</button>
+    <button class="quick-btn" data-q="certificaciones" data-i18n="chat.q3">Certificaciones ISO</button>
+    <button class="quick-btn" data-q="asesor" data-i18n="chat.q4">Hablar con un asesor</button>
+  </div>
+  <div class="chat-wa"><a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg><span data-i18n="chat.wa">Continuar por WhatsApp</span></a></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -313,5 +341,6 @@
 <script src="../assets/js/chatbot.js"></script>
 <script src="../assets/js/cursor.js"></script>
 <script src="../assets/js/hero-particles.js"></script>
+<script src="../assets/js/i18n.js"></script>
 </body>
 </html>

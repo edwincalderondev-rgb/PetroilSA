@@ -1,0 +1,74 @@
+{
+  "breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "hero.badge1": { "es": "No convencional", "en": "Non-conventional", "pt": "Não convencional" },
+  "hero.badge2": { "es": "Tecnología FISTech®", "en": "FISTech® technology", "pt": "Tecnologia FISTech®" },
+  "hero.badge3": { "es": "Primero en Colombia", "en": "First in Colombia", "pt": "Primeiro na Colômbia" },
+  "hero.title": { "es": "Petroil 800 <span style=\"color:var(--teal-light);\">— HC</span>", "en": "Petroil 800 <span style=\"color:var(--teal-light);\">— HC</span>", "pt": "Petroil 800 <span style=\"color:var(--teal-light);\">— HC</span>" },
+  "hero.lead": { "es": "Hace parte de la nueva generación de combustibles no convencionales diseñados y producidos por Petroil, que contribuye a la transición energética mediante la fusión de combustibles derivados del petróleo con sustancias de base orgánica renovable.", "en": "Part of the new generation of non-conventional fuels designed and produced by Petroil, contributing to the energy transition by combining petroleum-derived fuels with renewable organic-base substances.", "pt": "Faz parte da nova geração de combustíveis não convencionais projetados e produzidos pela Petroil, que contribui para a transição energética ao combinar combustíveis derivados do petróleo com substâncias de base orgânica renovável." },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+  "cta.whatsappNumber": { "es": "WhatsApp +57 311 333 7046", "en": "WhatsApp +57 311 333 7046", "pt": "WhatsApp +57 311 333 7046" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.mini1": { "es": "Emisiones GEI", "en": "GHG emissions", "pt": "Emissões de GEE" },
+  "visual.mini2": { "es": "BTU/lb", "en": "BTU/lb", "pt": "BTU/lb" },
+  "visual.mini3": { "es": "Tecnología", "en": "Technology", "pt": "Tecnologia" },
+
+  "stat.label1": { "es": "Reducción de emisiones de GEI y material particulado vs. combustibles convencionales", "en": "Reduction in GHG and particulate matter emissions vs. conventional fuels", "pt": "Redução de emissões de GEE e material particulado em relação a combustíveis convencionais" },
+  "stat.label2": { "es": "Calor neto de combustión", "en": "Net heat of combustion", "pt": "Calor líquido de combustão" },
+  "stat.label3": { "es": "Punto de inflamación", "en": "Flash point", "pt": "Ponto de fulgor" },
+
+  "section.desc": { "es": "Descripción", "en": "Description", "pt": "Descrição" },
+  "desc.p1": { "es": "Hace parte de la nueva generación de combustibles no convencionales diseñados y producidos por Petroil, que contribuye a la transición energética mediante la fusión de combustibles derivados del petróleo con sustancias de base orgánica renovable.", "en": "Part of the new generation of non-conventional fuels designed and produced by Petroil, contributing to the energy transition by combining petroleum-derived fuels with renewable organic-base substances.", "pt": "Faz parte da nova geração de combustíveis não convencionais projetados e produzidos pela Petroil, que contribui para a transição energética ao combinar combustíveis derivados do petróleo com substâncias de base orgânica renovável." },
+  "desc.p2": { "es": "Petroil 800 HC reduce significativamente los compuestos aromáticos, poli-aromáticos, hidrocarburos totales y azufre. Es producido con tecnología FISTech®, el primer producto de este tipo producido en Colombia.", "en": "Petroil 800 HC significantly reduces aromatic and poly-aromatic compounds, total hydrocarbons and sulfur. It is produced with FISTech® technology, the first product of its kind manufactured in Colombia.", "pt": "O Petroil 800 HC reduz significativamente os compostos aromáticos, poliaromáticos, hidrocarbonetos totais e enxofre. É produzido com a tecnologia FISTech®, o primeiro produto desse tipo fabricado na Colômbia." },
+
+  "section.benefits": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "benefit1.title": { "es": "Alto poder calórico", "en": "High calorific value", "pt": "Alto poder calorífico" },
+  "benefit1.desc": { "es": "Alto poder calórico que lo convierte en una excelente alternativa para ser usado en hornos y calderas.", "en": "High calorific value that makes it an excellent alternative for use in furnaces and boilers.", "pt": "Alto poder calorífico que o torna uma excelente alternativa para uso em fornos e caldeiras." },
+  "benefit2.title": { "es": "Menores emisiones", "en": "Lower emissions", "pt": "Menores emissões" },
+  "benefit2.desc": { "es": "Permite una reducción significativa de las emisiones de GEI y material particulado, hasta en un 45 % comparado con los productos convencionales.", "en": "Enables a significant reduction in GHG and particulate matter emissions, by up to 45% compared to conventional products.", "pt": "Permite uma redução significativa das emissões de GEE e material particulado, em até 45% em comparação com produtos convencionais." },
+
+  "section.specs": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "table.paramHead": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Contenido de Azufre (ppm)", "en": "Sulfur content (ppm)", "pt": "Teor de enxofre (ppm)" },
+  "table.row2": { "es": "Calor Neto de Combustión, BTU/lb", "en": "Net heat of combustion, BTU/lb", "pt": "Calor líquido de combustão, BTU/lb" },
+  "table.row3": { "es": "Punto de Inflamación, °C", "en": "Flash point, °C", "pt": "Ponto de fulgor, °C" },
+  "table.row4": { "es": "Viscosidad, cSt", "en": "Viscosity, cSt", "pt": "Viscosidade, cSt" },
+
+  "section.safety": { "es": "Precauciones y manejo", "en": "Precautions and handling", "pt": "Precauções e manuseio" },
+  "badge.example": { "es": "Dato de ejemplo", "en": "Sample data", "pt": "Dado de exemplo" },
+  "safety.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "safety.text": { "es": "Se estima una clasificación como líquido combustible clase III según la norma 321 de la NFPA, propia de combustibles pesados no convencionales. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "An estimated classification as a Class III combustible liquid under NFPA 321, typical of non-conventional heavy fuels. Check the official safety data sheet (MSDS) before handling or transporting this product.", "pt": "Estima-se uma classificação como líquido combustível classe III conforme a norma 321 da NFPA, própria de combustíveis pesados não convencionais. Consulte a ficha de segurança (FISPQ/MSDS) oficial antes de manusear ou transportar o produto." },
+  "safety.cas": { "es": "Número CAS: <span class=\"cas\">68476-33-5</span>", "en": "CAS Number: <span class=\"cas\">68476-33-5</span>", "pt": "Número CAS: <span class=\"cas\">68476-33-5</span>" },
+
+  "sidebar.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "sidebar.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "sidebar.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 800 · HC.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 800 · HC.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho do Petroil 800 · HC." },
+  "sidebar.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "sidebar.codeLabel": { "es": "Código", "en": "Code", "pt": "Código" },
+  "sidebar.categoryLabel": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "sidebar.techLabel": { "es": "Tecnología", "en": "Technology", "pt": "Tecnologia" },
+  "sidebar.geiLabel": { "es": "Reducción de GEI", "en": "GHG reduction", "pt": "Redução de GEE" },
+  "sidebar.useLabel": { "es": "Uso", "en": "Use", "pt": "Uso" },
+  "sidebar.useValue": { "es": "Hornos y calderas", "en": "Furnaces and boilers", "pt": "Fornos e caldeiras" },
+  "sidebar.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "sidebar.advisorText": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas sobre disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 800 · HC?", "en": "Interested in Petroil 800 · HC?", "pt": "Interessado no Petroil 800 · HC?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often, and where you'll receive it. A sales advisor will contact you with the quote and the product's official data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial vai contatá-lo com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreFamily": { "es": "Más en Fuel Oils →", "en": "More in Fuel Oils →", "pt": "Mais em Fuel Oils →" },
+  "related.viewAll": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+  "family.fuelOils": { "es": "Fuel Oils", "en": "Fuel Oils", "pt": "Fuel Oils" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "rel1.desc": { "es": "Solución para generación de energía e industria.", "en": "A solution for power generation and industry.", "pt": "Solução para geração de energia e indústria." },
+  "rel2.desc": { "es": "Soluciones más limpias para uso industrial.", "en": "Cleaner solutions for industrial use.", "pt": "Soluções mais limpas para uso industrial." },
+  "rel3.desc": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel4.desc": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre de alto desempenho." },
+  "rel.moreLink": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

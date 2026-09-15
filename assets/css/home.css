@@ -167,7 +167,10 @@
 }
 .news-body{padding:22px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;}
 .news-body h3{font-size:1.05rem; color:var(--navy); line-height:1.4; margin-bottom:16px;}
-.news-body .readmore{font-size:.84rem; font-weight:600; color:var(--amber);}
+/* Antes var(--amber): tras la migración de paleta --amber es verde lima
+   (#C7F547) y sobre la tarjeta blanca el enlace era prácticamente ilegible. */
+.news-body .readmore{font-size:.84rem; font-weight:600; color:var(--teal); transition:color .2s;}
+.news-body .readmore:hover{color:var(--navy);}
 .news-foot{text-align:center; margin-top:40px;}
 
 /* ABOUT */

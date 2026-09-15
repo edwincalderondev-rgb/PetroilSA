@@ -36,7 +36,7 @@
       <div class="nav-utility">
         <a href="productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
         <a href="nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
-        <a href="portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a>
+        <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
         <div class="lang-select" id="langSelect">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
@@ -49,7 +49,7 @@
             <a href="#" data-lang="pt">Português</a>
           </div>
         </div>
-        <a href="#contacto" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
+        <a href="contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
           <span></span><span></span><span></span>
         </button>
@@ -121,9 +121,9 @@
   </nav>
 
   <div class="drawer-footer">
-    <a href="portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a>
+    <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
     <a href="nosotros/quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
-    <a href="#contacto" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
+    <a href="contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
       <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
@@ -142,7 +142,7 @@
 <main id="main">
 
   <section class="hero hero-video-mode">
-    <video class="hero-bg-media" autoplay loop muted playsinline poster="img/hero-poster.jpg">
+    <video class="hero-bg-media" autoplay loop muted playsinline poster="assets/img/hero-poster.jpg">
       <source src="assets/vids/petroil-hero.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -158,7 +158,7 @@
             <span data-i18n="nav.productos">Productos</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#servicios" class="btn-outline" data-i18n="nav.innovacion">Innovación</a>
+          <a href="#innovacion" class="btn-outline" data-i18n="nav.innovacion">Innovación</a>
         </div>
       </div>
     </div>
@@ -172,17 +172,17 @@
       </div>
       <div class="pillars-grid">
         <div class="pillar-card">
-          <div class="pillar-media"><div class="pillar-blob"></div><img referrerpolicy="no-referrer" src="assets/img/ave1.png" alt="Protege"></div>
+          <div class="pillar-media"><div class="pillar-blob"></div><img referrerpolicy="no-referrer" src="assets/img/ave1.webp" alt="Protege"></div>
           <h3 data-i18n="pillars.card1.title">Protege</h3>
           <p data-i18n="pillars.card1.desc">Petroil es la primera refinería de América Latina dedicada a diseñar y fabricar combustibles amigables con el medio ambiente.</p>
         </div>
         <div class="pillar-card">
-          <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave3.png" alt="Preserva"></div>
+          <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave3.webp" alt="Preserva"></div>
           <h3 data-i18n="pillars.card2.title">Preserva</h3>
           <p data-i18n="pillars.card2.desc">Aportamos soluciones innovadoras para el desarrollo sostenible.</p>
         </div>
         <div class="pillar-card">
-          <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave4.png" alt="Cuida"></div>
+          <div class="pillar-media"><div class="pillar-blob"></div><img src="assets/img/ave4.webp" alt="Cuida"></div>
           <h3 data-i18n="pillars.card3.title">Cuida</h3>
           <p data-i18n="pillars.card3.desc">Trabajamos para hacer combustibles mejores y más limpios, cuidando cada etapa del proceso de refinación.</p>
         </div>
@@ -195,28 +195,28 @@
     <span class="eyebrow" data-i18n="alliances.eyebrow">Alianzas estratégicas</span>
     <div class="marquee">
       <div class="marquee-track">
-        <img src="assets/img/alianza-ecos.png" alt="Ecos">
-        <img src="assets/img/alianza-ecopetrol.png" alt="Ecopetrol">
-        <img src="assets/img/alianza-logo3.avif" alt="Aliado">
-        <img src="assets/img/alianza-grupo2.png" alt="Grupo">
-        <img src="assets/img/alianza-hocol.jpg" alt="Hocol">
-        <img src="assets/img/alianza-logo7.png" alt="Aliado">
-        <img src="assets/img/alianza-petrobras.gif" alt="Petrobras">
-        <img src="assets/img/alianza-primax2.png" alt="Primax">
-        <img src="assets/img/alianza-esquivensa.png" alt="Esquivensa">
-        <img src="assets/img/alianza-logo11.webp" alt="Aliado">
-        <img src="assets/img/alianza-logo14.png" alt="Aliado">
-        <img src="assets/img/alianza-ecos.png" alt="Ecos">
-        <img src="assets/img/alianza-ecopetrol.png" alt="Ecopetrol">
-        <img src="assets/img/alianza-logo3.avif" alt="Aliado">
-        <img src="assets/img/alianza-grupo2.png" alt="Grupo">
-        <img src="assets/img/alianza-hocol.jpg" alt="Hocol">
-        <img src="assets/img/alianza-logo7.png" alt="Aliado">
-        <img src="assets/img/alianza-petrobras.gif" alt="Petrobras">
-        <img src="assets/img/alianza-primax2.png" alt="Primax">
-        <img src="assets/img/alianza-esquivensa.png" alt="Esquivensa">
-        <img src="assets/img/alianza-logo11.webp" alt="Aliado">
-        <img src="assets/img/alianza-logo14.png" alt="Aliado">
+        <img src="assets/img/alianza-ecos.png" alt="Ecos" loading="lazy">
+        <img src="assets/img/alianza-ecopetrol.png" alt="Ecopetrol" loading="lazy">
+        <img src="assets/img/alianza-logo3.avif" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-grupo2.png" alt="Grupo" loading="lazy">
+        <img src="assets/img/alianza-hocol.jpg" alt="Hocol" loading="lazy">
+        <img src="assets/img/alianza-logo7.png" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-petrobras.gif" alt="Petrobras" loading="lazy">
+        <img src="assets/img/alianza-primax2.png" alt="Primax" loading="lazy">
+        <img src="assets/img/alianza-esquivensa.png" alt="Esquivensa" loading="lazy">
+        <img src="assets/img/alianza-logo11.webp" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-logo14.png" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-ecos.png" alt="Ecos" loading="lazy">
+        <img src="assets/img/alianza-ecopetrol.png" alt="Ecopetrol" loading="lazy">
+        <img src="assets/img/alianza-logo3.avif" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-grupo2.png" alt="Grupo" loading="lazy">
+        <img src="assets/img/alianza-hocol.jpg" alt="Hocol" loading="lazy">
+        <img src="assets/img/alianza-logo7.png" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-petrobras.gif" alt="Petrobras" loading="lazy">
+        <img src="assets/img/alianza-primax2.png" alt="Primax" loading="lazy">
+        <img src="assets/img/alianza-esquivensa.png" alt="Esquivensa" loading="lazy">
+        <img src="assets/img/alianza-logo11.webp" alt="Aliado" loading="lazy">
+        <img src="assets/img/alianza-logo14.png" alt="Aliado" loading="lazy">
       </div>
     </div>
   </section>
@@ -229,7 +229,10 @@
         <p data-i18n="uses.desc">Trabajamos en el diseño y producción de combustibles cuyo uso contribuye a reducir significativamente las emisiones de gases de efecto invernadero.</p>
       </div>
       <div class="uses-grid">
-        <a class="use-card" href="https://petroilsa.com/servicios/">
+        <!-- Cada uso abre el catálogo ya filtrado por sector (productos.js lee ?sector=).
+             Antes apuntaban a petroilsa.com/servicios/, una URL del WordPress anterior
+             que deja de existir al publicar este sitio. -->
+        <a class="use-card" href="productos.html?sector=maritimo#catalogo">
           <div class="use-media"><img src="assets/img/3.png" alt="Uso marino" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v9m0 0l-4 3m4-3l4 3M5 14c0 4 3 7 7 8 4-1 7-4 7-8"/></svg></div>
           <div class="use-body">
@@ -237,7 +240,7 @@
             <p data-i18n="uses.card1.desc">MGO, VLSFO y HSFO para todo tipo de embarcaciones, bajo la norma ISO 8217/2017 para IMO 2020.</p>
           </div>
         </a>
-        <a class="use-card" href="https://petroilsa.com/servicios/">
+        <a class="use-card" href="productos.html?sector=industria#catalogo">
           <div class="use-media"><img src="assets/img/4.png" alt="Uso industrial" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9l6 3V9l6 3V6l6 3v12H3z"/></svg></div>
           <div class="use-body">
@@ -245,7 +248,7 @@
             <p data-i18n="uses.card2.desc">Combustibles a la medida para transporte de carga, maquinaria, calderas y generación de energía.</p>
           </div>
         </a>
-        <a class="use-card" href="https://petroilsa.com/servicios/">
+        <a class="use-card" href="productos.html?sector=construccion#catalogo">
           <div class="use-media"><img src="assets/img/Petroil_fotosplanta_60.jpg" alt="Equipos de minería" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20l6-11 4 6 3-4 5 9H3z"/></svg></div>
           <div class="use-body">
@@ -253,7 +256,7 @@
             <p data-i18n="uses.card3.desc">Formulaciones de alto rendimiento para maquinaria pesada y operaciones extractivas.</p>
           </div>
         </a>
-        <a class="use-card" href="https://petroilsa.com/servicios/">
+        <a class="use-card" href="productos.html?sector=generacion#catalogo">
           <div class="use-media"><img src="assets/img/Petroil_fotosplanta_46.jpg" alt="Motores estacionarios" loading="lazy"></div>
           <div class="use-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.56V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.56 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.56-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.56-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.56V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.56 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.56 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.56 1z"/></svg></div>
           <div class="use-body">
@@ -285,7 +288,7 @@
           <div class="product-info">
             <div class="product-code">P-40</div>
             <div class="product-name">Petroil 40 A MAX</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -299,7 +302,7 @@
           <div class="product-info">
             <div class="product-code">P-50/10</div>
             <div class="product-name">50 10 · ULSD Premium</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -313,7 +316,7 @@
           <div class="product-info">
             <div class="product-code">P-60</div>
             <div class="product-name">Nafta Virgen</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -327,7 +330,7 @@
           <div class="product-info">
             <div class="product-code">P-90</div>
             <div class="product-name">Gasolina premium</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -341,7 +344,7 @@
           <div class="product-info">
             <div class="product-code">P-100</div>
             <div class="product-name">Mejorador de IFOS</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -359,7 +362,7 @@
           <div class="product-info">
             <div class="product-code">P-250</div>
             <div class="product-name">Fuel Oil #4</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -373,7 +376,7 @@
           <div class="product-info">
             <div class="product-code">P-300</div>
             <div class="product-name">VLS Fuel Oil</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -387,7 +390,7 @@
           <div class="product-info">
             <div class="product-code">P-500</div>
             <div class="product-name">Marine MGO F.O.4</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -401,7 +404,7 @@
           <div class="product-info">
             <div class="product-code">P-800 G</div>
             <div class="product-name">Green</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -415,7 +418,7 @@
           <div class="product-info">
             <div class="product-code">P-800 HCl</div>
             <div class="product-name">Petroil 800 HCl</div>
-            <span class="product-arrow" data-i18n="products.viewSheet">Ver ficha técnica →</span>
+            <span class="product-arrow" data-i18n="products.viewSheet">Conocer más →</span>
           </div>
         </a>
 
@@ -544,18 +547,21 @@
         </div>
         -->
       </div>
+      <!-- Oculto hasta que exista una página de listado de noticias en este sitio:
+           apuntaba a petroilsa.com/noticias/ (WordPress anterior), que deja de existir
+           al publicar. Las 3 noticias actuales ya se muestran arriba.
       <div class="news-foot">
         <a class="btn-outline dark" href="https://petroilsa.com/noticias/" data-i18n="news.viewAll">Ver todas las noticias</a>
-      </div>
+      </div> -->
     </div>
   </section>
 
   <section class="about reveal" id="nosotros">
     <div class="container about-grid">
       <div class="about-photos">
-        <img src="assets/img/equipo-1.png" alt="Equipo Petroil">
-        <img src="assets/img/equipo-2.jpg" alt="Equipo Petroil">
-        <img src="assets/img/equipo-3.jpg" alt="Equipo Petroil">
+        <img src="assets/img/equipo-1.jpg" alt="Equipo Petroil" loading="lazy">
+        <img src="assets/img/equipo-2.jpg" alt="Equipo Petroil" loading="lazy">
+        <img src="assets/img/equipo-3.jpg" alt="Equipo Petroil" loading="lazy">
       </div>
       <div class="about-text">
         <span class="eyebrow" data-i18n="about.eyebrow">Sobre nosotros · Visión 2031</span>
@@ -734,12 +740,13 @@ El acuerdo tiene como objetivo reducir las emisiones de carbono a nivel global y
     <div class="footer-links-col">
       <h4 data-i18n="footer.linksHeading">Enlaces</h4>
       <ul class="footer-links">
+        <li><a href="productos.html" data-i18n="nav.productos">Productos</a></li>
         <li><a href="legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a></li>
         <li><a href="legal/pqrsf.html">PQRSF</a></li>
         <li><a href="herramientas/astm-d1500-color-tool.html" data-i18n="footer.link.herramienta">Herramienta</a></li>
-        <li><a href="portal-clientes/portal-clientes.html" data-i18n="footer.link.clientes">Clientes</a></li>
-        <li><a href="nosotros/ala-de-sable.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
-        <li><a href="nosotros/ala-de-sable.html" data-i18n="nav.noticias">Noticias</a></li>
+        <!-- <li><a href="portal-clientes/portal-clientes.html" data-i18n="footer.link.clientes">Clientes</a></li> -->
+        <li><a href="nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
       </ul>
     </div>
     <div class="footer-contact">

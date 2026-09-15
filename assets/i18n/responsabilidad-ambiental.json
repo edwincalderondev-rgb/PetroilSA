@@ -1,0 +1,39 @@
+{
+  "ra.nav.enfoque": { "es": "Nuestro enfoque", "en": "Our approach", "pt": "Nossa abordagem" },
+  "ra.nav.ejes": { "es": "Ejes de trabajo", "en": "Focus areas", "pt": "Eixos de trabalho" },
+  "ra.nav.emisiones": { "es": "Tendencia de emisiones", "en": "Emissions trend", "pt": "Tendência de emissões" },
+  "ra.nav.certificacion": { "es": "Certificación ambiental", "en": "Environmental certification", "pt": "Certificação ambiental" },
+
+  "ra.breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "ra.breadcrumb.current": { "es": "Responsabilidad ambiental", "en": "Environmental responsibility", "pt": "Responsabilidade ambiental" },
+
+  "ra.eyebrow": { "es": "Gestión y sostenibilidad", "en": "Management and sustainability", "pt": "Gestão e sustentabilidade" },
+  "ra.hero.title": { "es": "Responsabilidad ambiental", "en": "Environmental responsibility", "pt": "Responsabilidade ambiental" },
+  "ra.hero.lead": { "es": "Cómo monitoreamos y reducimos el impacto ambiental de nuestros procesos de refinación.", "en": "How we monitor and reduce the environmental impact of our refining processes.", "pt": "Como monitoramos e reduzimos o impacto ambiental dos nossos processos de refino." },
+
+  "ra.exampleBanner": { "es": "Página de ejemplo — cifras y gráfico son ilustrativos, no información oficial de Petroil S.A.", "en": "Example page — figures and chart are illustrative, not official information from Petroil S.A.", "pt": "Página de exemplo — números e gráfico são ilustrativos, não são informações oficiais da Petroil S.A." },
+
+  "ra.toc.heading": { "es": "En esta página", "en": "On this page", "pt": "Nesta página" },
+  "ra.toc.emisiones": { "es": "Emisiones (ejemplo)", "en": "Emissions (example)", "pt": "Emissões (exemplo)" },
+
+  "ra.section1.title": { "es": "Nuestro enfoque ambiental", "en": "Our environmental approach", "pt": "Nossa abordagem ambiental" },
+  "ra.section1.body": { "es": "Como refinería, sabemos que nuestra actividad tiene un impacto directo sobre el entorno. Por eso monitoreamos de forma permanente nuestras emisiones y vertimientos, y reportamos los resultados a las autoridades ambientales competentes, con la meta de reducir año a año la huella de carbono de nuestros combustibles.", "en": "As a refinery, we know our activity has a direct impact on the environment. That's why we continuously monitor our emissions and discharges, and report results to the relevant environmental authorities, with the goal of reducing the carbon footprint of our fuels year after year.", "pt": "Como refinaria, sabemos que nossa atividade tem um impacto direto sobre o meio ambiente. Por isso monitoramos permanentemente nossas emissões e efluentes, e reportamos os resultados às autoridades ambientais competentes, com a meta de reduzir ano a ano a pegada de carbono dos nossos combustíveis." },
+  "ra.section1.quote": { "es": "\"Mejorar el aire que respiramos empieza por medir lo que emitimos.\" — Responsabilidad ambiental Petroil (ejemplo)", "en": "\"Improving the air we breathe starts with measuring what we emit.\" — Petroil Environmental Responsibility (example)", "pt": "\"Melhorar o ar que respiramos começa por medir o que emitimos.\" — Responsabilidade ambiental Petroil (exemplo)" },
+
+  "ra.axis1.title": { "es": "Monitoreo de emisiones", "en": "Emissions monitoring", "pt": "Monitoramento de emissões" },
+  "ra.axis1.desc": { "es": "Medición periódica de gases en cada punto crítico del proceso de refinación.", "en": "Periodic gas measurement at every critical point of the refining process.", "pt": "Medição periódica de gases em cada ponto crítico do processo de refino." },
+  "ra.axis2.title": { "es": "Gestión de vertimientos", "en": "Discharge management", "pt": "Gestão de efluentes" },
+  "ra.axis2.desc": { "es": "Tratamiento de aguas de proceso antes de su disposición final, conforme a la normativa ambiental.", "en": "Treatment of process water before final disposal, in compliance with environmental regulations.", "pt": "Tratamento das águas de processo antes de sua disposição final, conforme a legislação ambiental." },
+  "ra.axis3.title": { "es": "Gestión de residuos", "en": "Waste management", "pt": "Gestão de resíduos" },
+  "ra.axis3.desc": { "es": "Clasificación, aprovechamiento y disposición certificada de residuos peligrosos y no peligrosos.", "en": "Classification, recovery and certified disposal of hazardous and non-hazardous waste.", "pt": "Classificação, reaproveitamento e disposição certificada de resíduos perigosos e não perigosos." },
+  "ra.axis4.title": { "es": "Combustibles más limpios", "en": "Cleaner fuels", "pt": "Combustíveis mais limpos" },
+  "ra.axis4.desc": { "es": "Diseño de productos que reducen las emisiones de gases de efecto invernadero en el punto de uso.", "en": "Product design that reduces greenhouse gas emissions at the point of use.", "pt": "Design de produtos que reduzem as emissões de gases de efeito estufa no ponto de uso." },
+
+  "ra.section3.title": { "es": "Tendencia de emisiones monitoreadas (datos de ejemplo)", "en": "Monitored emissions trend (example data)", "pt": "Tendência de emissões monitoradas (dados de exemplo)" },
+  "ra.section3.body": { "es": "El siguiente gráfico ilustra, con cifras de ejemplo, cómo se vería el reporte de reducción progresiva de emisiones año a año.", "en": "The chart below illustrates, with example figures, how the report on the progressive year-over-year reduction of emissions would look.", "pt": "O gráfico a seguir ilustra, com números de exemplo, como seria o relatório de redução progressiva das emissões ano a ano." },
+  "ra.chart.caption": { "es": "Índice relativo de emisiones (ejemplo, 2022=100)", "en": "Relative emissions index (example, 2022=100)", "pt": "Índice relativo de emissões (exemplo, 2022=100)" },
+
+  "ra.isoText": { "es": "Nuestra gestión ambiental está certificada bajo la norma ISO 14001, dentro de la trinorma que también cubre calidad (ISO 9001) y seguridad y salud en el trabajo (ISO 45001).", "en": "Our environmental management is certified under the ISO 14001 standard, part of the three integrated standards that also cover quality (ISO 9001) and occupational health and safety (ISO 45001).", "pt": "Nossa gestão ambiental é certificada pela norma ISO 14001, dentro das três normas integradas que também cobrem qualidade (ISO 9001) e segurança e saúde no trabalho (ISO 45001)." },
+
+  "ra.disclaimer": { "es": "Todo el contenido de esta página —textos, cifras y el gráfico de emisiones— fue redactado con información de ejemplo para representar cómo luciría esta sección con contenido completo. Petroil S.A. debe validar y reemplazar estos datos por su información real.", "en": "All content on this page —text, figures and the emissions chart— was written with example information to show how this section would look with complete content. Petroil S.A. must validate and replace this data with its actual information.", "pt": "Todo o conteúdo desta página —textos, números e o gráfico de emissões— foi redigido com informações de exemplo para representar como esta seção ficaria com conteúdo completo. A Petroil S.A. deve validar e substituir esses dados pelas suas informações reais." }
+}

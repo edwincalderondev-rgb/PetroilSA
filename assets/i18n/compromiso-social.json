@@ -1,0 +1,38 @@
+{
+  "cs.nav.compromiso": { "es": "Compromiso", "en": "Commitment", "pt": "Compromisso" },
+  "cs.nav.programas": { "es": "Programas", "en": "Programs", "pt": "Programas" },
+  "cs.nav.impacto": { "es": "Impacto", "en": "Impact", "pt": "Impacto" },
+  "cs.nav.galeria": { "es": "Galería", "en": "Gallery", "pt": "Galeria" },
+
+  "cs.breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "cs.breadcrumb.current": { "es": "Compromiso social", "en": "Social commitment", "pt": "Compromisso social" },
+
+  "cs.eyebrow": { "es": "Gestión y sostenibilidad", "en": "Management and sustainability", "pt": "Gestão e sustentabilidade" },
+  "cs.hero.title": { "es": "Compromiso social corporativo", "en": "Corporate social commitment", "pt": "Compromisso social corporativo" },
+  "cs.hero.lead": { "es": "Cómo trabajamos junto a las comunidades vecinas a nuestras operaciones en Santa Marta y su área de influencia.", "en": "How we work alongside the communities near our operations in Santa Marta and its surrounding area.", "pt": "Como trabalhamos junto às comunidades vizinhas às nossas operações em Santa Marta e sua área de influência." },
+
+  "cs.exampleBanner": { "es": "Página de ejemplo — programas, cifras y fotografías son ilustrativos, no información oficial de Petroil S.A.", "en": "Example page — programs, figures and photographs are illustrative, not official information from Petroil S.A.", "pt": "Página de exemplo — programas, números e fotografias são ilustrativos, não são informações oficiais da Petroil S.A." },
+
+  "cs.section1.title": { "es": "Nuestro compromiso", "en": "Our commitment", "pt": "Nosso compromisso" },
+  "cs.section1.body": { "es": "Como refinería asentada en Santa Marta, entendemos que nuestra licencia social para operar depende de una relación cercana y transparente con las comunidades del sector de Mamatoco y su área de influencia. Por eso destinamos recursos y tiempo del equipo a programas que van más allá del cumplimiento normativo.", "en": "As a refinery based in Santa Marta, we understand that our social license to operate depends on a close, transparent relationship with the communities of the Mamatoco area and its surroundings. That's why we devote resources and team time to programs that go beyond regulatory compliance.", "pt": "Como refinaria instalada em Santa Marta, entendemos que nossa licença social para operar depende de uma relação próxima e transparente com as comunidades do setor de Mamatoco e sua área de influência. Por isso, destinamos recursos e tempo da equipe a programas que vão além do cumprimento normativo." },
+  "cs.section1.quote": { "es": "\"Ser buenos vecinos es tan importante como ser buenos proveedores.\" — Compromiso Petroil (ejemplo)", "en": "\"Being good neighbors is as important as being good suppliers.\" — Petroil Commitment (example)", "pt": "\"Ser bons vizinhos é tão importante quanto ser bons fornecedores.\" — Compromisso Petroil (exemplo)" },
+
+  "cs.section2.title": { "es": "Programas activos", "en": "Active programs", "pt": "Programas ativos" },
+  "cs.program1.title": { "es": "Formación técnica juvenil", "en": "Youth technical training", "pt": "Formação técnica juvenil" },
+  "cs.program1.desc": { "es": "Becas y talleres para jóvenes de Mamatoco en oficios técnicos relacionados con la operación industrial.", "en": "Scholarships and workshops for young people from Mamatoco in technical trades related to industrial operations.", "pt": "Bolsas e workshops para jovens de Mamatoco em ofícios técnicos relacionados à operação industrial." },
+  "cs.program2.title": { "es": "Emprendimiento local", "en": "Local entrepreneurship", "pt": "Empreendedorismo local" },
+  "cs.program2.desc": { "es": "Acompañamiento a pequeños negocios de proveedores locales para que puedan vincularse a nuestra cadena de suministro.", "en": "Support for small local supplier businesses so they can join our supply chain.", "pt": "Acompanhamento de pequenos negócios de fornecedores locais para que possam se vincular à nossa cadeia de suprimentos." },
+  "cs.program3.title": { "es": "Infraestructura comunitaria", "en": "Community infrastructure", "pt": "Infraestrutura comunitária" },
+  "cs.program3.desc": { "es": "Aportes a mejoras de espacios públicos y vías de acceso en el sector aledaño a la refinería.", "en": "Contributions to improving public spaces and access roads in the area surrounding the refinery.", "pt": "Contribuições para melhorias de espaços públicos e vias de acesso no setor vizinho à refinaria." },
+  "cs.program4.title": { "es": "Salud y bienestar", "en": "Health and wellbeing", "pt": "Saúde e bem-estar" },
+  "cs.program4.desc": { "es": "Jornadas periódicas de salud preventiva para familias de las comunidades vecinas.", "en": "Periodic preventive health drives for families in neighboring communities.", "pt": "Jornadas periódicas de saúde preventiva para famílias das comunidades vizinhas." },
+
+  "cs.section3.title": { "es": "Impacto acumulado (cifras de ejemplo)", "en": "Cumulative impact (example figures)", "pt": "Impacto acumulado (números de exemplo)" },
+  "cs.stat1.label": { "es": "Familias beneficiadas por año", "en": "Families benefited per year", "pt": "Famílias beneficiadas por ano" },
+  "cs.stat2.label": { "es": "Jóvenes becados en formación técnica", "en": "Young people on technical training scholarships", "pt": "Jovens com bolsas em formação técnica" },
+  "cs.stat3.label": { "es": "Proyectos comunitarios activos", "en": "Active community projects", "pt": "Projetos comunitários ativos" },
+
+  "cs.section4.title": { "es": "Galería", "en": "Gallery", "pt": "Galeria" },
+
+  "cs.disclaimer": { "es": "Todo el contenido de esta página —programas, cifras y uso de fotografías del equipo— fue redactado con información de ejemplo para representar cómo luciría esta sección con contenido completo. Petroil S.A. debe validar y reemplazar estos datos por su información real.", "en": "All content on this page —programs, figures and the use of team photographs— was written with example information to show how this section would look with complete content. Petroil S.A. must validate and replace this data with its actual information.", "pt": "Todo o conteúdo desta página —programas, números e o uso de fotografias da equipe— foi redigido com informações de exemplo para representar como esta seção ficaria com conteúdo completo. A Petroil S.A. deve validar e substituir esses dados pelas suas informações reais." }
+}

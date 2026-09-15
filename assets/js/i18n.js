@@ -1,8 +1,12 @@
 // Selector de idioma (ES / EN / PT) — traducción client-side por diccionario JSON.
-// Piloto: index.html. Ver CLAUDE.md antes de replicar este patrón a otras páginas.
+// Ya implementado en todas las páginas del sitio. Ver CLAUDE.md.
 //
 // Cómo funciona:
-// - <body data-i18n-page="assets/i18n/<pagina>.json"> apunta al diccionario de ESTA página.
+// - <body data-i18n-page="assets/i18n/<pagina>.json"> apunta al diccionario de ESTA página
+//   (textos exclusivos de esa página: hero, ficha técnica, artículo, etc.).
+// - Además de ese diccionario, SIEMPRE se carga "common.json" (misma carpeta que <pagina>.json)
+//   con las claves compartidas por toda la web (nav.*, footer.*, chat.*). El diccionario de la
+//   página puede sobrescribir una clave de common.json si la necesita distinta.
 // - Cualquier texto marcado con data-i18n="clave" se reemplaza (textContent) con el valor
 //   de esa clave en el idioma activo.
 // - Texto que necesita HTML interno (negritas, listas, <p>) usa data-i18n-html="clave" en
@@ -73,13 +77,19 @@
     const dictPath = document.body.getAttribute('data-i18n-page');
     if (!dictPath) return; // página aún no tiene diccionario — el selector queda visible pero inactivo
 
-    fetch(dictPath)
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('i18n: no se pudo cargar ' + dictPath))))
-      .then((dict) => {
-        currentDict = dict;
-        applyDict(dict, lang);
-      })
-      .catch((err) => console.warn(err));
+    const commonPath = dictPath.replace(/[^/]+$/, 'common.json');
+
+    function loadJson(path) {
+      return fetch(path).then((r) => (r.ok ? r.json() : Promise.reject(new Error('i18n: no se pudo cargar ' + path))));
+    }
+
+    Promise.all([
+      loadJson(commonPath).catch((err) => { console.warn(err); return {}; }),
+      loadJson(dictPath).catch((err) => { console.warn(err); return {}; }),
+    ]).then(([common, page]) => {
+      currentDict = Object.assign({}, common, page);
+      applyDict(currentDict, lang);
+    });
   }
 
   if (document.readyState === 'loading') {

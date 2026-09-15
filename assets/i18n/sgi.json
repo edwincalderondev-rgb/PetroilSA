@@ -1,0 +1,62 @@
+{
+  "sgi.nav.queEs": { "es": "¿Qué es el SGI?", "en": "What is the SGI?", "pt": "O que é o SGI?" },
+  "sgi.nav.pilares": { "es": "Tres pilares", "en": "Three pillars", "pt": "Três pilares" },
+  "sgi.nav.ciclo": { "es": "Ciclo PHVA", "en": "PDCA cycle", "pt": "Ciclo PDCA" },
+  "sgi.nav.indicadores": { "es": "Indicadores", "en": "Indicators", "pt": "Indicadores" },
+  "sgi.nav.documentos": { "es": "Documentos", "en": "Documents", "pt": "Documentos" },
+
+  "sgi.breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "sgi.eyebrow": { "es": "Gestión y sostenibilidad", "en": "Management and sustainability", "pt": "Gestão e sustentabilidade" },
+  "sgi.hero.title": { "es": "Sistema de Gestión Integrada (SGI)", "en": "Integrated Management System (SGI)", "pt": "Sistema de Gestão Integrada (SGI)" },
+  "sgi.hero.lead": { "es": "Cómo articulamos calidad, seguridad y gestión ambiental en un solo marco de trabajo, bajo la trinorma ISO 9001, ISO 45001 e ISO 14001.", "en": "How we bring together quality, safety and environmental management under a single framework, under the ISO 9001, ISO 45001 and ISO 14001 standards.", "pt": "Como articulamos qualidade, segurança e gestão ambiental em um único marco de trabalho, sob as normas ISO 9001, ISO 45001 e ISO 14001." },
+
+  "sgi.exampleBanner": { "es": "Página de ejemplo — el contenido y las cifras son ilustrativos, no información oficial de Petroil S.A.", "en": "Example page — the content and figures are illustrative, not official information from Petroil S.A.", "pt": "Página de exemplo — o conteúdo e os números são ilustrativos, não são informações oficiais da Petroil S.A." },
+
+  "sgi.toc.heading": { "es": "En esta página", "en": "On this page", "pt": "Nesta página" },
+  "sgi.toc.pilares": { "es": "Los tres pilares", "en": "The three pillars", "pt": "Os três pilares" },
+  "sgi.toc.ciclo": { "es": "Ciclo de mejora continua", "en": "Continuous improvement cycle", "pt": "Ciclo de melhoria contínua" },
+  "sgi.toc.documentos": { "es": "Documentos del sistema", "en": "System documents", "pt": "Documentos do sistema" },
+
+  "sgi.section1.title": { "es": "¿Qué es nuestro SGI?", "en": "What is our SGI?", "pt": "O que é o nosso SGI?" },
+  "sgi.section1.body": { "es": "Nuestro Sistema de Gestión Integrada (SGI) reúne bajo un mismo marco de trabajo los procesos de calidad, seguridad y salud en el trabajo, y gestión ambiental de la refinería. Cada actividad —desde la recepción de crudo hasta el despacho del producto terminado— se documenta, se audita y se mejora de forma continua.", "en": "Our Integrated Management System (SGI) brings together the refinery's quality, occupational health and safety, and environmental management processes under a single framework. Every activity —from receiving crude oil to shipping the finished product— is documented, audited and continuously improved.", "pt": "Nosso Sistema de Gestão Integrada (SGI) reúne em um mesmo marco de trabalho os processos de qualidade, segurança e saúde no trabalho, e gestão ambiental da refinaria. Cada atividade —desde o recebimento do petróleo bruto até o despacho do produto acabado— é documentada, auditada e melhorada continuamente." },
+  "sgi.section1.quote": { "es": "\"La excelencia operativa no es un estado, es un proceso que se revisa todos los días.\" — Política de Gestión Integrada, Petroil S.A. (ejemplo)", "en": "\"Operational excellence is not a state, it's a process reviewed every day.\" — Integrated Management Policy, Petroil S.A. (example)", "pt": "\"A excelência operacional não é um estado, é um processo que se revisa todos os dias.\" — Política de Gestão Integrada, Petroil S.A. (exemplo)" },
+
+  "sgi.section2.title": { "es": "Los tres pilares del sistema", "en": "The system's three pillars", "pt": "Os três pilares do sistema" },
+  "sgi.pillar1.title": { "es": "ISO 9001 — Calidad", "en": "ISO 9001 — Quality", "pt": "ISO 9001 — Qualidade" },
+  "sgi.pillar1.desc": { "es": "Estandariza el control de cada lote de combustible producido, desde materia prima hasta producto final.", "en": "Standardizes quality control for every batch of fuel produced, from raw material to final product.", "pt": "Padroniza o controle de cada lote de combustível produzido, desde a matéria-prima até o produto final." },
+  "sgi.pillar2.title": { "es": "ISO 45001 — Seguridad y Salud", "en": "ISO 45001 — Health and Safety", "pt": "ISO 45001 — Segurança e Saúde" },
+  "sgi.pillar2.desc": { "es": "Reduce los riesgos operativos del personal en planta con protocolos de seguridad de proceso.", "en": "Reduces operational risks for plant personnel through process safety protocols.", "pt": "Reduz os riscos operacionais do pessoal na planta com protocolos de segurança de processo." },
+  "sgi.pillar3.title": { "es": "ISO 14001 — Gestión Ambiental", "en": "ISO 14001 — Environmental Management", "pt": "ISO 14001 — Gestão Ambiental" },
+  "sgi.pillar3.desc": { "es": "Regula el monitoreo de emisiones, vertimientos y residuos generados por la refinación.", "en": "Governs the monitoring of emissions, discharges and waste generated by refining.", "pt": "Regula o monitoramento de emissões, efluentes e resíduos gerados pelo refino." },
+  "sgi.pillar4.title": { "es": "Mejora continua", "en": "Continuous improvement", "pt": "Melhoria contínua" },
+  "sgi.pillar4.desc": { "es": "Auditorías internas trimestrales y auditoría externa de certificación anual (ejemplo de frecuencia).", "en": "Quarterly internal audits and an annual external certification audit (example frequency).", "pt": "Auditorias internas trimestrais e auditoria externa de certificação anual (exemplo de frequência)." },
+
+  "sgi.section3.title": { "es": "Ciclo de mejora continua (PHVA)", "en": "Continuous improvement cycle (PDCA)", "pt": "Ciclo de melhoria contínua (PDCA)" },
+  "sgi.section3.body": { "es": "El sistema opera bajo el clásico ciclo Planificar–Hacer–Verificar–Actuar, revisado periódicamente por la dirección de la refinería.", "en": "The system operates under the classic Plan–Do–Check–Act cycle, periodically reviewed by the refinery's management.", "pt": "O sistema opera segundo o clássico ciclo Planejar–Fazer–Verificar–Agir, revisado periodicamente pela direção da refinaria." },
+  "sgi.step1.title": { "es": "Planificar", "en": "Plan", "pt": "Planejar" },
+  "sgi.step1.desc": { "es": "Se definen objetivos de calidad, seguridad y ambientales para el periodo.", "en": "Quality, safety and environmental objectives are defined for the period.", "pt": "São definidos os objetivos de qualidade, segurança e ambientais para o período." },
+  "sgi.step2.title": { "es": "Hacer", "en": "Do", "pt": "Fazer" },
+  "sgi.step2.desc": { "es": "Se ejecutan los procesos de refinación bajo los procedimientos documentados.", "en": "Refining processes are carried out under documented procedures.", "pt": "Os processos de refino são executados de acordo com os procedimentos documentados." },
+  "sgi.step3.title": { "es": "Verificar", "en": "Check", "pt": "Verificar" },
+  "sgi.step3.desc": { "es": "Se auditan los resultados frente a los indicadores definidos.", "en": "Results are audited against the defined indicators.", "pt": "Os resultados são auditados em relação aos indicadores definidos." },
+  "sgi.step4.title": { "es": "Actuar", "en": "Act", "pt": "Agir" },
+  "sgi.step4.desc": { "es": "Se ajustan procesos y se documentan las lecciones aprendidas.", "en": "Processes are adjusted and lessons learned are documented.", "pt": "Os processos são ajustados e as lições aprendidas são documentadas." },
+
+  "sgi.section4.title": { "es": "Indicadores de gestión (cifras de ejemplo)", "en": "Management indicators (example figures)", "pt": "Indicadores de gestão (números de exemplo)" },
+  "sgi.stat1.label": { "es": "Cumplimiento de especificación de producto", "en": "Product specification compliance", "pt": "Cumprimento da especificação do produto" },
+  "sgi.stat2.label": { "es": "Incidentes de seguridad mayores en el periodo", "en": "Major safety incidents in the period", "pt": "Incidentes de segurança graves no período" },
+  "sgi.stat3.label": { "es": "Auditorías internas realizadas", "en": "Internal audits conducted", "pt": "Auditorias internas realizadas" },
+
+  "sgi.section5.title": { "es": "Documentos del sistema (ejemplo)", "en": "System documents (example)", "pt": "Documentos do sistema (exemplo)" },
+  "sgi.doc1.title": { "es": "Política de Gestión Integrada", "en": "Integrated Management Policy", "pt": "Política de Gestão Integrada" },
+  "sgi.doc1.desc": { "es": "Documento marco firmado por la dirección · versión de ejemplo", "en": "Framework document signed by management · example version", "pt": "Documento marco assinado pela direção · versão de exemplo" },
+  "sgi.doc2.title": { "es": "Manual del Sistema de Gestión Integrada", "en": "Integrated Management System Manual", "pt": "Manual do Sistema de Gestão Integrada" },
+  "sgi.doc2.desc": { "es": "Alcance, procesos y responsabilidades · versión de ejemplo", "en": "Scope, processes and responsibilities · example version", "pt": "Escopo, processos e responsabilidades · versão de exemplo" },
+  "sgi.doc3.title": { "es": "Certificados ISO 9001 / 45001 / 14001", "en": "ISO 9001 / 45001 / 14001 Certificates", "pt": "Certificados ISO 9001 / 45001 / 14001" },
+  "sgi.doc3.desc": { "es": "Vigencia y organismo certificador · versión de ejemplo", "en": "Validity period and certifying body · example version", "pt": "Vigência e organismo certificador · versão de exemplo" },
+
+  "sgi.isoText": { "es": "Nuestro sistema de gestión integrado está certificado a nivel internacional en las normas de Calidad ISO 9001, Salud y Seguridad ISO 45001 y Gestión Ambiental ISO 14001.", "en": "Our integrated management system is internationally certified under the Quality ISO 9001, Health and Safety ISO 45001, and Environmental Management ISO 14001 standards.", "pt": "Nosso sistema de gestão integrado é certificado internacionalmente nas normas de Qualidade ISO 9001, Saúde e Segurança ISO 45001 e Gestão Ambiental ISO 14001." },
+
+  "sgi.disclaimer": { "es": "Todo el contenido de esta página —textos, cifras e indicadores— fue redactado con información de ejemplo para representar cómo luciría esta sección con contenido completo. Petroil S.A. debe validar y reemplazar estos datos por su información real.", "en": "All content on this page —text, figures and indicators— was written with example information to show how this section would look with complete content. Petroil S.A. must validate and replace this data with its actual information.", "pt": "Todo o conteúdo desta página —textos, números e indicadores— foi redigido com informações de exemplo para representar como esta seção ficaria com conteúdo completo. A Petroil S.A. deve validar e substituir esses dados pelas suas informações reais." }
+}

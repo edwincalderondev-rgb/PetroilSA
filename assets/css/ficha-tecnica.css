@@ -34,7 +34,10 @@
 
 /* Layout principal: contenido + barra lateral */
 .pds-layout{padding:70px 0 100px; background:#fff;}
-.pds-grid{display:grid; grid-template-columns:1fr 328px; gap:50px; align-items:start;}
+/* minmax(0,1fr) y no 1fr: la tabla técnica tiene min-width:660px (con
+   scroll horizontal propio) y con 1fr la columna no podía encogerse por
+   debajo de eso, desbordando toda la página en móvil. */
+.pds-grid{display:grid; grid-template-columns:minmax(0,1fr) 328px; gap:50px; align-items:start;}
 .pds-section{margin-bottom:56px;}
 .pds-section:last-child{margin-bottom:0;}
 .pds-section-title{display:flex; align-items:center; gap:12px; margin-bottom:22px;}
@@ -91,11 +94,25 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 .pds-side-card{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:24px;}
 .pds-side-card h4{font-size:.94rem; color:var(--navy); margin-bottom:8px;}
 .pds-side-card p{font-size:.82rem; color:var(--steel); line-height:1.5; margin-bottom:16px;}
-.pds-side-card .btn-download{
-  width:100%; justify-content:center; display:inline-flex; align-items:center; gap:8px; background:var(--navy);
-  color:#fff !important; padding:12px 18px; border-radius:30px; font-weight:600; font-size:.86rem; transition:.2s ease;
+/* Tarjeta de cotización (reemplaza a la antigua "Descargar PDF": por
+   decisión de dirección las fichas técnicas ya no se descargan, se
+   solicitan al área comercial desde contacto.html). */
+.pds-side-card.quote{
+  background:linear-gradient(150deg, var(--navy) 0%, var(--teal) 100%); border-color:transparent; color:#fff;
+  box-shadow:0 22px 40px -22px rgba(8,12,65,.6);
 }
-.pds-side-card .btn-download:hover{background:var(--teal); transform:translateY(-2px);}
+.pds-side-card.quote h4{color:#fff; font-size:1.02rem; line-height:1.35;}
+.pds-side-card.quote p{color:#dbe6ec;}
+.pds-side-eyebrow{
+  display:inline-block; font-size:.66rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); background:var(--amber); padding:3px 10px; border-radius:20px; margin-bottom:12px;
+}
+.btn-quote{
+  width:100%; justify-content:center; display:inline-flex; align-items:center; gap:8px; background:var(--amber);
+  color:var(--navy) !important; padding:13px 18px; border-radius:30px; font-weight:700; font-size:.9rem; transition:.2s ease;
+}
+.btn-quote svg{width:16px; height:16px;}
+.btn-quote:hover{background:#fff; transform:translateY(-2px);}
 .pds-side-card.dark{background:var(--navy); color:#fff;}
 .pds-side-card.dark h4{color:#fff;}
 .pds-side-card.dark p{color:#cbd5e1;}
@@ -104,23 +121,82 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 .pds-side-list li:last-child{border-bottom:none;}
 .pds-side-list b{color:var(--navy); font-weight:700; white-space:nowrap;}
 
-/* Franja de productos relacionados */
-.pds-related{margin-top:74px; padding-top:52px; border-top:1px solid var(--line);}
-.pds-related-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:26px; flex-wrap:wrap;}
-.pds-related-head h3{font-size:1.3rem; color:var(--navy);}
-.pds-related-head a{font-size:.86rem; font-weight:600; color:var(--teal);}
-.pds-related-head a:hover{color:var(--navy);}
+/* Franja de cotización (antes de los relacionados) */
+.pds-quote{
+  position:relative; overflow:hidden; margin-top:74px; padding:40px 44px; border-radius:20px; color:#fff;
+  background:linear-gradient(120deg, var(--navy) 0%, var(--navy) 45%, var(--teal) 100%);
+  display:flex; align-items:center; justify-content:space-between; gap:36px; flex-wrap:wrap;
+}
+.pds-quote::before{
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background-image:repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 2px, transparent 2px 30px);
+}
+.pds-quote > *{position:relative;}
+.pds-quote-text{flex:1 1 420px; max-width:620px;}
+.pds-quote .eyebrow{color:var(--teal-light); display:block; margin-bottom:10px;}
+.pds-quote h3{font-size:clamp(1.35rem,2.4vw,1.8rem); color:#fff; line-height:1.25;}
+.pds-quote p{color:#dbe6ec; font-size:.95rem; line-height:1.6; margin-top:12px;}
+.pds-quote-actions{display:flex; flex-direction:column; align-items:stretch; gap:12px; flex:0 0 auto;}
+.pds-quote-actions .btn-primary{justify-content:center;}
+.pds-quote-wa{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; color:#fff; font-weight:600; font-size:.88rem;
+  padding:12px 20px; border-radius:30px; border:1.5px solid rgba(255,255,255,.4); transition:.2s ease;
+}
+.pds-quote-wa svg{width:16px; height:16px; color:#25D366;}
+.pds-quote-wa:hover{background:#fff; color:var(--navy);}
+
+/* Productos relacionados — clases propias (.pds-rel-*). Antes se
+   reutilizaban .products-grid/.product-card, pero sus estilos viven en
+   home.css / productos.css, que las fichas no cargan: las tarjetas salían
+   sin estilo (imágenes a tamaño natural apiladas). */
+.pds-related{margin-top:64px;}
+.pds-related-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:26px; flex-wrap:wrap;}
+.pds-related-head .eyebrow{display:block; margin-bottom:6px;}
+.pds-related-head h3{font-size:1.45rem; color:var(--navy);}
+.pds-related-links{display:flex; gap:22px; flex-wrap:wrap;}
+.pds-related-links a{font-size:.86rem; font-weight:600; color:var(--teal); transition:color .2s;}
+.pds-related-links a:hover{color:var(--navy);}
+.pds-rel-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px;}
+.pds-rel-card{
+  display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.pds-rel-card:hover{transform:translateY(-6px); border-color:var(--teal-light); box-shadow:0 18px 38px -18px rgba(8,12,65,.34);}
+.pds-rel-media{
+  position:relative; height:150px; display:flex; align-items:center; justify-content:center; padding:16px; overflow:hidden;
+  background:linear-gradient(180deg,#F7FBFD,#EDF3F8);
+}
+.pds-rel-media img{max-height:100%; max-width:100%; width:auto; object-fit:contain; transition:transform .35s ease;}
+.pds-rel-card:hover .pds-rel-media img{transform:scale(1.08);}
+.pds-rel-tag{
+  position:absolute; top:10px; left:10px; font-size:.6rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--navy); color:#fff; padding:4px 9px; border-radius:20px;
+}
+.pds-rel-body{display:flex; flex-direction:column; flex-grow:1; padding:18px 18px 20px;}
+.pds-rel-family{font-size:.64rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--steel);}
+.pds-rel-code{font-size:1.08rem; font-weight:700; color:var(--navy); margin-top:6px;}
+.pds-rel-name{font-size:.82rem; font-weight:500; color:var(--teal-light);}
+.pds-rel-desc{font-size:.78rem; line-height:1.5; color:var(--steel); margin-top:8px;}
+.pds-rel-more{margin-top:auto; padding-top:14px; font-size:.8rem; font-weight:600; color:var(--teal);}
+.pds-rel-card:hover .pds-rel-more{color:var(--navy);}
 
 @media (max-width:980px){
-  .pds-grid{grid-template-columns:1fr;}
+  .pds-grid{grid-template-columns:minmax(0,1fr);}
   .pds-side{position:relative; top:0; flex-direction:row; flex-wrap:wrap;}
   .pds-side-card{flex:1 1 260px;}
   .pds-hero-grid{flex-direction:column; text-align:center;}
   .pds-hero-text{max-width:100%;}
   .pds-badges, .pds-hero-ctas{justify-content:center;}
   .pds-hero-visual{order:-1;}
+  .pds-rel-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media (max-width:720px){
   .pds-benefit{flex-direction:column;}
   .pds-side{flex-direction:column;}
+  .pds-visual-card img{width:100%; max-width:370px;}
+  .pds-quote{padding:30px 24px;}
+  .pds-quote-actions{width:100%;}
+}
+@media (max-width:460px){
+  .pds-rel-grid{grid-template-columns:1fr;}
 }

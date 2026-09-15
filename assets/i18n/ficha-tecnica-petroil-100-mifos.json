@@ -1,0 +1,73 @@
+{
+  "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "breadcrumb.current": { "es": "Petroil 100 · Mejorador de IFOS", "en": "Petroil 100 · IFO Improver", "pt": "Petroil 100 · Melhorador de IFOS" },
+
+  "hero.badge1": { "es": "Bunker Fuel", "en": "Bunker Fuel", "pt": "Bunker Fuel" },
+  "hero.badge2": { "es": "Cutter IFO", "en": "IFO Cutter", "pt": "Cutter IFO" },
+  "hero.badge3": { "es": "Uso Marino", "en": "Marine Use", "pt": "Uso Marítimo" },
+  "hero.title": { "es": "Petroil 100 <span style=\"color:var(--teal-light);\">— Mejorador de IFOS</span>", "en": "Petroil 100 <span style=\"color:var(--teal-light);\">— IFO Improver</span>", "pt": "Petroil 100 <span style=\"color:var(--teal-light);\">— Melhorador de IFOS</span>" },
+  "hero.desc": { "es": "Producto desarrollado para la industria del Bunker Fuel versión IFO. Por su bajo contenido de metales, aromáticos y parafinas, es el mejor mezclador o cutter para la elaboración de mezclas perfectas.", "en": "A product developed for the IFO-grade bunker fuel industry. Its low content of metals, aromatics and paraffins makes it the best blending agent or cutter for producing perfect blends.", "pt": "Produto desenvolvido para a indústria de bunker fuel versão IFO. Por seu baixo teor de metais, aromáticos e parafinas, é o melhor misturador ou cutter para a elaboração de misturas perfeitas." },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.mini1": { "es": "Azufre (típ.)", "en": "Sulfur (typ.)", "pt": "Enxofre (típ.)" },
+  "visual.mini2": { "es": "Inflamación (típ.)", "en": "Flash point (typ.)", "pt": "Ponto de fulgor (típ.)" },
+  "visual.mini3": { "es": "Máx. mezcla", "en": "Max. blend", "pt": "Mistura máx." },
+
+  "stat.label1": { "es": "Contenido de azufre (máx. 120 ppm)", "en": "Sulfur content (max. 120 ppm)", "pt": "Teor de enxofre (máx. 120 ppm)" },
+  "stat.label2": { "es": "Punto de inflamación (típico)", "en": "Flash point (typical)", "pt": "Ponto de fulgor (típico)" },
+  "stat.label3": { "es": "Mezcla con crudos pesados sin floculación", "en": "Blends with heavy crudes without flocculation", "pt": "Mistura com petróleos pesados sem floculação" },
+
+  "section.appsTitle": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "section.techTitle": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "section.precautionsTitle": { "es": "Precauciones y manejo <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dato de ejemplo</span>", "en": "Precautions and handling <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Sample data</span>", "pt": "Precauções e manuseio <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dado de exemplo</span>" },
+
+  "desc.p2": { "es": "Estas características le permiten mejorar de manera considerable la mezcla final, evitando problemas de estabilidad, filtrabilidad y compatibilidad.", "en": "These characteristics allow it to considerably improve the final blend, avoiding problems of stability, filterability and compatibility.", "pt": "Essas características permitem melhorar de forma considerável a mistura final, evitando problemas de estabilidade, filtrabilidade e compatibilidade." },
+
+  "benefit1.title": { "es": "Alta compatibilidad de mezcla", "en": "High blend compatibility", "pt": "Alta compatibilidade de mistura" },
+  "benefit1.desc": { "es": "Puede ser mezclado hasta en un 70 % con crudos pesados y residuos con alto contenido de asfaltenos sin que exista floculación o se generen residuos o sludge.", "en": "It can be blended up to 70% with heavy crudes and residues with high asphaltene content without flocculation or the generation of residues or sludge.", "pt": "Pode ser misturado em até 70% com petróleos pesados e resíduos com alto teor de asfaltenos sem que ocorra floculação ou se gerem resíduos ou lama (sludge)." },
+  "benefit2.title": { "es": "Reducción de azufre y metales", "en": "Sulfur and metals reduction", "pt": "Redução de enxofre e metais" },
+  "benefit2.desc": { "es": "Ideal para reducir altos niveles de azufre y metales en la mezcla final.", "en": "Ideal for reducing high levels of sulfur and metals in the final blend.", "pt": "Ideal para reduzir altos níveis de enxofre e metais na mistura final." },
+
+  "table.paramHeader": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Contenido de Azufre (ppm)", "en": "Sulfur Content (ppm)", "pt": "Teor de Enxofre (ppm)" },
+  "table.row2": { "es": "Punto de Inflamación, °C", "en": "Flash Point, °C", "pt": "Ponto de Fulgor, °C" },
+  "table.row3": { "es": "Punto de Fluidez, °C", "en": "Pour Point, °C", "pt": "Ponto de Fluidez, °C" },
+
+  "precaution.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA Classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "precaution.text": { "es": "Se estima una clasificación como líquido combustible clase II–III según la norma 321 de la NFPA, propia de destilados medios usados como cutter en bunker fuel. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "An estimated classification as a Class II–III combustible liquid is expected under NFPA 321, typical of middle distillates used as a cutter in bunker fuel. Verify with the official safety data sheet (MSDS) before handling or transport.", "pt": "Estima-se uma classificação como líquido combustível classe II–III segundo a norma 321 da NFPA, própria de destilados médios usados como cutter em bunker fuel. Verificar com a ficha de segurança (FISPQ/MSDS) oficial antes do manuseio ou transporte." },
+  "precaution.casLabel": { "es": "Número CAS:", "en": "CAS Number:", "pt": "Número CAS:" },
+
+  "side.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "side.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official technical data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "side.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 100 · Mejorador de IFOS.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 100 · IFO Improver.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho da Petroil 100 · Melhorador de IFOS." },
+  "side.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "quick.label1": { "es": "Código", "en": "Code", "pt": "Código" },
+  "quick.label2": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "quick.label3": { "es": "Azufre", "en": "Sulfur", "pt": "Enxofre" },
+  "quick.label4": { "es": "Punto de inflamación", "en": "Flash point", "pt": "Ponto de fulgor" },
+  "quick.label5": { "es": "Mezcla máxima", "en": "Max. blend", "pt": "Mistura máxima" },
+  "side.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "side.advisorDesc": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas de disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official technical data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 100 · Mejorador de IFOS?", "en": "Interested in Petroil 100 · IFO Improver?", "pt": "Interessado na Petroil 100 · Melhorador de IFOS?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often and where you'll receive it. A sales advisor will contact you with the quote and the product's official technical data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial entrará em contato com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreLink": { "es": "Más en Especializados →", "en": "More in Specialized →", "pt": "Mais em Especializados →" },
+  "related.viewAllLink": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+
+  "rel.desc1": { "es": "Materia prima para procesos industriales.", "en": "Raw material for industrial processes.", "pt": "Matéria-prima para processos industriais." },
+  "rel.desc2": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel.desc3": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel ultra baixo teor de enxofre de alto desempenho." },
+  "rel.desc4": { "es": "Alto rendimiento y confiabilidad en carretera.", "en": "High performance and reliability on the road.", "pt": "Alto desempenho e confiabilidade na estrada." },
+
+  "products.viewSheet": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

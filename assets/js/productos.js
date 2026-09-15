@@ -186,5 +186,21 @@ if(catalogSection){
     });
   });
 
+  // Filtros desde la URL, para llegar al catálogo ya filtrado desde otras
+  // páginas: productos.html?sector=maritimo#catalogo (usos del index) o
+  // productos.html?cat=fuel-oils#catalogo (fichas técnicas). Valores que no
+  // existan en las pestañas/selector se ignoran.
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlCat = urlParams.get('cat');
+  const urlSector = urlParams.get('sector');
+  if(urlCat && tabs.some(tab => tab.dataset.cat === urlCat)){
+    state.cat = urlCat;
+    tabs.forEach(tab => tab.setAttribute('aria-pressed', String(tab.dataset.cat === urlCat)));
+  }
+  if(urlSector && sectorSelect && Array.from(sectorSelect.options).some(opt => opt.value === urlSector)){
+    state.sector = urlSector;
+    sectorSelect.value = urlSector;
+  }
+
   render();
 }
