@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ficha técnica | Petroil 90 · Gasolina Premium | Petroil S.A.</title>
-<meta name="description" content="Ficha técnica de Petroil 90 Gasolina Premium, RON 95-99, la primera gasolina extra producida en Colombia.">
+<title>Petroil 90 · Gasolina Premium | Petroil S.A.</title>
+<meta name="description" content="Petroil 90 Gasolina Premium: alto octanaje (RON 95, índice 91.8) para mayor potencia, respuesta inmediata y combustión más limpia en motores de alto rendimiento.">
 <link rel="canonical" href="https://www.petroilsa.com/fichas-tecnicas/ficha-tecnica-petroil-90.html">
 <link rel="icon" type="image/png" sizes="270x270" href="../assets/img/cropped-favicon-petroil-270x270.png">
 <link rel="apple-touch-icon" href="../assets/img/cropped-favicon-petroil-270x270.png">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../assets/css/hero.css">
   <link rel="stylesheet" href="../assets/css/ficha-tecnica.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
-  <link rel="stylesheet" href="../assets/css/chatbot.css">
+  <link rel="stylesheet" href="../assets/css/aira.css">
   <link rel="stylesheet" href="../assets/css/cursor.css">
 </head>
 <body data-i18n-page="../assets/i18n/ficha-tecnica-petroil-90.json">
@@ -56,8 +56,24 @@
   <div class="navbar-route">
     <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
-      <a href="#main" class="route-link" data-section="#main">
+      <a href="#descripcion" class="route-link" data-section="#descripcion">
         <span class="route-label" data-i18n="nav.descripcion">Descripción</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#beneficios" class="route-link" data-section="#beneficios">
+        <span class="route-label" data-i18n="nav.beneficios">Beneficios</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#aplicaciones" class="route-link" data-section="#aplicaciones">
+        <span class="route-label" data-i18n="nav.aplicaciones">Aplicaciones</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#caracteristicas" class="route-link" data-section="#caracteristicas">
+        <span class="route-label" data-i18n="nav.caracteristicas">Características</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#ave-emblema" class="route-link" data-section="#ave-emblema">
+        <span class="route-label" data-i18n="nav.ave">Ave emblema</span>
         <span class="route-node" aria-hidden="true"></span>
       </a>
       <a href="#contacto" class="route-link" data-section="#contacto">
@@ -75,9 +91,25 @@
   </div>
   <nav class="drawer-route" aria-label="Navegación principal móvil">
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
-    <a href="#main" class="drawer-link" data-section="#main">
+    <a href="#descripcion" class="drawer-link" data-section="#descripcion">
       <span class="drawer-node" aria-hidden="true"></span>
       <span data-i18n="nav.descripcion">Descripción</span>
+    </a>
+    <a href="#beneficios" class="drawer-link" data-section="#beneficios">
+      <span class="drawer-node" aria-hidden="true"></span>
+      <span data-i18n="nav.beneficios">Beneficios</span>
+    </a>
+    <a href="#aplicaciones" class="drawer-link" data-section="#aplicaciones">
+      <span class="drawer-node" aria-hidden="true"></span>
+      <span data-i18n="nav.aplicaciones">Aplicaciones</span>
+    </a>
+    <a href="#caracteristicas" class="drawer-link" data-section="#caracteristicas">
+      <span class="drawer-node" aria-hidden="true"></span>
+      <span data-i18n="nav.caracteristicas">Características</span>
+    </a>
+    <a href="#ave-emblema" class="drawer-link" data-section="#ave-emblema">
+      <span class="drawer-node" aria-hidden="true"></span>
+      <span data-i18n="nav.ave">Ave emblema</span>
     </a>
     <a href="#contacto" class="drawer-link" data-section="#contacto">
       <span class="drawer-node" aria-hidden="true"></span>
@@ -104,7 +136,8 @@
 </aside>
 
 <main id="main">
-  <section class="page-hero pds-hero">
+  <section class="page-hero pds-hero pds-hero--bird">
+    <div class="page-hero-bg" aria-hidden="true"><img src="../assets/img/aves/hero-halcon-peregrino.jpg" alt="" width="1400" height="1120" loading="eager" fetchpriority="high" decoding="async"></div>
     <div class="hero-particles" id="heroParticles"></div>
     <div class="container">
       <div class="breadcrumb">
@@ -119,7 +152,7 @@
             <span class="pds-badge" data-i18n="hero.badge3">Primera Extra en Colombia</span>
           </div>
           <h1 data-i18n-html="hero.title">Petroil 90 <span style="color:var(--teal-light);">— Gasolina Premium</span></h1>
-          <p data-i18n="hero.lead">Gasolina Premium con alto octanaje (mínimo RON 95) que permite una combustión eficiente del motor, asegurando su máxima potencia y larga vida útil. Reduce emisiones contaminantes. La primera gasolina extra producida en Colombia.</p>
+          <p data-i18n="pd.hero.lead">Máximo desempeño para quienes exigen más.</p>
           <div class="pds-hero-ctas">
             <a href="../contacto.html?producto=P-90#formulario" class="btn-primary">
               <span data-i18n="cta.quote">Solicitar cotización</span>
@@ -140,7 +173,9 @@
             <div class="pds-code-label" data-i18n="visual.codeLabel">CÓDIGO DE PRODUCTO</div>
             <div class="pds-divider"></div>
             <div class="pds-visual-mini">
-              <div><b>95-99</b><span data-i18n="visual.mini1">Octanaje (RON)</span></div><div><b>≤20 ppm</b><span data-i18n="visual.mini2">Azufre</span></div><div><b>Norma</b><span>40444</span></div>
+              <div><b>95</b><span data-i18n="pd.mini1.label">RON</span></div>
+              <div><b>91.8</b><span data-i18n="pd.mini2.label">(R+M)/2</span></div>
+              <div><b data-i18n="pd.mini3.num">Sin plomo</b><span data-i18n="pd.mini3.label">Fórmula</span></div>
             </div>
           </div>
         </div>
@@ -151,16 +186,16 @@
   <div class="container">
     <div class="stat-row" style="margin-top:-38px; position:relative; z-index:5;">
       <div class="stat-card">
-        <div class="num">95 – 99</div>
-        <div class="label" data-i18n="stat.label1">Octanaje RON — supera el mínimo exigido de 93</div>
+        <div class="num">RON 95</div>
+        <div class="label" data-i18n="pd.stat1.label">Alto octanaje para mayor potencia y respuesta inmediata</div>
       </div>
       <div class="stat-card">
-        <div class="num">≤ 20 ppm</div>
-        <div class="label" data-i18n="stat.label2">Contenido de azufre — muy por debajo del máximo de 50 ppm de la Norma 40444</div>
+        <div class="num">91.8</div>
+        <div class="label" data-i18n="pd.stat2.label">Índice de octanaje promedio (R+M)/2</div>
       </div>
       <div class="stat-card">
-        <div class="num">N.° 1</div>
-        <div class="label" data-i18n="stat.label3">Primera Gasolina Extra producida en Colombia</div>
+        <div class="num">&gt;240 min</div>
+        <div class="label" data-i18n="pd.stat3.label">Excelente estabilidad a la oxidación</div>
       </div>
     </div>
   </div>
@@ -171,74 +206,74 @@
 
         <div class="pds-main">
 
-
-          <div class="pds-section">
-            <div class="pds-section-title"><span class="num">01</span><h2 data-i18n="section.desc">Descripción</h2></div>
+          <div class="pds-section" id="descripcion">
+            <div class="pds-section-title"><span class="num">01</span><h2 data-i18n="pd.sec.descripcion">Descripción</h2></div>
             <div class="prose">
-              <p data-i18n="desc.p1">Gasolina Premium, con alto octanaje (mínimo RON 95), que permite una combustión eficiente del motor asegurando su máxima potencia y larga vida útil. Reduce emisiones contaminantes.</p>
-              <p data-i18n="desc.p2">Petroil 90 fue la primera Gasolina Extra producida en Colombia con RON 95, un hito en la oferta de combustibles de alto desempeño en el país.</p>
+              <p data-i18n-html="pd.desc.p1"><strong>Petroil 90 Gasolina Premium</strong> es un combustible de alto octanaje diseñado para ofrecer una experiencia de conducción superior, proporcionando mayor potencia, respuesta inmediata y un desempeño más eficiente en motores de alto rendimiento.</p>
+              <p data-i18n="pd.desc.p2">Su formulación premium favorece una combustión más limpia y eficiente, ayudando a optimizar el rendimiento del motor y contribuyendo a una operación más confiable en cada trayecto. Cuenta con un índice de octano RON 95 y un octanaje promedio (R+M)/2 de 91.8, características que respaldan su desempeño superior.</p>
             </div>
           </div>
 
-          <div class="pds-section">
-            <div class="pds-section-title"><span class="num">02</span><h2 data-i18n="section.benefits">Aplicaciones y beneficios</h2></div>
-            <div class="pds-benefits">
+          <div class="pds-section" id="beneficios">
+            <div class="pds-section-title"><span class="num">02</span><h2 data-i18n="pd.sec.beneficios">Beneficios principales</h2></div>
+            <div class="pds-benefits pds-benefits--grid">
               <div class="pds-benefit">
-                <div class="icon-wrap"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="10" width="14" height="8" rx="1.5"/><path d="M17 13h2.2a1.8 1.8 0 011.8 1.8V16M7 10V7a2 2 0 012-2h2l3 3M6 18v2M13 18v2"/></svg></div>
+                <div class="icon-wrap"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17a8 8 0 1116 0M12 17l4.5-5M8 17h8"/></svg></div>
                 <div>
-                  <h4 data-i18n="benefit1.title">Motores de última generación</h4>
-                  <p data-i18n="benefit1.desc">Recomendado para uso en motores a gasolina de última generación que equipan turbocargadores y supercargadores.</p>
+                  <h4 data-i18n="pd.b1.title">Máxima potencia y respuesta</h4>
+                  <p data-i18n="pd.b1.desc">Su alto octanaje favorece una combustión eficiente que permite aprovechar mejor el desempeño del motor.</p>
                 </div>
               </div>
               <div class="pds-benefit">
-                <div class="icon-wrap"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+                <div class="icon-wrap"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 14c0 4 3 7 7 8 4-1 7-4 7-8V6l-7-3-7 3v8zM9.5 12l1.8 1.8L15 10.2"/></svg></div>
                 <div>
-                  <h4 data-i18n="benefit2.title">Protección del sistema de inyección</h4>
-                  <p data-i18n="benefit2.desc">Protege todos los componentes del sistema de inyección de combustible.</p>
+                  <h4 data-i18n="pd.b2.title">Protección para el motor</h4>
+                  <p data-i18n="pd.b2.desc">Ayuda a reducir fenómenos de detonación y promueve una operación más suave y eficiente.</p>
+                </div>
+              </div>
+              <div class="pds-benefit">
+                <div class="icon-wrap"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div>
+                <div>
+                  <h4 data-i18n="pd.b3.title">Combustión más limpia</h4>
+                  <p data-i18n="pd.b3.desc">Su formulación optimizada contribuye a una mejor calidad de combustión y menores residuos.</p>
+                </div>
+              </div>
+              <div class="pds-benefit">
+                <div class="icon-wrap"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg></div>
+                <div>
+                  <h4 data-i18n="pd.b4.title">Calidad premium</h4>
+                  <p data-i18n="pd.b4.desc">Combustible desarrollado para vehículos que demandan altos estándares de rendimiento y confiabilidad.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="pds-section">
-            <div class="pds-section-title"><span class="num">03</span><h2 data-i18n="section.specs">Características técnicas</h2></div>
-            <div class="pds-table-wrap">
-              <div class="pds-table-scroll">
-                <table class="pds-table">
-                  <thead>
-                    <tr>
-                      <th data-i18n="table.paramHead">Parámetro</th>
-                      <th class="pds-num-head">Petroil 90 GP</th>
-                      <th class="pds-num-head">Norma 40444</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="pds-param" data-i18n="table.row1">Contenido de Azufre (ppm)</td>
-                      <td class="pds-num">20 Máx.</td>
-                      <td class="pds-num">50</td>
-                    </tr>
-                    <tr>
-                      <td class="pds-param" data-i18n="table.row2">Octanaje (RON)</td>
-                      <td class="pds-num">95 – 99</td>
-                      <td class="pds-num">93</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+          <div class="pds-section" id="aplicaciones">
+            <div class="pds-section-title"><span class="num">03</span><h2 data-i18n="pd.sec.aplicaciones">Aplicaciones</h2></div>
+            <p class="pds-lead" data-i18n="pd.apps.lead">Ideal para:</p>
+            <ul class="pds-apps">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17a8 8 0 1116 0M12 17l4.5-5M8 17h8"/></svg><span data-i18n="pd.app1">Vehículos de alto desempeño.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg><span data-i18n="pd.app2">Automóviles premium.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15l2-5a2 2 0 012-1.4h10A2 2 0 0119 10l2 5v3H3v-3zM3 15h18M7 18v2M17 18v2"/></svg><span data-i18n="pd.app3">SUVs y camionetas modernas.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14a2 2 0 100-4 2 2 0 000 4zM12 10V3c3 0 4 3 2 5M13.7 13l6 3.5c-1.5 2.6-4.6 2.2-5.2-.4M10.3 13l-6 3.5c1.5 2.6 4.6 2.2 5.2-.4M12 14v7"/></svg><span data-i18n="pd.app4">Vehículos turboalimentados.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H4zM4 12h16M7 16v3M17 16v3M8 8h2M14 8h2"/></svg><span data-i18n="pd.app5">Flotas ejecutivas.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h12l-2 4 2 4H5"/></svg><span data-i18n="pd.app6">Vehículos deportivos.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15h6l3-5h3l2 5M9 10h4"/></svg><span data-i18n="pd.app7">Motocicletas de alto cilindraje.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/></svg><span data-i18n="pd.app8">Aplicaciones que requieren combustibles de alto octanaje.</span></li>
+            </ul>
           </div>
 
-          <div class="pds-section">
-            <div class="pds-section-title"><span class="num">04</span><h2 data-i18n="section.safety">Precauciones y manejo</h2> <span class="pds-badge" style="border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;" data-i18n="badge.example">Dato de ejemplo</span></div>
-            <div class="pds-safety">
-              <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 4.5v5C21 17 17 21 12 21S3 17 3 12.5v-5L12 3z"/><path d="M12 8v5M12 16.2v.1"/></svg></div>
-              <div>
-                <h4 data-i18n="safety.title">Clasificación NFPA</h4>
-                <p data-i18n="safety.text">Como toda gasolina, se clasifica como líquido inflamable clase IB de acuerdo con la norma 321 de la NFPA (National Fire Protection Association). Manipular conforme a los protocolos de almacenamiento y transporte de combustibles líquidos vigentes.</p>
-                <p style="margin-top:10px;" data-i18n-html="safety.cas">Número CAS: <span class="cas">86290-81-5</span></p>
-              </div>
-            </div>
+          <div class="pds-section" id="caracteristicas">
+            <div class="pds-section-title"><span class="num">04</span><h2 data-i18n="pd.sec.caracteristicas">Características destacadas</h2></div>
+            <ul class="pds-highlights">
+              <li data-i18n="pd.hl1">Octanaje RON 95.0.</li>
+              <li data-i18n="pd.hl2">Octanaje MON 88.6.</li>
+              <li data-i18n="pd.hl3">Índice (R+M)/2 de 91.8.</li>
+              <li data-i18n="pd.hl4">Bajo contenido de azufre (49.5 mg/kg).</li>
+              <li data-i18n="pd.hl5">Excelente estabilidad a la oxidación (&gt;240 min).</li>
+              <li data-i18n="pd.hl6">Libre de plomo.</li>
+              <li data-i18n="pd.hl7">Diseñada para un desempeño superior y una respuesta más eficiente del motor.</li>
+            </ul>
           </div>
 
         </div>
@@ -257,11 +292,12 @@
           <div class="pds-side-card">
             <h4 data-i18n="sidebar.quickTitle">Ficha rápida</h4>
             <ul class="pds-side-list">
-              <li><span data-i18n="sidebar.codeLabel">Código</span><b>P-90</b></li>
-              <li><span data-i18n="sidebar.categoryLabel">Categoría</span><b data-i18n="hero.badge1">Gasolina Premium</b></li>
-              <li><span data-i18n="sidebar.octaneLabel">Octanaje</span><b>RON 95 – 99</b></li>
-              <li><span data-i18n="sidebar.sulfurLabel">Azufre</span><b>≤ 20 ppm</b></li>
-              <li><span data-i18n="sidebar.refStandardLabel">Norma de referencia</span><b>Resolución 40444</b></li>
+              <li><span data-i18n="pd.side.codigo">Código</span><b>P-90</b></li>
+              <li><span data-i18n="pd.side1.label">Categoría</span><b data-i18n="pd.side1.value">Gasolina Premium</b></li>
+              <li><span data-i18n="pd.side2.label">Octanaje RON</span><b>95.0</b></li>
+              <li><span data-i18n="pd.side3.label">Índice (R+M)/2</span><b>91.8</b></li>
+              <li><span data-i18n="pd.side4.label">Azufre</span><b>49.5 mg/kg</b></li>
+              <li><span data-i18n="pd.side5.label">Plomo</span><b data-i18n="pd.side5.value">Libre</b></li>
             </ul>
           </div>
 
@@ -276,6 +312,19 @@
         </aside>
 
       </div>
+
+            <!-- AVE EMBLEMA DEL PRODUCTO -->
+      <section class="pds-emblem" id="ave-emblema" aria-labelledby="pdsEmblemTitle">
+        <div class="pds-emblem-media">
+          <img src="../assets/img/aves/halcon-peregrino.jpg" alt="Halcón peregrino en pleno vuelo" width="1200" height="663" loading="lazy" decoding="async">
+        </div>
+        <div class="pds-emblem-text">
+          <span class="eyebrow" data-i18n="pd.emblem.eyebrow">Selección Biodiversa · Ave emblema</span>
+          <h3 id="pdsEmblemTitle" data-i18n="pd.emblem.title">Halcón peregrino</h3>
+          <p data-i18n="pd.emblem.p1">El Halcón Peregrino es reconocido como el animal más veloz del planeta, capaz de superar los 300 km/h durante sus impresionantes picadas. Su precisión, potencia y capacidad de alcanzar máximos niveles de desempeño lo convierten en el símbolo perfecto de Petroil 90 Gasolina Premium.</p>
+          <p data-i18n="pd.emblem.p2">Al igual que esta extraordinaria ave, nuestro combustible ha sido diseñado para quienes buscan rendimiento superior, respuesta inmediata y máxima eficiencia en cada recorrido. El Halcón Peregrino representa la velocidad, la excelencia y el desempeño que impulsan cada gota de Petroil 90 Gasolina Premium.</p>
+        </div>
+      </section>
 
       <section class="pds-quote" aria-labelledby="pdsQuoteTitle">
         <div class="pds-quote-text">
@@ -411,46 +460,80 @@
   </div>
 </footer>
 
-<button class="chat-launcher" id="chatLauncher" aria-label="Abrir chat con AIRA, asistente virtual de Petroil">
-  <span class="demo-dot">DEMO</span>
-  <img class="launcher-avatar" src="../assets/img/aira-avatar.webp" alt="" width="60" height="60">
-</button>
+<!-- ═══════════════════════════════════════════════════════════
+     AIRA · asistente virtual (assets/css/aira.css + assets/js/aira.js)
+     Responde por coincidencia de palabras clave contra la base de
+     conocimiento de assets/js/aira-kb.js. Sin API ni backend.
+     data-base = prefijo de los enlaces de la base: '' en la raíz,
+     '../' si algún día se monta en una subcarpeta.
+     ═══════════════════════════════════════════════════════════ -->
+<div id="aira" data-base="../">
 
-<div class="chat-panel" id="chatPanel">
-  <div class="chat-head">
-    <div class="chat-avatar-wrap">
-      <img class="chat-avatar" src="../assets/img/aira-avatar.webp" alt="" width="40" height="40">
-      <span class="dot" aria-hidden="true"></span>
+  <div class="aira-teaser" id="airaTeaser">
+    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso">✕</button>
+    <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
+  </div>
+
+  <button class="aira-launcher" id="airaLauncher" type="button"
+          aria-label="Abrir el chat con AIRA, asistente virtual de Petroil"
+          aria-expanded="false" aria-controls="airaPanel">
+    <span class="aira-launcher-dot" aria-hidden="true"></span>
+    <img class="aira-launcher-avatar" src="../assets/img/aira-avatar.webp" alt="" width="62" height="62" decoding="async">
+  </button>
+
+  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con AIRA, asistente virtual de Petroil" aria-hidden="true">
+
+    <div class="aira-head">
+      <div class="aira-head-avatar">
+        <img src="../assets/img/aira-avatar.webp" alt="" width="42" height="42" decoding="async">
+        <span class="aira-online" aria-hidden="true"></span>
+      </div>
+      <div class="aira-head-txt">
+        <strong>AIRA</strong>
+        <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
+      </div>
+      <div class="aira-head-actions">
+        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" title="Reiniciar conversación">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
     </div>
-    <div>
-      <strong>AIRA</strong>
-      <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
+
+    <div class="aira-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <span data-i18n="aira.note">Asistente automático: responde con información publicada en este sitio.</span>
     </div>
-    <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
-  </div>
-  <div class="chat-disclaimer" data-i18n="chat.disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
-  <div class="chat-log" id="chatLog">
-    <div class="msg bot" data-i18n="chat.greeting">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div>
-  </div>
-  <div class="chat-quick" id="chatQuick">
-    <button class="quick-btn" data-q="productos" data-i18n="chat.q1">¿Qué productos ofrecen?</button>
-    <button class="quick-btn" data-q="ubicacion" data-i18n="chat.q2">¿Dónde están ubicados?</button>
-    <button class="quick-btn" data-q="certificaciones" data-i18n="chat.q3">Certificaciones ISO</button>
-    <button class="quick-btn" data-q="asesor" data-i18n="chat.q4">Hablar con un asesor</button>
-  </div>
-  <div class="chat-wa">
-    <a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg>
-      <span data-i18n="chat.wa">Continuar por WhatsApp</span>
-    </a>
+
+    <!-- role="log" + aria-live: los lectores de pantalla anuncian cada
+         respuesta nueva sin que el usuario pierda el foco del campo. -->
+    <div class="aira-log" id="airaLog" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+    <div class="aira-chips" id="airaChips" hidden></div>
+
+    <div class="aira-foot">
+      <form class="aira-form" id="airaForm" autocomplete="off">
+        <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para AIRA</label>
+        <input class="aira-input" id="airaInput" type="text" name="q"
+               placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder"
+               enterkeyhint="send" maxlength="200">
+        <button class="aira-send" type="submit" aria-label="Enviar pregunta">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <p class="aira-credit" data-i18n="aira.credit">¿Necesitas a una persona? Escríbenos al +57 311 333 7046</p>
+    </div>
+
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
 
 <script src="../assets/js/nav.js"></script>
 <script src="../assets/js/footer-map.js"></script>
-<script src="../assets/js/chatbot.js"></script>
+<script src="../assets/js/aira-kb.js"></script>
+<script src="../assets/js/aira.js"></script>
 <script src="../assets/js/cursor.js"></script>
 <script src="../assets/js/hero-particles.js"></script>
 <script src="../assets/js/i18n.js"></script>

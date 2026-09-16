@@ -180,7 +180,70 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 .pds-rel-more{margin-top:auto; padding-top:14px; font-size:.8rem; font-weight:600; color:var(--teal);}
 .pds-rel-card:hover .pds-rel-more{color:var(--navy);}
 
+/* Fichas "comerciales" (bondades y usos, sin tabla técnica) */
+.pds-benefits--grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;}
+.pds-benefits--grid .pds-benefit{flex-direction:column; gap:12px;}
+.pds-lead{color:var(--steel); font-size:.95rem; margin-bottom:14px;}
+.pds-apps{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;}
+.pds-apps li{
+  display:flex; align-items:center; gap:12px; padding:13px 16px; border:1px solid var(--line); border-radius:12px;
+  background:#fff; color:var(--navy); font-size:.9rem; font-weight:500; line-height:1.35; transition:border-color .2s ease;
+}
+.pds-apps li:hover{border-color:var(--teal-light);}
+.pds-apps svg{width:34px; height:34px; min-width:34px; padding:7px; border-radius:9px; background:rgba(53,154,204,.12); color:var(--teal);}
+.pds-highlights{display:flex; flex-direction:column; gap:2px; border:1px solid var(--line); border-radius:14px; padding:8px 22px; background:var(--mist);}
+.pds-highlights li{position:relative; padding:12px 0 12px 32px; color:var(--ink); font-size:.92rem; line-height:1.5; border-bottom:1px dashed var(--line);}
+.pds-highlights li:last-child{border-bottom:none;}
+.pds-highlights li::before{
+  content:''; position:absolute; left:0; top:13px; width:20px; height:20px; border-radius:50%; background:var(--navy);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C7F547' stroke-width='3'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E");
+  background-size:13px; background-repeat:no-repeat; background-position:center;
+}
+
+/* Hero con el ave emblema de fondo. Usa un recorte propio por ave
+   (assets/img/aves/hero-*.jpg, 1400x1120) con la cabeza del ave arriba y a
+   la derecha del centro: así queda sobre la tarjeta del producto y lejos del
+   texto. El velo es denso a la izquierda (texto) y ligero a la derecha.
+   Para un ave nueva, recorta la foto con ese mismo encuadre en vez de
+   ajustar object-position aquí. */
+.pds-hero--bird .page-hero-bg img{
+  position:absolute; top:0; right:0; left:auto; width:72%; height:100%; object-fit:cover; object-position:center 35%;
+  filter:brightness(1.12) saturate(1.2);
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 38%); mask-image:linear-gradient(90deg, transparent 0%, #000 38%);
+  animation:pdsBirdIn 1.4s ease-out both;
+}
+.pds-hero--bird .page-hero-bg::after{
+  background:
+    linear-gradient(180deg, rgba(8,12,65,0) 60%, rgba(8,12,65,.85) 100%),
+    linear-gradient(90deg, rgba(8,12,65,.95) 0%, rgba(8,12,65,.86) 32%, rgba(8,12,65,.26) 56%, rgba(8,12,65,.04) 100%);
+}
+@keyframes pdsBirdIn{from{opacity:0; transform:scale(1.05);} to{opacity:1; transform:none;}}
+/* Fotos con fondo claro (cielo, fondo blanco): se oscurecen para que no
+   rompan el hero oscuro. */
+.pds-hero--light .page-hero-bg img{filter:brightness(.8) saturate(1.2);}
+@media (prefers-reduced-motion:reduce){.pds-hero--bird .page-hero-bg img{animation:none;}}
+
+/* Ave emblema del producto */
+.pds-emblem{
+  margin-top:74px; display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); border-radius:20px; overflow:hidden;
+  background:var(--navy); color:#fff; box-shadow:0 30px 60px -30px rgba(8,12,65,.55);
+}
+.pds-emblem-media{position:relative; min-height:340px;}
+.pds-emblem-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:40% 35%;}
+.pds-emblem-text{padding:48px 52px; display:flex; flex-direction:column; justify-content:center;}
+.pds-emblem .eyebrow{color:var(--amber); display:block; margin-bottom:10px;}
+.pds-emblem h3{font-size:clamp(1.5rem,2.6vw,2.1rem); color:#fff; line-height:1.2;}
+.pds-emblem p{color:#dbe6ec; font-size:.98rem; line-height:1.7; margin-top:16px;}
+
 @media (max-width:980px){
+  .pds-hero--bird .page-hero-bg img{
+    top:-40px; right:auto; left:50%; width:max(100%,600px); height:auto; margin-left:calc(max(100%,600px) / -2);
+    -webkit-mask-image:linear-gradient(180deg, #000 55%, transparent 92%); mask-image:linear-gradient(180deg, #000 55%, transparent 92%);
+  }
+  .pds-hero--bird .page-hero-bg::after{background:linear-gradient(180deg, rgba(8,12,65,.3) 0%, rgba(8,12,65,.45) 35%, rgba(8,12,65,.9) 62%, rgba(8,12,65,.95) 100%);}
+  .pds-emblem{grid-template-columns:1fr;}
+  .pds-emblem-media{min-height:300px;}
+  .pds-emblem-text{padding:36px 30px;}
   .pds-grid{grid-template-columns:minmax(0,1fr);}
   .pds-side{position:relative; top:0; flex-direction:row; flex-wrap:wrap;}
   .pds-side-card{flex:1 1 260px;}
@@ -192,6 +255,7 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 }
 @media (max-width:720px){
   .pds-benefit{flex-direction:column;}
+  .pds-benefits--grid, .pds-apps{grid-template-columns:1fr;}
   .pds-side{flex-direction:column;}
   .pds-visual-card img{width:100%; max-width:370px;}
   .pds-quote{padding:30px 24px;}

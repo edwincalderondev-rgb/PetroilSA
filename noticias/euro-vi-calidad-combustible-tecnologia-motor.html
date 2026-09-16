@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../assets/css/article.css">
   <link rel="stylesheet" href="../assets/css/hero.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
-  <link rel="stylesheet" href="../assets/css/chatbot.css">
+  <link rel="stylesheet" href="../assets/css/aira.css">
   <link rel="stylesheet" href="../assets/css/cursor.css">
 <style>
   /* Estilos específicos del artículo (complementan petroil-styles.css) */
@@ -307,38 +307,81 @@
   </div>
 </footer>
 
-<button class="chat-launcher" id="chatLauncher" aria-label="Abrir chat con AIRA, asistente virtual de Petroil">
-  <span class="demo-dot">DEMO</span>
-  <img class="launcher-avatar" src="../assets/img/aira-avatar.webp" alt="" width="60" height="60">
-</button>
-<div class="chat-panel" id="chatPanel">
-  <div class="chat-head">
-    <div class="chat-avatar-wrap">
-      <img class="chat-avatar" src="../assets/img/aira-avatar.webp" alt="" width="40" height="40">
-      <span class="dot" aria-hidden="true"></span>
-    </div>
-    <div>
-      <strong>AIRA</strong>
-      <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
-    </div>
-    <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
+<!-- ═══════════════════════════════════════════════════════════
+     AIRA · asistente virtual (assets/css/aira.css + assets/js/aira.js)
+     Responde por coincidencia de palabras clave contra la base de
+     conocimiento de assets/js/aira-kb.js. Sin API ni backend.
+     data-base = prefijo de los enlaces de la base: '' en la raíz,
+     '../' si algún día se monta en una subcarpeta.
+     ═══════════════════════════════════════════════════════════ -->
+<div id="aira" data-base="../">
+
+  <div class="aira-teaser" id="airaTeaser">
+    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso">✕</button>
+    <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
   </div>
-  <div class="chat-disclaimer" data-i18n="chat.disclaimer">Este chat es una demostración con respuestas predefinidas de ejemplo.</div>
-  <div class="chat-log" id="chatLog"><div class="msg bot" data-i18n="chat.greeting">Hola 👋 Soy AIRA, tu asistente virtual de Petroil. Elige una opción para ver cómo funcionaría este módulo.</div></div>
-  <div class="chat-quick" id="chatQuick">
-    <button class="quick-btn" data-q="productos" data-i18n="chat.q1">¿Qué productos ofrecen?</button>
-    <button class="quick-btn" data-q="ubicacion" data-i18n="chat.q2">¿Dónde están ubicados?</button>
-    <button class="quick-btn" data-q="certificaciones" data-i18n="chat.q3">Certificaciones ISO</button>
-    <button class="quick-btn" data-q="asesor" data-i18n="chat.q4">Hablar con un asesor</button>
+
+  <button class="aira-launcher" id="airaLauncher" type="button"
+          aria-label="Abrir el chat con AIRA, asistente virtual de Petroil"
+          aria-expanded="false" aria-controls="airaPanel">
+    <span class="aira-launcher-dot" aria-hidden="true"></span>
+    <img class="aira-launcher-avatar" src="../assets/img/aira-avatar.webp" alt="" width="62" height="62" decoding="async">
+  </button>
+
+  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con AIRA, asistente virtual de Petroil" aria-hidden="true">
+
+    <div class="aira-head">
+      <div class="aira-head-avatar">
+        <img src="../assets/img/aira-avatar.webp" alt="" width="42" height="42" decoding="async">
+        <span class="aira-online" aria-hidden="true"></span>
+      </div>
+      <div class="aira-head-txt">
+        <strong>AIRA</strong>
+        <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
+      </div>
+      <div class="aira-head-actions">
+        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" title="Reiniciar conversación">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="aira-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <span data-i18n="aira.note">Asistente automático: responde con información publicada en este sitio.</span>
+    </div>
+
+    <!-- role="log" + aria-live: los lectores de pantalla anuncian cada
+         respuesta nueva sin que el usuario pierda el foco del campo. -->
+    <div class="aira-log" id="airaLog" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+    <div class="aira-chips" id="airaChips" hidden></div>
+
+    <div class="aira-foot">
+      <form class="aira-form" id="airaForm" autocomplete="off">
+        <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para AIRA</label>
+        <input class="aira-input" id="airaInput" type="text" name="q"
+               placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder"
+               enterkeyhint="send" maxlength="200">
+        <button class="aira-send" type="submit" aria-label="Enviar pregunta">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <p class="aira-credit" data-i18n="aira.credit">¿Necesitas a una persona? Escríbenos al +57 311 333 7046</p>
+    </div>
+
   </div>
-  <div class="chat-wa"><a href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg><span data-i18n="chat.wa">Continuar por WhatsApp</span></a></div>
 </div>
 
-<div class="toast" id="toast"></div>
+
 <script src="../assets/js/nav.js"></script>
 <script src="../assets/js/article-toc.js"></script>
 <script src="../assets/js/footer-map.js"></script>
-<script src="../assets/js/chatbot.js"></script>
+<script src="../assets/js/aira-kb.js"></script>
+<script src="../assets/js/aira.js"></script>
 <script src="../assets/js/cursor.js"></script>
 <script src="../assets/js/hero-particles.js"></script>
 <script src="../assets/js/i18n.js"></script>

@@ -421,7 +421,10 @@
         '<time class="aira-time">' + now() + '</time>' +
       '</div>';
     log.appendChild(row);
-    scrollDown();
+    /* El saludo inicial es largo (menú de temas incluido): si se
+       autodesliza al fondo, el "¡Hola! Soy AIRA" queda fuera de vista.
+       opts.scroll === false lo deja arriba para que se vea completo. */
+    if (opts.scroll !== false) scrollDown();
     return row;
   }
 
@@ -467,7 +470,7 @@
       '<p>¡Hola! 👋 Soy <b>AIRA</b>, la asistente virtual de Petroil.</p>' +
       '<p>Pregúntame lo que quieras con tus palabras — o elige un tema para empezar:</p>' +
       '<div class="aira-topics">' + cats + '</div>',
-      { feedback: false }
+      { feedback: false, scroll: false }
     );
 
     log.querySelectorAll('.aira-topic').forEach(function (btn) {
@@ -593,9 +596,14 @@
     input.value = '';
     setChips([]);
 
-    /* Primero lo conversacional (hola, gracias, ¿quién eres?). */
+    /* Lo conversacional (hola, gracias, ¿quién eres?) solo gana si la
+       pregunta NO trae también un tema que la base reconozca con
+       seguridad. Antes se evaluaba primero y "hola, ¿qué es una PQRS?"
+       o "necesito ayuda para cotizar" recibían un saludo genérico en
+       vez de la respuesta: la palabra "hola"/"ayuda" tapaba el tema. */
+    var results = search(text);
     var intent = matchIntent(text);
-    if (intent) {
+    if (intent && !(results.length && results[0].score >= CONFIDENT)) {
       busy = true;
       var ti = showTyping();
       setTimeout(function () {
@@ -608,7 +616,6 @@
       return;
     }
 
-    var results = search(text);
     if (!results.length || results[0].score < MAYBE) { respondUnknown(text); return; }
 
     var best = results[0];
@@ -681,13 +688,18 @@
     launcher.setAttribute('aria-expanded', 'true');
     launcher.setAttribute('aria-label', 'Cerrar el chat con AIRA');
     hideTeaser();
-    if (!log.children.length && !restore()) welcome();
+    var isFreshWelcome = false;
+    if (!log.children.length) {
+      if (!restore()) { welcome(); isFreshWelcome = true; }
+    }
     /* En móvil el panel ocupa la pantalla: enfocar el input abriría
        el teclado y taparía la conversación recién restaurada. */
     if (focusInput !== false && window.innerWidth > 720) {
       setTimeout(function () { input.focus(); }, 260);
     }
-    scrollDown();
+    /* Con saludo nuevo se queda arriba (ver addBot/welcome); si hay
+       conversación restaurada o en curso, sí baja hasta lo último. */
+    if (!isFreshWelcome) scrollDown();
   }
 
   function close() {

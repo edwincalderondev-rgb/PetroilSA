@@ -8,6 +8,10 @@
   "nav.noticias": { "es": "Noticias", "en": "News", "pt": "Notícias" },
   "nav.nosotros": { "es": "Nosotros", "en": "About", "pt": "Sobre nós" },
   "nav.descripcion": { "es": "Descripción", "en": "Description", "pt": "Descrição" },
+  "nav.beneficios": { "es": "Beneficios", "en": "Benefits", "pt": "Benefícios" },
+  "nav.aplicaciones": { "es": "Aplicaciones", "en": "Applications", "pt": "Aplicações" },
+  "nav.caracteristicas": { "es": "Características", "en": "Features", "pt": "Características" },
+  "nav.ave": { "es": "Ave emblema", "en": "Emblem bird", "pt": "Ave emblema" },
 
   "footer.tagline": { "es": "Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.", "en": "Improving the air we breathe. A hydrocarbon refinery committed to cleaner, more efficient fuels.", "pt": "Melhorando o ar que respiramos. Refinaria de hidrocarbonetos comprometida com combustíveis mais limpos e eficientes." },
   "footer.linksHeading": { "es": "Enlaces", "en": "Links", "pt": "Links" },

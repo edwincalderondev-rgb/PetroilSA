@@ -15,6 +15,9 @@
    ------------------------------------------------------------
    id    Identificador único (historial y seguimiento de contexto).
    cat   Categoría: agrupa la entrada en el menú "Explorar temas".
+         Una cat que NO esté en meta.categories (p. ej. 'lideres')
+         se busca igual, pero no aparece en ese menú: sirve para
+         entradas muy puntuales que alargarían la lista sin aportar.
    title Título corto — encabeza la respuesta y las sugerencias.
    p     FRASES clave (peso alto). Si la pregunta contiene la frase
          completa, gana casi seguro. Úsalas para desambiguar entre
@@ -31,45 +34,82 @@
           shield|drop), ext: true si abre en pestaña nueva}
    next  Sugerencias de seguimiento (chips). Deben ser preguntas
          que esta misma base sepa responder.
+
+   ------------------------------------------------------------
+   REGLAS DE CONTENIDO (léelas antes de editar)
+   ------------------------------------------------------------
+   1. Todo dato sale de una página publicada del sitio. Si cambias
+      una ficha técnica, actualiza aquí su entrada p-<código>.
+   2. Las fichas marcadas en el sitio como "Dato de ejemplo" (hoy:
+      40 A MAX, 60 salvo API/inflamación, 70, 87 R, RF-110+,
+      RF-100+) NO se citan como cifra real: AIRA dice que la ficha
+      oficial está pendiente. Mismo criterio para las páginas de
+      sostenibilidad y la política de datos, que el sitio rotula
+      como "página de ejemplo".
+   3. nosotros/ala-de-sable.html queda FUERA a propósito: es una
+      propuesta para decisión directiva, no está enlazada desde
+      ninguna página y el chat es público.
+   4. Nombres que el sitio aún usa distinto: el catálogo y el
+      formulario de contacto dicen "P-800 HCl"; la ficha nueva dice
+      "P-800 HC" / "800 HC Standard". Ambos están como keywords, y
+      el enlace de cotización usa P-800 HCl porque es el value del
+      checkbox en contacto.html.
    ============================================================ */
 
 window.AIRA_KB = {
   meta: {
-    version: '1.0',
+    version: '1.1',
     updated: '2026-09-16',
     /* Las categorías alimentan el menú "Explorar temas" del panel
-       de bienvenida, en este orden. */
+       de bienvenida, en este orden (rejilla de 2 columnas: mantener
+       un número par). */
     categories: [
-      { id: 'productos', label: 'Productos',        icon: 'drop',   hint: '15 combustibles y refinados' },
-      { id: 'empresa',   label: 'La empresa',       icon: 'info',   hint: 'Quiénes somos y hacia dónde vamos' },
-      { id: 'calidad',   label: 'Calidad y normas', icon: 'shield', hint: 'ISO, Euro VI, ISO 8217' },
-      { id: 'sectores',  label: 'Aplicaciones',     icon: 'ship',   hint: 'Marino, industria, minería…' },
-      { id: 'comercial', label: 'Cotizar',          icon: 'cart',   hint: 'Precios, alianzas y asesores' },
-      { id: 'contacto',  label: 'Contacto',         icon: 'map',    hint: 'Sedes, canales y PQRSF' }
+      { id: 'productos',      label: 'Productos',          icon: 'drop',   hint: '15 combustibles y refinados' },
+      { id: 'guia',           label: '¿Cuál elegir?',      icon: 'tool',   hint: 'Comparativas, azufre, BTU…' },
+      { id: 'sectores',       label: 'Aplicaciones',       icon: 'ship',   hint: 'Marino, calderas, minería…' },
+      { id: 'calidad',        label: 'Calidad y normas',   icon: 'shield', hint: 'ISO, Euro VI, IMO 2020' },
+      { id: 'comercial',      label: 'Cotizar',            icon: 'cart',   hint: 'Precios, despachos, asesores' },
+      { id: 'contacto',       label: 'Contacto y PQRSF',   icon: 'map',    hint: 'Sedes, canales y quejas' },
+      { id: 'empresa',        label: 'La empresa',         icon: 'info',   hint: 'Visión 2031, equipo, alianzas' },
+      { id: 'sostenibilidad', label: 'Sostenibilidad',     icon: 'leaf',   hint: 'Ambiente, comunidad, aves' }
     ]
   },
 
   /* Sinónimos: la clave es el término "oficial" que aparece en las
      keywords; los valores son las formas en que la gente lo escribe
      de verdad. El motor expande la pregunta con estos términos antes
-     de puntuar, así que no hace falta repetirlos en cada k. */
+     de puntuar, así que no hace falta repetirlos en cada k.
+     OJO con las siglas cortas (menos de 5 letras): el corrector de
+     erratas no las toca, así que TODAS sus variantes tienen que
+     estar aquí. Por eso "pqrs" no respondía: solo existía "pqrsf". */
   synonyms: {
     producto:     ['productos', 'articulo', 'articulos', 'referencia', 'referencias', 'portafolio', 'catalogo', 'linea', 'lineas'],
-    combustible:  ['combustibles', 'carburante', 'fuel', 'gasolina', 'diesel', 'acpm'],
-    diesel:       ['acpm', 'gasoil', 'gasoleo', 'petrodiesel'],
+    combustible:  ['combustibles', 'carburante', 'carburantes', 'fuel'],
+    diesel:       ['acpm', 'gasoil', 'gasoleo', 'petrodiesel', 'diesel'],
+    gasolina:     ['gasolinas', 'nafta automotriz'],
     precio:       ['precios', 'costo', 'costos', 'vale', 'valor', 'tarifa', 'tarifas', 'cotizacion', 'cotizar'],
-    comprar:      ['compra', 'adquirir', 'pedido', 'pedir', 'ordenar', 'venden', 'vender', 'venta', 'distribuidor'],
-    ubicacion:    ['ubicados', 'ubicado', 'direccion', 'sede', 'sedes', 'planta', 'oficina', 'quedan', 'queda'],
+    comprar:      ['compra', 'adquirir', 'pedido', 'pedir', 'ordenar', 'venden', 'vender', 'venta'],
+    ubicacion:    ['ubicados', 'ubicado', 'direccion', 'sede', 'sedes', 'oficina', 'quedan', 'queda'],
     contacto:     ['contactar', 'comunicar', 'escribir', 'llamar', 'telefono', 'celular', 'correo', 'email', 'mail'],
-    empresa:      ['compania', 'organizacion', 'petroil', 'ustedes', 'firma', 'negocio'],
-    certificacion:['certificaciones', 'certificado', 'certificados', 'norma', 'normas', 'acreditacion', 'iso'],
-    trabajo:      ['empleo', 'vacante', 'vacantes', 'trabajar', 'contratar', 'cv', 'curriculum', 'postular'],
-    ficha:        ['fichas', 'datasheet', 'especificaciones', 'especificacion', 'tecnica', 'tecnicas', 'parametros'],
-    ambiente:     ['ambiental', 'ecologico', 'verde', 'sostenible', 'sostenibilidad', 'emisiones', 'contaminacion'],
-    marino:       ['maritimo', 'barco', 'barcos', 'buque', 'buques', 'embarcacion', 'embarcaciones', 'naviera', 'bunker'],
-    mineria:      ['minero', 'minera', 'excavadora', 'retroexcavadora'],
+    empresa:      ['compania', 'organizacion', 'firma'],
+    certificacion:['certificaciones', 'certificado', 'certificados', 'acreditacion'],
+    trabajo:      ['empleo', 'vacante', 'vacantes', 'trabajar', 'cv', 'curriculum', 'postular'],
+    ficha:        ['fichas', 'datasheet', 'especificaciones', 'especificacion', 'parametros'],
+    ambiente:     ['ambiental', 'ecologico', 'sostenible', 'sostenibilidad', 'contaminacion'],
+    marino:       ['maritimo', 'maritima', 'marina', 'barco', 'barcos', 'buque', 'buques', 'embarcacion', 'embarcaciones', 'naviera', 'navieras', 'naval'],
+    mineria:      ['minero', 'minera', 'mineros', 'excavadora', 'retroexcavadora'],
     generacion:   ['generador', 'generadores', 'turbina', 'turbinas'],
-    azufre:       ['sulfur', 'sox', 'ppm']
+    azufre:       ['sulfur', 'sox'],
+    pqrsf:        ['pqrs', 'pqr', 'pqrsd', 'pqrf', 'pqrsf'],
+    queja:        ['quejas', 'quejarme', 'reclamo', 'reclamos', 'reclamar', 'inconformidad'],
+    caldera:      ['calderas', 'horno', 'hornos', 'termico', 'termicos'],
+    ave:          ['aves', 'pajaro', 'pajaros', 'emblema', 'emblemas', 'biodiversa'],
+    estacion:     ['estaciones', 'eds', 'gasolinera', 'gasolineras', 'bomba', 'bombas', 'tanquear'],
+    aviacion:     ['jet', 'avion', 'aviones', 'turbosina'],
+    calorifico:   ['btu', 'calorias', 'calor'],
+    octanaje:     ['octano', 'octanos', 'ron', 'mon'],
+    vehiculo:     ['vehiculos', 'carro', 'carros', 'auto', 'autos', 'automovil', 'camioneta', 'camionetas', 'moto', 'motos'],
+    diferencia:   ['diferencias', 'comparar', 'comparacion', 'versus', 'vs', 'mejor']
   },
 
   entries: [
@@ -79,95 +119,122 @@ window.AIRA_KB = {
       id: 'productos-general', cat: 'productos',
       title: 'Portafolio de productos',
       p: ['que productos', 'que productos ofrecen', 'que venden', 'que fabrican', 'que producen', 'lista de productos', 'todos los productos', 'que combustibles'],
-      k: 'producto portafolio catalogo combustible refinado oferta linea familia venden fabrican producen cuales',
-      a: '<p>Petroil produce <b>15 combustibles y refinados</b>, agrupados en 4 familias:</p>' +
+      k: 'producto portafolio catalogo combustible refinado oferta familia venden fabrican producen cuales',
+      a: '<p>El catálogo de Petroil reúne <b>15 combustibles y refinados</b> en 4 familias:</p>' +
          '<ul>' +
-         '<li><b>Combustibles</b> — Petroil 40 A MAX, ULSD Premium 50/10, Gasolina Premium 90, Gasolina Corriente 87 R y la línea Racing Fuel.</li>' +
-         '<li><b>Fuel Oils</b> — Petroil 250 (Fuel Oil #4), 800 G Green y 800 HCl.</li>' +
-         '<li><b>Marine</b> — Petroil 300 VLSFO y Petroil 500 Marine MGO.</li>' +
-         '<li><b>Especializados</b> — Nafta Virgen 60, Kerosene 70, Varsol 230 MS y el Mejorador de IFOS 100.</li>' +
+         '<li><b>Combustibles</b> — 40 A MAX, ULSD Premium 50/10, Gasolina Premium 90, Gasolina Corriente 87 R y la línea Racing Fuel.</li>' +
+         '<li><b>Fuel Oils</b> — 250 Plus FO #4, 800 G Green y 800 HC.</li>' +
+         '<li><b>Marine</b> — 300 VLSFO y 500 MGO.</li>' +
+         '<li><b>Especializados</b> — Nafta Virgen 60, Mejorador de IFOs 100, Varsol 230 MS y Kerosene 70.</li>' +
          '</ul>' +
-         '<p>Cada producto tiene su <b>ficha técnica</b> con parámetros de calidad, métodos de ensayo y aplicaciones.</p>',
+         '<p>La 87 R, la línea Racing Fuel, el 230 MS y el Kerosene 70 figuran en el catálogo como <b>en desarrollo</b>.</p>',
       links: [{ l: 'Ver catálogo completo', h: 'productos.html#catalogo', i: 'cart' }],
-      next: ['¿Cuál me sirve para uso marino?', '¿Qué es el ULSD Premium 50/10?', 'Quiero cotizar']
+      next: ['¿Cuál me sirve para uso marino?', '¿Qué combustible uso en calderas?', 'Quiero cotizar']
     },
     {
       id: 'familia-combustibles', cat: 'productos',
       title: 'Familia Combustibles',
       p: ['familia combustibles', 'combustibles automotores', 'gasolinas y diesel'],
-      k: 'combustible automotor carretera vehiculo vehiculos carro camion gasolina diesel familia',
-      a: '<p>La familia <b>Combustibles</b> reúne los productos para transporte y motores: ' +
-         '<b>Petroil 40 A MAX</b> (diésel de uso general con base orgánica renovable), ' +
-         '<b>ULSD Premium P-50/10</b> (diésel Euro VI), ' +
-         '<b>Gasolina Premium P-90</b> (RON 95–99), ' +
-         '<b>Gasolina Corriente P-87 R</b> (RON 87) y la línea <b>Racing Fuel</b> (RF-100+ y RF-110+).</p>',
+      k: 'automotor carretera familia transporte',
+      a: '<p><b>Combustibles</b>: soluciones para transporte, industria y generación.</p>' +
+         '<ul>' +
+         '<li><b>P-50/10 ULSD Premium</b> — diésel EURO VI / TIER 5, azufre ≤10 ppm.</li>' +
+         '<li><b>P-40 40 A MAX</b> — diésel de uso general con base orgánica renovable.</li>' +
+         '<li><b>P-90 Gasolina Premium</b> — RON 95, libre de plomo.</li>' +
+         '<li><b>P-87 R Gasolina Corriente</b> — RON 87 <i>(en desarrollo)</i>.</li>' +
+         '<li><b>RF-110+ y RF-100+ Racing Fuel</b> — competencia <i>(en desarrollo)</i>.</li>' +
+         '</ul>',
       links: [{ l: 'Abrir catálogo filtrado', h: 'productos.html?cat=combustibles#catalogo', i: 'cart' }],
-      next: ['¿Qué es el ULSD Premium 50/10?', '¿Tienen gasolina premium?']
+      next: ['¿Qué diésel me recomiendan?', '¿Qué gasolinas tienen?']
     },
     {
       id: 'familia-fueloils', cat: 'productos',
       title: 'Familia Fuel Oils',
       p: ['fuel oil', 'fuel oils', 'familia fuel oils'],
-      k: 'fuel oil oils industrial caldera calderas horno hornos generacion familia',
-      a: '<p>Los <b>Fuel Oils</b> están pensados para industria y generación de energía: ' +
-         '<b>Petroil 250</b> (Fuel Oil #4 ultra bajo en azufre), ' +
-         '<b>Petroil 800 G Green</b> (soluciones más limpias para uso industrial) y ' +
-         '<b>Petroil 800 HCl</b> (combustible no convencional con tecnología FISTech®).</p>',
+      k: 'oils familia industrial',
+      a: '<p><b>Fuel Oils</b>: altos rendimientos para procesos industriales.</p>' +
+         '<ul>' +
+         '<li><b>P-250 Petroil 250 Plus · FO #4</b> — ultrabajo azufre, motores TIER 3 y TIER 4, uso off-road.</li>' +
+         '<li><b>P-800 G Green</b> — combustible de transición con Tecnología FISTech®, hasta 45 % menos emisiones.</li>' +
+         '<li><b>P-800 HC Standard</b> — 135.000 BTU/galón para hornos y calderas.</li>' +
+         '</ul>',
       links: [{ l: 'Abrir catálogo filtrado', h: 'productos.html?cat=fuel-oils#catalogo', i: 'cart' }],
-      next: ['¿Qué es el Petroil 800 HCl?', '¿Qué es el Petroil 250?']
+      next: ['¿Qué diferencia hay entre el 800 G y el 800 HC?', '¿Qué es el Petroil 250?']
     },
     {
       id: 'familia-marine', cat: 'productos',
       title: 'Familia Marine',
       p: ['familia marine', 'combustible marino', 'combustibles marinos', 'productos marinos'],
-      k: 'marine marino maritimo barco buque embarcacion naviera bunker familia iso 8217 imo',
-      a: '<p>La familia <b>Marine</b> cubre la industria naviera bajo norma <b>ISO 8217</b>: ' +
-         '<b>Petroil 300 VLSFO</b> (Very Low Sulfur Fuel Oil, ISO 8217:2017) y ' +
-         '<b>Petroil 500 Marine MGO F.O.4</b> (ISO 8217:2021 para IMO 2020).</p>' +
-         '<p>El <b>Petroil 100 Mejorador de IFOS</b> complementa la línea como cutter para mezclas de bunker fuel.</p>',
+      k: 'marine familia',
+      a: '<p><b>Marine</b>: soluciones para el sector marítimo.</p>' +
+         '<ul>' +
+         '<li><b>P-300 VLSFO</b> — muy bajo azufre (0,303 % m/m), ISO 8217:2017, IMO 2020.</li>' +
+         '<li><b>P-500 MGO</b> — combustible marino tipo DMA, 0 % FAME, ISO 8217 para IMO 2020.</li>' +
+         '</ul>' +
+         '<p>Lo complementa el <b>P-100 Mejorador de IFOs</b>, un cutter para mezclas de bunker fuel.</p>',
       links: [{ l: 'Ver productos marinos', h: 'productos.html?sector=maritimo#catalogo', i: 'ship' }],
-      next: ['¿Qué es la norma ISO 8217?', '¿Qué es el Petroil 300 VLSFO?']
+      next: ['¿Qué diferencia hay entre el 300 y el 500?', '¿Qué es IMO 2020?']
     },
     {
       id: 'familia-especializados', cat: 'productos',
       title: 'Familia Especializados',
-      p: ['familia especializados', 'productos especializados', 'solventes'],
-      k: 'especializado especializados solvente disolvente nafta kerosene varsol aditivo quimica familia',
-      a: '<p>Los <b>Especializados</b> son refinados para procesos industriales y químicos: ' +
-         '<b>Petroil 60 Nafta Virgen</b>, <b>Petroil 70 Kerosene</b>, ' +
-         '<b>Petroil 230 MS · Varsol</b> (solvente) y <b>Petroil 100 Mejorador de IFOS</b> (aditivo).</p>',
+      p: ['familia especializados', 'productos especializados'],
+      k: 'especializado especializados aditivo aditivos mejoradores familia',
+      a: '<p><b>Especializados</b>: aditivos, mejoradores y refinados para procesos industriales.</p>' +
+         '<ul>' +
+         '<li><b>P-100 Mejorador de IFOs</b> — cutter para mezclas de IFO.</li>' +
+         '<li><b>P-60 Nafta Virgen</b> — materia prima para la industria química.</li>' +
+         '<li><b>P-230 MS · Varsol</b> — solvente industrial de limpieza y desengrase.</li>' +
+         '<li><b>P-70 Kerosene</b> — uso doméstico e industrial <i>(en desarrollo)</i>.</li>' +
+         '</ul>',
       links: [{ l: 'Abrir catálogo filtrado', h: 'productos.html?cat=especializados#catalogo', i: 'cart' }],
-      next: ['¿Qué es el Varsol 230 MS?', '¿Qué es la Nafta Virgen?']
+      next: ['¿Qué es el Varsol 230 MS?', '¿Qué es el mejorador de IFOs?']
+    },
+    {
+      id: 'en-desarrollo', cat: 'productos',
+      title: 'Productos en desarrollo',
+      p: ['en desarrollo', 'productos en desarrollo', 'estan en desarrollo', 'productos estan en desarrollo', 'proximos productos', 'nuevos productos'],
+      k: 'desarrollo pendiente proximamente nuevo nuevos borrador',
+      a: '<p>Cinco productos figuran en el catálogo como <b>en desarrollo</b>: <b>Gasolina Corriente 87 R</b>, <b>RF-110+ Racing Fuel</b>, <b>RF-100+ Racing Fuel</b>, <b>230 MS · Varsol</b> y <b>70 Kerosene</b>. El <b>40 A MAX</b> tampoco tiene aún ficha oficial publicada.</p>' +
+         '<p>Si te interesa alguno, el equipo comercial te informa disponibilidad y parámetros confirmados.</p>' +
+         '<p>A futuro, la ruta a 2031 contempla <b>Jet A-1, White Spirit y gasolinas especiales</b>.</p>',
+      links: [{ l: 'Consultar disponibilidad', h: 'contacto.html#formulario', i: 'mail' }],
+      next: ['¿Venden combustible de aviación?', '¿Qué productos ofrecen?']
     },
 
-    /* ══════════════════ PRODUCTOS · UNO POR UNO ══════════════════ */
+    /* ══════════════════ PRODUCTOS · UNO POR UNO ══════════════════
+       Fuente: la ficha técnica de cada producto. Las 9 fichas con
+       formato nuevo (Descripción / Beneficios / Aplicaciones /
+       Características / Ave emblema) tienen datos confirmados. */
     {
       id: 'p-50-10', cat: 'productos',
       title: 'Petroil 50 10 · ULSD Premium',
-      p: ['50 10', '5010', '50/10', 'ulsd', 'ultra bajo azufre', 'diesel euro vi', 'diesel premium'],
-      k: 'p5010 ulsd premium diesel cetano euro tier5 tier 5 servicio pesado alta gama azufre',
-      a: '<p><b>Petroil 50 10 — ULSD Premium</b> (código <b>P-50/10</b>) es un diésel de ultra bajo azufre que cumple la norma de emisiones <b>Euro VI</b>. Es el <b>primer producto de este tipo fabricado en Colombia</b>.</p>' +
+      p: ['50 10', '5010', '50/10', 'ulsd', 'ultra bajo azufre', 'diesel euro vi', 'diesel premium', 'tier 5'],
+      k: 'p5010 ulsd premium diesel cetano euro tier5 tier biocombustibles camiones tractocamiones flotas',
+      a: '<p><b>Petroil 50-10 ULSD Premium</b> (P-50/10) es un diésel de última generación, de ultra bajo contenido de azufre, desarrollado para cumplir <b>EURO VI</b> y ser compatible con <b>TIER 5</b>.</p>' +
          '<ul>' +
-         '<li>Número de cetano <b>&gt;50</b> (ASTM D613)</li>' +
-         '<li>Azufre <b>≤10 mg/kg</b> (ASTM D2622)</li>' +
-         '<li>Reduce hasta <b>8 %</b> el consumo frente al combustible convencional en Colombia</li>' +
+         '<li>Azufre <b>≤ 10 ppm</b></li>' +
+         '<li>Número de cetano <b>&gt; 50</b>: combustión más eficiente y mejor respuesta del motor</li>' +
+         '<li>Hasta <b>8 % menos consumo</b> frente a los diésel convencionales en Colombia</li>' +
+         '<li>Menores emisiones de CO₂, NOx, SOx y material particulado PM2.5 y PM10</li>' +
+         '<li>Incorpora biocombustibles</li>' +
          '</ul>' +
-         '<p>Diseñado para motores diésel <b>TIER 5 / Euro VI</b>: camiones, tractocamiones, maquinaria pesada, equipos de minería y agrícolas. También se recomienda en turbinas de generación por su bajo contenido de gomas (&lt;6 mg/100 ml).</p>',
+         '<p><b>Ideal para:</b> camiones y tractocamiones de última generación, vehículos diésel de alta gama, maquinaria pesada, equipos mineros y agrícolas, flotas de transporte, plantas de generación y equipos estacionarios industriales.</p>',
       links: [
         { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-50-10.html', i: 'doc' },
         { l: 'Cotizar este producto', h: 'contacto.html?producto=P-50%2F10#formulario', i: 'cart' }
       ],
-      next: ['¿Qué es Euro VI?', '¿Qué productos ofrecen?']
+      next: ['¿Qué es Euro VI?', '¿Qué diésel me recomiendan?']
     },
     {
       id: 'p-40', cat: 'productos',
       title: 'Petroil 40 A MAX',
-      p: ['40 a max', 'a max', 'petroil 40'],
-      k: 'p40 amax diesel general base organica renovable transporte construccion',
-      a: '<p><b>Petroil 40 A MAX</b> (código <b>P-40</b>) es un <b>diésel de uso general con contenidos de base orgánica renovable</b>, orientado a transporte, construcción e industria.</p>' +
-         '<p>Su ficha técnica detallada está en preparación; el equipo comercial puede enviarte los parámetros oficiales.</p>',
+      p: ['40 a max', 'a max', 'petroil 40', '40a max'],
+      k: 'p40 amax diesel general base organica renovable',
+      a: '<p><b>Petroil 40 A MAX</b> (P-40) es un <b>diésel de uso general con base orgánica renovable</b>.</p>' +
+         '<p>Su ficha técnica oficial todavía no está publicada: la página del producto muestra datos de ejemplo. El equipo comercial puede enviarte los parámetros confirmados.</p>',
       links: [
-        { l: 'Ver ficha del producto', h: 'fichas-tecnicas/ficha-tecnica-petroil-40-a-max.html', i: 'doc' },
+        { l: 'Ver página del producto', h: 'fichas-tecnicas/ficha-tecnica-petroil-40-a-max.html', i: 'doc' },
         { l: 'Pedir parámetros oficiales', h: 'contacto.html?producto=P-40#formulario', i: 'cart' }
       ],
       next: ['¿Qué es el ULSD Premium 50/10?', 'Quiero cotizar']
@@ -175,36 +242,188 @@ window.AIRA_KB = {
     {
       id: 'p-90', cat: 'productos',
       title: 'Petroil 90 · Gasolina Premium',
-      p: ['gasolina premium', 'petroil 90', 'gasolina extra', 'ron 95'],
-      k: 'p90 gasolina premium extra octanaje ron 95 99 alto rendimiento carretera',
-      a: '<p><b>Petroil 90 — Gasolina Premium</b> (código <b>P-90</b>) es la <b>primera gasolina extra producida en Colombia</b>, con <b>RON 95–99</b> y azufre <b>≤20 ppm</b>.</p>' +
-         '<p>Ofrece alto rendimiento y confiabilidad en carretera, con clasificación N.° 1 en corrosión a lámina de cobre.</p>',
+      p: ['gasolina premium', 'petroil 90', 'gasolina extra', 'ron 95', 'sin plomo', 'libre de plomo'],
+      k: 'p90 gasolina premium extra octanaje alto rendimiento plomo turbo turboalimentados deportivos',
+      a: '<p><b>Petroil 90 Gasolina Premium</b> (P-90) es una gasolina de alto octanaje —la <b>primera extra producida en Colombia</b>— para mayor potencia y respuesta inmediata.</p>' +
+         '<ul>' +
+         '<li>Octanaje <b>RON 95,0</b> · MON 88,6 · índice (R+M)/2 de <b>91,8</b></li>' +
+         '<li>Bajo contenido de azufre: <b>49,5 mg/kg</b></li>' +
+         '<li>Estabilidad a la oxidación <b>&gt; 240 min</b></li>' +
+         '<li><b>Libre de plomo</b>; ayuda a reducir la detonación</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> vehículos de alto desempeño, automóviles premium, SUVs y camionetas modernas, turboalimentados, flotas ejecutivas, deportivos y motocicletas de alto cilindraje.</p>',
       links: [
         { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-90.html', i: 'doc' },
         { l: 'Cotizar este producto', h: 'contacto.html?producto=P-90#formulario', i: 'cart' }
       ],
-      next: ['¿Tienen gasolina corriente?', '¿Qué es Racing Fuel?']
+      next: ['¿Qué gasolinas tienen?', '¿Qué es el octanaje?']
     },
     {
       id: 'p-87r', cat: 'productos',
       title: 'Petroil 87 R · Gasolina Corriente',
-      p: ['gasolina corriente', 'petroil 87', '87 r', 'ron 87'],
-      k: 'p87 gasolina corriente regular ron 87 vehiculo liviano livianos',
-      a: '<p><b>Petroil 87 R — Gasolina Corriente</b> (código <b>P-87 R</b>) es la <b>primera gasolina corriente producida en Colombia con RON 87</b>, con azufre <b>≤50 ppm</b>.</p>' +
-         '<p>Está formulada para vehículos livianos de uso corriente.</p>',
+      p: ['gasolina corriente', 'petroil 87', '87 r', 'ron 87', 'gasolina regular'],
+      k: 'p87 corriente regular livianos',
+      a: '<p><b>Petroil 87 R</b> (P-87 R) es la <b>primera Gasolina Corriente producida en Colombia</b>, con octanaje <b>RON 87</b>, para vehículos livianos de uso corriente.</p>' +
+         '<p>Figura en el catálogo como <b>en desarrollo</b>: su ficha oficial aún no está publicada, así que los demás parámetros de la página son de ejemplo.</p>',
       links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-87-r.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-87+R#formulario', i: 'cart' }
+        { l: 'Ver página del producto', h: 'fichas-tecnicas/ficha-tecnica-petroil-87-r.html', i: 'doc' },
+        { l: 'Consultar disponibilidad', h: 'contacto.html?producto=P-87%20R#formulario', i: 'cart' }
       ],
-      next: ['¿Tienen gasolina premium?', '¿Qué productos ofrecen?']
+      next: ['¿Tienen gasolina premium?', '¿Qué gasolinas tienen?']
+    },
+    {
+      id: 'racing', cat: 'productos',
+      title: 'Línea Racing Fuel',
+      p: ['racing', 'racing fuel', 'rf 110', 'rf 100', '110+', '100+', 'combustible de competencia'],
+      k: 'racing competencia booster carrera carreras deportivo rf110 rf100 compresion',
+      a: '<p>La línea <b>Racing Fuel</b> está pensada para motores de alto desempeño y competencia:</p>' +
+         '<ul>' +
+         '<li><b>RF-110+</b> — booster mejorador de octanaje, octanaje objetivo 110+ (referencial).</li>' +
+         '<li><b>RF-100+</b> — combustible de competencia, octanaje objetivo 100+ (referencial).</li>' +
+         '</ul>' +
+         '<p>Ambos figuran como <b>en desarrollo</b>; sus fichas oficiales aún no están publicadas.</p>',
+      links: [
+        { l: 'Página RF-110+', h: 'fichas-tecnicas/ficha-tecnica-petroil-rf-110.html', i: 'doc' },
+        { l: 'Página RF-100+', h: 'fichas-tecnicas/ficha-tecnica-petroil-100-plus-racing.html', i: 'doc' }
+      ],
+      next: ['¿Tienen gasolina premium?', '¿Qué es el octanaje?']
+    },
+    {
+      id: 'p-250', cat: 'productos',
+      title: 'Petroil 250 Plus · FO #4 (ULSFO)',
+      p: ['petroil 250', '250 plus', 'fuel oil 4', 'fuel oil #4', 'fo 4', 'ulsfo', 'tier 3', 'tier 4'],
+      k: 'p250 fo4 ulsfo ultrabajo azufre offroad off road cetano tier3 tier4 biocombustibles maquinaria',
+      a: '<p><b>Petroil 250 Plus – FO #4</b> (P-250) es un combustible industrial de alto desempeño con <b>ultrabajo contenido de azufre</b>, para equipos y motores que trabajan en condiciones intensivas.</p>' +
+         '<ul>' +
+         '<li>Hasta <b>8 % menos consumo</b> frente a combustibles convencionales en Colombia</li>' +
+         '<li>Número de cetano <b>&gt; 46</b></li>' +
+         '<li>Compatible con motores <b>TIER 3 y TIER 4</b></li>' +
+         '<li>Menores emisiones de CO₂, NOx, SOx y PM2.5/PM10 · incorpora biocombustibles</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> maquinaria pesada, equipos mineros y agrícolas, camiones y tractocamiones, equipos industriales off-road, plantas de generación y equipos estacionarios.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-250.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-250#formulario', i: 'cart' }
+      ],
+      next: ['¿Qué diésel me recomiendan?', '¿Qué tienen para minería?']
+    },
+    {
+      id: 'p-800g', cat: 'productos',
+      title: 'Petroil 800 G · Green',
+      p: ['800 g', '800 green', 'petroil 800 g', '800 hc green', 'linea green', 'fistech', 'alternativa al gas natural', 'combustible de transicion para hornos'],
+      k: 'p800g green fistech transicion renovable organica gas natural hornos calderas emisiones',
+      a: '<p><b>Petroil 800 HC Green</b> (P-800 G) es un <b>combustible de transición</b> producido con la exclusiva <b>Tecnología FISTech®</b>, que fusiona hidrocarburos con sustancias de base orgánica renovable.</p>' +
+         '<ul>' +
+         '<li>Hasta <b>45 % menos</b> gases de efecto invernadero y material particulado frente a productos tradicionales</li>' +
+         '<li>Alto poder calorífico: <b>excelente alternativa al gas natural</b> en hornos y calderas</li>' +
+         '<li>Reduce aromáticos, poli-aromáticos, hidrocarburos totales y azufre</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> hornos y calderas industriales, procesos térmicos de manufactura, plantas de producción y operaciones que buscan reducir su huella ambiental.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-800-g.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-800%20G#formulario', i: 'cart' }
+      ],
+      next: ['¿Qué diferencia hay entre el 800 G y el 800 HC?', '¿Qué es la transición energética?']
+    },
+    {
+      id: 'p-800hc', cat: 'productos',
+      title: 'Petroil 800 HC · Standard',
+      p: ['800 hc', '800 hcl', 'petroil 800 hc', 'petroil 800 hcl', '800 hc standard', '800 standard'],
+      k: 'p800hc p800hcl hcl standard hornos calderas termico btu poder calorifico fuel oil 6',
+      a: '<p><b>Petroil 800 HC Standard</b> (P-800 HC, en el catálogo P-800 HCl) es un combustible de alto desempeño diseñado para <b>aplicaciones térmicas industriales</b>: hornos y calderas.</p>' +
+         '<ul>' +
+         '<li>Alto poder calorífico: <b>135.000 BTU/galón</b></li>' +
+         '<li>Hasta <b>20 % menos</b> emisiones de GEI y material particulado frente al Fuel Oil #6 convencional</li>' +
+         '<li>Bajo contenido de azufre; mantiene altas temperaturas con menor consumo</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> hornos y calderas industriales, procesos térmicos de manufactura, plantas de producción, industrias de transformación y operaciones con generación continua de calor.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-800-hc.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-800%20HCl#formulario', i: 'cart' }
+      ],
+      next: ['¿Qué diferencia hay entre el 800 G y el 800 HC?', '¿Qué combustible uso en calderas?']
+    },
+    {
+      id: 'p-300', cat: 'productos',
+      title: 'Petroil 300 · VLSFO',
+      p: ['vlsfo', 'vls fuel oil', 'petroil 300', 'very low sulfur'],
+      k: 'p300 vlsfo muy bajo azufre inflamacion portacontenedores cabotaje carga',
+      a: '<p><b>Petroil 300 VLSFO</b> (P-300) es un combustible marino de <b>muy bajo contenido de azufre</b>, alineado con las regulaciones ambientales internacionales del sector.</p>' +
+         '<ul>' +
+         '<li>Azufre: <b>0,303 % m/m</b></li>' +
+         '<li>Punto de inflamación <b>&gt; 110 °C</b>: operación estable y segura</li>' +
+         '<li>Contribuye al cumplimiento de <b>IMO 2020</b> · norma ISO 8217:2017</li>' +
+         '<li>Alta estabilidad en almacenamiento y operación</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> buques de carga, portacontenedores y multipropósito, embarcaciones de cabotaje, transporte marítimo internacional, operaciones portuarias y generación de energía marina.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-300.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-300#formulario', i: 'cart' }
+      ],
+      next: ['¿Qué diferencia hay entre el 300 y el 500?', '¿Qué es IMO 2020?']
+    },
+    {
+      id: 'p-500', cat: 'productos',
+      title: 'Petroil 500 · MGO',
+      p: ['mgo', 'marine mgo', 'petroil 500', 'gasoleo marino', 'marine gas oil', 'dma', 'fame'],
+      k: 'p500 mgo dma fame biodiesel motores marinos portuarias auxiliares navales huella carbono',
+      a: '<p><b>Petroil 500 MGO</b> (Marine Gas Oil, P-500) es un combustible marino <b>tipo DMA</b> diseñado para una menor huella de carbono. <b>Cumple y excede</b> la norma <b>ISO 8217 para IMO 2020</b>.</p>' +
+         '<ul>' +
+         '<li>Poder calorífico: <b>138.000 BTU/galón</b></li>' +
+         '<li><b>0 % FAME</b> (libre de biodiésel), para mayor estabilidad</li>' +
+         '<li>Bajo contenido de azufre · excelente estabilidad de combustión</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> motores marinos, embarcaciones comerciales, transporte marítimo, operaciones portuarias, generación de energía en aplicaciones marítimas y equipos auxiliares navales.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-500.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-500#formulario', i: 'cart' }
+      ],
+      next: ['¿Qué diferencia hay entre el 300 y el 500?', '¿Qué es la norma ISO 8217?']
+    },
+    {
+      id: 'p-100', cat: 'productos',
+      title: 'Petroil 100 · Mejorador de IFOs',
+      p: ['mejorador de ifos', 'mejorador de ifo', 'ifos', 'ifo', 'cutter', 'petroil 100', 'intermediate fuel oil', 'sludge'],
+      k: 'p100 mifos mejorador cutter mezcla mezclas bunker asfaltenos floculacion sludge metales aromaticos parafinas',
+      a: '<p><b>Petroil 100 ULSFO</b> (P-100) es un <b>mejorador de IFOs</b> (Intermediate Fuel Oil) para la industria del búnker fuel. Por su bajo contenido de metales, aromáticos y parafinas es un excelente <b>cutter o agente de mezcla</b>.</p>' +
+         '<ul>' +
+         '<li>Se mezcla hasta <b>70 % en volumen</b> con crudos pesados y residuos con alto contenido de asfaltenos, <b>sin floculación ni sludge</b></li>' +
+         '<li>Mejora estabilidad, compatibilidad y filtrabilidad de las mezclas</li>' +
+         '<li>Poder calorífico: <b>133.000 BTU/galón</b> · bajo azufre</li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> mezclas de IFO, motores de compresión, hornos, calderas, generación de energía, minería y aplicaciones marítimas.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-100-mifos.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-100#formulario', i: 'cart' }
+      ],
+      next: ['¿Cuál me sirve para uso marino?', '¿Qué es el poder calorífico?']
+    },
+    {
+      id: 'p-230', cat: 'productos',
+      title: 'Petroil 230 MS · Varsol',
+      p: ['varsol', '230 ms', 'petroil 230', 'solvente', 'solvente industrial', 'desengrasante'],
+      k: 'p230 varsol solvente disolvente limpieza desengrase mantenimiento talleres piezas superficies',
+      a: '<p><b>Petroil 230 MS – Varsol</b> (P-230) es un <b>solvente industrial</b> de alta calidad para limpieza, desengrase y mantenimiento.</p>' +
+         '<ul>' +
+         '<li>Apariencia <b>clara y brillante</b></li>' +
+         '<li>Densidad a 15 °C: <b>797,6 kg/m³</b> · punto de inflamación <b>23 °C</b></li>' +
+         '<li>Alto nivel de recuperación del producto: <b>99 %</b></li>' +
+         '</ul>' +
+         '<p><b>Ideal para:</b> limpieza industrial, desengrase de piezas, mantenimiento de equipos, talleres, procesos de manufactura y preparación de superficies.</p>' +
+         '<p>En el catálogo figura como <i>en desarrollo</i>; confirma disponibilidad con el equipo comercial.</p>',
+      links: [
+        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-230-ms.html', i: 'doc' },
+        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-230#formulario', i: 'cart' }
+      ],
+      next: ['¿Qué es la Nafta Virgen?', '¿Qué tienen para limpieza industrial?']
     },
     {
       id: 'p-60', cat: 'productos',
       title: 'Petroil 60 · Nafta Virgen',
       p: ['nafta virgen', 'nafta', 'petroil 60'],
-      k: 'p60 nafta virgen destilado liviano alifatico pintura pinturas resina resinas acrilico diluyente crudo pesado petroquimica materia prima',
-      a: '<p><b>Petroil 60 — Nafta Virgen</b> (código <b>P-60</b>) es un destilado liviano con alto contenido de alifáticos: <b>58 °API</b> y punto de inflamación de <b>28 °C</b>.</p>' +
-         '<p>Es ideal para producir <b>disolventes, pinturas, resinas y acrílicos</b>, y funciona como excelente <b>diluyente para crudos pesados</b>.</p>',
+      k: 'p60 nafta virgen destilado liviano alifaticos pinturas resinas pegantes acrilicos diluyente crudos pesados quimica',
+      a: '<p><b>Petroil 60 Nafta Virgen</b> (P-60) es un destilado liviano con <b>alto contenido de alifáticos</b>: gravedad <b>58 °API</b> y punto de inflamación típico de <b>28 °C</b>.</p>' +
+         '<p>Es ideal para la <b>industria química</b> —pinturas, resinas, pegantes, acrílicos y disolventes— y es un excelente <b>diluyente para crudos pesados</b> en el sector Oil &amp; Gas.</p>',
       links: [
         { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-60.html', i: 'doc' },
         { l: 'Cotizar este producto', h: 'contacto.html?producto=P-60#formulario', i: 'cart' }
@@ -214,258 +433,243 @@ window.AIRA_KB = {
     {
       id: 'p-70', cat: 'productos',
       title: 'Petroil 70 · Kerosene',
-      p: ['kerosene', 'queroseno', 'petroil 70'],
-      k: 'p70 kerosene queroseno destilado ligero domestico industrial termico calefaccion',
-      a: '<p><b>Petroil 70 — Kerosene</b> (código <b>P-70</b>) es un destilado ligero para <b>uso doméstico e industrial</b>, con gravedad de <b>≈42–44 °API</b> y punto de inflamación <b>&gt;38 °C</b>.</p>' +
-         '<p>Se emplea en aplicaciones térmicas e industriales.</p>',
+      p: ['kerosene', 'queroseno', 'kerosen', 'petroil 70'],
+      k: 'p70 kerosene queroseno iluminacion calefaccion domestico',
+      a: '<p><b>Petroil 70 Kerosene</b> (P-70) es un destilado ligero de <b>uso doméstico e industrial</b>, empleado tradicionalmente para iluminación, calefacción y como solvente.</p>' +
+         '<p>Figura en el catálogo como <b>en desarrollo</b> y su ficha oficial aún no está publicada; el equipo comercial puede confirmarte parámetros y disponibilidad.</p>',
       links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-70-kerosene.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-70#formulario', i: 'cart' }
+        { l: 'Ver página del producto', h: 'fichas-tecnicas/ficha-tecnica-petroil-70-kerosene.html', i: 'doc' },
+        { l: 'Consultar disponibilidad', h: 'contacto.html?producto=P-70#formulario', i: 'cart' }
       ],
-      next: ['¿Qué es la Nafta Virgen?', '¿Qué productos ofrecen?']
-    },
-    {
-      id: 'p-100', cat: 'productos',
-      title: 'Petroil 100 · Mejorador de IFOS',
-      p: ['mejorador de ifos', 'ifos', 'cutter', 'petroil 100', 'mejorador'],
-      k: 'p100 mifos mejorador ifo bunker fuel cutter mezclador aditivo metales aromaticos parafinas mezcla marino',
-      a: '<p><b>Petroil 100 — Mejorador de IFOS</b> (código <b>P-100</b>) fue desarrollado para la industria del <b>Bunker Fuel versión IFO</b>.</p>' +
-         '<p>Por su bajo contenido de <b>metales, aromáticos y parafinas</b> (típico 100 ppm, punto de inflamación 98 °C) es el mejor <b>mezclador o cutter</b> para elaborar mezclas precisas, con incorporación de hasta el <b>70 %</b>.</p>',
-      links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-100-mifos.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-100#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué es el Petroil 300 VLSFO?', '¿Qué es la norma ISO 8217?']
-    },
-    {
-      id: 'p-230', cat: 'productos',
-      title: 'Petroil 230 MS · Varsol',
-      p: ['varsol', '230 ms', 'petroil 230', 'solvente'],
-      k: 'p230 varsol solvente disolvente destilado liviano torre atmosferica industria quimica limpieza construccion polivalente',
-      a: '<p><b>Petroil 230 MS — Varsol</b> (código <b>P-230</b>) es un destilado liviano refinado en torre atmosférica, comúnmente denominado <b>Varsol</b>.</p>' +
-         '<p>Es un producto <b>polivalente</b> usado como disolvente en la <b>industria química y de la limpieza</b>. Densidad 0,797 kg/m³ y punto de inflamación mínimo de 23 °C.</p>',
-      links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-230-ms.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-230#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué es la Nafta Virgen?', '¿Qué productos especializados tienen?']
-    },
-    {
-      id: 'p-250', cat: 'productos',
-      title: 'Petroil 250 · Fuel Oil #4',
-      p: ['fuel oil 4', 'fuel oil #4', 'petroil 250', 'ulsfo'],
-      k: 'p250 fuel oil 4 ulsfo ultra bajo azufre generacion industria fuera de carretera off road combustion motor emisiones',
-      a: '<p><b>Petroil 250 — Fuel Oil #4</b> (código <b>P-250</b>) es un destilado de la categoría Fuel Oil No. 4 que integra tecnología de punta en su refinación.</p>' +
-         '<ul>' +
-         '<li>Azufre <b>máx. 120 ppm</b> (ultra bajo azufre)</li>' +
-         '<li>Punto de inflamación <b>62 °C</b></li>' +
-         '<li>Mejora la combustión, <b>incrementa la vida útil del motor</b> y reduce emisiones contaminantes</li>' +
-         '</ul>' +
-         '<p>Está destinado a <b>generación de energía e industria</b>, en uso fuera de carretera.</p>',
-      links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-250.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-250#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué tienen para generación de energía?', '¿Qué es el Petroil 800 HCl?']
-    },
-    {
-      id: 'p-300', cat: 'productos',
-      title: 'Petroil 300 · VLS Fuel Oil',
-      p: ['vlsfo', 'vls fuel oil', 'petroil 300', 'very low sulfur'],
-      k: 'p300 vlsfo muy bajo azufre industria marina iso 8217 2017 estabilidad btu barco buque',
-      a: '<p><b>Petroil 300 — VLS Fuel Oil</b> (código <b>P-300</b>) es un <i>Very Low Sulfur Fuel Oil</i> destinado a la <b>industria marina</b>.</p>' +
-         '<ul>' +
-         '<li>Cumple todos los parámetros de la norma <b>ISO 8217 de 2017</b></li>' +
-         '<li>Azufre <b>máx. 3.520 ppm</b></li>' +
-         '<li>Poder calorífico <b>18.157 BTU/lb</b> · Punto de inflamación 72 °C</li>' +
-         '</ul>',
-      links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-300.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-300#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué es la norma ISO 8217?', '¿Qué es el Petroil 500 MGO?']
-    },
-    {
-      id: 'p-500', cat: 'productos',
-      title: 'Petroil 500 · Marine MGO F.O.4',
-      p: ['mgo', 'marine mgo', 'petroil 500', 'gasoleo marino', 'imo 2020'],
-      k: 'p500 mgo marine marino gasoleo destilado medio fuel oil 4 iso 8217 2021 imo 2020 huella carbono naviera',
-      a: '<p><b>Petroil 500 — Marine MGO F.O.4</b> (código <b>P-500</b>) es un destilado medio de la categoría Fuel Oil No. 4, diseñado para generar una <b>menor huella de carbono</b>.</p>' +
-         '<ul>' +
-         '<li>Cumple y <b>excede</b> los requerimientos de la norma <b>ISO 8217:2021 para IMO 2020</b></li>' +
-         '<li>Azufre <b>máx. 780 ppm</b></li>' +
-         '<li>Índice cetano <b>mín. 44,3</b> · Punto de inflamación 63 °C</li>' +
-         '</ul>',
-      links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-500.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-500#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué es la norma ISO 8217?', '¿Qué es el Petroil 300 VLSFO?']
-    },
-    {
-      id: 'p-800g', cat: 'productos',
-      title: 'Petroil 800 G · Green',
-      p: ['800 g', '800 green', 'petroil 800 g', 'linea green'],
-      k: 'p800g green limpio industrial linea verde',
-      a: '<p><b>Petroil 800 G — Green</b> (código <b>P-800 G</b>) pertenece a la <b>línea Green</b>: soluciones más limpias para uso industrial y generación.</p>' +
-         '<p>Sus parámetros técnicos están en definición; el equipo comercial puede confirmarte disponibilidad y especificaciones.</p>',
-      links: [
-        { l: 'Ver ficha del producto', h: 'fichas-tecnicas/ficha-tecnica-petroil-800-g.html', i: 'doc' },
-        { l: 'Consultar disponibilidad', h: 'contacto.html?producto=P-800+G#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué es el Petroil 800 HCl?', '¿Qué hacen por el medio ambiente?']
-    },
-    {
-      id: 'p-800hcl', cat: 'productos',
-      title: 'Petroil 800 HCl',
-      p: ['800 hcl', '800 hc', 'petroil 800 hcl', 'fistech'],
-      k: 'p800hcl no convencional fistech tecnologia patentada primero colombia industrial btu emisiones reduccion',
-      a: '<p><b>Petroil 800 HCl</b> (código <b>P-800 HCl</b>) es un <b>combustible no convencional</b> producido con la tecnología patentada <b>FISTech®</b> — el primero de su tipo producido en Colombia.</p>' +
-         '<ul>' +
-         '<li>Reducción de emisiones de hasta <b>-45 %</b></li>' +
-         '<li>Poder calorífico típico <b>14.579 BTU/lb</b></li>' +
-         '<li>Punto de inflamación típico <b>110 °C</b></li>' +
-         '</ul>' +
-         '<p>Está destinado a procesos industriales.</p>',
-      links: [
-        { l: 'Ficha técnica completa', h: 'fichas-tecnicas/ficha-tecnica-petroil-800-hc.html', i: 'doc' },
-        { l: 'Cotizar este producto', h: 'contacto.html?producto=P-800+HCl#formulario', i: 'cart' }
-      ],
-      next: ['¿Qué es el Petroil 250?', '¿Qué hacen por el medio ambiente?']
-    },
-    {
-      id: 'racing', cat: 'productos',
-      title: 'Línea Racing Fuel',
-      p: ['racing', 'racing fuel', 'competencia', 'rf 110', 'rf 100', '110+', '100+'],
-      k: 'racing fuel competencia octanaje booster alto desempeno carrera motor deportivo rf110 rf100',
-      a: '<p>La línea <b>Racing Fuel</b> está formulada para motores de alto desempeño y competencia:</p>' +
-         '<ul>' +
-         '<li><b>RF-110+ · Racing Fuel</b> — booster mejorador de octanaje, <b>110+</b>.</li>' +
-         '<li><b>RF-100+ · 100+ Racing Fuel</b> — combustible de competencia de alto desempeño.</li>' +
-         '</ul>' +
-         '<p>Las fichas oficiales de esta línea están en preparación.</p>',
-      links: [
-        { l: 'Ficha RF 110+', h: 'fichas-tecnicas/ficha-tecnica-petroil-rf-110.html', i: 'doc' },
-        { l: 'Ficha 100+ Racing', h: 'fichas-tecnicas/ficha-tecnica-petroil-100-plus-racing.html', i: 'doc' }
-      ],
-      next: ['¿Tienen gasolina premium?', 'Quiero cotizar']
+      next: ['¿Qué productos están en desarrollo?', '¿Qué productos ofrecen?']
     },
 
-    /* ══════════════════ SECTORES / APLICACIONES ══════════════════ */
+    /* ══════════════════ ¿CUÁL ELEGIR? · COMPARATIVAS Y CONCEPTOS ══════════════════
+       Las preguntas "¿qué diferencia hay…?" y "¿cuál tiene menos
+       azufre?" cruzan varias fichas; sin estas entradas el motor
+       caía en un producto suelto y no respondía la comparación. */
+    {
+      id: 'comparar-marinos', cat: 'guia',
+      title: 'VLSFO 300 vs MGO 500',
+      p: ['diferencia entre el 300 y el 500', 'diferencia entre vlsfo y mgo', 'vlsfo o mgo', 'mgo o vlsfo', '300 o 500', '500 o 300', 'diferencia con el petroil 500', 'diferencia con el petroil 300'],
+      k: 'diferencia vlsfo mgo 300 500 marino comparar',
+      a: '<p>Ambos son combustibles marinos alineados con <b>IMO 2020</b>, pero no son iguales:</p>' +
+         '<ul>' +
+         '<li><b>Petroil 300 VLSFO</b> — fuel oil de muy bajo azufre (<b>0,303 % m/m</b>), punto de inflamación <b>&gt; 110 °C</b>, norma ISO 8217:2017. Pensado para buques de carga, portacontenedores, multipropósito y cabotaje.</li>' +
+         '<li><b>Petroil 500 MGO</b> — gasóleo marino <b>tipo DMA</b>, <b>0 % FAME</b>, <b>138.000 BTU/galón</b>, cumple y excede ISO 8217 para IMO 2020. Pensado para motores marinos, embarcaciones comerciales y equipos auxiliares navales.</li>' +
+         '</ul>' +
+         '<p>La elección depende del motor y de la especificación de tu embarcación: un asesor te ayuda a confirmarlo.</p>',
+      links: [
+        { l: 'Ficha Petroil 300 VLSFO', h: 'fichas-tecnicas/ficha-tecnica-petroil-300.html', i: 'doc' },
+        { l: 'Ficha Petroil 500 MGO', h: 'fichas-tecnicas/ficha-tecnica-petroil-500.html', i: 'doc' }
+      ],
+      next: ['¿Qué es IMO 2020?', 'Hablar con un asesor']
+    },
+    {
+      id: 'comparar-800', cat: 'guia',
+      title: '800 G Green vs 800 HC Standard',
+      p: ['diferencia entre el 800 g y el 800 hc', 'diferencia entre 800 g y 800 hc', '800 g o 800 hc', '800 hc o 800 g', 'green o standard', 'diferencia entre green y standard'],
+      k: 'diferencia 800 green standard hc hcl comparar hornos calderas',
+      a: '<p>Los dos están diseñados para <b>hornos y calderas industriales</b>. La diferencia está en el enfoque:</p>' +
+         '<ul>' +
+         '<li><b>800 G Green</b> — <b>combustible de transición</b> con Tecnología <b>FISTech®</b> (hidrocarburos + base orgánica renovable). Hasta <b>45 % menos</b> GEI y material particulado frente a productos tradicionales; alternativa al gas natural.</li>' +
+         '<li><b>800 HC Standard</b> — máximo rendimiento térmico: <b>135.000 BTU/galón</b>, hasta <b>20 % menos</b> emisiones frente al Fuel Oil #6 convencional, bajo azufre.</li>' +
+         '</ul>' +
+         '<p>Si tu prioridad es reducir huella ambiental, apunta al Green; si es poder calorífico con menos consumo, al HC Standard.</p>',
+      links: [
+        { l: 'Ficha 800 G Green', h: 'fichas-tecnicas/ficha-tecnica-petroil-800-g.html', i: 'doc' },
+        { l: 'Ficha 800 HC Standard', h: 'fichas-tecnicas/ficha-tecnica-petroil-800-hc.html', i: 'doc' }
+      ],
+      next: ['¿Qué combustible uso en calderas?', 'Quiero cotizar']
+    },
+    {
+      id: 'comparar-diesel', cat: 'guia',
+      title: '¿Qué diésel elegir?',
+      p: ['que diesel me recomiendan', 'que diesel tienen', 'cual diesel', 'otros diesel', 'diferencia entre el 50 10 y el 250', 'diferencia entre 5010 y 250', 'que es tier', 'tecnologia tier'],
+      k: 'diesel acpm recomiendan elegir cual diferencia tier',
+      a: '<p>Petroil tiene tres opciones de la línea diésel / destilados:</p>' +
+         '<ul>' +
+         '<li><b>50-10 ULSD Premium</b> — para motores <b>EURO VI y TIER 5</b>: azufre ≤10 ppm, cetano &gt;50. Camiones de última generación, flotas, alta gama.</li>' +
+         '<li><b>250 Plus FO #4</b> — para motores <b>TIER 3 y TIER 4</b> en trabajo intensivo off-road: ultrabajo azufre, cetano &gt;46. Maquinaria pesada, minería, generación.</li>' +
+         '<li><b>40 A MAX</b> — diésel de uso general con base orgánica renovable <i>(ficha oficial pendiente)</i>.</li>' +
+         '</ul>' +
+         '<p>El 50-10 y el 250 ofrecen hasta <b>8 % menos consumo</b> frente a combustibles convencionales en Colombia. La clave es la tecnología de tu motor (TIER / EURO).</p>',
+      links: [
+        { l: 'Ficha 50-10 ULSD Premium', h: 'fichas-tecnicas/ficha-tecnica-petroil-50-10.html', i: 'doc' },
+        { l: 'Ficha 250 Plus FO #4', h: 'fichas-tecnicas/ficha-tecnica-petroil-250.html', i: 'doc' }
+      ],
+      next: ['¿Qué es Euro VI?', '¿Qué es el número de cetano?']
+    },
+    {
+      id: 'comparar-gasolinas', cat: 'guia',
+      title: '¿Qué gasolinas tienen?',
+      p: ['que gasolinas tienen', 'que gasolina tienen', 'tipos de gasolina', 'venden gasolina', 'gasolina corriente o premium', 'diferencia entre gasolina corriente y premium'],
+      k: 'gasolina gasolinas tipos corriente premium extra',
+      a: '<ul>' +
+         '<li><b>Petroil 90 Gasolina Premium</b> — RON 95, (R+M)/2 91,8, libre de plomo. Para vehículos de alto desempeño, turbo, SUVs y motos de alto cilindraje.</li>' +
+         '<li><b>Petroil 87 R Gasolina Corriente</b> — RON 87, para vehículos livianos <i>(en desarrollo)</i>.</li>' +
+         '<li><b>Racing Fuel RF-110+ y RF-100+</b> — para competencia <i>(en desarrollo)</i>.</li>' +
+         '</ul>' +
+         '<p>A mayor octanaje, mayor resistencia a la detonación: la premium es para motores que la exigen.</p>',
+      links: [{ l: 'Ver combustibles en el catálogo', h: 'productos.html?cat=combustibles#catalogo', i: 'cart' }],
+      next: ['¿Qué es el octanaje?', '¿Tienen gasolina premium?']
+    },
+    {
+      id: 'azufre', cat: 'guia',
+      title: 'Contenido de azufre',
+      p: ['contenido de azufre', 'cuanto azufre', 'menos azufre', 'por que importa el azufre', 'que es ppm'],
+      k: 'azufre ppm sulfur sox contenido',
+      a: '<p>El azufre importa porque satura y desactiva los sistemas de control de emisiones de los motores modernos (catalizadores SCR y filtros DPF). En Colombia el diésel no puede superar <b>10 ppm</b> desde el 1 de enero de 2025.</p>' +
+         '<ul>' +
+         '<li><b>50-10 ULSD Premium</b>: ≤ 10 ppm</li>' +
+         '<li><b>250 Plus FO #4</b>: ultrabajo contenido</li>' +
+         '<li><b>90 Gasolina Premium</b>: 49,5 mg/kg</li>' +
+         '<li><b>300 VLSFO</b>: 0,303 % m/m (muy bajo, para uso marino)</li>' +
+         '<li><b>500 MGO</b>, <b>100 Mejorador de IFOs</b>, <b>800 HC</b> y <b>800 G</b>: bajo contenido</li>' +
+         '</ul>',
+      links: [{ l: 'Leer: Euro VI y el azufre', h: 'noticias/euro-vi-calidad-combustible-tecnologia-motor.html', i: 'news' }],
+      next: ['¿Qué es Euro VI?', '¿Qué es el ULSD Premium 50/10?']
+    },
+    {
+      id: 'cetano', cat: 'guia',
+      title: 'Número de cetano',
+      p: ['numero de cetano', 'que es el cetano', 'indice de cetano', 'cetanaje'],
+      k: 'cetano cetanaje combustion ignicion lubricidad',
+      a: '<p>El <b>número de cetano</b> mide la calidad de ignición de un diésel: junto con la lubricidad, determina qué tan eficiente es la combustión y cuánto desgaste sufren los componentes de inyección.</p>' +
+         '<ul>' +
+         '<li><b>50-10 ULSD Premium</b>: cetano &gt; 50</li>' +
+         '<li><b>250 Plus FO #4</b>: cetano &gt; 46</li>' +
+         '</ul>' +
+         '<p>Un cetano más alto se traduce en mejor respuesta del motor y combustión más limpia.</p>',
+      links: [{ l: 'Leer: calidad del diésel y Euro VI', h: 'noticias/euro-vi-calidad-combustible-tecnologia-motor.html', i: 'news' }],
+      next: ['¿Qué diésel me recomiendan?', '¿Qué es el contenido de azufre?']
+    },
+    {
+      id: 'octanaje', cat: 'guia',
+      title: 'Octanaje (RON, MON)',
+      p: ['que es el octanaje', 'cuanto octanaje', 'que es ron', 'indice de octano', 'r m 2'],
+      k: 'octanaje octano ron mon detonacion cascabeleo',
+      a: '<p>El <b>octanaje</b> indica la resistencia de una gasolina a la detonación. Se expresa como <b>RON</b>, <b>MON</b> o su promedio <b>(R+M)/2</b>.</p>' +
+         '<ul>' +
+         '<li><b>90 Gasolina Premium</b>: RON 95,0 · MON 88,6 · (R+M)/2 91,8</li>' +
+         '<li><b>87 R Gasolina Corriente</b>: RON 87</li>' +
+         '<li><b>RF-110+ / RF-100+ Racing Fuel</b>: octanaje objetivo 110+ y 100+ (referencial)</li>' +
+         '</ul>',
+      links: [{ l: 'Ficha Gasolina Premium 90', h: 'fichas-tecnicas/ficha-tecnica-petroil-90.html', i: 'doc' }],
+      next: ['¿Qué gasolinas tienen?', '¿Qué es Racing Fuel?']
+    },
+    {
+      id: 'poder-calorifico', cat: 'guia',
+      title: 'Poder calorífico (BTU)',
+      p: ['poder calorifico', 'que es el poder calorifico', 'contenido energetico', 'cual tiene mas btu', 'cuantos btu tienen', 'btu de sus productos'],
+      k: 'calorifico btu energia energetico galon calor rendimiento',
+      a: '<p>El <b>poder calorífico</b> es la energía que entrega un combustible al quemarse: a más BTU por galón, menos consumo para el mismo trabajo térmico.</p>' +
+         '<ul>' +
+         '<li><b>500 MGO</b>: 138.000 BTU/galón</li>' +
+         '<li><b>800 HC Standard</b>: 135.000 BTU/galón</li>' +
+         '<li><b>100 Mejorador de IFOs</b>: 133.000 BTU/galón</li>' +
+         '<li><b>800 G Green</b>: alto poder calorífico, alternativa al gas natural</li>' +
+         '</ul>',
+      links: [{ l: 'Ver Fuel Oils en el catálogo', h: 'productos.html?cat=fuel-oils#catalogo', i: 'cart' }],
+      next: ['¿Qué combustible uso en calderas?', '¿Qué diferencia hay entre el 800 G y el 800 HC?']
+    },
+    {
+      id: 'biocombustibles', cat: 'guia',
+      title: 'Biocombustibles y base renovable',
+      p: ['biocombustibles', 'biodiesel', 'base organica renovable', 'renovable'],
+      k: 'biocombustible biocombustibles biodiesel fame renovable organica organico',
+      a: '<ul>' +
+         '<li><b>50-10 ULSD Premium</b> y <b>250 Plus FO #4</b> incorporan biocombustibles.</li>' +
+         '<li><b>40 A MAX</b> es un diésel con base orgánica renovable.</li>' +
+         '<li><b>800 G Green</b> usa Tecnología FISTech®, que fusiona hidrocarburos con sustancias de base orgánica renovable.</li>' +
+         '<li><b>500 MGO</b> es, a propósito, <b>0 % FAME</b> (libre de biodiésel) para mayor estabilidad en uso marino.</li>' +
+         '</ul>',
+      links: [{ l: 'Ver el portafolio', h: 'productos.html#catalogo', i: 'cart' }],
+      next: ['¿Qué es el Petroil 800 G?', '¿Qué es la transición energética?']
+    },
+
+    /* ══════════════════ APLICACIONES POR SECTOR ══════════════════ */
     {
       id: 'sector-maritimo', cat: 'sectores',
       title: 'Uso marino',
-      p: ['uso marino', 'para barcos', 'para buques', 'sector maritimo', 'combustible para embarcaciones', 'cual me sirve para uso marino'],
-      k: 'marino maritimo barco buque embarcacion naviera flota bunker puerto mgo vlsfo hsfo',
-      a: '<p>Para el sector marítimo Petroil ofrece <b>MGO, VLSFO y HSFO</b> para todo tipo de embarcaciones, bajo la norma <b>ISO 8217</b> para <b>IMO 2020</b>.</p>' +
-         '<p>Los productos clave son <b>Petroil 500 Marine MGO</b> (ISO 8217:2021), <b>Petroil 300 VLSFO</b> (ISO 8217:2017) y el <b>Petroil 100 Mejorador de IFOS</b> como cutter de mezclas.</p>',
+      p: ['uso marino', 'para barcos', 'para buques', 'sector maritimo', 'combustible para embarcaciones', 'cual me sirve para uso marino', 'que tienen para uso marino'],
+      k: 'marino maritimo barco buque embarcacion naviera flota bunker puerto portuario hsfo',
+      a: '<p>Petroil ofrece <b>MGO, VLSFO y HSFO</b> para todo tipo de embarcaciones, bajo ISO 8217 para IMO 2020:</p>' +
+         '<ul>' +
+         '<li><b>500 MGO</b> — tipo DMA, 0 % FAME: motores marinos, embarcaciones comerciales, equipos auxiliares.</li>' +
+         '<li><b>300 VLSFO</b> — 0,303 % de azufre: buques de carga, portacontenedores, cabotaje.</li>' +
+         '<li><b>100 Mejorador de IFOs</b> — cutter para mezclas de bunker fuel IFO.</li>' +
+         '</ul>',
       links: [{ l: 'Ver productos para uso marino', h: 'productos.html?sector=maritimo#catalogo', i: 'ship' }],
-      next: ['¿Qué es la norma ISO 8217?', '¿Qué es el Petroil 500 MGO?']
+      next: ['¿Qué diferencia hay entre el 300 y el 500?', '¿Qué es IMO 2020?']
     },
     {
-      id: 'sector-industria', cat: 'sectores',
-      title: 'Uso industrial',
-      p: ['uso industrial', 'sector industrial', 'para calderas', 'para la industria'],
-      k: 'industria industrial caldera calderas horno maquinaria transporte carga planta fabrica proceso',
-      a: '<p>Para la industria formulamos combustibles a la medida para <b>transporte de carga, maquinaria, calderas y generación de energía</b>.</p>' +
-         '<p>Los más usados son <b>Petroil 250 Fuel Oil #4</b>, <b>Petroil 800 G Green</b>, <b>Petroil 800 HCl</b> y, para flotas, el <b>ULSD Premium 50/10</b>.</p>',
-      links: [{ l: 'Ver productos industriales', h: 'productos.html?sector=industria#catalogo', i: 'cart' }],
-      next: ['¿Qué es el Petroil 250?', 'Quiero cotizar']
+      id: 'sector-termico', cat: 'sectores',
+      title: 'Hornos y calderas',
+      p: ['para calderas', 'para hornos', 'hornos y calderas', 'combustible para calderas', 'que combustible uso en calderas', 'procesos termicos'],
+      k: 'caldera calderas horno hornos termico calor manufactura planta produccion gas natural',
+      a: '<p>Para aplicaciones térmicas industriales Petroil tiene:</p>' +
+         '<ul>' +
+         '<li><b>800 HC Standard</b> — 135.000 BTU/galón, hasta 20 % menos emisiones que el Fuel Oil #6.</li>' +
+         '<li><b>800 G Green</b> — combustible de transición FISTech®, hasta 45 % menos emisiones; alternativa al gas natural.</li>' +
+         '<li><b>100 Mejorador de IFOs</b> — también apto para hornos y calderas, 133.000 BTU/galón.</li>' +
+         '</ul>',
+      links: [{ l: 'Ver Fuel Oils', h: 'productos.html?cat=fuel-oils#catalogo', i: 'cart' }],
+      next: ['¿Qué diferencia hay entre el 800 G y el 800 HC?', 'Quiero cotizar']
     },
     {
       id: 'sector-mineria', cat: 'sectores',
-      title: 'Minería y construcción',
-      p: ['equipos de mineria', 'sector minero', 'maquinaria pesada', 'para construccion'],
-      k: 'mineria minero construccion maquinaria pesada excavadora extractiva obra volqueta agricola',
-      a: '<p>Para minería y construcción ofrecemos <b>formulaciones de alto rendimiento para maquinaria pesada y operaciones extractivas</b>.</p>' +
-         '<p>El <b>ULSD Premium 50/10</b> está recomendado para equipos de minería y agrícolas con tecnología TIER 5, y el <b>Petroil 40 A MAX</b> cubre el uso general en obra.</p>',
+      title: 'Minería, construcción y agro',
+      p: ['equipos de mineria', 'sector minero', 'maquinaria pesada', 'para construccion', 'que tienen para mineria', 'equipos agricolas'],
+      k: 'mineria minero construccion maquinaria pesada extractiva obra volqueta agricola agricolas offroad',
+      a: '<ul>' +
+         '<li><b>250 Plus FO #4</b> — maquinaria pesada, equipos mineros y agrícolas, equipos industriales off-road con motores TIER 3/4.</li>' +
+         '<li><b>50-10 ULSD Premium</b> — maquinaria pesada, equipos mineros y agrícolas con tecnologías TIER 5 / EURO VI.</li>' +
+         '<li><b>100 Mejorador de IFOs</b> — operaciones mineras con combustibles pesados.</li>' +
+         '</ul>',
       links: [{ l: 'Ver productos del sector', h: 'productos.html?sector=construccion#catalogo', i: 'cart' }],
-      next: ['¿Qué es el ULSD Premium 50/10?', 'Quiero cotizar']
+      next: ['¿Qué diésel me recomiendan?', 'Quiero cotizar']
     },
     {
       id: 'sector-generacion', cat: 'sectores',
       title: 'Generación de energía',
       p: ['generacion de energia', 'motores estacionarios', 'planta electrica', 'para turbinas', 'que tienen para generacion de energia'],
-      k: 'generacion energia electrica motor estacionario turbina planta continua',
-      a: '<p>Para plantas de generación y motores de operación continua ofrecemos <b>Petroil 250 Fuel Oil #4</b>, <b>Petroil 300 VLSFO</b> y <b>Petroil 800 G Green</b>.</p>' +
-         '<p>El <b>ULSD Premium 50/10</b> también se recomienda en <b>turbinas de generación</b> gracias a su bajo contenido de gomas (&lt;6 mg/100 ml).</p>',
+      k: 'generacion energia electrica motor estacionario estacionarios turbina planta continua',
+      a: '<ul>' +
+         '<li><b>50-10 ULSD Premium</b> y <b>250 Plus FO #4</b> — plantas de generación y equipos estacionarios.</li>' +
+         '<li><b>100 Mejorador de IFOs</b> — generación con combustibles de alto poder calorífico.</li>' +
+         '<li><b>300 VLSFO</b> y <b>500 MGO</b> — generación de energía en aplicaciones marítimas.</li>' +
+         '</ul>',
       links: [{ l: 'Ver productos para generación', h: 'productos.html?sector=generacion#catalogo', i: 'cart' }],
-      next: ['¿Qué es el Petroil 250?', 'Quiero cotizar']
-    },
-
-    /* ══════════════════ EMPRESA ══════════════════ */
-    {
-      id: 'quienes-somos', cat: 'empresa',
-      title: 'Quiénes somos',
-      p: ['quienes son', 'quienes somos', 'que es petroil', 'sobre la empresa', 'acerca de', 'a que se dedican', 'que hacen'],
-      k: 'empresa compania petroil historia refineria hidrocarburos dedican quienes somos sobre acerca informacion',
-      a: '<p><b>Petroil S.A.</b> es una compañía energética integrada que <b>diseña, produce y distribuye soluciones energéticas más eficientes y limpias</b>, bajo el lema <i>«Mejorando el aire que respiramos»</i>.</p>' +
-         '<p>Opera como <b>refinería de hidrocarburos</b>: transforma crudo y otras materias primas en combustibles terminados mediante procesos de destilación, mezcla y tratamiento, ajustando cada producto a las especificaciones que exige cada industria — marítima, industrial, minera o de generación eléctrica.</p>',
-      links: [{ l: 'Conocer la compañía', h: 'nosotros/quienes-somos.html', i: 'info' }],
-      next: ['¿Cuál es su visión 2031?', '¿Qué certificaciones tienen?', '¿Dónde están ubicados?']
+      next: ['¿Qué diésel me recomiendan?', 'Quiero cotizar']
     },
     {
-      id: 'proposito-vision', cat: 'empresa',
-      title: 'Propósito y Visión 2031',
-      p: ['vision 2031', 'cual es su vision', 'su proposito', 'mision', 'objetivo de la empresa', 'plan estrategico'],
-      k: 'proposito vision mision 2031 futuro meta objetivo estrategia estrategico ruta crecimiento',
-      a: '<p><b>Propósito:</b> <i>Mejorando el aire que respiramos</i> — diseñar, producir y distribuir mejores opciones de energía para Colombia y la región.</p>' +
-         '<p><b>Visión 2031:</b> ser una compañía energética integrada y confiable para Colombia y la región, reconocida por la <b>calidad, la eficiencia, la innovación y un crecimiento sostenible</b> que crea valor.</p>' +
-         '<p>La ruta a 2031 se apoya en cinco programas: <b>negocio base</b>, <b>nuevas líneas de producto</b> (Jet A-1, White Spirit, gasolinas especiales), <b>expansión comercial</b> (red nacional camino a 500 EDS), <b>combustibles alternativos</b> y <b>proyectos transformacionales</b>.</p>',
-      links: [{ l: 'Ver la Visión Estratégica 2031', h: 'nosotros/quienes-somos.html', i: 'info' }],
-      next: ['¿Cuáles son sus valores?', '¿Quién dirige Petroil?']
+      id: 'sector-transporte', cat: 'sectores',
+      title: 'Transporte y vehículos',
+      p: ['para mi carro', 'para vehiculos', 'para camiones', 'flotas de transporte', 'transporte de carga', 'para motos'],
+      k: 'transporte vehiculo carro camion camiones tractocamion flota flotas moto motos suv carga',
+      a: '<ul>' +
+         '<li><b>Camiones, tractocamiones y flotas</b> → <b>50-10 ULSD Premium</b> (EURO VI / TIER 5).</li>' +
+         '<li><b>Vehículos de alto desempeño, turbo, SUVs y motos de alto cilindraje</b> → <b>90 Gasolina Premium</b>.</li>' +
+         '<li><b>Vehículos livianos de uso corriente</b> → <b>87 R Gasolina Corriente</b> <i>(en desarrollo)</i>.</li>' +
+         '<li><b>Competencia</b> → línea <b>Racing Fuel</b> <i>(en desarrollo)</i>.</li>' +
+         '</ul>' +
+         '<p>Petroil atiende operaciones y empresas con cotización a la medida; su cadena propia de estaciones de servicio es un proyecto en desarrollo.</p>',
+      links: [{ l: 'Ver productos para transporte', h: 'productos.html?sector=transporte#catalogo', i: 'cart' }],
+      next: ['¿Tienen estaciones de servicio?', '¿Qué gasolinas tienen?']
     },
     {
-      id: 'valores', cat: 'empresa',
-      title: 'Valores corporativos',
-      p: ['sus valores', 'valores corporativos', 'principios', 'cuales son sus valores'],
-      k: 'valor valores principio principios lealtad reciprocidad respeto cultura',
-      a: '<p>Los valores que guían a Petroil son <b>Lealtad</b>, <b>Reciprocidad</b> y <b>Respeto</b>.</p>' +
-         '<p>Se complementan con cinco fuerzas que impulsan la estrategia: <b>crecimiento rentable</b>, <b>experiencia del cliente</b>, <b>excelencia operacional</b>, <b>innovación</b> y <b>personas y cultura</b>.</p>',
-      links: [{ l: 'Leer más sobre nosotros', h: 'nosotros/quienes-somos.html', i: 'info' }],
-      next: ['¿Cuál es su visión 2031?', '¿Quién dirige Petroil?']
-    },
-    {
-      id: 'equipo', cat: 'empresa',
-      title: 'Equipo directivo',
-      p: ['quien dirige', 'equipo directivo', 'junta directiva', 'el ceo', 'presidente', 'directivos', 'quien dirige petroil'],
-      k: 'equipo directivo junta directiva ceo presidente vicepresidente lider liderazgo gerencia direccion gerente',
-      a: '<p>Petroil está dirigida por ejecutivos con décadas de experiencia en energía, hidrocarburos, finanzas y relaciones internacionales:</p>' +
-         '<ul>' +
-         '<li><b>Luis Alberto Hincapié Carvajal</b> — Presidente de la Junta Directiva</li>' +
-         '<li><b>Ramiro Hernando Sánchez Benítez</b> — CEO, fundador de Biomax Colombia</li>' +
-         '<li><b>Adriana Milena Munévar Arciniegas</b> — Finanzas corporativas</li>' +
-         '<li><b>Fernando Vargas Rubio</b> — VP de E&amp;P y Nuevos Negocios</li>' +
-         '<li><b>Pablo Antonio Motta Candela</b> — VP de Operaciones</li>' +
-         '<li><b>Carlos Alberto Buitrago Ferreira</b> — VP de Planeación Estratégica Comercial</li>' +
-         '<li><b>William Albert McDowell</b> — VP de Relaciones Externas y Negocios Internacionales</li>' +
+      id: 'sector-quimica', cat: 'sectores',
+      title: 'Industria química y limpieza',
+      p: ['industria quimica', 'limpieza industrial', 'que tienen para limpieza industrial', 'para pinturas', 'disolventes'],
+      k: 'quimica limpieza desengrase mantenimiento pintura pinturas resinas pegantes solvente disolvente talleres',
+      a: '<ul>' +
+         '<li><b>230 MS · Varsol</b> — solvente de alta pureza para limpieza industrial, desengrase y mantenimiento.</li>' +
+         '<li><b>60 Nafta Virgen</b> — materia prima para pinturas, resinas, pegantes y disolventes; diluyente de crudos pesados.</li>' +
+         '<li><b>70 Kerosene</b> — también usado como solvente <i>(en desarrollo)</i>.</li>' +
          '</ul>',
-      links: [{ l: 'Ver perfiles completos', h: 'nosotros/quienes-somos.html', i: 'info' }],
-      next: ['¿Cuál es su visión 2031?', '¿Qué es Petroil?']
-    },
-    {
-      id: 'diferencial', cat: 'empresa',
-      title: 'Qué nos diferencia',
-      p: ['que los diferencia', 'por que petroil', 'diferencia con otros', 'que tienen de especial', 'ventaja'],
-      k: 'diferencia diferencial diferencian ventaja mejor especial competencia convencional porque comparacion',
-      a: '<p>Cada línea de producto se diseña para <b>reducir emisiones de gases de efecto invernadero</b> frente a alternativas convencionales, <b>sin sacrificar el rendimiento</b>.</p>' +
-         '<p>Cada combustible se identifica con un <b>código propio</b> dentro de nuestro sistema de clasificación y se formula para el uso específico al que va destinado. Varios de ellos son <b>primeros de su tipo producidos en Colombia</b>: el ULSD Premium 50/10 (Euro VI), la gasolina 87 R, la gasolina extra 90 y el Petroil 800 HCl con tecnología FISTech®.</p>',
-      links: [{ l: 'Ver el portafolio', h: 'productos.html#catalogo', i: 'cart' }],
-      next: ['¿Qué certificaciones tienen?', '¿Qué es Euro VI?']
-    },
-    {
-      id: 'noticias', cat: 'empresa',
-      title: 'Noticias y publicaciones',
-      p: ['noticias', 'publicaciones', 'novedades', 'blog', 'articulos'],
-      k: 'noticia noticias publicacion novedad blog articulo prensa actualidad comunicado',
-      a: '<p>En la sección de noticias encuentras publicaciones técnicas e institucionales, como:</p>' +
-         '<ul>' +
-         '<li><b>Euro VI:</b> por qué la calidad del combustible importa tanto como la tecnología del motor.</li>' +
-         '<li><b>Petroil recibe la visita de la Embajada de Estados Unidos</b> en Santa Marta.</li>' +
-         '<li><b>Euro 6:</b> qué es y por qué importa para la calidad del aire.</li>' +
-         '</ul>',
-      links: [{ l: 'Ir a noticias', h: '#noticias', i: 'news' }],
-      next: ['¿Qué es Euro VI?', '¿Qué es Petroil?']
+      links: [{ l: 'Ver especializados', h: 'productos.html?cat=especializados#catalogo', i: 'cart' }],
+      next: ['¿Qué es el Varsol 230 MS?', '¿Qué es la Nafta Virgen?']
     },
 
     /* ══════════════════ CALIDAD Y NORMAS ══════════════════ */
@@ -473,149 +677,477 @@ window.AIRA_KB = {
       id: 'iso', cat: 'calidad',
       title: 'Certificaciones ISO',
       p: ['certificaciones iso', 'que certificaciones', 'estan certificados', 'trinorma', 'iso 9001', 'iso 14001', 'iso 45001', 'que certificaciones tienen'],
-      k: 'certificacion iso 9001 14001 45001 trinorma calidad ambiental seguridad salud trabajo auditoria acreditacion respaldo',
+      k: 'certificacion iso 9001 14001 45001 trinorma calidad seguridad salud trabajo auditoria acreditacion respaldo',
       a: '<p>Petroil cuenta con la <b>trinorma</b>:</p>' +
          '<ul>' +
-         '<li><b>ISO 9001</b> — Gestión de Calidad</li>' +
+         '<li><b>ISO 9001</b> — Calidad</li>' +
          '<li><b>ISO 45001</b> — Seguridad y Salud en el Trabajo</li>' +
          '<li><b>ISO 14001</b> — Gestión Ambiental</li>' +
          '</ul>' +
-         '<p>Las tres están integradas bajo un único <b>Sistema de Gestión Integrada (SGI)</b> que audita procesos, indicadores y mejora continua de forma periódica.</p>',
+         '<p>Las tres están integradas en un único <b>Sistema de Gestión Integrada (SGI)</b> que audita procesos, indicadores y mejora continua de forma periódica.</p>',
       links: [{ l: 'Conocer el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
-      next: ['¿Qué es el SGI?', '¿Cumplen la normativa ambiental?']
+      next: ['¿Qué es el SGI?', '¿Qué hacen por el medio ambiente?']
     },
     {
       id: 'sgi', cat: 'calidad',
-      title: 'Sistema de Gestión Integrada',
-      p: ['sistema de gestion', 'que es el sgi', 'sgi'],
-      k: 'sgi sistema gestion integrada integrado phva mejora continua indicadores proceso auditoria politica',
-      a: '<p>El <b>Sistema de Gestión Integrada (SGI)</b> reúne en un solo marco las tres certificaciones ISO de la compañía (Calidad, Seguridad y Salud en el Trabajo, y Gestión Ambiental).</p>' +
-         '<p>Funciona bajo el ciclo de <b>mejora continua PHVA</b> (Planear, Hacer, Verificar, Actuar), con indicadores de gestión y documentos del sistema auditados periódicamente.</p>',
-      links: [{ l: 'Ver el SGI completo', h: 'sostenibilidad/sgi.html', i: 'shield' }],
-      next: ['¿Qué certificaciones tienen?', '¿Qué hacen por el medio ambiente?']
+      title: 'Sistema de Gestión Integrada (SGI)',
+      p: ['sistema de gestion', 'que es el sgi', 'sgi', 'phva', 'mejora continua'],
+      k: 'sgi sistema gestion integrada phva mejora continua auditoria procesos',
+      a: '<p>El <b>SGI</b> articula calidad, seguridad y salud en el trabajo, y gestión ambiental bajo un mismo marco, alineado con <b>ISO 9001, ISO 45001 e ISO 14001</b>.</p>' +
+         '<p>Cada actividad —desde la recepción de crudo hasta el despacho del producto terminado— se documenta, se audita y se mejora de forma continua, bajo el ciclo <b>PHVA</b> (Planificar, Hacer, Verificar, Actuar).</p>',
+      links: [{ l: 'Ver el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
+      next: ['¿Qué certificaciones tienen?', '¿Qué medidas de seguridad tienen?']
     },
     {
       id: 'euro-vi', cat: 'calidad',
-      title: 'Norma Euro 6 / Euro VI',
-      p: ['que es euro 6', 'que es euro vi', 'euro 6', 'euro vi', 'norma euro'],
-      k: 'euro 6 vi norma emision emisiones europea diesel vehiculo limite 2023 colombia tier',
-      a: '<p><b>Euro 6 (o Euro VI)</b> es una norma ambiental de origen europeo que establece <b>límites muy bajos para las emisiones contaminantes</b> de los vehículos con motor diésel.</p>' +
-         '<p>En <b>Colombia aplica desde el 1 de enero de 2023</b> para todos los vehículos diésel nuevos, incluidos automóviles, buses y camiones.</p>' +
-         '<p>Los motores Euro VI dependen de un combustible de <b>ultra bajo azufre</b> para que sus sistemas de control de emisiones funcionen: por eso Petroil desarrolló el <b>ULSD Premium 50/10</b>, el primer diésel Euro VI fabricado en Colombia.</p>',
+      title: 'Norma Euro VI (vehículos pesados)',
+      p: ['que es euro vi', 'euro vi', 'norma euro vi', 'diferencia entre euro 6 y euro vi', 'euro 6 o euro vi', 'que exige colombia', 'normativa colombiana'],
+      k: 'euro vi norma emisiones pesados camiones buses scr dpf catalizador colombia 2023 2025 azufre',
+      a: '<p><b>Euro VI</b> (en números romanos) es la norma de emisiones para <b>vehículos pesados</b>: camiones y buses. <b>Euro 6</b> (en arábigos) regula vehículos livianos. Comparten filosofía, pero no son la misma norma.</p>' +
+         '<p>Los motores Euro VI reducen NOx y material particulado con sistemas <b>SCR</b> y filtros <b>DPF</b>, que son muy sensibles al azufre: con demasiado azufre el catalizador se satura y el motor emite más de lo permitido.</p>' +
+         '<p><b>En Colombia:</b> desde el 1 de enero de 2023 el diésel debía tener entre 15 y 10 ppm de azufre, y desde el <b>1 de enero de 2025 no puede superar 10 ppm</b>. El <b>Petroil 50-10</b> cumple ese límite: máximo 10 ppm.</p>',
       links: [
         { l: 'Leer: Euro VI y la calidad del combustible', h: 'noticias/euro-vi-calidad-combustible-tecnologia-motor.html', i: 'news' },
-        { l: 'Leer: Euro 6 y la calidad del aire', h: 'noticias/euro-6-que-es-calidad-del-aire.html', i: 'news' }
+        { l: 'Ficha Petroil 50-10', h: 'fichas-tecnicas/ficha-tecnica-petroil-50-10.html', i: 'doc' }
       ],
-      next: ['¿Qué es el ULSD Premium 50/10?', '¿Qué es la transición energética?']
+      next: ['¿Qué es Euro 6?', '¿Qué es el ULSD Premium 50/10?']
+    },
+    {
+      id: 'euro-6', cat: 'calidad',
+      title: 'Norma Euro 6 (vehículos livianos)',
+      p: ['que es euro 6', 'euro 6', 'norma euro 6', 'norma euro', 'calidad del aire'],
+      k: 'euro 6 livianos homologacion rde emisiones aire nox co hidrocarburos particulas',
+      a: '<p><b>Euro 6</b> es un estándar europeo de emisiones para <b>vehículos ligeros</b>. Fija límites para óxidos de nitrógeno (NOx), monóxido de carbono (CO), hidrocarburos y partículas, e incluye pruebas en condiciones reales de conducción (<b>RDE</b>).</p>' +
+         '<p>Cumplirlo no depende solo del motor: también de los sistemas de control de emisiones, el mantenimiento y un <b>combustible compatible</b>, en especial de ultra bajo azufre.</p>' +
+         '<p>En Colombia la norma aplica desde el 1 de enero de 2023 para vehículos diésel nuevos.</p>',
+      links: [{ l: 'Leer: Euro 6 y la calidad del aire', h: 'noticias/euro-6-que-es-calidad-del-aire.html', i: 'news' }],
+      next: ['¿Qué es Euro VI?', '¿Qué contaminantes reducen?']
+    },
+    {
+      id: 'contaminantes', cat: 'calidad',
+      title: 'Contaminantes: NOx, SOx, PM2.5…',
+      p: ['que contaminantes reducen', 'material particulado', 'pm2 5', 'pm10', 'que es nox', 'gases de efecto invernadero', 'que emisiones reducen'],
+      k: 'contaminantes nox sox co2 co pm10 pm25 particulado particulas gei invernadero emisiones hidrocarburos',
+      a: '<ul>' +
+         '<li><b>NOx</b> — óxidos de nitrógeno generados en la combustión.</li>' +
+         '<li><b>CO</b> — monóxido de carbono, por combustión incompleta.</li>' +
+         '<li><b>SOx</b> — óxidos de azufre, ligados al azufre del combustible.</li>' +
+         '<li><b>PM10 y PM2.5</b> — material particulado; algunas partículas pueden llegar a los alvéolos pulmonares.</li>' +
+         '<li><b>CO₂</b> — principal gas de efecto invernadero.</li>' +
+         '</ul>' +
+         '<p>Los <b>50-10</b> y <b>250</b> reducen CO₂, NOx, SOx y PM2.5/PM10; el <b>800 G</b> reduce hasta 45 % los GEI y el material particulado, y el <b>800 HC</b> hasta 20 % frente al Fuel Oil #6.</p>',
+      links: [{ l: 'Leer: Euro 6 y la calidad del aire', h: 'noticias/euro-6-que-es-calidad-del-aire.html', i: 'news' }],
+      next: ['¿Qué es el contenido de azufre?', '¿Qué hacen por el medio ambiente?']
     },
     {
       id: 'iso-8217', cat: 'calidad',
-      title: 'Norma ISO 8217 e IMO 2020',
-      p: ['iso 8217', 'imo 2020', 'norma marina', 'norma para barcos', 'que es la norma iso 8217'],
-      k: 'iso 8217 imo 2020 marino maritimo norma bunker azufre naviera 2017 2021 cumplimiento',
-      a: '<p>La <b>ISO 8217</b> es la norma internacional que fija las especificaciones de los combustibles marinos. <b>IMO 2020</b> es el límite global de azufre que la Organización Marítima Internacional impuso a los buques desde 2020.</p>' +
-         '<p>En Petroil:</p>' +
+      title: 'ISO 8217 e IMO 2020',
+      p: ['iso 8217', 'imo 2020', 'que es imo 2020', 'norma marina', 'que es la norma iso 8217'],
+      k: 'iso 8217 imo 2020 marino norma bunker azufre naviera 2017 2021 organizacion maritima internacional',
+      a: '<p><b>ISO 8217</b> es la norma internacional de especificaciones para combustibles marinos. <b>IMO 2020</b> es la regulación de la Organización Marítima Internacional que limita el azufre en los combustibles de los buques desde 2020.</p>' +
          '<ul>' +
-         '<li><b>Petroil 300 VLSFO</b> cumple todos los parámetros de la <b>ISO 8217:2017</b>.</li>' +
-         '<li><b>Petroil 500 Marine MGO</b> <b>cumple y excede</b> la <b>ISO 8217:2021</b> para IMO 2020.</li>' +
+         '<li><b>Petroil 500 MGO</b> cumple y excede ISO 8217 para IMO 2020 (ISO 8217:2021).</li>' +
+         '<li><b>Petroil 300 VLSFO</b> (ISO 8217:2017), con 0,303 % de azufre, contribuye al cumplimiento de IMO 2020.</li>' +
          '</ul>',
       links: [{ l: 'Ver productos marinos', h: 'productos.html?sector=maritimo#catalogo', i: 'ship' }],
-      next: ['¿Qué es el Petroil 500 MGO?', '¿Qué es el Petroil 300 VLSFO?']
+      next: ['¿Qué diferencia hay entre el 300 y el 500?', '¿Qué es el Petroil 500 MGO?']
     },
     {
-      id: 'transicion', cat: 'calidad',
-      title: 'Transición energética',
-      p: ['transicion energetica', 'que es la transicion', 'acuerdo de paris', 'combustibles de transicion'],
-      k: 'transicion energetica acuerdo paris cop21 cop 21 cambio climatico renovable solar eolica carbono puente fosil',
-      a: '<p>En 2015, durante la <b>COP 21</b>, 195 países firmaron el <b>Acuerdo de París</b> para reducir las emisiones de carbono y limitar el calentamiento global a menos de dos grados centígrados.</p>' +
-         '<p>La <b>transición energética</b> es el proceso de cambio de una forma de producción de energía a otra, e incluye el reemplazo de combustibles fósiles como el carbón y el petróleo por fuentes renovables como la solar y la eólica.</p>' +
-         '<p>Los <b>combustibles de transición</b> son fuentes «puente»: están diseñados para reducir significativamente las emisiones de gases de efecto invernadero (CO, CO₂, SOx, NOx, CH₄, aromáticos, material particulado PM10 y PM2.5) mientras se completa la infraestructura para energías 100 % renovables. Ese es el terreno donde trabaja Petroil.</p>',
-      links: [{ l: 'Ver responsabilidad ambiental', h: 'sostenibilidad/responsabilidad-ambiental.html', i: 'leaf' }],
-      next: ['¿Qué hacen por el medio ambiente?', '¿Qué es Euro VI?']
-    },
-    {
-      id: 'ambiental', cat: 'calidad',
-      title: 'Responsabilidad ambiental',
-      p: ['medio ambiente', 'responsabilidad ambiental', 'cumplen la normativa ambiental', 'anla', 'impacto ambiental', 'huella de carbono', 'que hacen por el medio ambiente'],
-      k: 'ambiente ambiental ecologico sostenible sostenibilidad emision emisiones contaminacion anla licencia decreto monitoreo huella carbono verde',
-      a: '<p>Petroil opera bajo la <b>normativa ambiental vigente en Colombia</b> y está sujeta a la autorización, seguimiento y control de la <b>Autoridad Nacional de Licencias Ambientales (ANLA)</b>, conforme al <b>Decreto 1076 de 2015</b>.</p>' +
-         '<p>Realizamos <b>monitoreos permanentes</b> para garantizar el cumplimiento de los estándares ambientales, respaldados por la certificación <b>ISO 14001</b> de Gestión Ambiental.</p>',
-      links: [{ l: 'Ver responsabilidad ambiental', h: 'sostenibilidad/responsabilidad-ambiental.html', i: 'leaf' }],
-      next: ['¿Qué certificaciones tienen?', '¿Qué es la transición energética?']
-    },
-    {
-      id: 'seguridad', cat: 'calidad',
-      title: 'Seguridad de la operación',
-      p: ['medidas de seguridad', 'que tan seguro', 'seguridad de la refineria', 'emergencias'],
-      k: 'seguridad seguro riesgo protocolo emergencia capacitacion monitoreo salud trabajo accidente',
-      a: '<p>La operación se rige por un <b>Sistema de Gestión Integral</b> certificado bajo <b>ISO 9001:2015, ISO 14001:2015 e ISO 45001:2018</b>.</p>' +
-         '<p>Se orienta por la <b>Política de Gestión Integral y Sostenibilidad</b>, junto con estrictos protocolos de seguridad, <b>capacitación continua</b>, monitoreo permanente de procesos y <b>planes de respuesta ante emergencias</b>.</p>',
-      links: [{ l: 'Conocer el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
-      next: ['¿Qué certificaciones tienen?', '¿Cumplen la normativa ambiental?']
+      id: 'fichas', cat: 'calidad',
+      title: 'Fichas técnicas',
+      p: ['ficha tecnica', 'fichas tecnicas', 'ficha tecnica oficial', 'descargar ficha', 'pdf de producto', 'hoja tecnica', 'hoja de seguridad', 'msds', 'que son las fichas tecnicas'],
+      k: 'ficha tecnica especificacion parametro descargar pdf documento hoja msds seguridad oficial',
+      a: '<p>Cada producto tiene una <b>ficha en línea</b> con descripción, beneficios, aplicaciones, características destacadas y su ave emblema. Se consultan en el sitio: <b>no se descargan en PDF</b>.</p>' +
+         '<p>Si necesitas el <b>documento técnico oficial</b> (u hoja de seguridad), pídelo en el formulario de cotización: el equipo comercial te lo comparte junto con volumen, disponibilidad y condiciones de despacho.</p>',
+      links: [
+        { l: 'Ver todos los productos', h: 'productos.html#catalogo', i: 'doc' },
+        { l: 'Pedir ficha oficial', h: 'contacto.html#formulario', i: 'mail' }
+      ],
+      next: ['¿Qué productos ofrecen?', 'Quiero cotizar']
     },
     {
       id: 'refineria', cat: 'calidad',
       title: 'Qué hace una refinería',
       p: ['que hace una refineria', 'como funciona la refineria', 'proceso de refinacion', 'como producen'],
-      k: 'refineria refinacion proceso destilacion mezcla tratamiento crudo materia prima transformar produccion planta',
-      a: '<p>Una refinería como Petroil <b>transforma crudo y otras materias primas en combustibles terminados</b> —fuel oil, nafta, gasolina, VLSFO— mediante procesos de <b>destilación, mezcla y tratamiento</b>.</p>' +
-         '<p>Cada producto se ajusta a las especificaciones técnicas que exige su industria destino: marítima, industrial, minera o de generación eléctrica.</p>' +
+      k: 'refineria refinacion destilacion mezcla tratamiento crudo materia prima transformar produccion',
+      a: '<p>Una refinería como Petroil <b>transforma crudo y otras materias primas en combustibles terminados</b> —fuel oil, nafta, gasolina, VLSFO— mediante procesos de <b>destilación, mezcla y tratamiento</b>, ajustando cada producto a lo que exige su industria: marítima, industrial, minera o de generación eléctrica.</p>' +
          '<p>La refinería de Petroil está en el <b>sector Mamatoco, Santa Marta</b>.</p>',
       links: [{ l: 'Ver el portafolio', h: 'productos.html#catalogo', i: 'cart' }],
       next: ['¿Dónde están ubicados?', '¿Qué productos ofrecen?']
     },
     {
-      id: 'fichas', cat: 'calidad',
-      title: 'Fichas técnicas',
-      p: ['ficha tecnica', 'fichas tecnicas', 'especificaciones tecnicas', 'descargar ficha', 'pdf de producto', 'hoja tecnica', 'que son las fichas tecnicas'],
-      k: 'ficha tecnica especificacion parametro dato metodo ensayo astm descargar pdf documento hoja',
-      a: '<p>Cada producto tiene una <b>ficha técnica en línea</b> con su descripción, aplicaciones, beneficios y la tabla completa de parámetros de calidad con sus <b>métodos de ensayo ASTM</b>.</p>' +
-         '<p>Las fichas <b>no se descargan en PDF</b>: se consultan directamente en el sitio y así siempre están actualizadas. Si necesitas el documento oficial firmado, solicítalo al equipo comercial.</p>',
+      id: 'seguridad', cat: 'calidad',
+      title: 'Seguridad de la operación',
+      p: ['medidas de seguridad', 'que medidas de seguridad tienen', 'que tan seguro', 'seguridad de la refineria', 'emergencias'],
+      k: 'seguridad seguro riesgo protocolo emergencia capacitacion salud trabajo accidente',
+      a: '<p>La operación se rige por el <b>Sistema de Gestión Integrada</b> certificado bajo <b>ISO 9001, ISO 14001 e ISO 45001</b> (Seguridad y Salud en el Trabajo).</p>' +
+         '<p>Incluye protocolos de seguridad de proceso, capacitación continua, monitoreo permanente y planes de respuesta ante emergencias.</p>',
+      links: [{ l: 'Conocer el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
+      next: ['¿Qué certificaciones tienen?', '¿Qué es el SGI?']
+    },
+    {
+      id: 'herramienta-color', cat: 'calidad',
+      title: 'Colorímetro ASTM D1500',
+      p: ['colorimetro', 'astm d1500', 'herramienta de color', 'medir color', 'herramienta'],
+      k: 'colorimetro color astm d1500 herramienta laboratorio camara foto escala conformidad',
+      a: '<p>El sitio incluye un <b>Colorímetro ASTM D1500</b> (fase BETA, uso interno): con la cámara o una foto del líquido extrae su color, lo ubica en la <b>escala ASTM D1500</b> y, si indicas el valor o rango esperado, da un veredicto de conformidad.</p>',
+      links: [{ l: 'Abrir el colorímetro', h: 'herramientas/astm-d1500-color-tool.html', i: 'tool' }],
+      next: ['¿Qué son las fichas técnicas?', '¿Qué productos ofrecen?']
+    },
+
+    /* ══════════════════ SOSTENIBILIDAD ══════════════════ */
+    {
+      id: 'ambiental', cat: 'sostenibilidad',
+      title: 'Responsabilidad ambiental',
+      p: ['medio ambiente', 'responsabilidad ambiental', 'cumplen la normativa ambiental', 'anla', 'impacto ambiental', 'huella de carbono', 'que hacen por el medio ambiente'],
+      k: 'ambiente ambiental ecologico sostenible emisiones contaminacion anla licencia monitoreo huella carbono vertimientos residuos',
+      a: '<p>Petroil <b>monitorea de forma permanente las emisiones</b> de sus procesos de refinación, con la meta de <b>reducir año a año la huella de carbono</b> de sus combustibles. Su gestión ambiental está certificada bajo <b>ISO 14001</b>.</p>' +
+         '<p>Opera bajo la normativa ambiental colombiana, sujeta al control de la <b>ANLA</b> (Autoridad Nacional de Licencias Ambientales). Y el aporte principal está en el producto: combustibles diseñados para reducir emisiones en el punto de uso.</p>',
+      links: [{ l: 'Ver responsabilidad ambiental', h: 'sostenibilidad/responsabilidad-ambiental.html', i: 'leaf' }],
+      next: ['¿Qué es la transición energética?', '¿Qué contaminantes reducen?']
+    },
+    {
+      id: 'transicion', cat: 'sostenibilidad',
+      title: 'Transición energética',
+      p: ['transicion energetica', 'que es la transicion', 'acuerdo de paris', 'combustibles de transicion', 'primera refineria'],
+      k: 'transicion energetica paris cop21 cambio climatico renovable solar eolica puente fosil',
+      a: '<p>En 2015, en la <b>COP 21</b>, 195 países firmaron el <b>Acuerdo de París</b> para reducir emisiones de carbono y limitar el calentamiento global a menos de 2 °C. La <b>transición energética</b> es el paso progresivo de los combustibles fósiles hacia fuentes renovables como la solar y la eólica.</p>' +
+         '<p>Mientras esa infraestructura madura, los <b>combustibles de transición</b> reducen emisiones desde ya. Petroil se presenta como la <b>primera refinería de América Latina en producir combustibles de transición</b>; el ejemplo más claro es el <b>800 G Green</b>, con Tecnología FISTech®.</p>',
+      links: [{ l: 'Ver preguntas frecuentes', h: '#preguntas-frecuentes', i: 'info' }],
+      next: ['¿Qué es el Petroil 800 G?', '¿Qué hacen por el medio ambiente?']
+    },
+    {
+      id: 'comunidad', cat: 'sostenibilidad',
+      title: 'Compromiso social',
+      p: ['compromiso social', 'responsabilidad social', 'programas sociales', 'la comunidad', 'como informan a la comunidad'],
+      k: 'comunidad social programa formacion emprendimiento infraestructura comunitaria vecinos mamatoco',
+      a: '<p>Petroil impulsa <b>programas de formación técnica</b>, apoya <b>iniciativas locales de emprendimiento</b> y destina recursos a <b>proyectos de infraestructura comunitaria</b> en Santa Marta y su área de influencia.</p>' +
+         '<p>Informa a la comunidad a través del sitio web, redes sociales y reuniones con los vecinos de la operación.</p>',
+      links: [{ l: 'Ver compromiso social', h: 'sostenibilidad/compromiso-social.html', i: 'leaf' }],
+      next: ['¿Qué hacen por el medio ambiente?', '¿Cuántos empleos generan?']
+    },
+    {
+      id: 'aves-emblema', cat: 'sostenibilidad',
+      title: 'Selección Biodiversa · aves emblema',
+      p: ['seleccion biodiversa', 'ave emblema', 'aves emblema', 'por que tienen aves', 'que ave representa', 'por que un pajaro'],
+      k: 'ave aves pajaro emblema biodiversa biodiversidad tucan quetzal copeton halcon pelicano tiluchi papayero siriri',
+      a: '<p>Cada producto con ficha nueva tiene un <b>ave emblema</b> de la <b>Selección Biodiversa</b> de Petroil, que simboliza sus cualidades:</p>' +
+         '<ul>' +
+         '<li><b>50-10 ULSD Premium</b> — Tucán pico de canoa</li>' +
+         '<li><b>250 Plus FO #4</b> — Quetzal resplandeciente</li>' +
+         '<li><b>90 Gasolina Premium</b> — Halcón peregrino, el animal más veloz del planeta</li>' +
+         '<li><b>500 MGO</b> — Pelícano</li>' +
+         '<li><b>300 VLSFO</b> — Sirirí</li>' +
+         '<li><b>100 Mejorador de IFOs</b> — Papayero</li>' +
+         '<li><b>230 MS · Varsol</b> — Tiluchí de Santa Marta, de la Sierra Nevada</li>' +
+         '<li><b>800 HC Standard</b> y <b>800 G Green</b> — Copetón</li>' +
+         '</ul>',
+      links: [{ l: 'Ver el ave del 90 Premium', h: 'fichas-tecnicas/ficha-tecnica-petroil-90.html#ave-emblema', i: 'leaf' }],
+      next: ['¿Qué es la Gasolina Premium 90?', '¿Qué hacen por el medio ambiente?']
+    },
+
+    /* ══════════════════ LA EMPRESA ══════════════════ */
+    {
+      id: 'quienes-somos', cat: 'empresa',
+      title: 'Quiénes somos',
+      p: ['quienes son', 'quienes somos', 'que es petroil', 'sobre la empresa', 'acerca de', 'a que se dedican', 'que hacen'],
+      k: 'empresa compania petroil refineria hidrocarburos dedican quienes somos sobre acerca protege preserva cuida filosofia',
+      a: '<p><b>Petroil S.A.</b> es una compañía energética integrada que <b>diseña, produce y distribuye soluciones energéticas más eficientes y limpias</b>, bajo el propósito <i>«Mejorando el aire que respiramos»</i>.</p>' +
+         '<p>Se presenta como la <b>primera refinería de América Latina en producir combustibles de transición</b>. Su filosofía: <b>Protege</b> (combustibles amigables con el medio ambiente), <b>Preserva</b> (soluciones para el desarrollo sostenible) y <b>Cuida</b> (cada etapa del proceso de refinación).</p>' +
+         '<p>Su refinería está en Santa Marta y su oficina comercial en Bogotá.</p>',
+      links: [{ l: 'Conocer la compañía', h: 'nosotros/quienes-somos.html', i: 'info' }],
+      next: ['¿Cuál es su visión 2031?', '¿Quién dirige Petroil?', '¿Cuántos empleos generan?']
+    },
+    {
+      id: 'proposito-vision', cat: 'empresa',
+      title: 'Propósito y Visión 2031',
+      p: ['vision 2031', 'cual es su vision', 'su proposito', 'mision', 'objetivo de la empresa'],
+      k: 'proposito vision mision 2031 futuro meta objetivo',
+      a: '<p><b>Propósito:</b> diseñar, producir y distribuir soluciones energéticas más eficientes y limpias, contribuyendo a reducir las emisiones y a construir un mejor futuro energético para Colombia — <i>«Mejorando el aire que respiramos»</i>.</p>' +
+         '<p><b>Visión 2031:</b> ser una compañía energética integrada y confiable para Colombia y la región, reconocida por la <b>calidad, la eficiencia, la innovación y un crecimiento sostenible</b> que crea valor.</p>' +
+         '<p><i>«Nuestro objetivo es liderar la transición energética a través de la producción de combustibles innovadores y eficientes»</i> — Luis Alberto Hincapié Carvajal, presidente de la Junta Directiva.</p>',
+      links: [{ l: 'Ver propósito y visión', h: 'nosotros/quienes-somos.html#proposito', i: 'info' }],
+      next: ['¿Cuál es la ruta a 2031?', '¿Cuáles son sus valores?']
+    },
+    {
+      id: 'ruta-2031', cat: 'empresa',
+      title: 'La ruta a 2031',
+      p: ['ruta a 2031', 'cual es la ruta a 2031', 'plan estrategico', 'plan de crecimiento', 'planes a futuro', 'que planes tienen'],
+      k: 'ruta 2031 plan estrategia estrategico crecimiento programas expansion futuro 2026 2027 2028 2029 2030',
+      a: '<p>Cinco programas, escalón a escalón:</p>' +
+         '<ul>' +
+         '<li><b>2026 · Negocio base</b> — sostener y optimizar la operación actual.</li>' +
+         '<li><b>2027 · Nuevas líneas de producto</b> — Jet A-1, White Spirit y gasolinas especiales.</li>' +
+         '<li><b>2028 · Expansión comercial y canales</b> — acelerar acceso al mercado y cobertura.</li>' +
+         '<li><b>2029–30 · Combustibles alternativos</b> — red nacional camino a 500 EDS, con producción, logística y canal final integrados.</li>' +
+         '<li><b>2031 · Proyectos transformacionales</b> — activos estratégicos de alcance regional.</li>' +
+         '</ul>' +
+         '<p>La base incluye la <b>integración Petroil–Esquivensa</b>.</p>',
+      links: [{ l: 'Ver la ruta a 2031', h: 'nosotros/quienes-somos.html#ruta', i: 'info' }],
+      next: ['¿Tienen estaciones de servicio?', '¿Venden combustible de aviación?']
+    },
+    {
+      id: 'valores', cat: 'empresa',
+      title: 'Valores y pilares estratégicos',
+      p: ['sus valores', 'valores corporativos', 'principios', 'cuales son sus valores', 'cinco fuerzas', 'pilares estrategicos'],
+      k: 'valor valores principio lealtad reciprocidad respeto cultura fuerzas pilares',
+      a: '<p><b>Valores:</b> <b>Lealtad</b> (compromiso y confianza), <b>Reciprocidad</b> (valor compartido) y <b>Respeto</b> (integridad y cuidado). Principio: <i>«Más eficientes. Más limpios. Mejores para el futuro.»</i></p>' +
+         '<p><b>Cinco fuerzas</b> impulsan la visión:</p>' +
+         '<ul>' +
+         '<li><b>Escalar</b> — crecimiento rentable</li>' +
+         '<li><b>Conectar</b> — experiencia del cliente</li>' +
+         '<li><b>Asegurar</b> — excelencia operacional</li>' +
+         '<li><b>Transformar</b> — innovación con combustibles limpios</li>' +
+         '<li><b>Movilizar</b> — personas y cultura</li>' +
+         '</ul>',
+      links: [{ l: 'Ver la estrategia', h: 'nosotros/quienes-somos.html#estrategia', i: 'info' }],
+      next: ['¿Cuál es la ruta a 2031?', '¿Quién dirige Petroil?']
+    },
+    {
+      id: 'equipo', cat: 'empresa',
+      title: 'Equipo directivo',
+      p: ['quien dirige', 'equipo directivo', 'junta directiva', 'directivos', 'quien dirige petroil', 'vicepresidentes', 'gerencia'],
+      k: 'equipo directivo junta directiva vicepresidente lider liderazgo gerencia direccion ejecutivos',
+      a: '<ul>' +
+         '<li><b>Luis Alberto Hincapié Carvajal</b> — Presidente de la Junta Directiva</li>' +
+         '<li><b>Ramiro Hernando Sánchez Benítez</b> — CEO</li>' +
+         '<li><b>Adriana Milena Munévar Arciniegas</b> — Vicepresidente Financiera</li>' +
+         '<li><b>Fernando Vargas Rubio</b> — VP de E&amp;P y Nuevos Negocios</li>' +
+         '<li><b>Pablo Antonio Motta Candela</b> — VP de Operaciones</li>' +
+         '<li><b>Carlos Alberto Buitrago Ferreira</b> — VP de Planeación Estratégica Comercial</li>' +
+         '<li><b>William Albert McDowell</b> — VP de Relaciones Externas y Negocios Internacionales</li>' +
+         '</ul>' +
+         '<p>Pregúntame por cualquiera de ellos para ver su trayectoria.</p>',
+      links: [{ l: 'Ver perfiles completos', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién es el CEO?', '¿Cuál es su visión 2031?']
+    },
+    {
+      id: 'diferencial', cat: 'empresa',
+      title: 'Qué nos diferencia',
+      p: ['que los diferencia', 'por que petroil', 'por que elegir petroil', 'diferencia con otros', 'que tienen de especial', 'ventaja'],
+      k: 'diferencia diferencial ventaja especial competencia convencional elegir',
+      a: '<p>Cada línea se diseña para <b>reducir emisiones</b> frente a alternativas convencionales <b>sin sacrificar rendimiento</b>, y se identifica con un <b>código propio</b> formulado para su uso específico.</p>' +
+         '<p>Varios productos son <b>primeros en Colombia</b>: el diésel Euro VI 50-10, la gasolina extra 90 y la gasolina corriente 87 R. Y el 800 G Green usa la <b>Tecnología FISTech®</b>, con hasta 45 % menos emisiones.</p>',
+      links: [{ l: 'Ver el portafolio', h: 'productos.html#catalogo', i: 'cart' }],
+      next: ['¿Qué certificaciones tienen?', '¿Qué es el Petroil 800 G?']
+    },
+    {
+      id: 'cifras', cat: 'empresa',
+      title: 'Petroil en cifras',
+      p: ['cuantos empleos generan', 'cuantos empleados', 'cuanto han invertido', 'que tan grande es', 'cifras de la empresa', 'tamano de la empresa'],
+      k: 'empleos empleados trabajadores inversion invertido millones cifras tamano grande usd dolares',
+      a: '<ul>' +
+         '<li><b>+100</b> empleos directos</li>' +
+         '<li><b>USD 36 millones</b> invertidos en renovación industrial</li>' +
+         '<li>Portafolio de <b>más de 16 productos especializados</b> para los sectores marítimo, minero e industrial</li>' +
+         '<li>Inversión proyectada cercana a <b>USD 100 millones</b> para desarrollar una cadena propia de estaciones de servicio</li>' +
+         '</ul>' +
+         '<p>Cifras compartidas durante la visita de la Embajada de Estados Unidos a la refinería en Santa Marta.</p>',
+      links: [{ l: 'Leer la noticia', h: 'noticias/petroil-visita-embajada-estados-unidos-santa-marta.html', i: 'news' }],
+      next: ['¿Tienen estaciones de servicio?', '¿Qué es la Refinería del Caribe?']
+    },
+    {
+      id: 'estaciones', cat: 'empresa',
+      title: 'Estaciones de servicio',
+      p: ['estaciones de servicio', 'tienen estaciones de servicio', 'donde puedo tanquear', 'tienen gasolineras', 'red de eds', 'donde compro gasolina'],
+      k: 'estacion estaciones eds gasolinera gasolineras bomba tanquear red cadena',
+      a: '<p>Hoy Petroil no anuncia en el sitio estaciones de servicio abiertas al público: la <b>cadena propia de estaciones</b> es un proyecto en marcha.</p>' +
+         '<ul>' +
+         '<li>Inversión proyectada cercana a <b>USD 100 millones</b> para desarrollarla.</li>' +
+         '<li>La ruta a 2031 contempla una <b>red nacional camino a 500 EDS</b>, con producción, logística y canal final integrados.</li>' +
+         '</ul>' +
+         '<p>Para compras por volumen, el camino es la cotización comercial.</p>',
       links: [
-        { l: 'Ver todas las fichas', h: 'productos.html#catalogo', i: 'doc' },
-        { l: 'Solicitar ficha oficial', h: 'contacto.html#formulario', i: 'mail' }
+        { l: 'Ver la ruta a 2031', h: 'nosotros/quienes-somos.html#ruta', i: 'info' },
+        { l: 'Solicitar cotización', h: 'contacto.html#formulario', i: 'cart' }
       ],
-      next: ['¿Qué productos ofrecen?', 'Quiero cotizar']
+      next: ['Quiero cotizar', '¿Cuál es la ruta a 2031?']
+    },
+    {
+      id: 'nuevas-lineas', cat: 'empresa',
+      title: 'Nuevas líneas: Jet A-1 y más',
+      p: ['combustible de aviacion', 'venden combustible de aviacion', 'jet a1', 'jet a 1', 'white spirit', 'gasolinas especiales', 'turbosina'],
+      k: 'aviacion jet a1 avion aviones turbosina white spirit especiales nuevas lineas diversificar',
+      a: '<p>Aún no forman parte del catálogo, pero la ruta estratégica contempla para <b>2027</b> nuevas líneas de producto: <b>Jet A-1</b> (combustible de aviación), <b>White Spirit</b> y <b>gasolinas especiales</b>, además de <b>combustibles alternativos</b> hacia 2029–2030.</p>',
+      links: [{ l: 'Ver la ruta a 2031', h: 'nosotros/quienes-somos.html#ruta', i: 'info' }],
+      next: ['¿Qué productos ofrecen?', '¿Cuál es la ruta a 2031?']
+    },
+    {
+      id: 'alianzas', cat: 'empresa',
+      title: 'Alianzas estratégicas',
+      p: ['alianzas estrategicas', 'con quien trabajan', 'aliados', 'socios', 'sus aliados'],
+      k: 'alianza alianzas aliados aliado socios ecopetrol hocol petrobras primax esquivensa world fuel services',
+      a: '<p>En su sección de alianzas estratégicas el sitio muestra a <b>Ecopetrol</b>, <b>Hocol</b>, <b>Petrobras</b>, <b>Primax</b> y <b>Esquivensa</b>, entre otros.</p>' +
+         '<p>En la visita de la Embajada de Estados Unidos participaron los aliados <b>World Fuel Services</b>, <b>Primax</b> y <b>Petrobras</b>.</p>',
+      links: [{ l: 'Leer la noticia de la visita', h: 'noticias/petroil-visita-embajada-estados-unidos-santa-marta.html', i: 'news' }],
+      next: ['¿Qué es Esquivensa?', '¿Cómo me convierto en cliente?']
+    },
+    {
+      id: 'esquivensa', cat: 'empresa',
+      title: 'Esquivensa',
+      p: ['esquivensa', 'que es esquivensa'],
+      k: 'esquivensa barranquilla zona franca aliado integracion',
+      a: '<p><b>Esquivensa</b> es el aliado de Petroil en <b>Barranquilla</b> (Cl. 1c #5-231 a 5-1, Zona Franca). La <b>integración Petroil–Esquivensa</b> es parte de la base sólida de la ruta estratégica a 2031.</p>',
+      links: [{ l: 'Ver ubicaciones', h: '#contacto', i: 'map' }],
+      next: ['¿Dónde están ubicados?', '¿Cuál es la ruta a 2031?']
+    },
+    {
+      id: 'visita-embajada', cat: 'empresa',
+      title: 'Visita de la Embajada de EE. UU.',
+      p: ['embajada', 'embajada de estados unidos', 'visita de la embajada', 'jarahn hillsman'],
+      k: 'embajada estados unidos eeuu visita hillsman institucional santa marta',
+      a: '<p>Petroil recibió en su refinería de Santa Marta a <b>CDA Jarahn Hillsman</b>, Encargado de Negocios de la Embajada de Estados Unidos en Bogotá, junto a representantes de sus aliados <b>World Fuel Services, Primax y Petrobras</b>.</p>' +
+         '<p>Se compartieron la operación, la capacidad industrial y la visión de crecimiento: +100 empleos directos, USD 36 millones en renovación industrial, una inversión proyectada cercana a USD 100 millones en estaciones de servicio y la visión de la <b>Refinería del Caribe</b>.</p>',
+      links: [{ l: 'Leer la noticia', h: 'noticias/petroil-visita-embajada-estados-unidos-santa-marta.html', i: 'news' }],
+      next: ['¿Qué es la Refinería del Caribe?', '¿Qué noticias tienen?']
+    },
+    {
+      id: 'refineria-caribe', cat: 'empresa',
+      title: 'Refinería del Caribe',
+      p: ['refineria del caribe', 'que es la refineria del caribe', 'proyecto caribe'],
+      k: 'caribe refineria proyecto expansion estrategico region',
+      a: '<p>La <b>Refinería del Caribe</b> es la visión de un proyecto estratégico dentro de la expansión y crecimiento de Petroil. Santa Marta y la región Caribe ocupan un lugar fundamental en esa proyección.</p>' +
+         '<p>El sitio no publica aún más detalles del proyecto.</p>',
+      links: [{ l: 'Leer la noticia', h: 'noticias/petroil-visita-embajada-estados-unidos-santa-marta.html', i: 'news' }],
+      next: ['¿Cuál es la ruta a 2031?', '¿Dónde están ubicados?']
+    },
+    {
+      id: 'noticias', cat: 'empresa',
+      title: 'Noticias y publicaciones',
+      p: ['noticias', 'que noticias tienen', 'publicaciones', 'novedades', 'blog', 'articulos'],
+      k: 'noticia noticias publicacion novedad blog articulo prensa actualidad',
+      a: '<ul>' +
+         '<li><b>Euro VI:</b> por qué la calidad del combustible importa tanto como la tecnología del motor.</li>' +
+         '<li><b>Petroil recibe visita de la Embajada de Estados Unidos</b> en Santa Marta.</li>' +
+         '<li><b>Euro 6:</b> ¿qué es y por qué importa para la calidad del aire?</li>' +
+         '</ul>',
+      links: [
+        { l: 'Euro VI y la calidad del combustible', h: 'noticias/euro-vi-calidad-combustible-tecnologia-motor.html', i: 'news' },
+        { l: 'Visita de la Embajada de EE. UU.', h: 'noticias/petroil-visita-embajada-estados-unidos-santa-marta.html', i: 'news' },
+        { l: 'Euro 6 y la calidad del aire', h: 'noticias/euro-6-que-es-calidad-del-aire.html', i: 'news' }
+      ],
+      next: ['¿Qué es Euro VI?', '¿Cuántos empleos generan?']
+    },
+
+    /* ══════════════════ LÍDERES ══════════════════
+       cat 'lideres' no está en meta.categories a propósito: son 7
+       entradas que alargarían el menú "La empresa". Se encuentran
+       igual al preguntar por nombre o cargo. */
+    {
+      id: 'lider-hincapie', cat: 'lideres',
+      title: 'Luis Alberto Hincapié Carvajal',
+      p: ['hincapie', 'luis alberto', 'luis hincapie', 'presidente de la junta', 'chairman'],
+      k: 'hincapie luis presidente junta chairman',
+      a: '<p><b>Presidente de la Junta Directiva</b> (Chairman of the Board). Empresario con <b>más de 30 años</b> de experiencia en estructuración, gestión de riesgos y desarrollo de proyectos en mercados emergentes, en sectores como aviación, minería y petróleo y gas; dedicado al sector downstream desde 2015.</p>' +
+         '<p>Lidera la visión estratégica de la compañía, promoviendo el crecimiento sostenible y la innovación.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién es el CEO?', '¿Quién dirige Petroil?']
+    },
+    {
+      id: 'lider-sanchez', cat: 'lideres',
+      title: 'Ramiro Hernando Sánchez Benítez',
+      p: ['quien es el ceo', 'el ceo', 'ramiro sanchez', 'ramiro hernando', 'gerente general', 'biomax'],
+      k: 'ceo ramiro sanchez benitez biomax uno corp gerente',
+      a: '<p><b>CEO</b> de Petroil. Empresario con más de tres décadas creando y expandiendo compañías en sectores estratégicos de Colombia.</p>' +
+         '<p>Fundador de <b>Biomax Colombia</b>: como presidente y CEO la convirtió en una de las redes de estaciones de servicio más importantes del país y lideró su integración al grupo centroamericano <b>UNO Corp</b>.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién dirige Petroil?', '¿Tienen estaciones de servicio?']
+    },
+    {
+      id: 'lider-munevar', cat: 'lideres',
+      title: 'Adriana Milena Munévar Arciniegas',
+      p: ['munevar', 'adriana milena', 'adriana munevar', 'vicepresidente financiera', 'finanzas'],
+      k: 'munevar adriana milena financiera finanzas cfo',
+      a: '<p><b>Vicepresidente Financiera</b>. Ejecutiva con <b>más de 25 años</b> en Oil &amp; Gas, pensiones e industria, especialista en transformación organizacional y finanzas corporativas, enfocada en excelencia operativa y creación de valor.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién dirige Petroil?']
+    },
+    {
+      id: 'lider-vargas', cat: 'lideres',
+      title: 'Fernando Vargas Rubio',
+      p: ['fernando vargas', 'vargas rubio', 'nuevos negocios', 'e p'],
+      k: 'vargas fernando rubio exploracion produccion nuevos negocios canada',
+      a: '<p><b>Vicepresidente de E&amp;P y Nuevos Negocios</b>. Más de 30 años liderando proyectos de energía, petróleo y gas. Durante más de 15 años fue Agregado Comercial de <b>Global Affairs Canada</b> en Colombia, facilitando inversión canadiense por más de CAD $13 mil millones.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién dirige Petroil?']
+    },
+    {
+      id: 'lider-motta', cat: 'lideres',
+      title: 'Pablo Antonio Motta Candela',
+      p: ['pablo motta', 'motta candela', 'vicepresidente de operaciones', 'jefe de operaciones'],
+      k: 'motta pablo candela operaciones refinacion ecopetrol cartagena',
+      a: '<p><b>Vicepresidente de Operaciones</b>. Más de 38 años en hidrocarburos, especializado en refinación, operaciones industriales y cadena de suministro. Ocupó cargos de alta dirección en <b>Ecopetrol</b> y la <b>Refinería de Cartagena</b>. Ingeniero Químico de la UIS (Cum Laude) con MBA de INALDE.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién dirige Petroil?', '¿Qué hace una refinería?']
+    },
+    {
+      id: 'lider-buitrago', cat: 'lideres',
+      title: 'Carlos Alberto Buitrago Ferreira',
+      p: ['carlos buitrago', 'buitrago ferreira', 'planeacion estrategica comercial'],
+      k: 'buitrago carlos ferreira planeacion comercial exxonmobil primax logistica',
+      a: '<p><b>Vicepresidente de Planeación Estratégica Comercial</b>. Más de tres décadas en hidrocarburos, energía y logística. Fue directivo en <b>ExxonMobil</b> y Gerente de Supply &amp; Logistics en <b>Primax Colombia</b>, donde impulsó eficiencias superiores a USD 50 millones.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién dirige Petroil?']
+    },
+    {
+      id: 'lider-mcdowell', cat: 'lideres',
+      title: 'William Albert McDowell',
+      p: ['mcdowell', 'william mcdowell', 'william albert', 'relaciones externas', 'negocios internacionales'],
+      k: 'mcdowell william relaciones externas internacionales coronel diplomatico embajada',
+      a: '<p><b>Vicepresidente de Relaciones Externas y Negocios Internacionales</b>. Más de 28 años en liderazgo estratégico y diplomacia corporativa. Coronel retirado; su último cargo fue en la <b>Embajada de Estados Unidos en Bogotá</b>, dirigiendo las relaciones en los ámbitos aéreo, espacial y cibernético. Habla español, portugués y alemán.</p>',
+      links: [{ l: 'Ver equipo directivo', h: 'nosotros/quienes-somos.html#liderazgo', i: 'info' }],
+      next: ['¿Quién dirige Petroil?', '¿Qué aliados tienen?']
     },
 
     /* ══════════════════ COMERCIAL ══════════════════ */
     {
       id: 'cotizar', cat: 'comercial',
       title: 'Solicitar una cotización',
-      p: ['quiero cotizar', 'solicitar cotizacion', 'cuanto cuesta', 'cual es el precio', 'precios', 'me pasas precios', 'quiero comprar', 'hacer un pedido', 'cuanto vale'],
+      p: ['quiero cotizar', 'solicitar cotizacion', 'comprar combustible', 'cuanto cuesta', 'cual es el precio', 'precios', 'me pasas precios', 'quiero comprar', 'hacer un pedido', 'cuanto vale', 'lista de precios'],
       k: 'cotizar cotizacion precio costo valor comprar compra pedido venta adquirir presupuesto tarifa cuanto',
-      a: '<p>Los precios de Petroil se cotizan <b>a la medida de cada operación</b>: dependen del producto, el volumen y las condiciones logísticas, así que no hay una lista pública.</p>' +
-         '<p>Para recibir una propuesta, completa el <b>formulario de cotización</b> indicando el producto que te interesa — el área comercial te contacta por WhatsApp o correo.</p>',
+      a: '<p>Los precios se cotizan <b>a la medida de cada operación</b>: dependen del producto, el volumen, la frecuencia y el lugar de entrega, así que no hay lista pública.</p>' +
+         '<p>En el <b>formulario de cotización</b> eliges los productos, indicas volumen estimado y ciudad, y lo envías por <b>WhatsApp, Gmail u Outlook</b> con el mensaje ya redactado. Un asesor responde con precio, disponibilidad y condiciones de despacho.</p>',
       links: [
         { l: 'Solicitar cotización', h: 'contacto.html#formulario', i: 'cart' },
-        { l: 'Hablar por WhatsApp', h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20solicitar%20una%20cotizaci%C3%B3n%20de%20combustibles%20Petroil.', i: 'wa', ext: true }
+        { l: 'Cotizar por WhatsApp', h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20solicitar%20una%20cotizaci%C3%B3n%20de%20combustibles%20Petroil.', i: 'wa', ext: true }
       ],
-      next: ['¿Qué productos ofrecen?', '¿Cómo me convierto en cliente?']
+      next: ['¿Hacen despachos a mi ciudad?', '¿Qué productos ofrecen?']
+    },
+    {
+      id: 'despachos', cat: 'comercial',
+      title: 'Despachos y disponibilidad',
+      p: ['hacen despachos', 'hacen despachos a mi ciudad', 'hacen envios', 'envian a', 'entregas', 'volumen minimo', 'disponibilidad', 'cuanto tarda el despacho'],
+      k: 'despacho despachos envio envios entrega entregas volumen minimo disponibilidad logistica ciudad transporte frecuencia',
+      a: '<p>Las condiciones de <b>despacho, volumen y disponibilidad</b> se definen caso a caso con el equipo comercial; el sitio no publica volúmenes mínimos ni cobertura fija.</p>' +
+         '<p>Para agilizarlo, en el formulario indica el <b>volumen estimado y la frecuencia</b> y la <b>ciudad o lugar de entrega</b>. La respuesta más rápida es por WhatsApp.</p>',
+      links: [
+        { l: 'Ir al formulario', h: 'contacto.html#formulario', i: 'cart' },
+        { l: 'Preguntar por WhatsApp', h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20consultar%20disponibilidad%20y%20despacho%20de%20combustibles%20Petroil.', i: 'wa', ext: true }
+      ],
+      next: ['Quiero cotizar', '¿Dónde están ubicados?']
     },
     {
       id: 'ser-cliente', cat: 'comercial',
       title: 'Convertirse en cliente o aliado',
       p: ['como ser cliente', 'convertirme en cliente', 'ser aliado', 'alianza comercial', 'ser distribuidor', 'quiero ser cliente', 'como me convierto en cliente'],
-      k: 'cliente aliado alianza comercial distribuidor socio negocio convenio volumen logistica propuesta',
-      a: '<p>Escríbenos por <b>WhatsApp</b> o <b>correo electrónico</b> para ser contactado por el área comercial.</p>' +
-         '<p>El equipo evalúa el <b>volumen</b>, el <b>tipo de combustible</b> y las <b>condiciones logísticas</b> requeridas para diseñar una propuesta a la medida de tu operación.</p>',
+      k: 'cliente aliado comercial distribuidor socio negocio convenio propuesta',
+      a: '<p>Escríbenos por <b>WhatsApp</b> o por el <b>formulario de contacto</b>. El área comercial evalúa el <b>volumen</b>, el <b>tipo de combustible</b> y las <b>condiciones logísticas</b> para diseñar una propuesta a la medida de tu operación.</p>',
       links: [
         { l: 'Escribir al área comercial', h: 'contacto.html#formulario', i: 'mail' },
         { l: 'WhatsApp +57 311 333 7046', h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Quiero%20explorar%20una%20alianza%20comercial%20con%20Petroil.', i: 'wa', ext: true }
       ],
-      next: ['Quiero cotizar', '¿Dónde están ubicados?']
+      next: ['Quiero cotizar', '¿Qué aliados tienen?']
     },
     {
       id: 'asesor', cat: 'comercial',
       title: 'Hablar con un asesor',
       p: ['hablar con un asesor', 'hablar con alguien', 'atencion al cliente', 'asesor comercial', 'hablar con una persona', 'servicio al cliente', 'quiero hablar con un humano'],
-      k: 'asesor asesoria humano persona agente atencion soporte ayuda comercial vendedor hablar',
-      a: '<p>Con gusto. Un <b>asesor comercial</b> puede atenderte directamente por estos canales:</p>' +
+      k: 'asesor asesoria humano persona agente atencion soporte comercial vendedor',
+      a: '<p>Con gusto. Un <b>asesor comercial</b> te atiende directamente:</p>' +
          '<ul>' +
-         '<li><b>WhatsApp:</b> +57 311 333 7046</li>' +
+         '<li><b>WhatsApp:</b> +57 311 333 7046 (respuesta más rápida)</li>' +
          '<li><b>Correo:</b> contacto@petroilsa.com</li>' +
-         '</ul>' +
-         '<p>También puedes dejar tus datos en el formulario y te contactamos.</p>',
+         '</ul>',
       links: [
         { l: 'Abrir WhatsApp', h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20hablar%20con%20un%20asesor.', i: 'wa', ext: true },
         { l: 'Formulario de contacto', h: 'contacto.html#formulario', i: 'mail' }
@@ -625,97 +1157,131 @@ window.AIRA_KB = {
     {
       id: 'proveedores', cat: 'comercial',
       title: 'Ser proveedor de Petroil',
-      p: ['ser proveedor', 'registrarme como proveedor', 'requisitos para ser proveedor', 'licitaciones'],
-      k: 'proveedor proveedores licitacion licitaciones contratacion adquisicion registro requisito documentacion',
+      p: ['ser proveedor', 'registrarme como proveedor', 'requisitos para ser proveedor', 'licitaciones', 'soy proveedor'],
+      k: 'proveedor proveedores licitacion licitaciones contratacion contratista registro requisito',
       a: '<p>Los proveedores deben cumplir los <b>requisitos legales aplicables</b>, la documentación corporativa solicitada y los <b>estándares de calidad, seguridad y políticas corporativas</b> de Petroil.</p>' +
-         '<p>Las oportunidades de contratación y los procesos de licitación vigentes se publican en el portal web. La sección de <b>Proveedores</b> aún está en desarrollo; mientras tanto, escríbenos directamente y te orientamos sobre el proceso de registro.</p>',
+         '<p>El sitio aún no tiene una sección de proveedores; escribe al correo de contacto y te orientan sobre el registro.</p>',
       links: [{ l: 'Escribir a Petroil', h: 'contacto.html#formulario', i: 'mail' }],
-      next: ['¿Dónde están ubicados?', '¿Cómo presento una PQRSF?']
+      next: ['¿Cómo los contacto?', '¿Cómo presento una PQRS?']
     },
     {
       id: 'empleo', cat: 'comercial',
       title: 'Trabajar en Petroil',
-      p: ['trabajar con ustedes', 'hay vacantes', 'busco empleo', 'hoja de vida', 'enviar hoja de vida', 'practicas', 'pasantia', 'trabajar en petroil'],
-      k: 'trabajo empleo vacante vacantes contratar hoja vida cv curriculum postular practicante pasantia estudiante formacion talento',
-      a: '<p>Las vacantes disponibles se publican en la sección <b>«Trabaja con nosotros»</b> del sitio, donde podrás consultar las oportunidades vigentes y enviar tu hoja de vida. Esa sección aún está en desarrollo.</p>' +
-         '<p>Petroil también desarrolla periódicamente <b>programas de prácticas, pasantías y formación profesional</b> para estudiantes y jóvenes talentos, según las necesidades de la organización.</p>' +
-         '<p>Mientras la sección se publica, puedes escribir a <b>contacto@petroilsa.com</b>.</p>',
-      links: [{ l: 'Escribir a Petroil', h: 'contacto.html#formulario', i: 'mail' }],
-      next: ['¿Quiénes son Petroil?', '¿Dónde están ubicados?']
+      p: ['trabajar con ustedes', 'hay vacantes', 'busco empleo', 'hoja de vida', 'enviar hoja de vida', 'practicas', 'pasantia', 'trabajar en petroil', 'trabaja con nosotros'],
+      k: 'trabajo empleo vacante vacantes hoja vida cv curriculum postular practicante pasantia estudiante talento',
+      a: '<p>El sitio todavía no tiene una sección de vacantes. Puedes enviar tu hoja de vida a <b>contacto@petroilsa.com</b>.</p>' +
+         '<p>Petroil desarrolla periódicamente <b>programas de prácticas, pasantías y formación</b> para estudiantes y jóvenes talentos, según las necesidades de la organización.</p>',
+      links: [{ l: 'Escribir a Petroil', h: 'contacto.html#canales', i: 'mail' }],
+      next: ['¿Quiénes son Petroil?', '¿Cuántos empleos generan?']
     },
 
-    /* ══════════════════ CONTACTO ══════════════════ */
+    /* ══════════════════ CONTACTO Y PQRSF ══════════════════ */
     {
       id: 'ubicacion', cat: 'contacto',
       title: 'Dónde estamos',
       p: ['donde estan', 'donde estan ubicados', 'cual es la direccion', 'sus sedes', 'donde queda', 'donde esta la refineria', 'como llego'],
-      k: 'ubicacion ubicados direccion sede sedes oficina refineria planta bogota santa marta barranquilla mapa llegar lugar',
-      a: '<p>Petroil tiene tres puntos:</p>' +
-         '<ul>' +
+      k: 'ubicacion ubicados direccion sede sedes oficina refineria bogota santa marta barranquilla mapa llegar mamatoco',
+      a: '<ul>' +
          '<li><b>Oficina comercial</b> — Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, <b>Bogotá</b>.</li>' +
          '<li><b>Refinería</b> — Cra. 57A No. 30–399, Km 1 Sector Mamatoco, <b>Santa Marta</b>.</li>' +
-         '<li><b>Aliado</b> — Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, <b>Barranquilla</b>.</li>' +
+         '<li><b>Aliado Esquivensa</b> — Cl. 1c #5-231 a 5-1, Zona Franca, <b>Barranquilla</b>.</li>' +
          '</ul>' +
-         '<p>En el pie de página encuentras el mapa interactivo de las tres ubicaciones.</p>',
+         '<p>En el pie de página está el mapa de las tres ubicaciones.</p>',
       links: [{ l: 'Ver mapa de ubicaciones', h: '#contacto', i: 'map' }],
       next: ['¿Cómo los contacto?', '¿Qué hace una refinería?']
     },
     {
       id: 'contacto', cat: 'contacto',
       title: 'Canales de contacto',
-      p: ['como los contacto', 'cual es el telefono', 'cual es el correo', 'datos de contacto', 'como me comunico', 'whatsapp'],
-      k: 'contacto contactar telefono celular correo email mail whatsapp escribir llamar comunicar canal formulario redes sociales',
-      a: '<p>Puedes comunicarte con Petroil por:</p>' +
-         '<ul>' +
+      p: ['como los contacto', 'cual es el telefono', 'cual es el correo', 'datos de contacto', 'como me comunico', 'whatsapp', 'numero de telefono'],
+      k: 'contacto contactar telefono celular correo email mail whatsapp llamar comunicar canal formulario',
+      a: '<ul>' +
          '<li><b>WhatsApp:</b> +57 311 333 7046</li>' +
-         '<li><b>Correo:</b> contacto@petroilsa.com</li>' +
-         '<li><b>Formulario web:</b> con opción de preseleccionar el producto que te interesa</li>' +
-         '</ul>' +
-         '<p>También estamos en Facebook, LinkedIn, Instagram y YouTube.</p>',
+         '<li><b>Correo comercial:</b> contacto@petroilsa.com</li>' +
+         '<li><b>Formulario de contacto:</b> para cotización, información técnica u otra consulta; lo envías por WhatsApp, Gmail u Outlook y recibes un número de referencia.</li>' +
+         '<li><b>Quejas y reclamos:</b> pqrsf@petroilsa.com</li>' +
+         '</ul>',
       links: [
         { l: 'Ir al formulario', h: 'contacto.html#formulario', i: 'mail' },
         { l: 'Abrir WhatsApp', h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20chat%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n.', i: 'wa', ext: true }
       ],
-      next: ['¿Dónde están ubicados?', 'Quiero cotizar']
+      next: ['¿Dónde están ubicados?', '¿Tienen redes sociales?']
+    },
+    {
+      id: 'redes', cat: 'contacto',
+      title: 'Redes sociales',
+      p: ['redes sociales', 'tienen redes sociales', 'instagram', 'facebook', 'linkedin', 'youtube'],
+      k: 'redes sociales instagram facebook linkedin youtube seguir',
+      a: '<p>Petroil está en <b>Instagram</b> y <b>YouTube</b> como <b>@petroilsa</b>, y también en <b>LinkedIn</b> y <b>Facebook</b>.</p>',
+      links: [
+        { l: 'Instagram @petroilsa', h: 'https://www.instagram.com/petroilsa/', i: 'info', ext: true },
+        { l: 'LinkedIn', h: 'https://www.linkedin.com/company/petroilsa/', i: 'info', ext: true },
+        { l: 'YouTube @petroilsa', h: 'https://www.youtube.com/@petroilsa', i: 'info', ext: true }
+      ],
+      next: ['¿Qué noticias tienen?', '¿Cómo los contacto?']
     },
     {
       id: 'pqrsf', cat: 'contacto',
-      title: 'PQRSF · Peticiones, quejas y sugerencias',
-      p: ['pqrsf', 'poner una queja', 'presentar un reclamo', 'hacer una sugerencia', 'felicitacion', 'reclamo', 'como presento una pqrsf'],
-      k: 'pqrsf peticion queja reclamo sugerencia felicitacion radicar solicitud tramite respuesta inconformidad',
-      a: '<p>Puedes presentar una <b>Petición, Queja, Reclamo, Sugerencia o Felicitación</b> a través del formulario <b>PQRSF</b> del sitio, o escribiendo a <b>pqrsf@petroilsa.com</b>.</p>' +
-         '<p>Recibes un número de referencia y respuesta en máximo <b>15 días hábiles</b> (peticiones, quejas y reclamos) u <b>8 días hábiles</b> (sugerencias y felicitaciones).</p>',
-      links: [{ l: 'Radicar una PQRSF', h: 'legal/pqrsf.html', i: 'doc' }],
-      next: ['¿Cómo los contacto?', '¿Cómo tratan mis datos personales?']
+      title: 'PQRSF · Peticiones, quejas, reclamos, sugerencias y felicitaciones',
+      p: ['pqrsf', 'pqrs', 'pqr', 'que es pqrsf', 'que es una pqrs', 'que significa pqrsf', 'como presento una pqrsf', 'como presento una pqrs', 'radicar', 'poner una queja', 'presentar un reclamo', 'hacer una sugerencia', 'felicitacion', 'cuanto tardan en responder'],
+      k: 'pqrsf pqrs pqr peticion peticiones queja quejas reclamo reclamos sugerencia sugerencias felicitacion felicitaciones radicar solicitud respuesta plazo dias habiles',
+      a: '<p><b>PQRSF</b> significa <b>Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones</b>: el canal oficial para contarle a Petroil algo que necesitas, algo que salió mal o algo que salió bien.</p>' +
+         '<p>Se radica en un formulario de <b>4 pasos</b> (tipo, tus datos, detalle y confirmación). Recibes un <b>número de referencia único</b> y la solicitud se envía desde tu propio correo a <b>pqrsf@petroilsa.com</b>, donde puedes adjuntar fotos o facturas.</p>' +
+         '<p><b>Plazo de respuesta:</b> máximo <b>15 días hábiles</b> para peticiones, quejas y reclamos, y <b>8 días hábiles</b> para sugerencias y felicitaciones. Tus datos se tratan de forma confidencial (Ley 1581 de 2012).</p>',
+      links: [
+        { l: 'Radicar una PQRSF', h: 'legal/pqrsf.html#radicar', i: 'doc' },
+        { l: '¿Qué pasa después de enviarla?', h: 'legal/pqrsf.html#proceso', i: 'info' }
+      ],
+      next: ['¿Qué diferencia hay entre una queja y un reclamo?', '¿Cómo hago seguimiento a mi PQRS?']
+    },
+    {
+      id: 'pqrsf-tipos', cat: 'contacto',
+      title: 'Tipos de PQRSF: ¿cuál elijo?',
+      p: ['diferencia entre una queja y un reclamo', 'diferencia entre queja y reclamo', 'queja o reclamo', 'tipos de pqrsf', 'tipos de pqrs', 'que es una peticion', 'que es un reclamo', 'que es una queja'],
+      k: 'diferencia tipos peticion queja reclamo sugerencia felicitacion cual elijo atencion trato producto servicio',
+      a: '<ul>' +
+         '<li><b>Petición</b> — pides información, un documento o una actuación. <i>Ej.: el certificado de calidad de un despacho.</i></li>' +
+         '<li><b>Queja</b> — inconformidad con la <b>atención o el trato</b> del personal.</li>' +
+         '<li><b>Reclamo</b> — un <b>producto o servicio no cumplió</b> lo acordado (calidad, cantidad, entrega, facturación) y esperas una corrección.</li>' +
+         '<li><b>Sugerencia</b> — una idea para mejorar productos, servicios o canales.</li>' +
+         '<li><b>Felicitación</b> — reconoces algo que se hizo bien.</li>' +
+         '</ul>',
+      links: [
+        { l: 'Radicar una queja', h: 'legal/pqrsf.html?tipo=queja#radicar', i: 'doc' },
+        { l: 'Radicar un reclamo', h: 'legal/pqrsf.html?tipo=reclamo#radicar', i: 'doc' }
+      ],
+      next: ['¿Cómo hago seguimiento a mi PQRS?', '¿Cuánto tardan en responder una PQRS?']
+    },
+    {
+      id: 'pqrsf-seguimiento', cat: 'contacto',
+      title: 'Seguimiento de una PQRSF',
+      p: ['seguimiento a mi pqrs', 'como hago seguimiento', 'estado de mi solicitud', 'numero de referencia', 'no me han respondido', 'adjuntar fotos', 'adjuntar documentos', 'por que se abre mi correo'],
+      k: 'seguimiento estado referencia consultar caso adjuntar soportes fotos facturas correo enviados',
+      a: '<p>Guarda el <b>número de referencia</b> (formato <b>PQRSF-letra-fecha-número</b>). Para consultar tu caso, <b>responde al mismo hilo de correo</b> o escribe a <b>pqrsf@petroilsa.com</b> indicando esa referencia.</p>' +
+         '<p>El formulario abre tu correo en vez de enviarlo solo a propósito: así la solicitud queda en tu bandeja de <b>Enviados</b> con fecha y hora como constancia, y puedes <b>adjuntar fotos, facturas o documentos</b> antes de enviarla.</p>' +
+         '<p>El proceso: <b>envías → clasificamos → gestionamos → respondemos</b> por el medio que elegiste.</p>',
+      links: [{ l: 'Ver preguntas frecuentes de PQRSF', h: 'legal/pqrsf.html#faq', i: 'info' }],
+      next: ['¿Qué es PQRSF?', '¿Cómo tratan mis datos personales?']
     },
     {
       id: 'datos-personales', cat: 'contacto',
       title: 'Protección de datos personales',
-      p: ['politica de datos', 'proteccion de datos', 'mis datos personales', 'habeas data', 'privacidad', 'como tratan mis datos personales'],
-      k: 'dato datos personal personales politica proteccion privacidad habeas tratamiento titular derecho seguridad informacion',
-      a: '<p>Petroil cuenta con una <b>Política de protección de datos personales</b> que describe el responsable del tratamiento, el marco legal, las finalidades, los <b>derechos de los titulares</b>, el procedimiento para ejercerlos, las medidas de seguridad de la información y su vigencia.</p>',
+      p: ['politica de datos', 'proteccion de datos', 'mis datos personales', 'habeas data', 'privacidad', 'como tratan mis datos personales', 'ley 1581'],
+      k: 'dato datos personal personales politica proteccion privacidad habeas tratamiento titular derechos 1581 confidencial',
+      a: '<p>Los formularios de contacto y PQRSF usan tus datos <b>únicamente para responder tu solicitud</b>, conforme a la <b>Ley 1581 de 2012</b>, y piden tu autorización antes de enviar.</p>' +
+         '<p>Como titular puedes <b>conocer, actualizar y rectificar</b> tu información, revocar la autorización o pedir su supresión; esas solicitudes se tramitan por el módulo PQRSF. La política publicada está en versión preliminar mientras se valida la definitiva.</p>',
       links: [{ l: 'Leer la política de datos', h: 'legal/politica-datos.html', i: 'doc' }],
-      next: ['¿Cómo presento una PQRSF?', '¿Cómo los contacto?']
+      next: ['¿Qué es PQRSF?', '¿Cómo los contacto?']
     },
     {
-      id: 'comunidad', cat: 'contacto',
-      title: 'Comunidad y compromiso social',
-      p: ['compromiso social', 'responsabilidad social', 'programas sociales', 'la comunidad', 'como informan a la comunidad'],
-      k: 'comunidad social responsabilidad programa educacion desarrollo local tejido economico impacto vecino',
-      a: '<p>Petroil desarrolla iniciativas de <b>compromiso social corporativo</b> enfocadas en <b>educación, protección del medio ambiente, desarrollo comunitario y fortalecimiento del tejido económico local</b>.</p>' +
-         '<p>La información de interés se publica a través del sitio web, redes sociales, reuniones con la comunidad y los demás canales oficiales de comunicación institucional.</p>',
-      links: [{ l: 'Ver compromiso social', h: 'sostenibilidad/compromiso-social.html', i: 'leaf' }],
-      next: ['¿Qué hacen por el medio ambiente?', '¿Cómo los contacto?']
-    },
-    {
-      id: 'herramienta-color', cat: 'contacto',
-      title: 'Colorímetro ASTM D1500',
-      p: ['colorimetro', 'astm d1500', 'herramienta de color', 'medir color'],
-      k: 'colorimetro color astm d1500 herramienta laboratorio medicion escala beta interno',
-      a: '<p>El sitio incluye un <b>Colorímetro ASTM D1500</b> en fase BETA: una herramienta de laboratorio para estimar el color de productos derivados del petróleo según la escala ASTM D1500.</p>' +
-         '<p>Está pensada para uso interno del equipo técnico.</p>',
-      links: [{ l: 'Abrir el colorímetro', h: 'herramientas/astm-d1500-color-tool.html', i: 'tool' }],
-      next: ['¿Qué son las fichas técnicas?', '¿Qué productos ofrecen?']
+      id: 'idiomas', cat: 'contacto',
+      title: 'Idiomas del sitio',
+      p: ['en ingles', 'en portugues', 'cambiar idioma', 'english', 'idiomas'],
+      k: 'idioma idiomas ingles portugues english portugues traduccion',
+      a: '<p>El sitio está disponible en <b>español, inglés y portugués</b>: cambia el idioma con el selector <b>ES</b> de la barra superior.</p>' +
+         '<p>Por ahora yo, AIRA, respondo solo en español.</p>',
+      links: [{ l: 'Ir al inicio', h: '#main', i: 'info' }],
+      next: ['¿Qué productos ofrecen?', 'Hablar con un asesor']
     }
   ]
 };
