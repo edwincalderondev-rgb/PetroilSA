@@ -1,0 +1,71 @@
+{
+  "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "breadcrumb.current": { "es": "Petroil 230 · MS (Varsol)", "en": "Petroil 230 · MS (Varsol)", "pt": "Petroil 230 · MS (Varsol)" },
+
+  "hero.badge1": { "es": "Solvente", "en": "Solvent", "pt": "Solvente" },
+  "hero.badge2": { "es": "Varsol", "en": "Varsol", "pt": "Varsol" },
+  "hero.badge3": { "es": "Industria química", "en": "Chemical industry", "pt": "Indústria química" },
+  "hero.title": { "es": "Petroil 230 <span style=\"color:var(--teal-light);\">— MS (Varsol)</span>", "en": "Petroil 230 <span style=\"color:var(--teal-light);\">— MS (Varsol)</span>", "pt": "Petroil 230 <span style=\"color:var(--teal-light);\">— MS (Varsol)</span>" },
+  "hero.desc": { "es": "Destilado liviano, refinado en torre atmosférica y denominado comúnmente Varsol. Producto polivalente para ser usado como disolvente en la industria química y de la limpieza.", "en": "A light distillate, refined in an atmospheric tower and commonly known as Varsol. A versatile product used as a solvent in the chemical and cleaning industries.", "pt": "Destilado leve, refinado em torre atmosférica e comumente chamado de Varsol. Produto polivalente para uso como solvente na indústria química e de limpeza." },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.mini1": { "es": "Densidad kg/m³", "en": "Density kg/m³", "pt": "Densidade kg/m³" },
+  "visual.mini2": { "es": "Inflamación mín.", "en": "Min. flash point", "pt": "Inflamação mín." },
+  "visual.mini3": { "es": "Puro", "en": "Pure", "pt": "Puro" },
+
+  "stat.label1": { "es": "Densidad", "en": "Density", "pt": "Densidade" },
+  "stat.label2": { "es": "Punto de inflamación", "en": "Flash point", "pt": "Ponto de inflamação" },
+  "stat.label3": { "es": "Puro, libre de agua y humedad", "en": "Pure, free of water and moisture", "pt": "Puro, livre de água e umidade" },
+
+  "section.appsTitle": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "desc.p1": { "es": "Es un destilado liviano, refinado en torre atmosférica y denominado comúnmente Varsol. Producto polivalente para ser usado como disolvente en la industria química y de la limpieza.", "en": "It is a light distillate, refined in an atmospheric tower and commonly known as Varsol. A versatile product used as a solvent in the chemical and cleaning industries.", "pt": "É um destilado leve, refinado em torre atmosférica e comumente chamado de Varsol. Produto polivalente para uso como solvente na indústria química e de limpeza." },
+
+  "benefit1.title": { "es": "Solvente multiuso", "en": "Multi-purpose solvent", "pt": "Solvente multiuso" },
+  "benefit1.desc": { "es": "Solvente usado ampliamente en aplicaciones industriales y profesionales, tales como disolvente de pinturas, desengrasante, lavandería industrial, quitamanchas en seco y limpieza general de superficies.", "en": "A solvent widely used in industrial and professional applications, such as paint thinning, degreasing, industrial laundry, dry-cleaning stain removal and general surface cleaning.", "pt": "Solvente amplamente utilizado em aplicações industriais e profissionais, como diluente de tintas, desengraxante, lavanderia industrial, removedor de manchas a seco e limpeza geral de superfícies." },
+  "benefit2.title": { "es": "Alta pureza", "en": "High purity", "pt": "Alta pureza" },
+  "benefit2.desc": { "es": "Es 100 % puro y está libre de agua y humedad.", "en": "It is 100% pure and free of water and moisture.", "pt": "É 100% puro e está livre de água e umidade." },
+  "benefit3.title": { "es": "Fácil de aplicar", "en": "Easy to apply", "pt": "Fácil de aplicar" },
+  "benefit3.desc": { "es": "De fácil aplicación y homogenización. No deja residuos aceitosos.", "en": "Easy to apply and blend. Leaves no oily residue.", "pt": "De fácil aplicação e homogeneização. Não deixa resíduos oleosos." },
+
+  "section.techTitle": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "table.paramHeader": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Densidad, Kg/m³", "en": "Density, kg/m³", "pt": "Densidade, kg/m³" },
+  "table.row2": { "es": "Punto de Inflamación, °C", "en": "Flash point, °C", "pt": "Ponto de inflamação, °C" },
+
+  "section.precautionsTitle": { "es": "Precauciones y manejo <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dato de ejemplo</span>", "en": "Precautions and handling <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Sample data</span>", "pt": "Precauções e manuseio <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dado de exemplo</span>" },
+  "precaution.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "precaution.text": { "es": "Se estima una clasificación como líquido inflamable clase IB/IC según la norma 321 de la NFPA, propia de solventes tipo Varsol. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "It is estimated to be classified as a Class IB/IC flammable liquid under NFPA 321, typical of Varsol-type solvents. Check the official safety data sheet (MSDS) before handling or transporting it.", "pt": "Estima-se uma classificação como líquido inflamável classe IB/IC conforme a norma 321 da NFPA, própria de solventes tipo Varsol. Verifique a ficha de segurança (FISPQ) oficial antes do manuseio ou transporte." },
+  "precaution.casLabel": { "es": "Número CAS:", "en": "CAS Number:", "pt": "Número CAS:" },
+
+  "side.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "side.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "side.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 230 · MS (Varsol).", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 230 · MS (Varsol).", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho do Petroil 230 · MS (Varsol)." },
+  "side.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "quick.label1": { "es": "Código", "en": "Code", "pt": "Código" },
+  "quick.label2": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "quick.value2": { "es": "Solvente (Varsol)", "en": "Solvent (Varsol)", "pt": "Solvente (Varsol)" },
+  "quick.label3": { "es": "Densidad", "en": "Density", "pt": "Densidade" },
+  "quick.label4": { "es": "Punto de inflamación", "en": "Flash point", "pt": "Ponto de inflamação" },
+  "quick.label5": { "es": "Pureza", "en": "Purity", "pt": "Pureza" },
+  "side.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "side.advisorDesc": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas sobre disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 230 · MS (Varsol)?", "en": "Interested in Petroil 230 · MS (Varsol)?", "pt": "Interessado no Petroil 230 · MS (Varsol)?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often, and where you'll receive it. A sales advisor will contact you with the quote and the product's official data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial vai contatá-lo com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreLink": { "es": "Más en Especializados →", "en": "More in Specialized →", "pt": "Mais em Especializados →" },
+  "related.viewAllLink": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "rel.desc1": { "es": "Materia prima para procesos industriales.", "en": "Raw material for industrial processes.", "pt": "Matéria-prima para processos industriais." },
+  "rel.desc2": { "es": "Aditivo para la optimización de combustibles.", "en": "Additive for fuel optimization.", "pt": "Aditivo para a otimização de combustíveis." },
+  "rel.desc3": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel.desc4": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre de alto desempenho." },
+  "products.viewSheet": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

@@ -11,6 +11,7 @@
 //   de esa clave en el idioma activo.
 // - Texto que necesita HTML interno (negritas, listas, <p>) usa data-i18n-html="clave" en
 //   vez de data-i18n, y se aplica con innerHTML.
+// - El placeholder de un <input>/<textarea> usa data-i18n-placeholder="clave".
 // - El idioma elegido se guarda en localStorage y se reaplica en cada carga de página.
 (function () {
   const STORAGE_KEY = 'petroil-lang';
@@ -33,6 +34,10 @@
     document.querySelectorAll('[data-i18n-html]').forEach((el) => {
       const entry = dict[el.getAttribute('data-i18n-html')];
       if (entry && entry[lang]) el.innerHTML = entry[lang];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const entry = dict[el.getAttribute('data-i18n-placeholder')];
+      if (entry && entry[lang]) el.setAttribute('placeholder', entry[lang]);
     });
   }
 
@@ -98,5 +103,10 @@
     init();
   }
 
-  window.PetroilI18n = { setLang };
+  function t(key) {
+    const entry = currentDict && currentDict[key];
+    return entry && entry[getSavedLang()];
+  }
+
+  window.PetroilI18n = { setLang, t };
 })();

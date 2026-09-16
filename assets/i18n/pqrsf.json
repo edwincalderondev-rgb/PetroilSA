@@ -1,0 +1,60 @@
+{
+  "breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "breadcrumb.current": { "es": "PQRSF", "en": "PQRSF", "pt": "PQRSF" },
+
+  "hero.eyebrow": { "es": "Atención al ciudadano", "en": "Citizen support", "pt": "Atendimento ao cidadão" },
+  "hero.subtitle": { "es": "Peticiones, Quejas, Reclamos, Sugerencias y <b>Felicitaciones</b>. Cuéntanos qué piensas: tu mensaje llega directo al equipo de Petroil.", "en": "Petitions, Complaints, Claims, Suggestions and <b>Compliments</b>. Tell us what you think: your message goes straight to the Petroil team.", "pt": "Petições, Queixas, Reclamações, Sugestões e <b>Elogios</b>. Conte-nos o que você pensa: sua mensagem chega diretamente à equipe da Petroil." },
+
+  "banner.example": { "es": "Formulario de demostración — no se transmite información real al enviarlo.", "en": "Demo form — no real information is transmitted when you submit it.", "pt": "Formulário de demonstração — nenhuma informação real é transmitida ao enviá-lo." },
+
+  "type.peticion": { "es": "Petición", "en": "Petition", "pt": "Petição" },
+  "type.peticion.desc": { "es": "Solicita información sobre nuestros productos, servicios u operación.", "en": "Request information about our products, services or operations.", "pt": "Solicite informações sobre nossos produtos, serviços ou operação." },
+  "type.queja": { "es": "Queja", "en": "Complaint", "pt": "Queixa" },
+  "type.queja.desc": { "es": "Manifiesta tu inconformidad con la atención recibida por parte de la compañía.", "en": "Express your dissatisfaction with the service you received from the company.", "pt": "Manifeste sua insatisfação com o atendimento recebido da empresa." },
+  "type.reclamo": { "es": "Reclamo", "en": "Claim", "pt": "Reclamação" },
+  "type.reclamo.desc": { "es": "Reporta un incumplimiento relacionado con un producto o servicio contratado.", "en": "Report a breach related to a contracted product or service.", "pt": "Reporte um descumprimento relacionado a um produto ou serviço contratado." },
+  "type.sugerencia": { "es": "Sugerencia", "en": "Suggestion", "pt": "Sugestão" },
+  "type.sugerencia.desc": { "es": "Comparte ideas para mejorar nuestros productos, servicios o canales de atención.", "en": "Share ideas to improve our products, services or support channels.", "pt": "Compartilhe ideias para melhorar nossos produtos, serviços ou canais de atendimento." },
+  "type.felicitacion": { "es": "Felicitación", "en": "Compliment", "pt": "Elogio" },
+  "type.felicitacion.desc": { "es": "Cuéntanos qué hicimos bien; tus comentarios positivos también llegan al equipo.", "en": "Tell us what we did well — your positive feedback reaches the team too.", "pt": "Conte-nos o que fizemos bem; seus comentários positivos também chegam à equipe." },
+
+  "process.heading": { "es": "¿Cómo se gestiona tu solicitud?", "en": "How is your request handled?", "pt": "Como sua solicitação é gerenciada?" },
+  "process.step1.h": { "es": "Recepción", "en": "Receipt", "pt": "Recepção" },
+  "process.step1.p": { "es": "Recibimos tu solicitud por este formulario, correo o WhatsApp.", "en": "We receive your request through this form, email or WhatsApp.", "pt": "Recebemos sua solicitação por este formulário, e-mail ou WhatsApp." },
+  "process.step2.h": { "es": "Radicado", "en": "Case filed", "pt": "Protocolo" },
+  "process.step2.p": { "es": "Se asigna un número de radicado de ejemplo y un responsable del caso.", "en": "A sample case number is assigned along with a case owner.", "pt": "É atribuído um número de protocolo de exemplo e um responsável pelo caso." },
+  "process.step3.h": { "es": "Gestión", "en": "Handling", "pt": "Gestão" },
+  "process.step3.p": { "es": "El área correspondiente revisa y da trámite a la solicitud.", "en": "The relevant department reviews and processes the request.", "pt": "A área correspondente analisa e dá andamento à solicitação." },
+  "process.step4.h": { "es": "Respuesta", "en": "Response", "pt": "Resposta" },
+  "process.step4.p": { "es": "Recibes respuesta dentro de los términos legales aplicables (ejemplo).", "en": "You receive a response within the applicable legal terms (sample).", "pt": "Você recebe uma resposta dentro dos prazos legais aplicáveis (exemplo)." },
+
+  "form.heading": { "es": "Radica tu solicitud", "en": "File your request", "pt": "Registre sua solicitação" },
+  "form.step1.label": { "es": "1. Selecciona el tipo de solicitud", "en": "1. Select the type of request", "pt": "1. Selecione o tipo de solicitação" },
+  "form.step2.label": { "es": "2. Cuéntanos los detalles", "en": "2. Tell us the details", "pt": "2. Conte-nos os detalhes" },
+  "form.nombre": { "es": "Nombre completo", "en": "Full name", "pt": "Nome completo" },
+  "form.nombre.ph": { "es": "Ej: María Fernanda Rojas", "en": "E.g.: María Fernanda Rojas", "pt": "Ex: María Fernanda Rojas" },
+  "form.correo": { "es": "Correo electrónico", "en": "Email address", "pt": "E-mail" },
+  "form.telefono": { "es": "Teléfono de contacto", "en": "Contact phone", "pt": "Telefone de contato" },
+  "form.telefono.ph": { "es": "Ej: 300 000 0000", "en": "E.g.: 300 000 0000", "pt": "Ex: 300 000 0000" },
+  "form.ciudad": { "es": "Ciudad", "en": "City", "pt": "Cidade" },
+  "form.ciudad.ph": { "es": "Ej: Santa Marta", "en": "E.g.: Santa Marta", "pt": "Ex: Santa Marta" },
+  "form.mensaje": { "es": "Mensaje", "en": "Message", "pt": "Mensagem" },
+  "form.mensaje.ph": { "es": "Escribe aquí el detalle de tu solicitud...", "en": "Write the details of your request here...", "pt": "Escreva aqui os detalhes da sua solicitação..." },
+  "form.check": { "es": "Autorizo el tratamiento de mis datos personales conforme a la <a href=\"politica-datos.html\">Política de protección de datos</a> de Petroil S.A.", "en": "I authorize the processing of my personal data in accordance with Petroil S.A.'s <a href=\"politica-datos.html\">Data protection policy</a>.", "pt": "Autorizo o tratamento dos meus dados pessoais conforme a <a href=\"politica-datos.html\">Política de proteção de dados</a> da Petroil S.A." },
+  "form.submit": { "es": "Enviar solicitud", "en": "Submit request", "pt": "Enviar solicitação" },
+  "form.note": { "es": "Formulario de demostración: al enviarlo no se transmite información real a Petroil S.A. Para una solicitud real, utiliza el correo contacto@petroilsa.com o el canal de WhatsApp.", "en": "Demo form: no real information is sent to Petroil S.A. when you submit it. For an actual request, use contacto@petroilsa.com or the WhatsApp channel.", "pt": "Formulário de demonstração: ao enviá-lo, nenhuma informação real é transmitida à Petroil S.A. Para uma solicitação real, use o e-mail contacto@petroilsa.com ou o canal de WhatsApp." },
+
+  "success.h": { "es": "Solicitud radicada (ejemplo)", "en": "Request filed (sample)", "pt": "Solicitação registrada (exemplo)" },
+  "success.p1": { "es": "Hemos registrado tu solicitud de demostración. En un escenario real, este sería el número de radicado que confirma la recepción de tu caso.", "en": "We've registered your demo request. In a real scenario, this would be the case number confirming receipt of your case.", "pt": "Registramos sua solicitação de demonstração. Em um cenário real, este seria o número de protocolo que confirma o recebimento do seu caso." },
+  "success.p2": { "es": "Recibirás una respuesta al correo registrado dentro de los términos legales aplicables.", "en": "You will receive a response at your registered email within the applicable legal terms.", "pt": "Você receberá uma resposta no e-mail cadastrado dentro dos prazos legais aplicáveis." },
+  "success.reset": { "es": "Radicar otra solicitud", "en": "File another request", "pt": "Registrar outra solicitação" },
+
+  "info.tiempos.h": { "es": "Tiempos de respuesta", "en": "Response times", "pt": "Prazos de resposta" },
+  "info.tiempos.li1": { "es": "Peticiones <b>15 días hábiles</b>", "en": "Petitions <b>15 business days</b>", "pt": "Petições <b>15 dias úteis</b>" },
+  "info.tiempos.li2": { "es": "Quejas y reclamos <b>15 días hábiles</b>", "en": "Complaints and claims <b>15 business days</b>", "pt": "Queixas e reclamações <b>15 dias úteis</b>" },
+  "info.tiempos.li3": { "es": "Sugerencias / felicitaciones <b>8 días hábiles</b>", "en": "Suggestions / compliments <b>8 business days</b>", "pt": "Sugestões / elogios <b>8 dias úteis</b>" },
+  "info.canal.h": { "es": "¿Prefieres otro canal?", "en": "Prefer another channel?", "pt": "Prefere outro canal?" },
+  "info.confidential": { "es": "Tu información se maneja de forma confidencial, conforme a la Ley 1581 de 2012 y nuestra <a href=\"politica-datos.html\" style=\"color:var(--teal); font-weight:600;\">política de protección de datos</a>.", "en": "Your information is handled confidentially, in accordance with Law 1581 of 2012 and our <a href=\"politica-datos.html\" style=\"color:var(--teal); font-weight:600;\">data protection policy</a>.", "pt": "Suas informações são tratadas de forma confidencial, em conformidade com a Lei 1581 de 2012 e nossa <a href=\"politica-datos.html\" style=\"color:var(--teal); font-weight:600;\">política de proteção de dados</a>." },
+
+  "toast.registrada": { "es": "Solicitud de ejemplo registrada correctamente. (Formulario de demostración)", "en": "Sample request successfully registered. (Demo form)", "pt": "Solicitação de exemplo registrada com sucesso. (Formulário de demonstração)" }
+}

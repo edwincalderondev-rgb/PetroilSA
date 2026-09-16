@@ -45,6 +45,11 @@ if(contactForm){
   let current = null;     // { ref, data } de la solicitud en revisión
   let lastChannel = null; // último canal usado, para "volver a abrir"
 
+  // Strings de la UI reactiva (después de enviar) traducidas vía i18n.js;
+  // el mensaje que se ENVÍA a Petroil (whatsappText/emailText) se mantiene
+  // siempre en español porque el equipo comercial que lo recibe es local.
+  const t = (key, fallback) => (window.PetroilI18n && window.PetroilI18n.t(key)) || fallback;
+
   // ---------- Utilidades ----------
   const field = (name) => (contactForm.elements[name] ? contactForm.elements[name].value.trim() : '');
   const tipoValue = () => (tipoRadios.find(r => r.checked) || {}).value || '';
@@ -159,28 +164,28 @@ if(contactForm){
     whatsapp: {
       label: 'WhatsApp',
       url: (ref, d) => 'https://wa.me/' + WA_NUMBER + '?text=' + enc(whatsappText(ref, d)),
-      done: 'Abrimos WhatsApp con tu solicitud ya escrita. <b>Presiona «Enviar» en WhatsApp</b> para que llegue a nuestro asesor comercial.'
+      get done() { return t('channel.whatsapp.done', 'Abrimos WhatsApp con tu solicitud ya escrita. <b>Presiona «Enviar» en WhatsApp</b> para que llegue a nuestro asesor comercial.'); }
     },
     gmail: {
       label: 'Gmail',
       url: (ref, d) => 'https://mail.google.com/mail/?view=cm&fs=1&to=' + enc(MAIL_TO) + '&su=' + enc(emailSubject(ref, d)) + '&body=' + enc(emailText(ref, d)),
-      done: 'Abrimos Gmail con el correo listo para ' + MAIL_TO + '. <b>Revisa y presiona «Enviar»</b>. Si no habías iniciado sesión, Gmail te lo pedirá primero.'
+      get done() { return t('channel.gmail.done', 'Abrimos Gmail con el correo listo para ' + MAIL_TO + '. <b>Revisa y presiona «Enviar»</b>. Si no habías iniciado sesión, Gmail te lo pedirá primero.').replace(/\{email\}/g, MAIL_TO); }
     },
     outlook: {
       label: 'Outlook.com',
       url: (ref, d) => 'https://outlook.live.com/mail/0/deeplink/compose?to=' + enc(MAIL_TO) + '&subject=' + enc(emailSubject(ref, d)) + '&body=' + enc(emailText(ref, d)),
-      done: 'Abrimos Outlook con el correo listo para ' + MAIL_TO + '. <b>Revisa y presiona «Enviar»</b>.'
+      get done() { return t('channel.outlook.done', 'Abrimos Outlook con el correo listo para ' + MAIL_TO + '. <b>Revisa y presiona «Enviar»</b>.').replace(/\{email\}/g, MAIL_TO); }
     },
     outlook365: {
       label: 'Outlook (Microsoft 365)',
       url: (ref, d) => 'https://outlook.office.com/mail/deeplink/compose?to=' + enc(MAIL_TO) + '&subject=' + enc(emailSubject(ref, d)) + '&body=' + enc(emailText(ref, d)),
-      done: 'Abrimos Outlook de tu cuenta empresarial con el correo listo para ' + MAIL_TO + '. <b>Revisa y presiona «Enviar»</b>.'
+      get done() { return t('channel.outlook365.done', 'Abrimos Outlook de tu cuenta empresarial con el correo listo para ' + MAIL_TO + '. <b>Revisa y presiona «Enviar»</b>.').replace(/\{email\}/g, MAIL_TO); }
     },
     mailto: {
       label: 'tu aplicación de correo',
       url: (ref, d) => 'mailto:' + MAIL_TO + '?subject=' + enc(emailSubject(ref, d)) + '&body=' + enc(emailText(ref, d)),
       sameTab: true,
-      done: 'Intentamos abrir la aplicación de correo predeterminada de tu equipo. Si no se abrió ninguna, vuelve y elige Gmail u Outlook, o copia el texto.'
+      get done() { return t('channel.mailto.done', 'Intentamos abrir la aplicación de correo predeterminada de tu equipo. Si no se abrió ninguna, vuelve y elige Gmail u Outlook, o copia el texto.'); }
     }
   };
 
@@ -220,7 +225,7 @@ if(contactForm){
     current = { ref: makeRef(), data: collect() };
     refEl.textContent = current.ref;
     previewEl.textContent = whatsappText(current.ref, current.data).replace(/\*/g, '');
-    if(copyLabel) copyLabel.textContent = 'Copiar texto';
+    if(copyLabel) copyLabel.textContent = t('review.copyText', 'Copiar texto');
     if(typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.setAttribute('open', '');
   }
@@ -232,10 +237,10 @@ if(contactForm){
   function showSuccess(key){
     closeReview();
     const ch = channels[key];
-    successTitle.textContent = key === 'mailto' ? 'Tu correo está listo' : '¡Tu solicitud está lista!';
+    successTitle.textContent = key === 'mailto' ? t('success.titleMailto', 'Tu correo está listo') : t('success.title', '¡Tu solicitud está lista!');
     successText.innerHTML = ch.done;
     successRef.textContent = current.ref;
-    reopenBtn.querySelector('span').textContent = 'Abrir ' + ch.label + ' de nuevo';
+    reopenBtn.querySelector('span').textContent = t('success.reopenWith', 'Abrir {channel} de nuevo').replace('{channel}', ch.label);
     contactForm.hidden = true;
     successPanel.hidden = false;
     successPanel.scrollIntoView({ behavior:'smooth', block:'center' });
@@ -257,7 +262,7 @@ if(contactForm){
       try { ok = document.execCommand('copy'); } catch(err){ ok = false; }
       ta.remove();
     }
-    if(copyLabel) copyLabel.textContent = ok ? '¡Copiado! Pégalo donde prefieras' : 'No se pudo copiar';
+    if(copyLabel) copyLabel.textContent = ok ? t('review.copySuccess', '¡Copiado! Pégalo donde prefieras') : t('review.copyError', 'No se pudo copiar');
   }
 
   // ---------- Eventos ----------

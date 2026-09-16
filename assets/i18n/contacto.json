@@ -1,0 +1,91 @@
+{
+  "breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "route.solicitud": { "es": "Solicitud", "en": "Request", "pt": "Solicitação" },
+  "route.canales": { "es": "Canales directos", "en": "Direct channels", "pt": "Canais diretos" },
+  "route.ubicacion": { "es": "Ubicación", "en": "Location", "pt": "Localização" },
+
+  "hero.eyebrow": { "es": "Contacto comercial", "en": "Sales contact", "pt": "Contato comercial" },
+  "hero.h1": { "es": "Hablemos de tu operación", "en": "Let's talk about your operation", "pt": "Vamos falar sobre a sua operação" },
+  "hero.lead": { "es": "Solicita una cotización o la ficha técnica oficial de nuestros combustibles. Déjanos tus datos y un asesor comercial de Petroil te responde con volumen, disponibilidad y condiciones de despacho.", "en": "Request a quote or the official data sheet for our fuels. Leave us your details and a Petroil sales advisor will reply with volume, availability and dispatch terms.", "pt": "Solicite uma cotação ou a ficha técnica oficial dos nossos combustíveis. Deixe seus dados e um consultor comercial da Petroil responderá com volume, disponibilidade e condições de despacho." },
+
+  "form.head.h": { "es": "Solicita tu cotización", "en": "Request your quote", "pt": "Solicite sua cotação" },
+  "form.head.p": { "es": "Los campos marcados con <span style=\"color:var(--teal); font-weight:600;\">*</span> son obligatorios. Al terminar podrás revisar tu solicitud y enviarla por WhatsApp, Gmail u Outlook con un solo clic.", "en": "Fields marked with <span style=\"color:var(--teal); font-weight:600;\">*</span> are required. When you're done, you'll be able to review your request and send it via WhatsApp, Gmail or Outlook with a single click.", "pt": "Os campos marcados com <span style=\"color:var(--teal); font-weight:600;\">*</span> são obrigatórios. Ao terminar, você poderá revisar sua solicitação e enviá-la pelo WhatsApp, Gmail ou Outlook com um clique." },
+
+  "form.step1.legend": { "es": "¿Qué necesitas?", "en": "What do you need?", "pt": "O que você precisa?" },
+  "tipo.cotizacion": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "tipo.informacion": { "es": "Información técnica", "en": "Technical information", "pt": "Informação técnica" },
+  "tipo.otra": { "es": "Otra consulta", "en": "Other inquiry", "pt": "Outra consulta" },
+
+  "form.step2.legend": { "es": "Tus datos", "en": "Your details", "pt": "Seus dados" },
+  "form.nombre": { "es": "Nombre completo", "en": "Full name", "pt": "Nome completo" },
+  "form.nombre.ph": { "es": "Ej: María Fernanda Rojas", "en": "E.g.: María Fernanda Rojas", "pt": "Ex: María Fernanda Rojas" },
+  "form.empresa": { "es": "Empresa", "en": "Company", "pt": "Empresa" },
+  "form.opcional": { "es": "(opcional)", "en": "(optional)", "pt": "(opcional)" },
+  "form.empresa.ph": { "es": "Ej: Transportes del Caribe S.A.S.", "en": "E.g.: Transportes del Caribe S.A.S.", "pt": "Ex: Transportes del Caribe S.A.S." },
+  "form.correo": { "es": "Correo electrónico", "en": "Email address", "pt": "E-mail" },
+  "form.telefono": { "es": "Teléfono / celular", "en": "Phone / mobile", "pt": "Telefone / celular" },
+  "form.telefono.ph": { "es": "Ej: +57 300 000 0000", "en": "E.g.: +57 300 000 0000", "pt": "Ex: +57 300 000 0000" },
+  "form.ciudad": { "es": "Ciudad / lugar de entrega", "en": "City / delivery location", "pt": "Cidade / local de entrega" },
+  "form.ciudad.ph": { "es": "Ej: Santa Marta, Magdalena", "en": "E.g.: Santa Marta, Magdalena", "pt": "Ex: Santa Marta, Magdalena" },
+
+  "form.step3.legend": { "es": "Producto(s) de interés", "en": "Product(s) of interest", "pt": "Produto(s) de interesse" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+  "form.productos.error": { "es": "Selecciona al menos un producto (o elige «Otra consulta» en el paso 1).", "en": "Select at least one product (or choose \"Other inquiry\" in step 1).", "pt": "Selecione ao menos um produto (ou escolha \"Outra consulta\" na etapa 1)." },
+
+  "form.step4.legend": { "es": "Detalles de la solicitud", "en": "Request details", "pt": "Detalhes da solicitação" },
+  "form.volumen": { "es": "Volumen estimado y frecuencia", "en": "Estimated volume and frequency", "pt": "Volume estimado e frequência" },
+  "form.volumen.ph": { "es": "Ej: 10.000 galones mensuales", "en": "E.g.: 10,000 gallons per month", "pt": "Ex: 10.000 galões mensais" },
+  "form.mensaje": { "es": "Mensaje", "en": "Message", "pt": "Mensagem" },
+  "form.mensaje.ph": { "es": "Cuéntanos sobre tu operación, uso del combustible o cualquier detalle que debamos conocer...", "en": "Tell us about your operation, how you'll use the fuel, or any detail we should know...", "pt": "Conte-nos sobre sua operação, uso do combustível ou qualquer detalhe que devamos saber..." },
+
+  "form.privacidad": { "es": "He leído y acepto la <a href=\"#\" data-pending-link>política de tratamiento de datos personales</a> de Petroil S.A. y autorizo el uso de mis datos para atender esta solicitud. <span style=\"color:var(--teal); font-weight:600;\">*</span>", "en": "I have read and accept Petroil S.A.'s <a href=\"#\" data-pending-link>personal data processing policy</a> and authorize the use of my data to handle this request. <span style=\"color:var(--teal); font-weight:600;\">*</span>", "pt": "Li e aceito a <a href=\"#\" data-pending-link>política de tratamento de dados pessoais</a> da Petroil S.A. e autorizo o uso dos meus dados para atender a esta solicitação. <span style=\"color:var(--teal); font-weight:600;\">*</span>" },
+
+  "form.submit": { "es": "Revisar y enviar solicitud", "en": "Review and send request", "pt": "Revisar e enviar solicitação" },
+  "form.note": { "es": "Antes de enviar verás el mensaje completo. Se abrirá el canal que elijas con todo ya redactado: solo tienes que presionar «Enviar».", "en": "Before sending, you'll see the full message. The channel you choose will open with everything already written — you just need to press \"Send\".", "pt": "Antes de enviar, você verá a mensagem completa. O canal escolhido abrirá com tudo já redigido: basta pressionar \"Enviar\"." },
+
+  "success.title": { "es": "¡Tu solicitud está lista!", "en": "Your request is ready!", "pt": "Sua solicitação está pronta!" },
+  "success.titleMailto": { "es": "Tu correo está listo", "en": "Your email is ready", "pt": "Seu e-mail está pronto" },
+  "success.ref": { "es": "Referencia de tu solicitud: <b id=\"ctSuccessRef\"></b>", "en": "Your request reference: <b id=\"ctSuccessRef\"></b>", "pt": "Referência da sua solicitação: <b id=\"ctSuccessRef\"></b>" },
+  "success.notOpened": { "es": "¿No se abrió nada? Puede que tu navegador haya bloqueado la ventana nueva: usa los botones de abajo.", "en": "Nothing opened? Your browser may have blocked the new window — use the buttons below.", "pt": "Nada abriu? Seu navegador pode ter bloqueado a nova janela: use os botões abaixo." },
+  "success.reopen": { "es": "Abrir de nuevo", "en": "Open again", "pt": "Abrir novamente" },
+  "success.reopenWith": { "es": "Abrir {channel} de nuevo", "en": "Open {channel} again", "pt": "Abrir {channel} novamente" },
+  "success.otherChannel": { "es": "Elegir otro canal", "en": "Choose another channel", "pt": "Escolher outro canal" },
+  "success.reset": { "es": "Hacer otra solicitud", "en": "Make another request", "pt": "Fazer outra solicitação" },
+
+  "channel.whatsapp.done": { "es": "Abrimos WhatsApp con tu solicitud ya escrita. <b>Presiona «Enviar» en WhatsApp</b> para que llegue a nuestro asesor comercial.", "en": "We opened WhatsApp with your request already written. <b>Press \"Send\" in WhatsApp</b> so it reaches our sales advisor.", "pt": "Abrimos o WhatsApp com sua solicitação já escrita. <b>Pressione \"Enviar\" no WhatsApp</b> para que chegue ao nosso consultor comercial." },
+  "channel.gmail.done": { "es": "Abrimos Gmail con el correo listo para {email}. <b>Revisa y presiona «Enviar»</b>. Si no habías iniciado sesión, Gmail te lo pedirá primero.", "en": "We opened Gmail with the email ready for {email}. <b>Review it and press \"Send\"</b>. If you weren't signed in, Gmail will ask you to do so first.", "pt": "Abrimos o Gmail com o e-mail pronto para {email}. <b>Revise e pressione \"Enviar\"</b>. Se você não tinha feito login, o Gmail vai pedir primeiro." },
+  "channel.outlook.done": { "es": "Abrimos Outlook con el correo listo para {email}. <b>Revisa y presiona «Enviar»</b>.", "en": "We opened Outlook with the email ready for {email}. <b>Review it and press \"Send\"</b>.", "pt": "Abrimos o Outlook com o e-mail pronto para {email}. <b>Revise e pressione \"Enviar\"</b>." },
+  "channel.outlook365.done": { "es": "Abrimos Outlook de tu cuenta empresarial con el correo listo para {email}. <b>Revisa y presiona «Enviar»</b>.", "en": "We opened Outlook from your business account with the email ready for {email}. <b>Review it and press \"Send\"</b>.", "pt": "Abrimos o Outlook da sua conta empresarial com o e-mail pronto para {email}. <b>Revise e pressione \"Enviar\"</b>." },
+  "channel.mailto.done": { "es": "Intentamos abrir la aplicación de correo predeterminada de tu equipo. Si no se abrió ninguna, vuelve y elige Gmail u Outlook, o copia el texto.", "en": "We tried opening your device's default email app. If nothing opened, go back and choose Gmail or Outlook, or copy the text.", "pt": "Tentamos abrir o aplicativo de e-mail padrão do seu dispositivo. Se nada abriu, volte e escolha Gmail ou Outlook, ou copie o texto." },
+
+  "review.eyebrow": { "es": "Paso final", "en": "Final step", "pt": "Etapa final" },
+  "review.title": { "es": "Revisa tu solicitud", "en": "Review your request", "pt": "Revise sua solicitação" },
+  "review.ref": { "es": "Referencia <b id=\"ctRef\">PTL-000000-0000</b> · Así llegará a nuestro equipo comercial.", "en": "Reference <b id=\"ctRef\">PTL-000000-0000</b> · This is how it will reach our sales team.", "pt": "Referência <b id=\"ctRef\">PTL-000000-0000</b> · É assim que chegará à nossa equipe comercial." },
+  "review.channelLabel": { "es": "¿Por dónde quieres enviarla?", "en": "How would you like to send it?", "pt": "Por onde você quer enviá-la?" },
+  "channel.wa.label": { "es": "Enviar por WhatsApp", "en": "Send via WhatsApp", "pt": "Enviar pelo WhatsApp" },
+  "channel.wa.desc": { "es": "Respuesta más rápida · +57 311 333 7046", "en": "Fastest response · +57 311 333 7046", "pt": "Resposta mais rápida · +57 311 333 7046" },
+  "channel.gmail.desc": { "es": "Correo de Google", "en": "Google Mail", "pt": "E-mail do Google" },
+  "channel.outlook.desc": { "es": "Hotmail · Outlook personal", "en": "Hotmail · Personal Outlook", "pt": "Hotmail · Outlook pessoal" },
+  "channel.outlook365.label": { "es": "Outlook empresarial", "en": "Business Outlook", "pt": "Outlook empresarial" },
+  "channel.outlook365.desc": { "es": "Cuenta de Microsoft 365", "en": "Microsoft 365 account", "pt": "Conta do Microsoft 365" },
+  "channel.mailto.label": { "es": "Otra app de correo", "en": "Another email app", "pt": "Outro aplicativo de e-mail" },
+  "channel.mailto.desc": { "es": "La predeterminada del equipo", "en": "Your device's default", "pt": "O padrão do dispositivo" },
+  "review.copyText": { "es": "Copiar texto", "en": "Copy text", "pt": "Copiar texto" },
+  "review.copySuccess": { "es": "¡Copiado! Pégalo donde prefieras", "en": "Copied! Paste it wherever you'd like", "pt": "Copiado! Cole onde preferir" },
+  "review.copyError": { "es": "No se pudo copiar", "en": "Couldn't copy", "pt": "Não foi possível copiar" },
+  "review.keepEditing": { "es": "← Seguir editando", "en": "← Keep editing", "pt": "← Continuar editando" },
+
+  "advisor.eyebrow": { "es": "Asesor comercial", "en": "Sales advisor", "pt": "Consultor comercial" },
+  "advisor.h": { "es": "¿Prefieres hablar directamente?", "en": "Prefer to talk directly?", "pt": "Prefere falar diretamente?" },
+  "advisor.p": { "es": "Escríbenos por WhatsApp y un asesor te atiende de forma personalizada.", "en": "Message us on WhatsApp and an advisor will assist you personally.", "pt": "Escreva-nos pelo WhatsApp e um consultor vai atendê-lo pessoalmente." },
+  "advisor.cta": { "es": "Chatear con un asesor", "en": "Chat with an advisor", "pt": "Conversar com um consultor" },
+
+  "channels.h": { "es": "Canales de atención", "en": "Support channels", "pt": "Canais de atendimento" },
+  "channels.correo": { "es": "Correo", "en": "Email", "pt": "E-mail" },
+  "channels.pqrsf": { "es": "Peticiones, quejas y reclamos", "en": "Petitions, complaints and claims", "pt": "Petições, reclamações e recursos" },
+  "channels.pqrsf.link": { "es": "Radicar una PQRSF →", "en": "File a PQRSF request →", "pt": "Registrar uma PQRSF →" },
+
+  "confidential.p": { "es": "Tus datos se usan únicamente para responder esta solicitud, conforme a la Ley 1581 de 2012 de protección de datos personales.", "en": "Your data is used solely to respond to this request, in accordance with Colombian Law 1581 of 2012 on personal data protection.", "pt": "Seus dados são usados apenas para responder a esta solicitação, em conformidade com a Lei 1581 de 2012 de proteção de dados pessoais da Colômbia." }
+}

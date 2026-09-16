@@ -22,7 +22,7 @@ if(pqrsfForm){
     pqrsfForm.style.display = 'none';
     if(successPanel) successPanel.classList.add('show');
     if(toast){
-      toast.textContent = 'Solicitud de ejemplo registrada correctamente. (Formulario de demostración)';
+      toast.textContent = (window.PetroilI18n && window.PetroilI18n.t('toast.registrada')) || 'Solicitud de ejemplo registrada correctamente. (Formulario de demostración)';
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3800);
     }
