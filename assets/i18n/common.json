@@ -38,5 +38,12 @@
   "chat.q3": { "es": "Certificaciones ISO", "en": "ISO certifications", "pt": "Certificações ISO" },
   "chat.q4": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
   "chat.wa": { "es": "Continuar por WhatsApp", "en": "Continue on WhatsApp", "pt": "Continuar pelo WhatsApp" },
-  "chat.waFromChatCta": { "es": "Vengo del chat del sitio web de Petroil y quiero más información.", "en": "I'm coming from the chat on the Petroil website and I'd like more information.", "pt": "Estou vindo do chat do site da Petroil e gostaria de mais informações." }
+  "chat.waFromChatCta": { "es": "Vengo del chat del sitio web de Petroil y quiero más información.", "en": "I'm coming from the chat on the Petroil website and I'd like more information.", "pt": "Estou vindo do chat do site da Petroil e gostaria de mais informações." },
+
+  "//aira": "Widget AIRA (index.html). Estas claves traducen SOLO el marco del chat (cabecera, aviso, campo de texto). Las RESPUESTAS viven en assets/js/aira-kb.js y por ahora existen únicamente en español — ver la nota de traducción en ese archivo.",
+  "aira.teaser": { "es": "¿Buscas un combustible o una <b>cotización</b>? Pregúntame.", "en": "Looking for a fuel or a <b>quote</b>? Just ask me.", "pt": "Procura um combustível ou uma <b>cotação</b>? Pergunte-me." },
+  "aira.note": { "es": "Asistente automático: responde con información publicada en este sitio.", "en": "Automated assistant: it answers using information published on this site.", "pt": "Assistente automático: responde com informação publicada neste site." },
+  "aira.label": { "es": "Escribe tu pregunta para AIRA", "en": "Type your question for AIRA", "pt": "Escreva a sua pergunta para a AIRA" },
+  "aira.placeholder": { "es": "Escribe tu pregunta…", "en": "Type your question…", "pt": "Escreva a sua pergunta…" },
+  "aira.credit": { "es": "¿Necesitas a una persona? Escríbenos al +57 311 333 7046", "en": "Need a human? Message us at +57 311 333 7046", "pt": "Precisa de uma pessoa? Escreva para +57 311 333 7046" }
 }
