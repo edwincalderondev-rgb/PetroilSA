@@ -132,9 +132,16 @@ button{font-family:inherit; cursor:pointer;}
   transform:translateY(28px);
   transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
 }
+/* transform:none y NO translateY(0): cualquier transform (aunque sea 0)
+   convierte al elemento en el bloque contenedor de sus hijos
+   position:fixed. El modal de perfiles de quienes-somos vivía dentro de
+   una sección .reveal y se posicionaba contra la sección (2.000+ px de
+   alto) en vez de contra la pantalla, así que se abría fuera de vista.
+   Visualmente es idéntico y la transición desde translateY(28px) igual
+   se anima. */
 .reveal.in{
   opacity:1;
-  transform:translateY(0);
+  transform:none;
 }
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none; }

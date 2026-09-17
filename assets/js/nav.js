@@ -345,11 +345,22 @@ if(!prefersReducedMotion){
 }
 
 // Reveal on scroll
+// Se revela cuando se ve el 15 % del elemento O cuando ocupa al menos el
+// 15 % de la pantalla. Lo segundo es necesario para secciones más altas que
+// el viewport (p. ej. "Equipo" de quienes-somos en móvil mide ~6.200 px):
+// con solo threshold .15 necesitaban 900+ px visibles a la vez, algo que
+// una pantalla de celular nunca muestra, y la sección quedaba invisible.
 const revealEls = document.querySelectorAll('.reveal');
 if(revealEls.length){
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-  }, { threshold: .15 });
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      if (e.intersectionRatio >= .15 || e.intersectionRect.height >= window.innerHeight * .15) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: [0, .02, .05, .1, .15] });
   revealEls.forEach(el => io.observe(el));
 }
 

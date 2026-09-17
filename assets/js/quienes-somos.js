@@ -20,6 +20,8 @@ const leaderModalName = document.getElementById('leaderModalName');
 const leaderModalRole = document.getElementById('leaderModalRole');
 const leaderModalBio = document.getElementById('leaderModalBio');
 
+let leaderModalReturnFocus = null;
+
 function openLeaderModal(card){
   const photo = card.querySelector('.leader-photo img');
   const chip = card.querySelector('.leader-chip');
@@ -35,14 +37,19 @@ function openLeaderModal(card){
   leaderModalRole.textContent = role.textContent;
   leaderModalBio.innerHTML = bio.innerHTML;
 
+  leaderModalReturnFocus = document.activeElement;
   leaderModalOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+  if(leaderModalClose) leaderModalClose.focus({ preventScroll:true });
 }
 
 function closeLeaderModal(){
   if(!leaderModalOverlay) return;
+  if(!leaderModalOverlay.classList.contains('open')) return;
   leaderModalOverlay.classList.remove('open');
   document.body.style.overflow = '';
+  if(leaderModalReturnFocus && leaderModalReturnFocus.focus) leaderModalReturnFocus.focus({ preventScroll:true });
+  leaderModalReturnFocus = null;
 }
 
 document.querySelectorAll('.bio-toggle').forEach(btn => {

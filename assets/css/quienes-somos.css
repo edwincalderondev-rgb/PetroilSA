@@ -13,6 +13,25 @@
    antes se usaba var(--ib-blue), var(--navy) donde antes var(--ib-navy),
    etc. --ink-soft se quitó por no usarse en ningún lado (código muerto). */
 
+/* ---------- "Burbujeo" en fondos azules (fuera del hero) ----------
+   Mismo efecto de partículas que asciende del hero (.hero-particles /
+   .particle en hero.css, generadas por hero-particles.js vía
+   data-particles="N"). Aquí va DETRÁS del contenido (z-index 0 → el
+   contenido sube a 1+), a diferencia del hero, donde va encima del fondo
+   de video. El padre de cada .qs-particles necesita position:relative y
+   overflow:hidden. */
+.qs-particles{z-index:0;}
+.qs-route .qs-particles .particle{--rise:1100px;}
+.qs-cta .qs-particles .particle{--rise:520px;}
+.qs-essence-card.dark .qs-particles .particle,
+.leader-card:first-child .qs-particles .particle{--rise:420px;}
+.qs-essence-card.dark > :not(.qs-particles),
+.qs-cta > .container,
+.leader-card:first-child .leader-body > :not(.qs-particles){position:relative; z-index:1;}
+@media (prefers-reduced-motion: reduce){
+  .qs-particles{display:none;}
+}
+
 /* ---------- breadcrumb sobre hero oscuro ---------- */
 .qs-breadcrumb{
   display:flex; align-items:center; gap:8px; font-size:.78rem; color:#9fb4c2; margin-bottom:22px; position:relative; z-index:4;
@@ -166,11 +185,13 @@
       flujo) de forma fija en píxeles — el texto siempre crece hacia
       abajo desde ahí y nunca altera el orden del ascenso. */
 .qs-route-track{
-  position:relative; z-index:2; height:400px; margin:70px 0 20px; max-width:1120px; margin-left:auto; margin-right:auto;
+  /* 470px y no 400px: la tarjeta 2026 (top:220px + punto + tarjeta ≈ 450px)
+     se salía del track y chocaba con el badge "2031 · La cumbre". */
+  position:relative; z-index:2; height:470px; margin:50px 0 30px; max-width:1120px; margin-left:auto; margin-right:auto;
 }
 .qs-route-line{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
 .qs-route-axis{
-  display:flex; justify-content:space-between; max-width:1120px; margin:0 auto 20px; position:relative; z-index:2;
+  display:flex; justify-content:space-between; max-width:1120px; margin:48px auto 20px; position:relative; z-index:2;
   font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-gray); font-weight:600;
 }
 .qs-route-axis span{display:flex; align-items:center; gap:6px;}
@@ -230,7 +251,12 @@
 .leader-card:hover{border-color:var(--teal-light); box-shadow:var(--shadow-soft);}
 .leader-card:first-child{display:grid; grid-template-columns:280px 1fr; align-items:stretch; background:var(--navy);}
 .leader-card:first-child .leader-photo{height:100%; min-height:320px;}
-.leader-card:first-child .leader-body{color:#fff; padding:38px 40px; display:flex; flex-direction:column; justify-content:center;}
+/* align-items:flex-start: sin esto el chip "Chairman of the Board" (y el
+   botón) se estiraban a todo el ancho de la columna flex. */
+.leader-card:first-child .leader-body{color:#fff; padding:38px 40px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; position:relative; overflow:hidden;}
+/* .leader-name es var(--navy) por defecto, el mismo color de fondo de esta
+   tarjeta: el nombre del Chairman quedaba invisible. */
+.leader-card:first-child .leader-name{color:#fff; font-size:1.45rem; margin-bottom:4px;}
 .leader-card:first-child .leader-role{color:var(--teal-light);}
 .leader-card:first-child .leader-bio-short, .leader-card:first-child .bio-full{color:#cbd5e1;}
 .leader-card:first-child .leader-chip{background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.2);}
@@ -261,7 +287,8 @@
 }
 .bio-toggle svg{width:13px; height:13px; transition:transform .2s ease;}
 .bio-toggle:hover svg{transform:translateX(3px);}
-.bio-toggle-label::after{content:'Ver perfil completo';}
+/* La etiqueta ya es texto real en el HTML (data-i18n="leader.viewProfile")
+   y no un content:'' de CSS, que no se podía traducir. */
 
 /* ---------- MODAL de perfil ---------- */
 .leader-modal-overlay{

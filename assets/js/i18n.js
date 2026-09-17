@@ -39,6 +39,9 @@
       const entry = dict[el.getAttribute('data-i18n-placeholder')];
       if (entry && entry[lang]) el.setAttribute('placeholder', entry[lang]);
     });
+    // Aviso para los textos que generan otros scripts (p. ej. el contador del
+    // catálogo en productos.js): ya pueden pedir su traducción con t().
+    document.dispatchEvent(new CustomEvent('petroil:i18n', { detail: { lang } }));
   }
 
   function updateLangUI(lang) {

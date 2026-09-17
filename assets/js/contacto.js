@@ -33,12 +33,15 @@ if(contactForm){
   const successPanel = document.getElementById('ctSuccess');
   const successTitle = document.getElementById('ctSuccessTitle');
   const successText = document.getElementById('ctSuccessText');
-  const successRef = document.getElementById('ctSuccessRef');
+  // #ctRef y #ctSuccessRef NO se guardan en constantes: viven dentro de un
+  // data-i18n-html y i18n.js los reemplaza al traducir, así que una
+  // referencia tomada al cargar queda apuntando a un nodo desconectado y el
+  // usuario veía "PTL-000000-0000" en vez de su número real.
+  const setRef = (id, ref) => { const el = document.getElementById(id); if(el) el.textContent = ref; };
   const reopenBtn = document.getElementById('ctReopen');
   const resetBtn = document.getElementById('ctReset');
   const dialog = document.getElementById('ctReview');
   const previewEl = document.getElementById('ctPreview');
-  const refEl = document.getElementById('ctRef');
   const copyBtn = document.getElementById('ctCopy');
   const copyLabel = copyBtn ? copyBtn.querySelector('span') : null;
 
@@ -223,7 +226,7 @@ if(contactForm){
   // ---------- UI ----------
   function openReview(){
     current = { ref: makeRef(), data: collect() };
-    refEl.textContent = current.ref;
+    setRef('ctRef', current.ref);
     previewEl.textContent = whatsappText(current.ref, current.data).replace(/\*/g, '');
     if(copyLabel) copyLabel.textContent = t('review.copyText', 'Copiar texto');
     if(typeof dialog.showModal === 'function') dialog.showModal();
@@ -239,7 +242,7 @@ if(contactForm){
     const ch = channels[key];
     successTitle.textContent = key === 'mailto' ? t('success.titleMailto', 'Tu correo está listo') : t('success.title', '¡Tu solicitud está lista!');
     successText.innerHTML = ch.done;
-    successRef.textContent = current.ref;
+    setRef('ctSuccessRef', current.ref);
     reopenBtn.querySelector('span').textContent = t('success.reopenWith', 'Abrir {channel} de nuevo').replace('{channel}', ch.label);
     contactForm.hidden = true;
     successPanel.hidden = false;

@@ -43,6 +43,13 @@
   "catalog.allProducts": { "es": "Todos los productos", "en": "All products", "pt": "Todos os produtos" },
   "catalog.empty.title": { "es": "Sin resultados", "en": "No results", "pt": "Nenhum resultado" },
   "catalog.empty.desc": { "es": "Ajusta la búsqueda o elige otra familia para ver más productos del portafolio.", "en": "Adjust your search or choose another family to see more products in the portfolio.", "pt": "Ajuste a busca ou escolha outra família para ver mais produtos do portfólio." },
+  "catalog.count.none": { "es": "Ningún producto coincide con la búsqueda.", "en": "No products match your search.", "pt": "Nenhum produto corresponde à busca." },
+  "catalog.count.one": { "es": "{n} producto encontrado", "en": "{n} product found", "pt": "{n} produto encontrado" },
+  "catalog.count.many": { "es": "{n} productos encontrados", "en": "{n} products found", "pt": "{n} produtos encontrados" },
+  "catalog.count.page": { "es": " · página {page} de {total}", "en": " · page {page} of {total}", "pt": " · página {page} de {total}" },
+  "catalog.page.prev": { "es": "Página anterior", "en": "Previous page", "pt": "Página anterior" },
+  "catalog.page.next": { "es": "Página siguiente", "en": "Next page", "pt": "Próxima página" },
+  "catalog.page.goto": { "es": "Ir a la página {n}", "en": "Go to page {n}", "pt": "Ir para a página {n}" },
 
   "products.viewProduct": { "es": "Ver producto →", "en": "View product →", "pt": "Ver produto →" },
   "products.inDevelopment": { "es": "En desarrollo", "en": "In development", "pt": "Em desenvolvimento" },

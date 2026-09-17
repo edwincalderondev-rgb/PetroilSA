@@ -466,8 +466,9 @@ if(pqForm){
     });
   }
 
-  // La fecha del hecho no puede ser futura.
-  if(els.fechaHecho) els.fechaHecho.max = new Date().toISOString().slice(0, 10);
+  // La fecha del hecho no puede ser futura. Fecha LOCAL (en-CA da AAAA-MM-DD):
+  // toISOString() usa UTC y desde las 7 p. m. en Colombia ya devolvía mañana.
+  if(els.fechaHecho) els.fechaHecho.max = new Date().toLocaleDateString('en-CA');
 
   // Preselección por URL: ?tipo=reclamo
   const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

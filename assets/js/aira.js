@@ -46,7 +46,9 @@
      del sitio es ''; si algún día se monta AIRA en una subcarpeta,
      basta con poner data-base="../" en #aira. */
   var BASE = root.getAttribute('data-base') || '';
-  var STORE_KEY = 'aira-chat-v1';
+  /* v2: los enlaces guardados llevan data-h (ver restore). Las
+     conversaciones v1 no lo tienen y no se podrían re-resolver. */
+  var STORE_KEY = 'aira-chat-v2';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Estado de la conversación: lo último que respondió AIRA sirve
@@ -363,10 +365,14 @@
     return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
   }
 
-  /* Resuelve un href de la base contra la ubicación real de la página. */
+  /* Resuelve un href de la base contra la ubicación real de la página.
+     Un ancla (#contacto, #preguntas-frecuentes) se queda en esta página
+     si la sección existe aquí; si no, apunta a la del index. Antes, en
+     productos.html o contacto.html (data-base="") "#preguntas-frecuentes"
+     quedaba como ancla local inexistente y el enlace no hacía nada. */
   function href(h) {
     if (/^(https?:|mailto:|tel:)/.test(h)) return h;
-    if (h.charAt(0) === '#') return BASE ? BASE + 'index.html' + h : h;
+    if (h.charAt(0) === '#') return document.getElementById(h.slice(1)) ? h : BASE + 'index.html' + h;
     return BASE + h;
   }
 
@@ -374,7 +380,9 @@
     if (!links || !links.length) return '';
     return '<div class="aira-links">' + links.map(function (lk) {
       var ext = lk.ext ? ' target="_blank" rel="noopener"' : '';
-      return '<a class="aira-link" href="' + esc(href(lk.h)) + '"' + ext + '>' +
+      /* data-h guarda la ruta original de la base: restore() la vuelve a
+         resolver si la conversación se retoma en otra carpeta del sitio. */
+      return '<a class="aira-link" href="' + esc(href(lk.h)) + '" data-h="' + esc(lk.h) + '"' + ext + '>' +
              '<span class="aira-link-ico">' + icon(lk.i) + '</span>' +
              '<span class="aira-link-label">' + esc(lk.l) + '</span>' +
              '<span class="aira-link-go">' + (lk.ext
@@ -653,6 +661,23 @@
       var data = JSON.parse(raw);
       if (!data || !data.html) return false;
       log.innerHTML = data.html;
+      /* El HTML guardado trae las rutas resueltas para la página donde
+         se escribió. Si se retoma en otra carpeta (pregunta en el index,
+         chat abierto en una ficha técnica) "productos.html" pasaba a ser
+         fichas-tecnicas/productos.html (404) y el avatar salía roto:
+         se re-resuelven contra la página actual. */
+      log.querySelectorAll('a.aira-link[data-h]').forEach(function (a) {
+        a.setAttribute('href', href(a.getAttribute('data-h')));
+      });
+      log.querySelectorAll('img.aira-msg-avatar').forEach(function (img) {
+        img.setAttribute('src', BASE + 'assets/img/aira-avatar.webp');
+      });
+      /* msgSeq arranca en 0 en cada página: se continúa desde el último
+         id restaurado para no repetir ids (aira-m1, aira-m2…). */
+      log.querySelectorAll('[id^="aira-m"]').forEach(function (el) {
+        var n = parseInt(el.id.slice(6), 10);
+        if (n > msgSeq) msgSeq = n;
+      });
       /* El HTML restaurado trae botones sin listeners: hay que
          volver a cablearlos. */
       wireSuggestions();

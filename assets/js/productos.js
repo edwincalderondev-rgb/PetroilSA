@@ -21,6 +21,14 @@ if(catalogSection){
 
   const state = { cat:'todos', sector:'todos', query:'', page:1 };
 
+  // Textos generados aquí (contador y paginación), traducidos con i18n.js.
+  // El español queda como respaldo mientras carga el diccionario.
+  const t = (key, fallback, vars) => {
+    let s = (window.PetroilI18n && window.PetroilI18n.t(key)) || fallback;
+    Object.keys(vars || {}).forEach(k => { s = s.replace('{' + k + '}', vars[k]); });
+    return s;
+  };
+
   // Búsqueda tolerante a tildes y mayúsculas: "diesel" encuentra "Diésel".
   // Los diacríticos que .normalize('NFD') separa de su letra base son el
   // rango U+0300 a U+036F. La clase se arma con fromCharCode a propósito:
@@ -64,7 +72,7 @@ if(catalogSection){
     btn.type = 'button';
     btn.className = 'pb-page';
     btn.disabled = disabled;
-    btn.setAttribute('aria-label', direction === 'prev' ? 'Página anterior' : 'Página siguiente');
+    btn.setAttribute('aria-label', direction === 'prev' ? t('catalog.page.prev', 'Página anterior') : t('catalog.page.next', 'Página siguiente'));
     btn.innerHTML = direction === 'prev'
       ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>'
       : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -93,7 +101,7 @@ if(catalogSection){
       if(item === state.page){
         btn.setAttribute('aria-current', 'page');
       } else {
-        btn.setAttribute('aria-label', 'Ir a la página ' + item);
+        btn.setAttribute('aria-label', t('catalog.page.goto', 'Ir a la página {n}', { n: item }));
         btn.addEventListener('click', () => goToPage(item));
       }
       pagination.appendChild(btn);
@@ -117,9 +125,11 @@ if(catalogSection){
 
     if(liveCount){
       liveCount.textContent = visible.length === 0
-        ? 'Ningún producto coincide con la búsqueda.'
-        : visible.length + (visible.length === 1 ? ' producto encontrado' : ' productos encontrados') +
-          (totalPages > 1 ? ' · página ' + state.page + ' de ' + totalPages : '');
+        ? t('catalog.count.none', 'Ningún producto coincide con la búsqueda.')
+        : (visible.length === 1
+            ? t('catalog.count.one', '{n} producto encontrado', { n: 1 })
+            : t('catalog.count.many', '{n} productos encontrados', { n: visible.length })) +
+          (totalPages > 1 ? t('catalog.count.page', ' · página {page} de {total}', { page: state.page, total: totalPages }) : '');
     }
   }
 
@@ -203,4 +213,7 @@ if(catalogSection){
   }
 
   render();
+  // i18n.js carga su diccionario después de este script (y el usuario puede
+  // cambiar de idioma): se vuelve a pintar para traducir contador/paginación.
+  document.addEventListener('petroil:i18n', render);
 }

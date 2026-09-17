@@ -116,6 +116,13 @@
 .photo-gallery img{width:100%; height:200px; object-fit:cover; border-radius:12px; transition:transform .3s ease;}
 .photo-gallery img:hover{transform:scale(1.03);}
 
+/* ISO ROW (sello ISO + texto en SGI y responsabilidad ambiental). Mismo
+   diseño que .iso-row de home.css, que estas páginas no cargan: sin esta
+   regla el sello quedaba apilado encima del párrafo. */
+.iso-row{display:flex; align-items:center; gap:16px 20px; flex-wrap:wrap;}
+.iso-row img{flex-shrink:0;}
+.iso-row p{color:var(--steel); line-height:1.6; font-size:.92rem;}
+
 /* DISCLAIMER */
 .disclaimer-full{margin-top:40px; padding-top:24px; border-top:1px solid var(--line); font-size:.78rem; color:var(--steel); font-style:italic; line-height:1.6;}
 
