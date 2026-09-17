@@ -17,6 +17,13 @@
 .footer-links li{margin-bottom:10px;}
 .footer-links a{color:#94a3b8; font-size:.9rem; transition:color .2s;}
 .footer-links a:hover{color:var(--teal-light);}
+/* Subgrupo dentro de la columna "Enlaces" (Sostenibilidad). Mismo tamaño que el
+   h4 de la columna pero con una línea separadora, para que se lea como un bloque
+   aparte sin abrir una quinta columna en el grid. */
+.footer-links-col .footer-sub{
+  margin-top:26px; padding-top:18px; border-top:1px solid rgba(255,255,255,.1);
+  font-size:.95rem; margin-bottom:14px;
+}
 .footer-contact p{display:flex; gap:10px; color:#94a3b8; font-size:.86rem; margin-bottom:14px; line-height:1.4;}
 .footer-contact p svg{flex-shrink:0; margin-top:2px; color:var(--teal-light);}
 .wa-btn{

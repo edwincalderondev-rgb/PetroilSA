@@ -6,7 +6,7 @@
    marca propio vía --c (fondo) / --c-ink (texto sobre ese fondo), definidos
    en las clases .pq-c--p/q/r/s/f. El único color fuera de manual es --warn,
    para los errores de validación (misma excepción funcional del sitio).
-   No depende de chatbot.css (usa sus propias @keyframes), salvo .toast.
+   No depende de otras hojas: sus @keyframes y el .toast del final son propios.
    ============================================ */
 
 /* ---------- Colores por tipo ---------- */
@@ -526,3 +526,13 @@ body:has(.pq-review[open]){overflow:hidden;}
 .pq-success h2:focus{outline:none;}
 /* "Reclamo" es azul oscuro, igual que el ticket: se delinea para que se lea */
 .pq-ticket .pq-ticket-type.is-set{box-shadow:inset 0 0 0 1px rgba(251,254,255,.35);}
+
+/* Aviso flotante de "copiado al portapapeles" (lo dispara pqrsf.js). Vivía en
+   chatbot.css, que esta página cargaba solo por esta regla; al retirarse la
+   maqueta vieja del chat se trajo aquí y chatbot.css desapareció. */
+.toast{
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(100px); background:var(--navy);
+  color:#fff; padding:12px 24px; border-radius:30px; font-size:.88rem; box-shadow:var(--shadow-soft);
+  z-index:1300; opacity:0; transition:all .3s ease;
+}
+.toast.show{transform:translateX(-50%) translateY(0); opacity:1;}

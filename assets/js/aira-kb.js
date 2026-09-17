@@ -46,10 +46,7 @@
       oficial está pendiente. Mismo criterio para las páginas de
       sostenibilidad y la política de datos, que el sitio rotula
       como "página de ejemplo".
-   3. nosotros/ala-de-sable.html queda FUERA a propósito: es una
-      propuesta para decisión directiva, no está enlazada desde
-      ninguna página y el chat es público.
-   4. Nombres que el sitio aún usa distinto: el catálogo y el
+   3. Nombres que el sitio aún usa distinto: el catálogo y el
       formulario de contacto dicen "P-800 HCl"; la ficha nueva dice
       "P-800 HC" / "800 HC Standard". Ambos están como keywords, y
       el enlace de cotización usa P-800 HCl porque es el value del
@@ -784,15 +781,6 @@ window.AIRA_KB = {
          '<p>Incluye protocolos de seguridad de proceso, capacitación continua, monitoreo permanente y planes de respuesta ante emergencias.</p>',
       links: [{ l: 'Conocer el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
       next: ['¿Qué certificaciones tienen?', '¿Qué es el SGI?']
-    },
-    {
-      id: 'herramienta-color', cat: 'calidad',
-      title: 'Colorímetro ASTM D1500',
-      p: ['colorimetro', 'astm d1500', 'herramienta de color', 'medir color', 'herramienta'],
-      k: 'colorimetro color astm d1500 herramienta laboratorio camara foto escala conformidad',
-      a: '<p>El sitio incluye un <b>Colorímetro ASTM D1500</b> (fase BETA, uso interno): con la cámara o una foto del líquido extrae su color, lo ubica en la <b>escala ASTM D1500</b> y, si indicas el valor o rango esperado, da un veredicto de conformidad.</p>',
-      links: [{ l: 'Abrir el colorímetro', h: 'herramientas/astm-d1500-color-tool.html', i: 'tool' }],
-      next: ['¿Qué son las fichas técnicas?', '¿Qué productos ofrecen?']
     },
 
     /* ══════════════════ SOSTENIBILIDAD ══════════════════ */

@@ -1,6 +1,6 @@
 // ============================================================
 // QUIÉNES SOMOS — interacciones propias de la página
-// (se carga después de nav.js y chatbot.js, que ya manejan navbar,
+// (se carga después de nav.js y aira.js, que ya manejan navbar,
 // scroll progress, reveal, menú móvil, idioma y chat)
 // ============================================================
 

@@ -49,28 +49,35 @@
 </div>
 
 <header class="navbar" id="siteHeader">
-  <div class="navbar-top"><div class="navbar-top-inner">
-    <a href="../index.html" class="nav-logo"><img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
-    <div class="nav-utility">
-      <a href="../productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
-      <a href="quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
-      <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
-      <div class="lang-select" id="langSelect">
-        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
-          <span class="lang-current" data-lang-current>ES</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="lang-dropdown">
-          <a href="#" data-lang="en">English</a>
-          <a href="#" data-lang="es">Español</a>
-          <a href="#" data-lang="pt">Português</a>
+  <div class="navbar-top">
+    <div class="navbar-top-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
+      </a>
+      <div class="nav-utility">
+        <a href="../productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
+        <a href="../nosotros/quienes-somos.html" class="portal-link" aria-current="page" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+        <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
+        <div class="lang-select" id="langSelect">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+            <span class="lang-current" data-lang-current>ES</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="es">Español</a>
+            <a href="#" data-lang="pt">Português</a>
+          </div>
         </div>
+        <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
     </div>
-  </div></div>
+  </div>
+
   <div class="navbar-route"><nav class="nav-links" id="navLinks" aria-label="Navegación de esta página"><span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
     <a href="#proposito" class="route-link" data-section="#proposito"><span class="route-label" data-i18n="nav.route.proposito">Propósito</span><span class="route-node" aria-hidden="true"></span></a>
     <a href="#estrategia" class="route-link" data-section="#estrategia"><span class="route-label" data-i18n="nav.route.estrategia">Estrategia</span><span class="route-node" aria-hidden="true"></span></a>
@@ -115,14 +122,26 @@
 
 <div class="nav-overlay" id="navOverlay"></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
-  <div class="drawer-top"><span class="drawer-logo-wrap"><img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo"></span><button class="drawer-close" id="drawerClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <nav class="drawer-route" aria-label="Navegación de esta página"><span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+  <div class="drawer-top">
+    <span class="drawer-logo-wrap">
+      <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
+    </span>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)"><span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
     <a href="#proposito" class="drawer-link" data-section="#proposito"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.proposito">Propósito</span></a>
     <a href="#estrategia" class="drawer-link" data-section="#estrategia"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.estrategia">Estrategia</span></a>
     <a href="#ruta" class="drawer-link" data-section="#ruta"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.ruta">Ruta 2031</span></a>
     <a href="#liderazgo" class="drawer-link" data-section="#liderazgo"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.equipo">Equipo</span></a>
   </nav>
-  <div class="drawer-footer"><!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> --><a href="quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a><a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
+  <div class="drawer-footer">
+    <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
+    <a href="../productos.html" class="drawer-portal" data-i18n="nav.productos">Productos</a>
+    <a href="../nosotros/quienes-somos.html" class="drawer-portal" aria-current="page" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+    <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
     <div class="lang-select drawer-lang" id="langSelectDrawer">
       <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
@@ -596,21 +615,27 @@
       <img src="../assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
       <p data-i18n="footer.tagline">Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
-        <a href="https://www.linkedin.com/company/petroilsa/" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
-        <a href="https://www.instagram.com/petroilsa/" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-        <a href="https://www.youtube.com/@petroilsa" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.2c-.3-1-1-1.7-2-2C18.9 4.3 12 4.3 12 4.3s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.2c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .5-1.6.5-5.2.5-5.2zM9.7 15.4V8.6L15.8 12l-6.1 3.4z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
+        <a href="https://www.linkedin.com/company/petroilsa/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
+        <a href="https://www.instagram.com/petroilsa/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://www.youtube.com/@petroilsa" aria-label="YouTube" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.2c-.3-1-1-1.7-2-2C18.9 4.3 12 4.3 12 4.3s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.2c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .5-1.6.5-5.2.5-5.2zM9.7 15.4V8.6L15.8 12l-6.1 3.4z"/></svg></a>
       </div>
     </div>
     <div class="footer-links-col">
       <h4 data-i18n="footer.linksHeading">Enlaces</h4>
       <ul class="footer-links">
-        <li><a href="../legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a></li>
-        <li><a href="../legal/pqrsf.html">PQRSF</a></li>
-        <li><a href="../herramientas/astm-d1500-color-tool.html" data-i18n="footer.link.herramienta">Herramienta</a></li>
-        <!-- <li><a href="../portal-clientes/portal-clientes.html" data-i18n="footer.link.clientes">Clientes</a></li> -->
-        <li><a href="quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <li><a href="../productos.html" data-i18n="nav.productos">Productos</a></li>
+        <li><a href="../index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="../index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
         <li><a href="../index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
+        <li><a href="../nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <!-- Portal de clientes oculto hasta su salida a producción: <li><a href="../portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
+      </ul>
+      <h4 class="footer-sub" data-i18n="footer.sostenibilidadHeading">Sostenibilidad</h4>
+      <ul class="footer-links">
+        <li><a href="../sostenibilidad/sgi.html" data-i18n="footer.link.sgi">SGI</a></li>
+        <li><a href="../sostenibilidad/compromiso-social.html" data-i18n="footer.link.compromisoSocial">Compromiso social</a></li>
+        <li><a href="../sostenibilidad/responsabilidad-ambiental.html" data-i18n="footer.link.ambiental">Ambiente</a></li>
       </ul>
     </div>
     <div class="footer-contact">
@@ -618,7 +643,7 @@
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.office"><b style="color:#fff;">Oficina —</b> Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.refineria"><b style="color:#fff;">Refinería —</b> Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n-html="footer.aliado"><b style="color:#fff;">Aliado —</b> Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><span>contacto@petroilsa.com</span></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><span data-i18n="footer.email">contacto@petroilsa.com</span></p>
       <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
         <span data-i18n="footer.whatsapp">WhatsApp: +57 311 333 7046</span>
@@ -636,7 +661,7 @@
           src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0443%2C4.6803%2C-74.0243%2C4.7003&layer=mapnik&marker=4.6903%2C-74.0343"
           title="Mapa de ubicación de Petroil"></iframe>
       </div>
-      <a class="map-gmaps-link" id="gmapsLink" href="https://maps.google.com/?q=Petroil+SA+Bogota" target="_blank" rel="noopener">
+      <a class="map-gmaps-link" id="gmapsLink" href="https://www.google.com/maps/search/?api=1&query=Torre+Empresarial+Pacific+Calle+110+%239-25+Bogota" target="_blank" rel="noopener">
         <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
@@ -645,8 +670,9 @@
   <div class="container footer-bottom">
     <span data-i18n="footer.copyright">© 2026 Petroil S.A. Todos los derechos reservados.</span>
     <div class="footer-bottom-links">
-      <a data-i18n="footer.bottomTagline">Comprometidos con el medio ambiente</a>
-      <a href="../legal/pqrsf.html">PQRSF</a>
+      <span data-i18n="footer.bottomTagline">Comprometidos con el medio ambiente</span>
+      <a href="../legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a>
+      <a href="../legal/pqrsf.html" data-i18n="footer.link.pqrsf">PQRSF</a>
     </div>
   </div>
 </footer>

@@ -2,10 +2,8 @@
    AIRA · Asistente virtual de Petroil — widget de chat
    ------------------------------------------------------------
    Todo el componente vive bajo el prefijo .aira-* y dentro de
-   #aira. Es deliberado: el chat viejo usaba .chat-* y esas clases
-   siguen en uso en el resto de páginas (y ala-de-sable.css llega
-   a sobrescribir .chat-launcher). Con un prefijo propio los dos
-   pueden convivir sin pisarse mientras se migra el sitio.
+   #aira. Es el único chat del sitio: la maqueta vieja (.chat-*,
+   chatbot.css/chatbot.js) se retiró al borrar su última página.
 
    Paleta: solo los 8 colores oficiales de base.css, más --warn
    para la franja de aviso (ver CLAUDE.md). Los fallbacks del
@@ -200,6 +198,11 @@
   /* overflow-x:hidden — nada en la conversación debe scrollear en
      horizontal; sin esto, cualquier contenido ancho (una tabla, una
      URL larga) saca una barra fea a lo ancho del panel. */
+  /* position:relative — hace del log el offsetParent de las filas:
+     aira.js (focusAnswer) usa row.offsetTop para anclar arriba el
+     principio de una respuesta larga. Sin esto el cálculo se mide
+     contra otro ancestro y el anclaje cae donde no es. */
+  position:relative;
   flex-grow:1; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain;
   padding:16px 14px 6px;
   display:flex; flex-direction:column; gap:12px;
@@ -309,6 +312,28 @@
 }
 .aira-sug::after{content:' →'; opacity:.5;}
 .aira-sug:hover{background:var(--a-petrol); color:#fff; transform:translateX(3px);}
+/* Las opciones que sobran de las 4 visibles se pliegan con [hidden].
+   La regla es explícita porque el display:none del navegador lo
+   pisaría cualquier display que se le pusiera a .aira-sug. */
+.aira-sug[hidden]{display:none;}
+
+/* "Ver N más" / "Ver menos": es un control de la lista, no otra
+   sugerencia — sin borde ni flecha, para que no compita con ellas. */
+.aira-sug-more{
+  align-self:flex-start; margin-top:1px; padding:5px 2px;
+  background:none; border:none; cursor:pointer;
+  font-family:inherit; font-size:.72rem; font-weight:600;
+  color:var(--a-petrol); text-decoration:underline; text-underline-offset:3px;
+  transition:color .16s ease;
+}
+.aira-sug-more::after{
+  content:''; display:inline-block; margin-left:6px;
+  width:5px; height:5px; vertical-align:2px;
+  border-right:1.6px solid currentColor; border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg); transition:transform .18s ease;
+}
+.aira-sug-more[aria-expanded="true"]::after{transform:rotate(-135deg); vertical-align:4px;}
+.aira-sug-more:hover{color:var(--a-navy);}
 
 /* ── Tarjetas de navegación ───────────────────────────────── */
 .aira-links{display:flex; flex-direction:column; gap:6px; margin-top:10px;}

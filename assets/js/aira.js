@@ -398,6 +398,38 @@
     requestAnimationFrame(function () { log.scrollTop = log.scrollHeight; });
   }
 
+  /* Margen que queda por encima de la respuesta al anclarla: deja
+     asomar el hueco de la burbuja anterior, para que se note que
+     arriba hay conversación y no parezca el principio del chat. */
+  var ANCHOR_PAD = 12;
+
+  /* Deja la PRIMERA línea de una respuesta arriba del todo, en vez de
+     bajar al final. Una respuesta más alta que el panel se leía al
+     revés: el chat saltaba al último párrafo y había que subir a mano
+     a buscar por dónde empezaba. Si lo que queda por debajo de esa
+     primera línea sí cabe en pantalla, el Math.min hace lo de siempre
+     (bajar al fondo), así que sirve para cualquier mensaje.
+     Se usa offsetTop y no getBoundingClientRect porque .aira-row entra
+     con una animación de transform: el rect mentiría durante esos
+     340 ms; offsetTop es posición de maquetación y no se inmuta.
+     (Requiere que .aira-log sea position:relative — así lo es.) */
+  function focusAnswer(row) {
+    if (!row) { scrollDown(); return; }
+    requestAnimationFrame(function () {
+      log.scrollTop = Math.min(
+        Math.max(0, row.offsetTop - ANCHOR_PAD),
+        log.scrollHeight - log.clientHeight
+      );
+    });
+  }
+
+  /* Al reabrir o restaurar el chat: por el principio de lo último que
+     respondió AIRA, no por el final del scroll. */
+  function focusLastAnswer() {
+    var bots = log.querySelectorAll('.aira-row.bot');
+    focusAnswer(bots.length ? bots[bots.length - 1] : null);
+  }
+
   function addUser(text) {
     var row = document.createElement('div');
     row.className = 'aira-row user';
@@ -431,8 +463,10 @@
     log.appendChild(row);
     /* El saludo inicial es largo (menú de temas incluido): si se
        autodesliza al fondo, el "¡Hola! Soy AIRA" queda fuera de vista.
-       opts.scroll === false lo deja arriba para que se vea completo. */
-    if (opts.scroll !== false) scrollDown();
+       opts.scroll === false no toca el scroll — lo usan el saludo (que
+       se queda arriba) y quien va a encadenar varias burbujas y prefiere
+       anclar él mismo al final (ver respondWith). */
+    if (opts.scroll !== false) focusAnswer(row);
     return row;
   }
 
@@ -463,6 +497,31 @@
       chipsBar.appendChild(b);
     });
   }
+
+  /* ---------- Listas de sugerencias dentro de una burbuja ----------
+     Hay categorías con muchas entradas (Productos tiene 20): pintarlas
+     todas convierte la respuesta en un muro que empuja el texto útil
+     fuera de la pantalla. Se muestran SUGGEST_VISIBLE y el resto queda
+     detrás de un "Ver N más" plegable (el botón lo cablea
+     wireSuggestions, igual que las sugerencias). */
+  var SUGGEST_VISIBLE = 4;
+
+  function suggestList(items) {
+    if (!items || !items.length) return '';
+    var hidden = items.length - SUGGEST_VISIBLE;
+    var html = items.map(function (e, i) {
+      var extra = i >= SUGGEST_VISIBLE;
+      return '<button type="button" class="aira-sug' + (extra ? ' is-extra' : '') + '"' +
+             (extra ? ' hidden' : '') + ' data-id="' + esc(e.id) + '">' + esc(e.title) + '</button>';
+    }).join('');
+    if (hidden > 0) {
+      html += '<button type="button" class="aira-sug-more" aria-expanded="false" data-more="' + hidden + '">' +
+              esc(moreLabel(hidden)) + '</button>';
+    }
+    return '<div class="aira-suggest">' + html + '</div>';
+  }
+
+  function moreLabel(n) { return 'Ver ' + n + (n === 1 ? ' opción más' : ' opciones más'); }
 
   /* Pantalla de bienvenida: en vez de una burbuja vacía, un menú de
      temas. Da a entender de un vistazo qué sabe responder AIRA. */
@@ -501,9 +560,7 @@
       t.remove();
       addBot(
         '<p>Esto es lo que puedo contarte sobre <b>' + esc(cat.label.toLowerCase()) + '</b>:</p>' +
-        '<div class="aira-suggest">' + items.map(function (e) {
-          return '<button type="button" class="aira-sug" data-id="' + e.id + '">' + esc(e.title) + '</button>';
-        }).join('') + '</div>',
+        suggestList(items),
         { feedback: false }
       );
       wireSuggestions();
@@ -520,6 +577,23 @@
         if (!e) return;
         addUser(e.title);
         respondWith(e);
+      });
+    });
+    /* "Ver N más" / "Ver menos". El estado abierto o cerrado viaja en
+       el HTML (atributo hidden), así que save() lo persiste solo y al
+       restaurar la conversación basta con volver a cablear el botón. */
+    log.querySelectorAll('.aira-sug-more').forEach(function (btn) {
+      if (btn.dataset.wired) return;
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', function () {
+        var box = btn.parentNode;
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        box.querySelectorAll('.aira-sug.is-extra').forEach(function (b) { b.hidden = open; });
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        btn.textContent = open
+          ? moreLabel(parseInt(btn.getAttribute('data-more'), 10) || 0)
+          : 'Ver menos';
+        save();
       });
     });
   }
@@ -548,18 +622,20 @@
       if (altList && altList.length) {
         html = '<p class="aira-hedge">No estoy segura de haber entendido, pero creo que preguntas por esto:</p>' + html;
       }
-      addBot(html, { title: entry.title, links: entry.links });
+      /* scroll:false en las dos burbujas y un solo anclaje al final:
+         si cada una se colocara al insertarse, la de alternativas
+         mandaría la respuesta —lo que de verdad importa— fuera de
+         vista justo después de haberla anclado. */
+      var row = addBot(html, { title: entry.title, links: entry.links, scroll: false });
 
       if (altList && altList.length) {
         addBot(
-          '<p>Si no era eso, quizá te sirva:</p>' +
-          '<div class="aira-suggest">' + altList.map(function (e) {
-            return '<button type="button" class="aira-sug" data-id="' + e.id + '">' + esc(e.title) + '</button>';
-          }).join('') + '</div>',
-          { feedback: false }
+          '<p>Si no era eso, quizá te sirva:</p>' + suggestList(altList),
+          { feedback: false, scroll: false }
         );
         wireSuggestions();
       }
+      focusAnswer(row);
       setChips(entry.next && entry.next.length ? entry.next : ['Hablar con un asesor']);
       busy = false;
       save();
@@ -580,9 +656,7 @@
       addBot(
         '<p>Perdón, no encontré información sobre <b>«' + esc(text.slice(0, 60)) + '»</b> en el sitio de Petroil. 😕</p>' +
         '<p>Intenta con otras palabras, o mira uno de estos temas:</p>' +
-        '<div class="aira-suggest">' + picks.map(function (e) {
-          return '<button type="button" class="aira-sug" data-id="' + e.id + '">' + esc(e.title) + '</button>';
-        }).join('') + '</div>' +
+        suggestList(picks) +
         '<p class="aira-hedge">Si es una consulta comercial concreta, un asesor la resuelve mejor que yo.</p>',
         { feedback: false, links: [{ l: 'Hablar con un asesor por WhatsApp', i: 'wa', ext: true,
           h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Tengo%20una%20consulta%20que%20el%20chat%20del%20sitio%20no%20pudo%20resolver.' }] }
@@ -686,7 +760,10 @@
       });
       setChips(data.chips || []);
       lastEntry = data.last ? KB.entries.filter(function (e) { return e.id === data.last; })[0] || null : null;
-      scrollDown();
+      /* Se retoma por el principio de la última respuesta, no por su
+         final: al reabrir el chat en otra página lo normal es querer
+         releerla desde arriba (mismo criterio que focusAnswer). */
+      focusLastAnswer();
       return true;
     } catch (err) { return false; }
   }
@@ -723,8 +800,9 @@
       setTimeout(function () { input.focus(); }, 260);
     }
     /* Con saludo nuevo se queda arriba (ver addBot/welcome); si hay
-       conversación restaurada o en curso, sí baja hasta lo último. */
-    if (!isFreshWelcome) scrollDown();
+       conversación restaurada o en curso, se vuelve al principio de la
+       última respuesta, que es por donde se retoma la lectura. */
+    if (!isFreshWelcome) focusLastAnswer();
   }
 
   function close() {

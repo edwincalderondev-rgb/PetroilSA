@@ -12,18 +12,17 @@ index.html                 # portada (se mantiene en la raíz)
 productos.html             # catálogo completo del portafolio
 contacto.html              # formulario de cotización/información (WhatsApp o correo)
 fichas-tecnicas/           # fichas técnicas de producto
-nosotros/                  # quienes-somos, ala-de-sable
+nosotros/                  # quienes-somos
 legal/                     # política de datos, PQRSF
 sostenibilidad/            # compromiso social, ambiental, SGI
 noticias/                  # artículos y notas de prensa
-herramientas/              # utilidades autocontenidas (colorímetro ASTM D1500)
 portal-clientes/           # portal de clientes (prototipo)
 scripts/                   # utilidades de mantenimiento del repo (no se sirven en el sitio)
 assets/
-  css/                      # base, header-nav, hero, home, footer, chatbot,
+  css/                      # base, header-nav, hero, home, footer, aira,
                              # article, pqrsf, ficha-tecnica, cursor, productos,
-                             # contacto + los CSS propios de quienes-somos y ala-de-sable
-  js/                       # nav, hero-particles, home, footer-map, chatbot,
+                             # contacto + el CSS propio de quienes-somos
+  js/                       # nav, hero-particles, home, footer-map, aira + aira-kb,
                              # article-toc, pqrsf, cursor, i18n, productos,
                              # contacto + el JS de quienes-somos
   i18n/                     # diccionarios de traducción (piloto: index.json)

@@ -115,13 +115,12 @@ button{font-family:inherit; cursor:pointer;}
 .btn-outline:hover{background:#fff; color:var(--navy);}
 
 /* Animación compartida por componentes independientes entre sí (tarjetas de
-   "pilares" en home.css y la tarjeta visual de ficha-tecnica.css, además del
-   ave de ala-de-sable.css): se define una sola vez aquí para no duplicarla
-   en cada archivo que la usa. */
+   "pilares" en home.css y la tarjeta visual de ficha-tecnica.css): se define
+   una sola vez aquí para no duplicarla en cada archivo que la usa. */
 @keyframes pillarFloat{0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);}}
 
-/* Reveal on scroll — usado en index.html, nosotros/quienes-somos.html y
-   nosotros/ala-de-sable.html (secciones, tarjetas y bloques de contenido).
+/* Reveal on scroll — usado en index.html y nosotros/quienes-somos.html
+   (secciones, tarjetas y bloques de contenido).
    nav.js agrega la clase .in mediante IntersectionObserver la primera vez
    que el elemento entra en el viewport (una sola vez, nunca se revierte).
    Solo anima opacidad/transform (compuesto por GPU, sin recalcular layout),

@@ -31,7 +31,9 @@
 <header class="navbar" id="siteHeader">
   <div class="navbar-top">
     <div class="navbar-top-inner">
-      <a href="../index.html" class="nav-logo"><img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A."></a>
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
+      </a>
       <div class="nav-utility">
         <a href="../productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
         <a href="../nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
@@ -49,12 +51,15 @@
           </div>
         </div>
         <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
-        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </div>
+
   <div class="navbar-route">
-    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+    <nav class="nav-links" id="navLinks" aria-label="Navegación de esta página">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
       <a href="#main" class="route-link" data-section="#main">
         <span class="route-label" data-i18n="nav.descripcion">Descripción</span>
@@ -70,10 +75,15 @@
 <div class="nav-overlay" id="navOverlay"></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
   <div class="drawer-top">
-    <span class="drawer-logo-wrap"><img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo"></span>
-    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="drawer-logo-wrap">
+      <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
+    </span>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
   </div>
-  <nav class="drawer-route" aria-label="Navegación principal móvil">
+
+  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)">
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
     <a href="#main" class="drawer-link" data-section="#main">
       <span class="drawer-node" aria-hidden="true"></span>
@@ -362,9 +372,15 @@
         <li><a href="../productos.html" data-i18n="nav.productos">Productos</a></li>
         <li><a href="../index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
         <li><a href="../index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
-        <!-- <li><a href="../portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
-        <li><a href="../nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
         <li><a href="../index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
+        <li><a href="../nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <!-- Portal de clientes oculto hasta su salida a producción: <li><a href="../portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
+      </ul>
+      <h4 class="footer-sub" data-i18n="footer.sostenibilidadHeading">Sostenibilidad</h4>
+      <ul class="footer-links">
+        <li><a href="../sostenibilidad/sgi.html" data-i18n="footer.link.sgi">SGI</a></li>
+        <li><a href="../sostenibilidad/compromiso-social.html" data-i18n="footer.link.compromisoSocial">Compromiso social</a></li>
+        <li><a href="../sostenibilidad/responsabilidad-ambiental.html" data-i18n="footer.link.ambiental">Ambiente</a></li>
       </ul>
     </div>
     <div class="footer-contact">
@@ -399,6 +415,7 @@
   <div class="container footer-bottom">
     <span data-i18n="footer.copyright">© 2026 Petroil S.A. Todos los derechos reservados.</span>
     <div class="footer-bottom-links">
+      <span data-i18n="footer.bottomTagline">Comprometidos con el medio ambiente</span>
       <a href="../legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a>
       <a href="../legal/pqrsf.html" data-i18n="footer.link.pqrsf">PQRSF</a>
     </div>
