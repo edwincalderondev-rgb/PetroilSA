@@ -20,13 +20,15 @@ portal-clientes/           # portal de clientes (prototipo)
 scripts/                   # utilidades de mantenimiento del repo (no se sirven en el sitio)
 assets/
   css/                      # base, header-nav, hero, home, footer, aira,
-                             # article, pqrsf, ficha-tecnica, cursor, productos,
+                             # article, pqrsf, ficha-tecnica, cursor, productos, sgi,
                              # contacto + el CSS propio de quienes-somos
   js/                       # nav, hero-particles, home, footer-map, aira + aira-kb,
-                             # article-toc, pqrsf, cursor, i18n, productos,
+                             # article-toc, gallery, pqrsf, cursor, i18n, productos,
                              # contacto + el JS de quienes-somos
   i18n/                     # diccionarios de traducción (piloto: index.json)
   img/  vids/               # imágenes y video (las fichas técnicas ya no se publican en PDF)
+  docs/sgi/                 # PDF oficiales del SGI: política, certificados ISO,
+                            # reglamento de higiene y reglas vitales
 ```
 
 Cada página carga solo los módulos CSS/JS que necesita (ver el `<head>`/pie

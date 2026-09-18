@@ -43,9 +43,13 @@
    2. Las fichas marcadas en el sitio como "Dato de ejemplo" (hoy:
       40 A MAX, 60 salvo API/inflamación, 70, 87 R, RF-110+,
       RF-100+) NO se citan como cifra real: AIRA dice que la ficha
-      oficial está pendiente. Mismo criterio para las páginas de
-      sostenibilidad y la política de datos, que el sitio rotula
-      como "página de ejemplo".
+      oficial está pendiente. Mismo criterio para las páginas que el
+      sitio todavía rotula como "página de ejemplo": hoy solo la
+      política de datos. Compromiso social (2026-09-17),
+      responsabilidad ambiental (2026-09-18) y SGI (2026-09-18) ya
+      llevan contenido oficial de la empresa y SÍ se citan como
+      reales. El SGI es la única de las tres que publica indicadores
+      y documentos descargables; de las otras dos AIRA no da cifras.
    3. Nombres que el sitio aún usa distinto: el catálogo y el
       formulario de contacto dicen "P-800 HCl"; la ficha nueva dice
       "P-800 HC" / "800 HC Standard". Ambos están como keywords, y
@@ -56,7 +60,7 @@
 window.AIRA_KB = {
   meta: {
     version: '1.1',
-    updated: '2026-09-16',
+    updated: '2026-09-18',
     /* Las categorías alimentan el menú "Explorar temas" del panel
        de bienvenida, en este orden (rejilla de 2 columnas: mantener
        un número par). */
@@ -97,6 +101,8 @@ window.AIRA_KB = {
     mineria:      ['minero', 'minera', 'mineros', 'excavadora', 'retroexcavadora'],
     generacion:   ['generador', 'generadores', 'turbina', 'turbinas'],
     azufre:       ['sulfur', 'sox'],
+    visitante:    ['visitantes', 'visita', 'visitas', 'visitar', 'ingreso', 'ingresar'],
+    epp:          ['epp', 'elementos de proteccion personal', 'equipo de proteccion', 'proteccion personal', 'casco', 'chaleco'],
     pqrsf:        ['pqrs', 'pqr', 'pqrsd', 'pqrf', 'pqrsf'],
     queja:        ['quejas', 'quejarme', 'reclamo', 'reclamos', 'reclamar', 'inconformidad'],
     caldera:      ['calderas', 'horno', 'hornos', 'termico', 'termicos'],
@@ -675,25 +681,42 @@ window.AIRA_KB = {
       title: 'Certificaciones ISO',
       p: ['certificaciones iso', 'que certificaciones', 'estan certificados', 'trinorma', 'iso 9001', 'iso 14001', 'iso 45001', 'que certificaciones tienen'],
       k: 'certificacion iso 9001 14001 45001 trinorma calidad seguridad salud trabajo auditoria acreditacion respaldo',
-      a: '<p>Petroil cuenta con la <b>trinorma</b>:</p>' +
+      a: '<p>Petroil cuenta con la <b>trinorma</b>, certificada por <b>BVQI Colombia Ltda. (Bureau Veritas)</b> y vigente hasta el <b>19 de noviembre de 2027</b>:</p>' +
          '<ul>' +
-         '<li><b>ISO 9001</b> — Calidad</li>' +
-         '<li><b>ISO 45001</b> — Seguridad y Salud en el Trabajo</li>' +
-         '<li><b>ISO 14001</b> — Gestión Ambiental</li>' +
+         '<li><b>ISO 9001</b> — Calidad (certificado CO24.08378)</li>' +
+         '<li><b>ISO 14001</b> — Gestión Ambiental (CO24.08379)</li>' +
+         '<li><b>ISO 45001</b> — Seguridad y Salud en el Trabajo (CO24.08380)</li>' +
          '</ul>' +
-         '<p>Las tres están integradas en un único <b>Sistema de Gestión Integrada (SGI)</b> que audita procesos, indicadores y mejora continua de forma periódica.</p>',
-      links: [{ l: 'Conocer el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
+         '<p>El alcance cubre el <b>diseño y desarrollo, transformación, almacenamiento y venta nacional e internacional de combustibles líquidos de transición derivados del petróleo</b>. Las tres normas operan en un único <b>Sistema de Gestión Integrado (SGI)</b>; los certificados se pueden descargar en la página del SGI.</p>',
+      links: [{ l: 'Conocer el SGI y descargar los certificados', h: 'sostenibilidad/sgi.html#documentos', i: 'shield' }],
       next: ['¿Qué es el SGI?', '¿Qué hacen por el medio ambiente?']
     },
     {
       id: 'sgi', cat: 'calidad',
-      title: 'Sistema de Gestión Integrada (SGI)',
-      p: ['sistema de gestion', 'que es el sgi', 'sgi', 'phva', 'mejora continua'],
-      k: 'sgi sistema gestion integrada phva mejora continua auditoria procesos',
-      a: '<p>El <b>SGI</b> articula calidad, seguridad y salud en el trabajo, y gestión ambiental bajo un mismo marco, alineado con <b>ISO 9001, ISO 45001 e ISO 14001</b>.</p>' +
-         '<p>Cada actividad —desde la recepción de crudo hasta el despacho del producto terminado— se documenta, se audita y se mejora de forma continua, bajo el ciclo <b>PHVA</b> (Planificar, Hacer, Verificar, Actuar).</p>',
+      title: 'Sistema de Gestión Integrado (SGI)',
+      p: ['sistema de gestion', 'que es el sgi', 'sgi', 'phva', 'mejora continua', 'politica de gestion', 'indicadores del sgi'],
+      k: 'sgi sistema gestion integrado phva mejora continua auditoria procesos politica sostenibilidad indicador indicadores documentos',
+      a: '<p>El <b>SGI</b> articula calidad, gestión ambiental y seguridad y salud en el trabajo bajo un mismo marco, certificado en <b>ISO 9001, ISO 14001 e ISO 45001</b> por BVQI Colombia (Bureau Veritas).</p>' +
+         '<p>Se rige por la <b>Política de Gestión Integral y Sostenibilidad</b> (SG-SGI-POL-001), firmada por la dirección, y opera bajo el ciclo <b>PHVA</b> (Planificar, Hacer, Verificar, Actuar).</p>' +
+         '<p>Indicadores publicados: <b>1.103 días consecutivos de operación sin accidentes</b>, <b>0 incidentes ambientales</b>, <b>nivel de cultura en seguridad 5,5</b> (etapa independiente) y <b>1 evento de seguridad de proceso</b>.</p>' +
+         '<p>En la página del SGI se pueden descargar la política, los tres certificados ISO, el Reglamento de Higiene y Seguridad Industrial y las Reglas vitales.</p>',
       links: [{ l: 'Ver el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
-      next: ['¿Qué certificaciones tienen?', '¿Qué medidas de seguridad tienen?']
+      next: ['¿Qué certificaciones tienen?', '¿Qué normas hay para visitantes?']
+    },
+    {
+      id: 'visitantes', cat: 'calidad',
+      title: 'Normas para visitantes a la refinería',
+      p: ['normas para visitantes', 'que normas hay para visitantes', 'visitar la refineria', 'como ingreso a la refineria', 'requisitos para entrar', 'que epp necesito', 'puedo visitar la planta'],
+      k: 'visitante visita refineria ingreso entrada requisitos epp casco chaleco documentos cedula seguridad social prohibiciones cartilla',
+      a: '<p>Toda visita a la refinería recibe la <b>cartilla del SGI</b> (SG-SGI-GUI-005) antes de entrar. Lo esencial:</p>' +
+         '<ul>' +
+         '<li><b>EPP mínimos:</b> casco, lentes de seguridad, chaleco, calzado de seguridad, camisa manga larga y jean.</li>' +
+         '<li><b>Documentos:</b> cédula o documento de identificación y certificado de seguridad social vigente. Para ingresar un vehículo: tarjeta de propiedad, SOAT, tecnicomecánica cuando aplique y licencia de conducción.</li>' +
+         '<li><b>Prohibido:</b> armas de fuego, alcohol o drogas, fumar, entrar a áreas restringidas, arrojar desechos y entrar con la seguridad social vencida.</li>' +
+         '</ul>' +
+         '<p>Los documentos se envían con anticipación a la persona encargada de la visita, para que seguridad los revise.</p>',
+      links: [{ l: 'Ver las normas completas', h: 'sostenibilidad/sgi.html#visitantes', i: 'shield' }],
+      next: ['¿Qué es el SGI?', '¿Dónde están ubicados?']
     },
     {
       id: 'euro-vi', cat: 'calidad',
@@ -775,22 +798,23 @@ window.AIRA_KB = {
     {
       id: 'seguridad', cat: 'calidad',
       title: 'Seguridad de la operación',
-      p: ['medidas de seguridad', 'que medidas de seguridad tienen', 'que tan seguro', 'seguridad de la refineria', 'emergencias'],
-      k: 'seguridad seguro riesgo protocolo emergencia capacitacion salud trabajo accidente',
-      a: '<p>La operación se rige por el <b>Sistema de Gestión Integrada</b> certificado bajo <b>ISO 9001, ISO 14001 e ISO 45001</b> (Seguridad y Salud en el Trabajo).</p>' +
-         '<p>Incluye protocolos de seguridad de proceso, capacitación continua, monitoreo permanente y planes de respuesta ante emergencias.</p>',
+      p: ['medidas de seguridad', 'que medidas de seguridad tienen', 'que tan seguro', 'seguridad de la refineria', 'emergencias', 'reglas vitales', 'reglamento de higiene', 'dias sin accidentes', 'cuantos dias sin accidentes', 'dias llevan sin accidentes', 'accidentalidad'],
+      k: 'seguridad seguro riesgo protocolo emergencia capacitacion salud trabajo accidente accidentes accidentalidad dias record reglas vitales reglamento higiene industrial',
+      a: '<p>La operación se rige por el <b>Sistema de Gestión Integrado</b> certificado bajo <b>ISO 9001, ISO 14001 e ISO 45001</b> (Seguridad y Salud en el Trabajo).</p>' +
+         '<p>Incluye protocolos de seguridad de proceso, capacitación continua, monitoreo permanente y planes de respuesta ante emergencias, además del <b>Reglamento de Higiene y Seguridad Industrial</b> y las <b>Reglas vitales</b>, ambos descargables.</p>' +
+         '<p>El sistema reporta <b>1.103 días consecutivos de operación sin accidentes</b>.</p>',
       links: [{ l: 'Conocer el SGI', h: 'sostenibilidad/sgi.html', i: 'shield' }],
-      next: ['¿Qué certificaciones tienen?', '¿Qué es el SGI?']
+      next: ['¿Qué certificaciones tienen?', '¿Qué normas hay para visitantes?']
     },
 
     /* ══════════════════ SOSTENIBILIDAD ══════════════════ */
     {
       id: 'ambiental', cat: 'sostenibilidad',
       title: 'Responsabilidad ambiental',
-      p: ['medio ambiente', 'responsabilidad ambiental', 'cumplen la normativa ambiental', 'anla', 'impacto ambiental', 'huella de carbono', 'que hacen por el medio ambiente'],
-      k: 'ambiente ambiental ecologico sostenible emisiones contaminacion anla licencia monitoreo huella carbono vertimientos residuos',
-      a: '<p>Petroil <b>monitorea de forma permanente las emisiones</b> de sus procesos de refinación, con la meta de <b>reducir año a año la huella de carbono</b> de sus combustibles. Su gestión ambiental está certificada bajo <b>ISO 14001</b>.</p>' +
-         '<p>Opera bajo la normativa ambiental colombiana, sujeta al control de la <b>ANLA</b> (Autoridad Nacional de Licencias Ambientales). Y el aporte principal está en el producto: combustibles diseñados para reducir emisiones en el punto de uso.</p>',
+      p: ['medio ambiente', 'responsabilidad ambiental', 'cumplen la normativa ambiental', 'anla', 'impacto ambiental', 'huella de carbono', 'que hacen por el medio ambiente', 'plan de manejo ambiental', 'licencia ambiental', 'plan de contingencias'],
+      k: 'ambiente ambiental ecologico sostenible emisiones contaminacion anla licencia permiso monitoreo seguimiento manejo contingencia prevencion mitigacion huella carbono vertimientos residuos',
+      a: '<p>Petroil desarrolla sus operaciones bajo <b>criterios de responsabilidad ambiental</b>: implementa <b>medidas de manejo</b>, <b>programas de monitoreo</b> y <b>acciones de seguimiento</b> orientadas a la <b>prevención, control y mitigación</b> de los impactos asociados a la actividad de refinación.</p>' +
+         '<p>Esa gestión se apoya en cuatro instrumentos —<b>Plan de Manejo Ambiental</b>, <b>Plan de Seguimiento y Monitoreo</b>, <b>Plan de Contingencias</b> y la <b>Licencia Ambiental</b>—, cuyas obligaciones la empresa garantiza cumplir. La gestión ambiental está certificada bajo <b>ISO 14001</b>.</p>',
       links: [{ l: 'Ver responsabilidad ambiental', h: 'sostenibilidad/responsabilidad-ambiental.html', i: 'leaf' }],
       next: ['¿Qué es la transición energética?', '¿Qué contaminantes reducen?']
     },
@@ -807,10 +831,11 @@ window.AIRA_KB = {
     {
       id: 'comunidad', cat: 'sostenibilidad',
       title: 'Compromiso social',
-      p: ['compromiso social', 'responsabilidad social', 'programas sociales', 'la comunidad', 'como informan a la comunidad'],
-      k: 'comunidad social programa formacion emprendimiento infraestructura comunitaria vecinos mamatoco',
-      a: '<p>Petroil impulsa <b>programas de formación técnica</b>, apoya <b>iniciativas locales de emprendimiento</b> y destina recursos a <b>proyectos de infraestructura comunitaria</b> en Santa Marta y su área de influencia.</p>' +
-         '<p>Informa a la comunidad a través del sitio web, redes sociales y reuniones con los vecinos de la operación.</p>',
+      p: ['compromiso social', 'responsabilidad social', 'que hacen por sus colaboradores', 'bienestar laboral', 'como es trabajar en petroil'],
+      k: 'social compromiso colaboradores familias bienestar calidad de vida desarrollo personal profesional crecimiento economico ambiente laboral clima pertenencia identidad comunidad',
+      a: '<p>El compromiso social de Petroil empieza <b>puertas adentro</b>. Las mejores prácticas empresariales no solo mejoran los productos y servicios: también impulsan el <b>desarrollo social</b>. Por eso la empresa se esfuerza en mejorar el entorno de sus <b>colaboradores y sus familias</b>.</p>' +
+         '<p>Les da las herramientas para su <b>crecimiento económico</b> y su <b>desarrollo personal y profesional</b>, en un ambiente de trabajo acogedor y amigable, con condiciones laborales extraordinarias y la <b>calidad de vida</b> como meta permanente.</p>' +
+         '<p>Eso ha creado <b>identidad, sentido de pertenencia y compromiso</b>: tres factores determinantes del éxito empresarial de Petroil.</p>',
       links: [{ l: 'Ver compromiso social', h: 'sostenibilidad/compromiso-social.html', i: 'leaf' }],
       next: ['¿Qué hacen por el medio ambiente?', '¿Cuántos empleos generan?']
     },

@@ -46,6 +46,14 @@
   "chat.wa": { "es": "Continuar por WhatsApp", "en": "Continue on WhatsApp", "pt": "Continuar pelo WhatsApp" },
   "chat.waFromChatCta": { "es": "Vengo del chat del sitio web de Petroil y quiero más información.", "en": "I'm coming from the chat on the Petroil website and I'd like more information.", "pt": "Estou vindo do chat do site da Petroil e gostaria de mais informações." },
 
+  "//gallery": "Etiquetas del visor de fotos (assets/js/gallery.js). Son solo aria-labels: el script las pide con PetroilI18n.t() y usa el español como respaldo, porque el visor se construye antes de que llegue el diccionario.",
+  "gallery.dialog": { "es": "Visor de fotos", "en": "Photo viewer", "pt": "Visualizador de fotos" },
+  "gallery.open": { "es": "Ampliar foto", "en": "Enlarge photo", "pt": "Ampliar foto" },
+  "gallery.close": { "es": "Cerrar el visor", "en": "Close the viewer", "pt": "Fechar o visualizador" },
+  "gallery.prev": { "es": "Foto anterior", "en": "Previous photo", "pt": "Foto anterior" },
+  "gallery.next": { "es": "Foto siguiente", "en": "Next photo", "pt": "Foto seguinte" },
+  "gallery.goTo": { "es": "Ir a la foto", "en": "Go to photo", "pt": "Ir para a foto" },
+
   "//aira": "Widget AIRA (index.html). Estas claves traducen SOLO el marco del chat (cabecera, aviso, campo de texto). Las RESPUESTAS viven en assets/js/aira-kb.js y por ahora existen únicamente en español — ver la nota de traducción en ese archivo.",
   "aira.teaser": { "es": "¿Buscas un combustible o una <b>cotización</b>? Pregúntame.", "en": "Looking for a fuel or a <b>quote</b>? Just ask me.", "pt": "Procura um combustível ou uma <b>cotação</b>? Pergunte-me." },
   "aira.note": { "es": "Asistente automático: responde con información publicada en este sitio.", "en": "Automated assistant: it answers using information published on this site.", "pt": "Assistente automático: responde com informação publicada neste site." },
