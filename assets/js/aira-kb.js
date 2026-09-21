@@ -43,13 +43,13 @@
    2. Las fichas marcadas en el sitio como "Dato de ejemplo" (hoy:
       40 A MAX, 60 salvo API/inflamación, 70, 87 R, RF-110+,
       RF-100+) NO se citan como cifra real: AIRA dice que la ficha
-      oficial está pendiente. Mismo criterio para las páginas que el
-      sitio todavía rotula como "página de ejemplo": hoy solo la
-      política de datos. Compromiso social (2026-09-17),
-      responsabilidad ambiental (2026-09-18) y SGI (2026-09-18) ya
-      llevan contenido oficial de la empresa y SÍ se citan como
-      reales. El SGI es la única de las tres que publica indicadores
-      y documentos descargables; de las otras dos AIRA no da cifras.
+      oficial está pendiente. Mismo criterio para cualquier página
+      que el sitio rotule como "página de ejemplo": hoy no queda
+      ninguna. Compromiso social (2026-09-17), responsabilidad
+      ambiental (2026-09-18), SGI (2026-09-18) y la política de
+      datos (2026-09-20) llevan contenido oficial de la empresa y SÍ
+      se citan como reales. SGI y política de datos publican además
+      documentos descargables; de las otras dos AIRA no da cifras.
    3. Nombres que el sitio aún usa distinto: el catálogo y el
       formulario de contacto dicen "P-800 HCl"; la ficha nueva dice
       "P-800 HC" / "800 HC Standard". Ambos están como keywords, y
@@ -1279,11 +1279,15 @@ window.AIRA_KB = {
     {
       id: 'datos-personales', cat: 'contacto',
       title: 'Protección de datos personales',
-      p: ['politica de datos', 'proteccion de datos', 'mis datos personales', 'habeas data', 'privacidad', 'como tratan mis datos personales', 'ley 1581'],
-      k: 'dato datos personal personales politica proteccion privacidad habeas tratamiento titular derechos 1581 confidencial',
-      a: '<p>Los formularios de contacto y PQRSF usan tus datos <b>únicamente para responder tu solicitud</b>, conforme a la <b>Ley 1581 de 2012</b>, y piden tu autorización antes de enviar.</p>' +
-         '<p>Como titular puedes <b>conocer, actualizar y rectificar</b> tu información, revocar la autorización o pedir su supresión; esas solicitudes se tramitan por el módulo PQRSF. La política publicada está en versión preliminar mientras se valida la definitiva.</p>',
-      links: [{ l: 'Leer la política de datos', h: 'legal/politica-datos.html', i: 'doc' }],
+      p: ['politica de datos', 'proteccion de datos', 'mis datos personales', 'habeas data', 'privacidad', 'como tratan mis datos personales', 'ley 1581', 'descargar la politica de datos'],
+      k: 'dato datos personal personales politica proteccion privacidad habeas tratamiento titular derechos 1581 confidencial sensibles videovigilancia supresion revocar autorizacion rnbd',
+      a: '<p>La política oficial es el documento <b>SG-GG-POL-004</b>, versión 2, aprobado por el Chairman. El responsable del tratamiento es <b>Petroil Capital Holdings S.A.S.</b> (NIT 900.985.911-6) y el correo de habeas data es <b>contacto@petroilsa.com</b>.</p>' +
+         '<p>Los formularios de cotización y de PQRSF usan tus datos <b>únicamente para atender tu solicitud</b>, conforme a la <b>Ley 1581 de 2012</b>, y piden tu autorización antes de enviar.</p>' +
+         '<p>Como titular puedes <b>conocer, actualizar y rectificar</b> tu información, pedir prueba de la autorización, acceder gratis a tus datos, revocar la autorización o pedir su supresión cuando legalmente proceda. Esas solicitudes se tramitan por el <b>módulo PQRSF</b> o por el correo de habeas data.</p>',
+      links: [
+        { l: 'Leer la política de datos', h: 'legal/politica-datos.html', i: 'doc' },
+        { l: 'Descargar el PDF oficial', h: 'assets/docs/legal/politica-tratamiento-y-proteccion-de-datos.pdf', i: 'doc', ext: true }
+      ],
       next: ['¿Qué es PQRSF?', '¿Cómo los contacto?']
     },
     {

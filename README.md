@@ -21,7 +21,7 @@ scripts/                   # utilidades de mantenimiento del repo (no se sirven 
 assets/
   css/                      # base, header-nav, hero, home, footer, aira,
                              # article, pqrsf, ficha-tecnica, cursor, productos, sgi,
-                             # contacto + el CSS propio de quienes-somos
+                             # politica-datos, contacto + el CSS propio de quienes-somos
   js/                       # nav, hero-particles, home, footer-map, aira + aira-kb,
                              # article-toc, gallery, pqrsf, cursor, i18n, productos,
                              # contacto + el JS de quienes-somos
@@ -29,6 +29,7 @@ assets/
   img/  vids/               # imágenes y video (las fichas técnicas ya no se publican en PDF)
   docs/sgi/                 # PDF oficiales del SGI: política, certificados ISO,
                             # reglamento de higiene y reglas vitales
+  docs/legal/               # PDF oficial de la política de tratamiento de datos
 ```
 
 Cada página carga solo los módulos CSS/JS que necesita (ver el `<head>`/pie

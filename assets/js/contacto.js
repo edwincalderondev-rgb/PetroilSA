@@ -308,12 +308,6 @@ if(contactForm){
     });
   }
 
-  // Enlaces pendientes (p. ej. la política de datos, aún sin URL definitiva):
-  // se evita que href="#" haga saltar la página al inicio.
-  document.querySelectorAll('[data-pending-link]').forEach(link => {
-    link.addEventListener('click', (e) => e.preventDefault());
-  });
-
   // Preselección por URL
   const params = new URLSearchParams(window.location.search);
   const preProducto = params.get('producto');
