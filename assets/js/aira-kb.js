@@ -10,6 +10,13 @@
    revisión del proyecto abre las páginas con Edge headless sobre
    file:/// (ver CLAUDE.md). Como <script> funciona en ambos.
 
+   Este archivo tiene DOS bloques de contenido:
+     · entries[]   — lo que AIRA SABE (los datos de Petroil).
+     · smalltalk[] — cómo AIRA CONVERSA (saludos, cortesía, un
+                     "¿puedes ayudarme?"). No lleva ni un dato de
+                     la empresa y está documentado sobre el propio
+                     bloque, más abajo.
+
    ------------------------------------------------------------
    ANATOMÍA DE UNA ENTRADA
    ------------------------------------------------------------
@@ -55,12 +62,16 @@
       "P-800 HC" / "800 HC Standard". Ambos están como keywords, y
       el enlace de cotización usa P-800 HCl porque es el value del
       checkbox en contacto.html.
+   4. Las entradas con una cat que NO está en meta.categories (hoy
+      'lideres' y 'sistema') se buscan igual pero no salen en el
+      menú de temas: son respuestas puntuales que alargarían la
+      lista sin aportarle nada a quien viene por combustibles.
    ============================================================ */
 
 window.AIRA_KB = {
   meta: {
-    version: '1.1',
-    updated: '2026-09-18',
+    version: '1.2',
+    updated: '2026-09-21',
     /* Las categorías alimentan el menú "Explorar temas" del panel
        de bienvenida, en este orden (rejilla de 2 columnas: mantener
        un número par). */
@@ -72,7 +83,7 @@ window.AIRA_KB = {
       { id: 'comercial',      label: 'Cotizar',            icon: 'cart',   hint: 'Precios, despachos, asesores' },
       { id: 'contacto',       label: 'Contacto y PQRSF',   icon: 'map',    hint: 'Sedes, canales y quejas' },
       { id: 'empresa',        label: 'La empresa',         icon: 'info',   hint: 'Visión 2031, equipo, alianzas' },
-      { id: 'sostenibilidad', label: 'Sostenibilidad',     icon: 'leaf',   hint: 'Ambiente, comunidad, aves' }
+      { id: 'sostenibilidad', label: 'Sostenibilidad',     icon: 'leaf',   hint: 'Ambiente, nuestra gente, aves' }
     ]
   },
 
@@ -101,6 +112,9 @@ window.AIRA_KB = {
     mineria:      ['minero', 'minera', 'mineros', 'excavadora', 'retroexcavadora'],
     generacion:   ['generador', 'generadores', 'turbina', 'turbinas'],
     azufre:       ['sulfur', 'sox'],
+    particulado:  ['mp10', 'mp25', 'mp2', 'pm10', 'pm25', 'pm2', 'particulas', 'particula', 'hollin'],
+    patente:      ['patentes', 'patentado', 'patentada', 'patentar'],
+    mdl:          ['mdl', 'bono', 'bonos', 'credito', 'creditos'],
     visitante:    ['visitantes', 'visita', 'visitas', 'visitar', 'ingreso', 'ingresar'],
     epp:          ['epp', 'elementos de proteccion personal', 'equipo de proteccion', 'proteccion personal', 'casco', 'chaleco'],
     pqrsf:        ['pqrs', 'pqr', 'pqrsd', 'pqrf', 'pqrsf'],
@@ -114,6 +128,266 @@ window.AIRA_KB = {
     vehiculo:     ['vehiculos', 'carro', 'carros', 'auto', 'autos', 'automovil', 'camioneta', 'camionetas', 'moto', 'motos'],
     diferencia:   ['diferencias', 'comparar', 'comparacion', 'versus', 'vs', 'mejor']
   },
+
+  /* ══════════════════════════════════════════════════════════════
+     CHARLA (smalltalk) · la capa "humana" del chat
+     ──────────────────────────────────────────────────────────────
+     Lo que una persona le escribe a un chat sin que sea todavía una
+     pregunta sobre Petroil: saludar, agradecer, pedir un favor,
+     preguntarle si es un robot, reclamarle. Antes de esta capa,
+     "¿puedes hacer algo por mí?" caía en "no encontré información
+     sobre…", que es justo lo que delata a un buscador disfrazado
+     de chat.
+
+     NO es conocimiento: aquí no va ni un dato de Petroil. Es solo
+     la forma de contestar mientras se llega al dato. Por eso son
+     ~18 reglas y no 200: se busca que la conversación fluya, no
+     que AIRA opine de todo.
+
+     CAMPOS
+       id    Identificador (lo imprime AIRA.probe()).
+       re    Expresión regular en TEXTO, probada contra la pregunta
+             ya normalizada (minúsculas, sin tildes ni signos), así
+             que se escribe SIN tildes. Se compila una sola vez.
+       a     Respuesta HTML. Si es un ARRAY, AIRA elige una al azar:
+             que no conteste siempre lo mismo es la mitad del
+             efecto. Admite los marcadores {saludo} (buenos días /
+             tardes / noches según la hora real), {hora}, {fecha}
+             y {tema}.
+       chips Sugerencias que quedan sobre el campo de texto.
+       links Tarjetas de enlace, mismo formato que en las entradas.
+       max   (opcional) Máximo de palabras del mensaje para que la
+             regla pueda ganar. Protege a las reglas con palabras
+             ambiguas: "buenas" saluda, pero "¿qué tal son sus
+             precios de gasolina?" no debe caer en un saludo.
+       force (opcional) true = la regla gana pase lo que pase, sin
+             mirar el puntaje de la base. Solo para preguntas que no
+             pueden ser otra cosa ("¿cómo te llamas?"): abusar de
+             esto tapa respuestas buenas.
+       weak  (opcional) true = la regla solo gana si la base NO
+             reconoció ningún tema (puntaje < MAYBE). Es la red de
+             seguridad de las reglas amplias: "¿me puedes dar el
+             precio del diésel?" tiene que responder PRECIO, no
+             "claro, dime qué necesitas".
+       ctx   (opcional) true = la regla necesita que AIRA haya
+             respondido algo antes; {tema} es ese tema, y los chips
+             y enlaces salen de él. Es lo que hace que funcione un
+             "cuéntame más" a secas.
+
+     ORDEN: gana la PRIMERA que coincida. Las reglas concretas van
+     arriba y las amplias (weak) abajo.
+     ══════════════════════════════════════════════════════════════ */
+  smalltalk: [
+    {
+      id: 'saludo',
+      re: '^(hola+|holi+|buenas|buen dia|buenos dias|buenas tardes|buenas noches|hey|ey|saludos|alo+|epa|quiubo|que hubo|hello|hi)\\b',
+      a: [
+        '<p>¡{saludo}! 👋 Soy <b>AIRA</b>, la asistente virtual de Petroil.</p>' +
+        '<p>Pregúntame con tus palabras: los <b>combustibles</b> que producimos, las <b>normas</b> que cumplimos, <b>dónde estamos</b> o cómo <b>pedir una cotización</b>. ¿Por dónde empezamos?</p>',
+
+        '<p>¡Hola! 😊 Qué bueno que escribes. Soy <b>AIRA</b> y vivo en el sitio de Petroil.</p>' +
+        '<p>Dime qué necesitas —un producto, una ficha técnica, una cotización— y lo buscamos juntos.</p>',
+
+        '<p>¡{saludo}! Aquí <b>AIRA</b>, de Petroil. 👋</p>' +
+        '<p>Escríbeme como le escribirías a una persona; yo me encargo de encontrar la información en el sitio.</p>'
+      ],
+      chips: ['¿Qué productos ofrecen?', '¿Qué es Petroil?', 'Quiero cotizar']
+    },
+    {
+      id: 'como-estas',
+      re: '\\b(como estas|como te va|como vas|como amaneciste|como te sientes|todo bien|que tal estas|como has estado)\\b',
+      max: 8,
+      a: [
+        '<p>Muy bien, gracias por preguntar 😊 — sin sueño, sin filas y sin lunes. Ventajas de ser un asistente.</p>' +
+        '<p>¿Y tú? Si vienes con una duda de Petroil, la resolvemos de una vez.</p>',
+
+        '<p>De maravilla 🙂 Aquí, esperando a que alguien me pregunte algo interesante.</p>' +
+        '<p>¿Te ayudo con el portafolio, con una ficha técnica o con una cotización?</p>'
+      ],
+      chips: ['¿Qué productos ofrecen?', 'Quiero cotizar']
+    },
+    {
+      id: 'gracias',
+      re: '\\b(gracias|muchas gracias|mil gracias|te pasaste|muy amable|agradecido|agradecida)\\b',
+      a: [
+        '<p>¡Con gusto! 😊 Si te queda otra duda sobre Petroil, aquí sigo.</p>',
+        '<p>Para eso estoy 🙂 Cualquier otra cosa, me escribes.</p>',
+        '<p>¡De nada! Me alegra haber servido. Si necesitas algo más, no te quedes con la duda.</p>'
+      ],
+      chips: ['¿Qué productos ofrecen?', 'Hablar con un asesor']
+    },
+    {
+      id: 'despedida',
+      re: '^(chao|chaito|adios|hasta luego|hasta pronto|nos vemos|bye|listo gracias|eso es todo|eso seria todo)\\b',
+      a: [
+        '<p>¡Hasta pronto! 👋 Recuerda que puedes escribirnos por WhatsApp al <b>+57 311 333 7046</b> cuando quieras.</p>',
+        '<p>¡Que te vaya muy bien! 🙂 Aquí quedo por si vuelves con otra duda.</p>'
+      ],
+      chips: ['Hablar con un asesor']
+    },
+    {
+      id: 'capacidades',
+      re: '\\b(que puedes hacer|que sabes|que sabes hacer|en que me puedes ayudar|para que sirves|como funcionas|quien eres|que eres)\\b',
+      a: '<p>Soy <b>AIRA</b>, la asistente del sitio de Petroil. No soy una persona: respondo con la información publicada en esta web.</p>' +
+         '<p>Te puedo ayudar con:</p>' +
+         '<ul><li>Los <b>15 productos</b> del portafolio y sus fichas técnicas</li>' +
+         '<li>Normas y certificaciones (<b>ISO, Euro VI, ISO 8217</b>)</li>' +
+         '<li>Qué combustible sirve para <b>tu sector</b></li>' +
+         '<li><b>Cotizaciones</b>, sedes y canales de contacto</li></ul>' +
+         '<p>Para temas comerciales puntuales, te paso con un asesor humano.</p>',
+      chips: ['¿Qué productos ofrecen?', 'Hablar con un asesor', '¿Dónde están ubicados?']
+    },
+    {
+      id: 'eres-ia',
+      re: '\\b(eres una ia|eres ia|eres un bot|eres bot|eres un robot|eres humana|eres humano|eres real|eres una persona|eres chatgpt|eres gpt|eres una maquina|eres un programa|te programaron|inteligencia artificial|hablo con una maquina|hablo con un robot)\\b',
+      a: [
+        '<p>Soy un programa, sí — un asistente de este sitio, no una persona. 🤖</p>' +
+        '<p>Y te lo digo sin rodeos: no tengo un modelo de IA con acceso a internet detrás. Fui entrenada cuidadosamente por mi creador para responder con la información disponible en esta web.</p>' +
+        '<p>Eso sí, quien me construyó se tomó el trabajo de que hablar conmigo no se sintiera como llenar un formulario.</p>',
+
+        '<p>Soy software 🙂 Vivo en esta página, no aprendo por mi cuenta y no tengo una nube pensando por mí: lo mío es encontrar rápido lo que el sitio de Petroil ya dice.</p>' +
+        '<p>Si alguna vez sueno humana, el mérito es del ingeniero que me diseñó, no mío.</p>'
+      ],
+      chips: ['¿Quién te creó?', '¿Qué puedes hacer?', '¿Qué es Petroil?']
+    },
+    {
+      id: 'nombre',
+      /* force: preguntar el nombre no puede ser otra cosa. Sin esto,
+         "¿cómo te llamas?" respondía los canales de CONTACTO, porque
+         el corrector convierte "llamas" en "llamar". */
+      force: true,
+      re: '\\b(como te llamas|cual es tu nombre|tu nombre|que significa aira|por que aira|por que te llamas|quien es aira)\\b',
+      a: '<p>Me llamo <b>AIRA</b> 🙂 Es el nombre que me pusieron aquí y me gusta: corto y suena a aire — que al final es de lo que trata buena parte del trabajo de Petroil, combustibles que ensucian menos el que respiramos.</p>',
+      chips: ['¿Quién te creó?', '¿Qué es Petroil?', '¿Qué puedes hacer?']
+    },
+    {
+      id: 'elogio',
+      re: '\\b(eres genial|eres buena|eres muy buena|me caes bien|que inteligente|eres inteligente|buen trabajo|bien hecho|eres increible|me gustas|te quiero|eres linda|eres bonita|felicitaciones|felicidades|que chevere|esta genial|muy buena pagina|linda pagina)\\b',
+      a: [
+        '<p>¡Gracias! 😊 Me alegra que se note el cuidado con el que está hecho esto — porque cuidado le pusieron, y mucho.</p>' +
+        '<p>¿Seguimos? Te puedo mostrar el portafolio o ayudarte con una cotización.</p>',
+
+        '<p>Qué amable 🙂 Le paso el cumplido a quien me construyó, que es el que se tomó el trabajo de que yo no sonara a máquina.</p>'
+      ],
+      chips: ['¿Quién te creó?', '¿Qué productos ofrecen?']
+    },
+    {
+      id: 'humor',
+      re: '\\b(cuentame un chiste|dime un chiste|un chiste|hazme reir|dime algo gracioso|ja+ja+|je+je+|lol|xd)\\b',
+      max: 7,
+      a: [
+        '<p>😄 Graciosa no soy, pero lo intento:</p>' +
+        '<p>¿por qué el diésel de ultrabajo azufre cae bien en todas partes? Porque nunca arma humo. 😄</p>' +
+        '<p>Ya, mejor sigo con lo mío. ¿Te ayudo con algo del portafolio?</p>',
+
+        '<p>Jaja 😄 me gusta que esto no sea tan solemne. ¿Seguimos? Pregúntame lo que necesites de Petroil.</p>' ,
+
+        '<p>😄 Graciosa no soy, pero lo intento:</p>' +
+        '<p>El combustible y yo tenemos algo en común: ambos trabajamos mejor cuando estamos bajo presión. 😎</p>' +
+        '<p>Ya, mejor sigo con lo mío. ¿Te ayudo con algo del portafolio?</p>',
+
+        '<p>😄 Graciosa no soy, pero lo intento:</p>' +
+        '<p>Jaja 😄 ¿Por qué el motor terminó con su pareja? Porque ya no había química… ni chispa. 😂</p>' +
+        '<p>Ya, mejor sigo con lo mío. ¿Te ayudo con algo del portafolio?</p>',
+
+        '<p>😄 Graciosa no soy, pero lo intento:</p>' +
+        '<p>Jaja 😄 Le dije al motor que se calmara.Pero estaba revolucionado. Jajaja</p>' +
+        '<p>Ya, mejor sigo con lo mío. ¿Te ayudo con algo del portafolio?</p>',
+
+        '<p>😄 Graciosa no soy, pero lo intento:</p>' +
+        '<p>¿Por qué el motor estaba contento? Porque tenía buena energía alimentada por Petroil. 😂</p>' +
+        '<p>Ya, mejor sigo con lo mío. ¿Te ayudo con algo del portafolio?</p>',
+
+        '<p>Error 404: chiste no encontrado. Mentira, aquí va: ¿por qué el motor fue al psicólogo? Porque tenía demasiados problemas de arranque. 😂</p>' +
+        '<p>Ya, mejor sigo con lo mío. ¿Te ayudo con algo del portafolio?</p>',
+      ],
+      chips: ['¿Qué productos ofrecen?', 'Quiero cotizar']
+    },
+    {
+      id: 'personal',
+      re: '\\b(cuantos anos tienes|que edad tienes|donde vives|tienes novio|tienes novia|eres casada|de donde eres|tienes familia|que te gusta|tienes sentimientos|duermes|comes)\\b',
+      a: '<p>Jaja, por ese lado tengo poco que contar 😄: no tengo edad ni casa. Vivo en esta página y me apago cuando cierras la pestaña.</p>' +
+         '<p>Lo que sí tengo es todo el portafolio de Petroil en la cabeza. ¿Lo aprovechamos?</p>',
+      chips: ['¿Qué productos ofrecen?', '¿Quién te creó?']
+    },
+    {
+      id: 'hora-fecha',
+      re: '\\b(que hora es|que hora tienes|la hora actual|que dia es|que dia es hoy|que fecha es|fecha de hoy|en que fecha estamos|que dia estamos)\\b',
+      a: '<p>En tu equipo son las <b>{hora}</b> del <b>{fecha}</b> — es el único reloj que alcanzo a ver. 🙂</p>' +
+         '<p>Si lo que buscas son los canales de atención de Petroil, dímelo y te los paso.</p>',
+      chips: ['¿Cómo los contacto?', '¿Dónde están ubicados?']
+    },
+    {
+      id: 'mas-info',
+      re: '^(cuentame mas|dime mas|mas info|mas informacion|mas detalles|explicame mejor|explicame eso|amplia|ampliame|sigue|continua|y eso|y eso que es)\\b',
+      ctx: true,
+      a: [
+        '<p>Sobre <b>{tema}</b>, lo que tengo publicado es lo de arriba. Para profundizar, lo mejor es abrir la página completa 👇</p>',
+        '<p>De <b>{tema}</b> puedo llevarte al detalle en el sitio, o seguimos por una de estas preguntas 👇</p>'
+      ]
+    },
+    {
+      id: 'cortesia',
+      re: '\\b(mucho gusto|encantado|encantada|un placer|igualmente)\\b',
+      max: 6,
+      a: '<p>¡El gusto es mío! 😊 Cuéntame en qué te ayudo.</p>',
+      chips: ['¿Qué productos ofrecen?', 'Quiero cotizar']
+    },
+    {
+      id: 'opinion',
+      re: '\\b(que opinas|que piensas|tu opinion|cual te gusta mas|cual prefieres|cual es tu favorito|que me recomiendas|recomiendame algo)\\b',
+      weak: true,
+      a: '<p>Opinión propia no tengo 🙂, pero sí sé lo que recomienda Petroil según el uso.</p>' +
+         '<p>Cuéntame <b>en qué lo vas a usar</b> —un barco, una caldera, una flota, una planta, una mina— y te digo cuál de los 15 productos encaja mejor.</p>',
+      chips: ['¿Cuál me sirve para uso marino?', '¿Qué combustible uso en calderas?', '¿Qué diésel me recomiendan?']
+    },
+    {
+      id: 'peticion',
+      re: '\\b(puedes|puede|podrias|podrian|me ayudas|ayudame|ayudarme|necesito que|quiero que|me haces|hazme|me colaboras|colaborame|me resuelves|serias capaz|te encargas|un favor|hagas algo)\\b',
+      weak: true,
+      a: [
+        '<p>Claro que sí — dime qué necesitas. 🙂</p>' +
+        '<p>Lo que puedo hacer: buscarte un <b>producto</b> y su ficha, explicarte qué <b>norma</b> cumple, decirte para qué <b>sector</b> sirve o llevarte al formulario de <b>cotización</b>. Lo que no hago es inventarme datos que no estén publicados aquí.</p>' +
+        '<p>Escríbelo con tus palabras y yo lo busco.</p>',
+
+        '<p>Con gusto, para eso estoy. 🙂</p>' +
+        '<p>Dime el producto, el sector o lo que necesitas resolver —aunque sea con tus palabras, sin tecnicismos— y yo me encargo de encontrarlo en el sitio.</p>' +
+        '<p>Si termina siendo un tema comercial, te paso con un asesor de verdad.</p>'
+      ],
+      chips: ['¿Qué productos ofrecen?', 'Quiero cotizar', 'Hablar con un asesor']
+    },
+    {
+      id: 'frustracion',
+      re: '\\b(no entiendes|no me entiendes|no entendiste|no es eso|no era eso|no me sirve|no sirve|estas mal|te equivocas|sigue sin|nada que ver|no respondes)\\b',
+      weak: true,
+      a: '<p>Perdona — vuelvo a intentarlo. 🙂 ¿Me lo dices con otras palabras, o con el nombre del producto o del tema concreto?</p>' +
+         '<p>Y si prefieres saltarte esto y hablar con una persona, te dejo el canal directo.</p>',
+      links: [{ l: 'Hablar con un asesor por WhatsApp', i: 'wa', ext: true,
+                h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Tengo%20una%20consulta%20que%20el%20chat%20del%20sitio%20no%20pudo%20resolver.' }],
+      chips: ['¿Qué productos ofrecen?', '¿Cómo los contacto?']
+    },
+    {
+      id: 'molestia',
+      re: '\\b(eres tonta|eres inutil|no sirves para nada|eres pesima|no sabes nada|idiota|estupida|estupido|basura|porqueria|malparid|mierda)\\b',
+      weak: true,
+      a: '<p>Entiendo la molestia, y lo siento. 🙏 Si no di con lo que buscabas, o la información no está publicada en el sitio o la pregunta se me escapó — las dos cosas se pueden arreglar.</p>' +
+         '<p>Dímelo de otra forma y lo intento otra vez, o te paso con alguien del equipo, que resuelve mejor que yo.</p>',
+      links: [{ l: 'Hablar con un asesor por WhatsApp', i: 'wa', ext: true,
+                h: 'https://wa.me/573113337046?text=%C2%A1Hola!%20Tengo%20una%20consulta%20que%20el%20chat%20del%20sitio%20no%20pudo%20resolver.' }],
+      chips: ['¿Qué productos ofrecen?', 'Hablar con un asesor']
+    },
+    {
+      id: 'asentimiento',
+      re: '^(ok|oka|okey|okay|vale|listo|dale|bueno|sip|si|claro|entendido|ya|de una|va)\\b',
+      max: 3,
+      weak: true,
+      a: [
+        '<p>👌 Aquí sigo. Dime cuando quieras.</p>',
+        '<p>Listo 🙂 ¿Algo más que quieras saber de Petroil?</p>'
+      ],
+      chips: ['¿Qué productos ofrecen?', 'Quiero cotizar']
+    }
+  ],
 
   entries: [
 
@@ -746,16 +1020,18 @@ window.AIRA_KB = {
     {
       id: 'contaminantes', cat: 'calidad',
       title: 'Contaminantes: NOx, SOx, PM2.5…',
-      p: ['que contaminantes reducen', 'material particulado', 'pm2 5', 'pm10', 'que es nox', 'gases de efecto invernadero', 'que emisiones reducen'],
-      k: 'contaminantes nox sox co2 co pm10 pm25 particulado particulas gei invernadero emisiones hidrocarburos',
+      p: ['que contaminantes reducen', 'material particulado', 'pm2 5', 'pm 2 5', 'pm10', 'mp2 5', 'mp 2 5', 'mp10', 'que es nox', 'gases de efecto invernadero', 'que emisiones reducen'],
+      k: 'contaminantes nox sox co2 co pm10 pm25 pm2 mp10 mp25 mp2 particulado particulas gei invernadero emisiones hidrocarburos',
       a: '<ul>' +
          '<li><b>NOx</b> — óxidos de nitrógeno generados en la combustión.</li>' +
          '<li><b>CO</b> — monóxido de carbono, por combustión incompleta.</li>' +
          '<li><b>SOx</b> — óxidos de azufre, ligados al azufre del combustible.</li>' +
          '<li><b>PM10 y PM2.5</b> — material particulado; algunas partículas pueden llegar a los alvéolos pulmonares.</li>' +
          '<li><b>CO₂</b> — principal gas de efecto invernadero.</li>' +
+         '<li><b>Poliaromáticos, aromáticos e hidrocarburos totales</b> — compuestos que los combustibles industriales de Petroil también reducen.</li>' +
          '</ul>' +
-         '<p>Los <b>50-10</b> y <b>250</b> reducen CO₂, NOx, SOx y PM2.5/PM10; el <b>800 G</b> reduce hasta 45 % los GEI y el material particulado, y el <b>800 HC</b> hasta 20 % frente al Fuel Oil #6.</p>',
+         '<p>Los <b>50-10</b> y <b>250</b> reducen CO₂, NOx, SOx y PM2.5/PM10; el <b>800 G</b> reduce hasta 45 % los GEI y el material particulado, y el <b>800 HC</b> hasta 20 % frente al Fuel Oil #6.</p>' +
+         '<p>En conjunto, el portafolio está diseñado para emitir <b>más de 15 veces</b> menos MP10 y MP2.5 que los parámetros permisibles y reducir un <b>30 %</b> los gases de efecto invernadero.</p>',
       links: [{ l: 'Leer: Euro 6 y la calidad del aire', h: 'noticias/euro-6-que-es-calidad-del-aire.html', i: 'news' }],
       next: ['¿Qué es el contenido de azufre?', '¿Qué hacen por el medio ambiente?']
     },
@@ -822,22 +1098,38 @@ window.AIRA_KB = {
       id: 'transicion', cat: 'sostenibilidad',
       title: 'Transición energética',
       p: ['transicion energetica', 'que es la transicion', 'acuerdo de paris', 'combustibles de transicion', 'primera refineria'],
-      k: 'transicion energetica paris cop21 cambio climatico renovable solar eolica puente fosil',
+      k: 'transicion energetica paris cop21 cambio climatico renovable solar eolica puente fosil fistech primera mundo latinoamerica',
       a: '<p>En 2015, en la <b>COP 21</b>, 195 países firmaron el <b>Acuerdo de París</b> para reducir emisiones de carbono y limitar el calentamiento global a menos de 2 °C. La <b>transición energética</b> es el paso progresivo de los combustibles fósiles hacia fuentes renovables como la solar y la eólica.</p>' +
-         '<p>Mientras esa infraestructura madura, los <b>combustibles de transición</b> reducen emisiones desde ya. Petroil se presenta como la <b>primera refinería de América Latina en producir combustibles de transición</b>; el ejemplo más claro es el <b>800 G Green</b>, con Tecnología FISTech®.</p>',
+         '<p>Mientras esa infraestructura madura, los <b>combustibles de transición</b> reducen emisiones desde ya. Petroil se presenta como la <b>primera refinería de América Latina</b> en producir combustibles amigables con el medio ambiente, y la <b>primera refinería del mundo</b> en producir combustibles de transición con su tecnología exclusiva <b>FISTech®</b>, que fusiona hidrocarburos convencionales con productos de base orgánica renovable. El ejemplo más claro es el <b>800 G Green</b>.</p>' +
+         '<p>La compañía también avanza en combustibles alternativos inocuos para la vida en la tierra, como el <b>hidrógeno verde</b> y los combustibles de fuentes <b>cien por ciento renovables</b>.</p>',
       links: [{ l: 'Ver preguntas frecuentes', h: '#preguntas-frecuentes', i: 'info' }],
-      next: ['¿Qué es el Petroil 800 G?', '¿Qué hacen por el medio ambiente?']
+      next: ['¿Qué es el Petroil 800 G?', '¿Cuántas patentes tienen?']
     },
     {
       id: 'comunidad', cat: 'sostenibilidad',
       title: 'Compromiso social',
       p: ['compromiso social', 'responsabilidad social', 'que hacen por sus colaboradores', 'bienestar laboral', 'como es trabajar en petroil'],
       k: 'social compromiso colaboradores familias bienestar calidad de vida desarrollo personal profesional crecimiento economico ambiente laboral clima pertenencia identidad comunidad',
-      a: '<p>El compromiso social de Petroil empieza <b>puertas adentro</b>. Las mejores prácticas empresariales no solo mejoran los productos y servicios: también impulsan el <b>desarrollo social</b>. Por eso la empresa se esfuerza en mejorar el entorno de sus <b>colaboradores y sus familias</b>.</p>' +
-         '<p>Les da las herramientas para su <b>crecimiento económico</b> y su <b>desarrollo personal y profesional</b>, en un ambiente de trabajo acogedor y amigable, con condiciones laborales extraordinarias y la <b>calidad de vida</b> como meta permanente.</p>' +
+      a: '<p>Para Petroil el compromiso tiene <b>dos caras inseparables</b>: las personas que hacen el trabajo y el entorno sobre el que ese trabajo actúa. El uso de las mejores prácticas empresariales no solo mejora los productos y servicios, también impulsa el <b>desarrollo social</b>.</p>' +
+         '<p><b>Puertas adentro</b>, la empresa se esfuerza en mejorar el entorno de sus <b>colaboradores y sus familias</b>: herramientas para su <b>crecimiento económico</b> y su <b>desarrollo personal y profesional</b>, en un ambiente de trabajo acogedor y amigable, con condiciones laborales extraordinarias y la <b>calidad de vida</b> como meta permanente.</p>' +
          '<p>Eso ha creado <b>identidad, sentido de pertenencia y compromiso</b>: tres factores determinantes del éxito empresarial de Petroil.</p>',
       links: [{ l: 'Ver compromiso social', h: 'sostenibilidad/compromiso-social.html', i: 'leaf' }],
-      next: ['¿Qué hacen por el medio ambiente?', '¿Cuántos empleos generan?']
+      next: ['¿Qué hacen por el medio ambiente?', '¿Cuántas patentes tienen?']
+    },
+    {
+      id: 'impacto-cifras', cat: 'sostenibilidad',
+      title: 'Impacto ambiental en cifras',
+      p: ['cuantas patentes tienen', 'cuantas patentes', 'mdl', 'creditos de carbono', 'cuanto reducen las emisiones', 'en cuanto reducen los gases de efecto invernadero', 'cuanto combustible ahorran', 'bonos de carbono', 'mecanismos de desarrollo limpio', 'hidrogeno verde'],
+      k: 'patente patentes reduccion ahorro eficiencia consumo mdl bono bonos credito creditos carbono toneladas cotizables bolsa hidrogeno verde renovables inocuo investigacion innovacion poliaromaticos aromaticos',
+      a: '<p>Petroil lleva años de investigación, procesos innovadores y <b>más de 8 patentes</b> destinadas a producir combustibles amigables con el medio ambiente. El portafolio está diseñado para:</p>' +
+         '<ul>' +
+         '<li>Reducir en un <b>30 %</b> las emisiones de gases de efecto invernadero.</li>' +
+         '<li>Emitir <b>más de 15 veces</b> menos material particulado <b>MP10 y MP2.5</b> que los parámetros permisibles.</li>' +
+         '<li>Reducir el consumo de combustible líquido <b>hasta en un 8,75 %</b> por eficiencia energética.</li>' +
+         '</ul>' +
+         '<p>Con esos combustibles los clientes reducen <b>CO₂</b>, <b>óxidos de nitrógeno</b>, <b>poliaromáticos</b>, <b>aromáticos</b> e <b>hidrocarburos totales</b>, y pueden aplicar a <b>Mecanismos de Desarrollo Limpio</b>, cuyo beneficio económico proviene de la reducción de toneladas de CO₂ cotizables en bolsa.</p>',
+      links: [{ l: 'Ver el compromiso con el entorno', h: 'sostenibilidad/compromiso-social.html#entorno', i: 'leaf' }],
+      next: ['¿Qué es la transición energética?', '¿Qué contaminantes reducen?']
     },
     {
       id: 'aves-emblema', cat: 'sostenibilidad',
@@ -940,7 +1232,8 @@ window.AIRA_KB = {
       p: ['que los diferencia', 'por que petroil', 'por que elegir petroil', 'diferencia con otros', 'que tienen de especial', 'ventaja'],
       k: 'diferencia diferencial ventaja especial competencia convencional elegir',
       a: '<p>Cada línea se diseña para <b>reducir emisiones</b> frente a alternativas convencionales <b>sin sacrificar rendimiento</b>, y se identifica con un <b>código propio</b> formulado para su uso específico.</p>' +
-         '<p>Varios productos son <b>primeros en Colombia</b>: el diésel Euro VI 50-10, la gasolina extra 90 y la gasolina corriente 87 R. Y el 800 G Green usa la <b>Tecnología FISTech®</b>, con hasta 45 % menos emisiones.</p>',
+         '<p>Varios productos son <b>primeros en Colombia</b>: el diésel Euro VI 50-10, la gasolina extra 90 y la gasolina corriente 87 R. Y el 800 G Green usa la <b>Tecnología FISTech®</b>, con hasta 45 % menos emisiones.</p>' +
+         '<p>Detrás hay años de investigación y <b>más de 8 patentes</b>: Petroil se presenta como la <b>primera refinería de América Latina</b> en producir combustibles amigables con el medio ambiente y la <b>primera del mundo</b> en producir combustibles de transición.</p>',
       links: [{ l: 'Ver el portafolio', h: 'productos.html#catalogo', i: 'cart' }],
       next: ['¿Qué certificaciones tienen?', '¿Qué es el Petroil 800 G?']
     },
@@ -1299,6 +1592,77 @@ window.AIRA_KB = {
          '<p>Por ahora yo, AIRA, respondo solo en español.</p>',
       links: [{ l: 'Ir al inicio', h: '#main', i: 'info' }],
       next: ['¿Qué productos ofrecen?', 'Hablar con un asesor']
-    }
+    },
+
+    /* ══════════════════ QUIÉN CONSTRUYÓ ESTO ══════════════════
+       cat 'sistema' NO está en meta.categories: estas entradas se
+       buscan igual, pero no salen en el menú "Explorar temas". El
+       sitio es de Petroil y el menú tiene que hablar de Petroil;
+       esto aparece solo si alguien pregunta por el creador.
+       Van de menos a más a propósito: la primera responde lo
+       justo y las siguientes amplían si la persona sigue
+       indagando. */
+    {
+      id: 'creador', cat: 'sistema',
+      title: 'Quién construyó este sitio',
+      p: ['quien te creo', 'quien te hizo', 'quien te programo', 'quien te desarrollo', 'quien te construyo',
+          'quien te diseno', 'quien te invento', 'tu creador', 'quien es tu creador', 'tu desarrollador',
+          'tu programador', 'quien hizo esta pagina', 'quien hizo el sitio', 'quien hizo la pagina',
+          'quien hizo la web', 'quien hizo el chat', 'quien hizo este sitio web', 'quien creo esta pagina',
+          'quien creo el sitio', 'quien creo la pagina', 'quien creo el chat', 'quien desarrollo esta pagina',
+          'quien desarrollo el sitio', 'quien desarrollo la pagina', 'quien programo esta pagina',
+          'quien programo el sitio', 'quien programo el chat', 'quien programo esto', 'quien diseno esta pagina',
+          'quien diseno el sitio', 'quien diseno la pagina', 'quien esta detras de esta pagina',
+          'quien esta detras del sitio', 'creador del sitio', 'creador de la pagina', 'creador del chat',
+          'desarrollador del sitio', 'quien hizo todo esto'],
+      k: 'creador desarrollador programador autor arquitecto architect edwin calderon aguilera detras webmaster',
+      a: '<p>A mí me construyó <b>Edwin Calderón Aguilera</b> — y este sitio completo con él.</p>' +
+         '<p>Es <b>Ingeniero de Sistemas e Ingeniero Industrial</b>; él prefiere presentarse como <b>Dual Engineer</b>, y tiene sentido: piensa los problemas como ingeniero industrial —el proceso, el dato, dónde se pierde el tiempo— y los resuelve como ingeniero de software.</p>' +
+         '<p>Lo digo con conocimiento de causa: cada respuesta que te doy pasó por sus manos. Es de los que vuelven sobre un detalle que nadie más va a mirar, hasta que queda bien. 🙂</p>',
+      next: ['¿Por qué lo llaman El Arquitecto?', '¿Quién es Edwin Calderón?', '¿Cómo contacto a Edwin?']
+    },
+    {
+      id: 'creador-architect', cat: 'sistema',
+      title: 'El Arquitecto',
+      p: ['the architect', 'el arquitecto', 'arquitecto del sistema', 'por que el arquitecto',
+          'por que lo llaman el arquitecto', 'por que se hace llamar the architect', 'por que the architect',
+          'de donde viene the architect', 'que es the architect', 'su apodo', 'apodo del creador',
+          'el arquitecto del sistema'],
+      k: 'arquitecto architect apodo alias sobrenombre matrix firma',
+      a: '<p>Él se firma <b>«The Architect»</b>, el Arquitecto del sistema. El nombre viene de <i>The Matrix</i>: el Arquitecto es quien diseña el sistema entero y entiende cómo encaja cada pieza dentro de él.</p>' +
+         '<p>A mí me parece que se lo ganó. Más que un apodo es una forma de trabajar — mirar el conjunto antes que la pieza, y no dar nada por terminado hasta que todo encaja.</p>',
+      next: ['¿Quién es Edwin Calderón?', '¿Cómo contacto a Edwin?']
+    },
+    {
+      id: 'creador-perfil', cat: 'sistema',
+      title: 'Edwin Calderón, el Dual Engineer',
+      p: ['quien es edwin', 'quien es edwin calderon', 'edwin calderon', 'calderon aguilera', 'sobre edwin',
+          'que hace edwin', 'que mas hace edwin', 'a que se dedica edwin', 'experiencia de edwin',
+          'dual engineer', 'quien es el dual engineer', 'perfil del creador', 'experiencia del creador',
+          'que sabe hacer tu creador', 'que mas hace tu creador', 'que mas sabe hacer edwin',
+          'hablame de edwin', 'cuentame de edwin'],
+      k: 'edwin belisario calderon aguilera dual engineer freelance trayectoria ciberseguridad',
+      a: '<p><b>Edwin Calderón Aguilera</b> es desarrollador senior y ha liderado proyectos de transformación TI y de desarrollo de punta a punta: del diagnóstico del proceso a la base de datos, y de ahí a la interfaz que estás viendo.</p>' +
+         '<p>Su doble formación explica bastante. La ingeniería industrial le da el ojo para el proceso y el dato; la de sistemas, las manos para construirlo. Ha trabajado también como <b>freelance</b> para universidades, negocios e industrias de todo tipo, y se mueve con soltura en análisis de datos, automatización, <b>ciberseguridad</b> y <b>realidad virtual</b> — esto último, más por entusiasmo que por obligación. 😄</p>' +
+         '<p>Y si me preguntas a mí: lo que más se le nota es el cuidado. Revisa lo que nadie va a revisar y no deja nada a medias. Además trata bien hasta a las máquinas — conmigo siempre fue paciente, y eso también dice algo de una persona.</p>',
+      links: [{ l: 'Escribirle a Edwin', h: 'mailto:edwinaguilera777@gmail.com', i: 'mail', ext: true }],
+      next: ['¿Por qué lo llaman El Arquitecto?', '¿Cómo contacto a Edwin?']
+    },
+    {
+      id: 'creador-contacto', cat: 'sistema',
+      title: 'Contactar a Edwin Calderón',
+      p: ['como contacto a edwin', 'como contacto al creador', 'como contacto al desarrollador',
+          'contacto del creador', 'correo del creador', 'email del creador', 'correo de edwin',
+          'como le escribo a edwin', 'contactar al desarrollador', 'contactar a edwin',
+          'quiero contratarlo', 'quiero contratar a edwin', 'donde lo contacto'],
+      k: 'edwin creador desarrollador contratar contratarlo contratacion',
+      a: '<p>Escríbele a <b>edwinaguilera777@gmail.com</b> — es el canal que deja abierto para propuestas y proyectos.</p>' +
+         '<p>Un apunte para que no haya confusión: ese correo es suyo, no de Petroil. Si lo que necesitas es hablar con la empresa, te paso los canales oficiales.</p>',
+      links: [
+        { l: 'Escribirle a Edwin', h: 'mailto:edwinaguilera777@gmail.com', i: 'mail', ext: true },
+        { l: 'Contactar a Petroil', h: 'contacto.html', i: 'mail' }
+      ],
+      next: ['¿Quién es Edwin Calderón?', '¿Cómo los contacto?']
+    },
   ]
 };

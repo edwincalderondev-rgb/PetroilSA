@@ -9,8 +9,11 @@
    Cómo entiende una pregunta (pipeline de 4 pasos):
      1. normalize()  — minúsculas, sin tildes, sin signos. Así
                        "¿DIÉSEL?" y "diesel" son la misma cadena.
-     2. intents      — saludos, gracias, despedidas y pedidos de
-                       ayuda se resuelven antes de tocar la base.
+     2. charla       — saludos, cortesía, "¿puedes ayudarme?",
+                       reclamos… Las reglas y sus textos viven en
+                       KB.smalltalk (aira-kb.js); aquí solo se
+                       eligen, se rellenan ({saludo}, {hora}…) y se
+                       decide si pueden ganarle a un tema.
      3. score()      — cada entrada de la base recibe puntos por
                        frase exacta (mucho), palabra clave (medio),
                        palabra del título (medio) y palabra
@@ -23,6 +26,7 @@
      AIRA.open()            abre el panel
      AIRA.close()           lo cierra
      AIRA.ask('cotizar')    lo abre y hace esa pregunta
+     AIRA.probe('hola')     qué contestaría y por qué (depuración)
    ============================================================ */
 (function () {
   'use strict';
@@ -266,67 +270,125 @@
   }
 
   /* ============================================================
-     3 · INTENCIONES CONVERSACIONALES
-     Cosas que no son preguntas sobre Petroil pero que un chat
-     tiene que saber responder para no sentirse un buscador.
-     ============================================================ */
-  var INTENTS = [
-    {
-      id: 'saludo',
-      test: /^(hola|holi|buenas|buen dia|buenos dias|buenas tardes|buenas noches|hey|que tal|saludos|alo|epa)\b/,
-      reply: function () {
-        return {
-          html: '<p>¡Hola! 👋 Soy <b>AIRA</b>, la asistente virtual de Petroil.</p>' +
-                '<p>Puedo contarte sobre nuestros <b>combustibles</b>, las <b>normas</b> que cumplimos, <b>dónde estamos</b> o cómo <b>pedir una cotización</b>. ¿Qué necesitas?</p>',
-          chips: ['¿Qué productos ofrecen?', '¿Qué es Petroil?', 'Quiero cotizar']
-        };
-      }
-    },
-    {
-      id: 'gracias',
-      test: /\b(gracias|muchas gracias|mil gracias|te pasaste|excelente|perfecto|genial|muy amable)\b/,
-      reply: function () {
-        return {
-          html: '<p>¡Con gusto! 😊 Si te queda otra duda sobre Petroil, aquí sigo.</p>',
-          chips: ['¿Qué productos ofrecen?', 'Hablar con un asesor']
-        };
-      }
-    },
-    {
-      id: 'despedida',
-      test: /^(chao|adios|hasta luego|nos vemos|bye|listo gracias|eso es todo)\b/,
-      reply: function () {
-        return {
-          html: '<p>¡Hasta pronto! 👋 Recuerda que puedes escribirnos por WhatsApp al <b>+57 311 333 7046</b> cuando quieras.</p>',
-          chips: ['Hablar con un asesor']
-        };
-      }
-    },
-    {
-      id: 'ayuda',
-      test: /\b(que puedes hacer|que sabes|en que me puedes ayudar|ayuda|como funcionas|quien eres|eres un bot|eres humano|eres real)\b/,
-      reply: function () {
-        return {
-          html: '<p>Soy <b>AIRA</b>, un asistente automático del sitio de Petroil. No soy una persona: respondo con la información publicada en esta web.</p>' +
-                '<p>Puedo ayudarte con:</p>' +
-                '<ul><li>Los <b>15 productos</b> del portafolio y sus fichas técnicas</li>' +
-                '<li>Normas y certificaciones (<b>ISO, Euro VI, ISO 8217</b>)</li>' +
-                '<li>Qué combustible sirve para <b>tu sector</b></li>' +
-                '<li><b>Cotizaciones</b>, sedes y canales de contacto</li></ul>' +
-                '<p>Para temas comerciales puntuales, te paso con un asesor humano.</p>',
-          chips: ['¿Qué productos ofrecen?', 'Hablar con un asesor', '¿Dónde están ubicados?']
-        };
-      }
-    }
-  ];
+     3 · CONVERSACIÓN · la capa "humana"
+     Lo que una persona escribe sin que sea todavía una pregunta
+     sobre Petroil: saludar, agradecer, pedir un favor, preguntar
+     si hay alguien al otro lado, reclamar. Sin esta capa el chat
+     contesta "no encontré información sobre «puedes ayudarme?»",
+     que es justo lo que lo delata como un buscador con burbujas.
 
-  function matchIntent(text) {
+     Las reglas y TODOS sus textos viven en aira-kb.js
+     (KB.smalltalk, documentado allí). Aquí solo está la mecánica
+     de elegir una, rellenarla y decidir cuándo puede ganarle a un
+     tema de la base.
+     ============================================================ */
+
+  /* Contestar siempre con las mismas palabras exactas es lo primero
+     que delata a una máquina. Cuando la base trae varias versiones
+     de un texto se elige una al azar, evitando la que se usó la vez
+     anterior: dos "¡Con gusto!" seguidos se notan muchísimo más que
+     dos frases distintas. */
+  var lastVariant = {};
+  function pick(value, id) {
+    if (!Array.isArray(value)) return value;
+    if (value.length === 1) return value[0];
+    var i, tries = 0;
+    do { i = Math.floor(Math.random() * value.length); }
+    while (i === lastVariant[id] && ++tries < 4);
+    lastVariant[id] = i;
+    return value[i];
+  }
+
+  /* Saludo según la hora REAL del equipo de quien escribe. Responder
+     "buenos días" a las once de la noche es de las cosas que más
+     rápido rompen la ilusión. */
+  function greeting() {
+    var h = new Date().getHours();
+    return h < 12 ? 'Buenos días' : (h < 19 ? 'Buenas tardes' : 'Buenas noches');
+  }
+
+  var MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+                'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  var DAYS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+  function today() {
+    var d = new Date();
+    return DAYS[d.getDay()] + ' ' + d.getDate() + ' de ' + MONTHS[d.getMonth()] + ' de ' + d.getFullYear();
+  }
+
+  /* Marcadores que la base puede escribir dentro de un texto de
+     charla: {saludo} {hora} {fecha} {tema}. */
+  function fill(html, topic) {
+    return html
+      .replace(/\{saludo\}/g, greeting())
+      .replace(/\{hora\}/g, now())
+      .replace(/\{fecha\}/g, today())
+      .replace(/\{tema\}/g, esc(topic || 'eso'));
+  }
+
+  /* Las expresiones regulares de la base son texto: se compilan una
+     sola vez, no en cada pulsación. */
+  var CHAT = (KB.smalltalk || []).map(function (s) {
+    return { s: s, re: new RegExp(s.re) };
+  });
+
+  /* Elige una regla de charla, si alguna aplica.
+
+     topScore es lo que puntuó el MEJOR tema de la base para esta
+     misma pregunta, y es lo que impide que la cortesía tape el dato:
+       · una regla normal solo gana si la base no está segura
+         (< CONFIDENT) — así "hola, ¿qué es una PQRS?" responde PQRSF;
+       · una regla marcada weak, que son las de palabras muy amplias
+         ("puedes", "ayúdame", "ok"), solo gana si la base no reconoció
+         nada (< MAYBE) — así "¿me puedes dar el precio del 50/10?"
+         responde el precio y no "claro, dime qué necesitas";
+       · una marcada force gana siempre. Es para lo que no puede ser
+         otra cosa: "¿cómo te llamas?" puntuaba 91 en el tema CONTACTO
+         porque el corrector de erratas convierte "llamas" en "llamar",
+         que está declarado como sinónimo de "contactar". */
+  function matchChat(text, topScore) {
     var norm = normalize(text);
-    for (var i = 0; i < INTENTS.length; i++) {
-      if (INTENTS[i].test.test(norm)) return INTENTS[i].reply();
+    var words = norm ? norm.split(' ').length : 0;
+    for (var i = 0; i < CHAT.length; i++) {
+      var c = CHAT[i], s = c.s;
+      if (!s.force && topScore >= (s.weak ? MAYBE : CONFIDENT)) continue;
+      if (s.max && words > s.max) continue;
+      if (s.ctx && !lastEntry) continue;
+      if (!c.re.test(norm)) continue;
+      return {
+        id: s.id,
+        html: fill(pick(s.a, s.id), lastEntry && lastEntry.title),
+        links: s.links || (s.ctx && lastEntry ? lastEntry.links : null),
+        chips: s.chips ||
+               (s.ctx && lastEntry && lastEntry.next) ||
+               ['¿Qué productos ofrecen?', 'Hablar con un asesor']
+      };
     }
     return null;
   }
+
+  /* Fórmulas de cortesía con las que la gente ENVUELVE una pregunta
+     de verdad: "¿me podrías decir el precio del 50/10?". Cuando la
+     base sí sabe la respuesta se contesta el dato, faltaría más, pero
+     abrirla con un "claro" hace que se lea como una respuesta y no
+     como el resultado de un buscador. Solo se usa cuando hay certeza
+     (ver respondWith): un "claro que sí" seguido de "no estoy segura
+     de haber entendido" suena a dos personas distintas. */
+  var COURTESY = /\b(puedes|puede|podrias|podrian|me ayudas|ayudame|ayudarme|me colaboras|hazme|me haces|por favor|porfa|porfavor|necesito que|quiero que|me dices|me podrias decir|serias tan amable)\b/;
+  var LEADS = ['<p>Claro 🙂</p>', '<p>Con gusto.</p>', '<p>Por supuesto 🙂</p>', '<p>Claro que sí.</p>'];
+
+  function courtesyLead(text) {
+    return COURTESY.test(normalize(text)) ? pick(LEADS, 'lead') : '';
+  }
+
+  /* La frase de "creo que preguntas por esto" también rota: es la que
+     más se repite cuando alguien tantea el chat con varias preguntas
+     seguidas. */
+  var HEDGES = [
+    'No estoy segura de haber entendido, pero creo que preguntas por esto:',
+    'Puede que no sea exactamente lo que buscas; esto es lo más parecido que tengo:',
+    'Déjame intentarlo — creo que vas por aquí:'
+  ];
 
   /* ============================================================
      4 · RENDERIZADO
@@ -612,7 +674,7 @@
     return Math.min(1300, 420 + chars * 3);
   }
 
-  function respondWith(entry, altList) {
+  function respondWith(entry, altList, lead) {
     busy = true;
     lastEntry = entry;
     var t = showTyping();
@@ -620,7 +682,9 @@
       t.remove();
       var html = entry.a;
       if (altList && altList.length) {
-        html = '<p class="aira-hedge">No estoy segura de haber entendido, pero creo que preguntas por esto:</p>' + html;
+        html = '<p class="aira-hedge">' + pick(HEDGES, 'hedge') + '</p>' + html;
+      } else if (lead) {
+        html = lead + html;
       }
       /* scroll:false en las dos burbujas y un solo anclaje al final:
          si cada una se colocara al insertarse, la de alternativas
@@ -642,20 +706,39 @@
     }, thinkTime(entry.a));
   }
 
-  function respondUnknown(text) {
+  /* El "no sé" también rota. Es la frase que más veces ve quien está
+     tanteando el chat, y repetirla palabra por palabra es lo que hace
+     que se sienta un formulario que devuelve error. */
+  var UNKNOWN_LEAD = [
+    '<p>Mmm… eso no lo tengo publicado en el sitio de Petroil. 😕</p>',
+    '<p>Ahí me agarraste: no encuentro nada sobre <b>«{q}»</b> en la web de Petroil. 😕</p>',
+    '<p>Esa no me la sé — busqué <b>«{q}»</b> y no aparece publicado en el sitio.</p>'
+  ];
+
+  function respondUnknown(text, results) {
     busy = true;
     var t = showTyping();
     setTimeout(function () {
       t.remove();
       /* Cuando no hay coincidencia, lo peor que puede hacer un chat es
-         repetir "no entendí". Se ofrece salida: temas y un humano. */
-      var picks = ['productos-general', 'cotizar', 'ubicacion', 'iso']
-        .map(function (id) { return KB.entries.filter(function (e) { return e.id === id; })[0]; })
-        .filter(Boolean);
+         repetir "no entendí". Se ofrece salida: temas y un humano. Si
+         la base rozó algo —puntaje por debajo del umbral pero no cero—
+         se proponen ESOS temas en vez de la lista fija: se nota que lo
+         intentó, en vez de contestar lo mismo pase lo que pase. */
+      var near = (results || [])
+        .filter(function (r) { return r.score >= MAYBE / 2; })
+        .slice(0, 3)
+        .map(function (r) { return r.entry; });
+      var picks = near.length >= 2 ? near
+        : ['productos-general', 'cotizar', 'ubicacion', 'iso']
+            .map(function (id) { return KB.entries.filter(function (e) { return e.id === id; })[0]; })
+            .filter(Boolean);
 
       addBot(
-        '<p>Perdón, no encontré información sobre <b>«' + esc(text.slice(0, 60)) + '»</b> en el sitio de Petroil. 😕</p>' +
-        '<p>Intenta con otras palabras, o mira uno de estos temas:</p>' +
+        pick(UNKNOWN_LEAD, 'unknown').replace(/\{q\}/g, esc(text.slice(0, 60))) +
+        '<p>' + (near.length >= 2
+          ? 'Lo más cercano que tengo es esto — mira si alguno te sirve:'
+          : 'Dímelo con otras palabras y lo intento de nuevo, o mira uno de estos temas:') + '</p>' +
         suggestList(picks) +
         '<p class="aira-hedge">Si es una consulta comercial concreta, un asesor la resuelve mejor que yo.</p>',
         { feedback: false, links: [{ l: 'Hablar con un asesor por WhatsApp', i: 'wa', ext: true,
@@ -678,36 +761,39 @@
     input.value = '';
     setChips([]);
 
-    /* Lo conversacional (hola, gracias, ¿quién eres?) solo gana si la
-       pregunta NO trae también un tema que la base reconozca con
-       seguridad. Antes se evaluaba primero y "hola, ¿qué es una PQRS?"
-       o "necesito ayuda para cotizar" recibían un saludo genérico en
-       vez de la respuesta: la palabra "hola"/"ayuda" tapaba el tema. */
+    /* La charla (hola, gracias, "¿puedes ayudarme?") solo gana si la
+       pregunta NO trae también un tema que la base reconozca. Antes se
+       evaluaba primero y "hola, ¿qué es una PQRS?" o "necesito ayuda
+       para cotizar" recibían un saludo genérico en vez de la respuesta:
+       la palabra "hola"/"ayuda" tapaba el tema. Por eso matchChat
+       recibe el puntaje del mejor tema y decide con él. */
     var results = search(text);
-    var intent = matchIntent(text);
-    if (intent && !(results.length && results[0].score >= CONFIDENT)) {
+    var topScore = results.length ? results[0].score : 0;
+    var chat = matchChat(text, topScore);
+    if (chat) {
       busy = true;
-      var ti = showTyping();
+      var tc = showTyping();
       setTimeout(function () {
-        ti.remove();
-        addBot(intent.html, { feedback: false });
-        setChips(intent.chips);
+        tc.remove();
+        addBot(chat.html, { feedback: false, links: chat.links });
+        setChips(chat.chips);
         busy = false;
         save();
-      }, thinkTime(intent.html));
+      }, thinkTime(chat.html));
       return;
     }
 
-    if (!results.length || results[0].score < MAYBE) { respondUnknown(text); return; }
+    if (topScore < MAYBE) { respondUnknown(text, results); return; }
 
     var best = results[0];
+    var unsure = best.score < CONFIDENT;
     /* Alternativas: solo las que estén razonablemente cerca del
        ganador. Listar opciones lejanas ensucia más de lo que ayuda. */
-    var alts = results.slice(1, 4)
+    var alts = unsure ? results.slice(1, 4)
       .filter(function (r) { return r.score >= best.score * 0.45; })
-      .map(function (r) { return r.entry; });
+      .map(function (r) { return r.entry; }) : null;
 
-    respondWith(best.entry, best.score < CONFIDENT ? alts : null);
+    respondWith(best.entry, alts, unsure ? '' : courtesyLead(text));
     save();
   }
 
@@ -920,6 +1006,25 @@
       return search(q).slice(0, 6).map(function (r) {
         return { id: r.entry.id, title: r.entry.title, score: Math.round(r.score) };
       });
+    },
+
+    /* Igual que match(), pero contando también la capa de charla:
+           AIRA.probe('puedes hacer algo por mi?')
+       → { chat: 'peticion', top: 0, results: [] }
+       Si "chat" trae un id, esa regla de KB.smalltalk es la que va a
+       contestar y el tema de results[0] no se usa. Es la forma rápida
+       de ver si una regla nueva se está comiendo preguntas reales. */
+    probe: function (q) {
+      var r = search(q);
+      var top = r.length ? r[0].score : 0;
+      var c = matchChat(q, top);
+      return {
+        chat: c ? c.id : null,
+        top: Math.round(top),
+        results: r.slice(0, 5).map(function (x) {
+          return { id: x.entry.id, title: x.entry.title, score: Math.round(x.score) };
+        })
+      };
     }
   };
 

@@ -9,7 +9,7 @@
 
    Misma estructura que sgi.css y responsabilidad-ambiental.css: sin
    columna .toc (sería la misma navegación del navbar inferior), prosa
-   acotada a 74ch y bloques visuales a ancho completo.
+   acotada a la medida de lectura y bloques visuales a ancho completo.
 
    Colores: únicamente alias de la paleta oficial declarada en base.css
    (--brand-* y sus alias históricos). El único hex fuera de manual es
@@ -25,10 +25,14 @@
 
 /* Medida de lectura: sin la columna del TOC la prosa ocuparía los
    ~1.136 px del contenedor. Los bloques visuales sí usan todo el ancho. */
+/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
+   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
+   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
+   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .pd-block > p,
 .pd-block > ul,
 .pd-block > ol,
-.pd-block > blockquote{max-width:74ch;}
+.pd-block > blockquote{max-width:54rem;}
 /* Las listas que son rejillas visuales (no prosa) sí van a ancho completo. */
 .pd-block > .pd-norms,
 .pd-block > .pd-principles,

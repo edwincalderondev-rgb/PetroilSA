@@ -22,8 +22,12 @@
 /* Medida de lectura: sin la columna del TOC (navegación duplicada del
    navbar inferior) la prosa ocuparía los ~1.136 px del contenedor. Los
    bloques visuales sí usan todo el ancho. */
+/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
+   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
+   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
+   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .sgi-block > p,
-.sgi-block > blockquote{max-width:74ch;}
+.sgi-block > blockquote{max-width:54rem;}
 .prose .sgi-lead{font-size:1.06rem; line-height:1.75; color:var(--ink);}
 
 /* ── INFOGRAFÍA DE PROPÓSITOS ───────────────────────────────────────────

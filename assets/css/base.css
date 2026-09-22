@@ -145,3 +145,106 @@ button{font-family:inherit; cursor:pointer;}
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none; }
 }
+
+/* ============================================
+   JUSTIFICADO DE PROSA (2026-09-21)
+   ============================================
+   Todo el texto de lectura corrida del sitio va justificado a ambos
+   márgenes. La lista vive en UN solo bloque —y no repartida por cada
+   hoja— para que el criterio se vea de un vistazo: qué se justifica y
+   qué no. Mismo motivo por el que los --brand-* viven solo aquí.
+
+   `hyphens:auto` NO es opcional. Sin partición de palabras, el español
+   justificado abre "ríos" de espacio en blanco enormes: palabras largas
+   ("responsabilidad", "almacenamiento", "internacionales") no caben al
+   final de la línea y el navegador estira los espacios de la línea
+   entera para compensar. Con partición, el hueco máximo se reparte.
+   Depende del atributo lang del <html>, que i18n.js ya reescribe al
+   cambiar de idioma (assets/js/i18n.js), así que la partición sigue al
+   idioma activo sin tocar nada más.
+
+   `hyphenate-limit-chars:6 3 3` = no partir palabras de menos de 6
+   letras, ni dejar menos de 3 letras a cada lado del guion (evita
+   "a-normal" y renglones que terminan en una sola letra). Firefox la
+   ignora y solo parte un poco más; no rompe nada.
+
+   OJO al revisar con Edge headless: ahí `hyphens:auto` NO hace nada —
+   ni en español ni en inglés. Chrome/Edge no traen los diccionarios de
+   partición compilados, los bajan por el actualizador de componentes, y
+   un perfil recién creado con --user-data-dir propio nunca los tiene.
+   Así que en las capturas las columnas estrechas salen con más hueco
+   entre palabras del que verá el usuario real. No lo "arregles"
+   quitando el justificado: comprueba en un navegador normal (es el
+   mismo tipo de artefacto que el .reveal a medio fundir, ver CLAUDE.md).
+
+   NO se justifica, a propósito:
+   - Texto centrado (.section-head, .stat-card, .pq-head, hero del home):
+     justificar y centrar a la vez no tiene sentido.
+   - Micro-copy de tarjetas (.icon-item, .process-step, .ra-plan,
+     .sgi-pillar, .pq-card, .product-desc, .qs-route-card...): menos de
+     ~40 caracteres por línea, donde cada hueco entre palabras quedaría
+     del ancho de un dedo.
+   - Citas (blockquote, .qs-quote, .pds-side-card): son de 2-3 líneas en
+     cursiva y la última queda suelta; la bandera derecha se ve mejor.
+   - Tablas, formularios, navegación y demás texto de interfaz.
+   ============================================ */
+/* Columna de lectura de artículos y páginas de contenido: noticias,
+   sostenibilidad (compromiso, ambiental, SGI), legal y la sección
+   "Descripción" de las fichas técnicas. Es `> p` a propósito: el texto
+   de las tarjetas que viven dentro de .prose se queda en bandera. */
+.prose > p,
+.ra-block > p,
+.sgi-block > p,
+.pd-block > p,
+/* Paneles y cajas de esas mismas páginas cuyo contenido sí es prosa. */
+.prose .pd-notice p,
+.prose .pd-callout p,
+.prose .pd-channels > p,
+.prose .sgi-scope p,
+.ra-cert-body p,
+.iso-row p,
+/* Entradilla de los heros de página interior (.page-hero y sus variantes
+   .pds-hero, .ra-hero, .pq-hero...). Es texto de cuerpo (1.02rem) y
+   siempre alineado a la izquierda, así que se justifica igual que la
+   prosa; el breadcrumb es un <div> y no entra.
+   Los heros grandes de index, productos y ¿quiénes somos? quedan fuera a
+   propósito: su entradilla es tipografía de presentación (1.15-1.25rem,
+   2-3 líneas) y además .hero-inner pasa a text-align:center por debajo de
+   980 px — justificar ahí chocaría con el centrado. */
+.page-hero p,
+/* Home. */
+.about-text p,
+/* Catálogo de productos. */
+.prod-portfolio-head p,
+.prod-portfolio-aside p,
+.prod-sectors p,
+.prod-contact p,
+/* ¿Quiénes somos?: tarjetas de esencia y biografías del equipo. La
+   reseña corta solo se justifica en la tarjeta destacada (la que ocupa
+   las tres columnas): en las tarjetas normales la columna es de unos 40
+   caracteres y los huecos entre palabras se ven. */
+.qs-essence-card p,
+/* Compromiso social: las tres familias de tarjetas con texto alineado a
+   la izquierda. .cs-pillar es una columna de ~34 caracteres —por debajo
+   del umbral de este bloque— pero en bandera la rejilla de cuatro se veía
+   deshilachada, así que se justifica igual y se compensa con una partición
+   de palabras más agresiva (hyphenate-limit-chars:5 2 2 en
+   compromiso-social.css). Lo que NO entra: las cabeceras .cs-head, la
+   franja del principio, los resultados, las cifras, la nota y el CTA, que
+   van centrados. */
+.cs-face p,
+.cs-pillar p,
+.cs-card p,
+.leader-card:first-child .leader-bio-short,
+.leader-modal-bio p,
+/* Fichas técnicas: ave emblema y franja de cotización. */
+.pds-emblem p,
+.pds-quote p,
+/* PQRSF: respuestas de las preguntas frecuentes. */
+.pq-faq-list details p{
+  text-align:justify;
+  text-justify:inter-word;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+  hyphenate-limit-chars:6 3 3;
+}

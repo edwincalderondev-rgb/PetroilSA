@@ -22,8 +22,12 @@
    del navbar inferior) la prosa pasa a ocupar los ~1.136 px del
    contenedor y las líneas quedan larguísimas; los bloques visuales
    (.ra-criteria, .ra-plans, .ra-cert) sí usan todo el ancho. */
+/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
+   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
+   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
+   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .ra-block > p,
-.ra-block > blockquote{max-width:74ch;}
+.ra-block > blockquote{max-width:54rem;}
 .prose .ra-lead{font-size:1.06rem; line-height:1.75; color:var(--ink);}
 
 /* Este hero lleva un texto más largo que el resto de páginas internas. */
