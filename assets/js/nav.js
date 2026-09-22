@@ -107,6 +107,104 @@ function updateHeaderCompaction(){
   siteHeader.classList.toggle('navbar-scrolled', headerCompact);
 }
 
+// ============================================
+// SEGUNDO ESCALÓN: RETIRADA DE LA FRANJA BLANCA
+// Cuando el visitante sigue bajando después de que el header ya se compactó,
+// el header ENTERO se desliza hacia arriba la altura exacta de .navbar-top:
+// la franja blanca sale por encima del viewport y la ruta oscura queda
+// pegada al tope, con el logotipo en negativo (blanco/gris) como única
+// identidad visible. Al primer gesto hacia arriba vuelve la franja blanca.
+//
+// Se hace con transform y no colapsando alturas: el header sigue ocupando
+// lo mismo en el flujo, así que no hay reflow ni salto del scroll.
+// Solo por encima de 960px, el mismo breakpoint que el CSS: por debajo de
+// 721px .navbar-route está oculta y la franja blanca ES el header entero,
+// y entre 721 y 959px el logotipo chocaría con "Servicios". Se acota aquí
+// además del CSS para no dejar la clase pegada al redimensionar.
+// ============================================
+const headerTopBar = siteHeader ? siteHeader.querySelector('.navbar-top') : null;
+// nav.js es compartido por las 27 páginas, pero el estado solo se activa en
+// las que llevan el logotipo negativo dentro de .navbar-route (#routeLogo).
+// De momento solo index.html: sin esta condición, el resto se quedaría sin
+// franja blanca Y sin logotipo, que es peor que no tener el efecto. Para
+// llevarlo a otra página basta con copiar ahí el bloque <a class="route-logo">.
+const routeLogoEl = document.getElementById('routeLogo');
+const wideHeader = window.matchMedia('(min-width:960px)');
+
+// Umbral de bajada mínimo antes de poder esconder la franja (por encima del
+// de compactación: primero encoge, luego desaparece), umbral por debajo del
+// cual siempre vuelve, y píxeles acumulados en un sentido que hacen falta
+// para dar el gesto por intencional (filtra la inercia táctil y el rebote).
+const HEADER_HIDE_AT = 170;
+const HEADER_SHOW_AT = 90;
+const HEADER_DIR_THRESHOLD = 10;
+let topHidden = false;
+let dirAccum = 0;
+let retractUntil = 0;
+let retractRaf = null;
+
+// La distancia a subir es la altura real de la franja, que cambia entre el
+// estado normal (~121px) y el compacto (~101px) y podría cambiar más si se
+// retoca el logo o las fuentes tardan en asentarse. Un ResizeObserver la
+// mantiene al día sola, incluso a mitad de la transición de compactación.
+function syncTopBarHeight(){
+  if(!siteHeader || !headerTopBar) return;
+  siteHeader.style.setProperty('--navbar-top-h', headerTopBar.offsetHeight + 'px');
+}
+
+// Con el logotipo a la izquierda, la línea de la ruta arranca más a la
+// derecha para no pasar por debajo, y ese `left` del ::before viaja en una
+// transición de .34s. measureCenters() lo lee ya calculado, así que durante
+// la transición devuelve el valor intermedio de ese instante: remidiendo en
+// cada frame mientras dura, el líquido acompaña al logotipo en vez de dar
+// un salto al final (que es lo que pasaba midiendo una sola vez).
+function trackRetractTransition(){
+  retractUntil = performance.now() + 480;
+  if(retractRaf) return;
+  const step = () => {
+    measureCenters();
+    updateRouteFill();
+    if(performance.now() < retractUntil){ retractRaf = requestAnimationFrame(step); }
+    else { retractRaf = null; }
+  };
+  retractRaf = requestAnimationFrame(step);
+}
+
+function setTopHidden(next){
+  if(!siteHeader || next === topHidden) return;
+  topHidden = next;
+  siteHeader.classList.toggle('navbar-hidetop', topHidden);
+  trackRetractTransition();
+}
+
+function updateTopRetraction(y, delta){
+  if(!siteHeader || !headerTopBar || !routeLogoEl) return;
+  if(!wideHeader.matches){ setTopHidden(false); return; }
+  if(delta){
+    // El acumulado se reinicia al cambiar de sentido: así basta un gesto
+    // corto hacia arriba para recuperar la franja aunque se venga de
+    // miles de píxeles de bajada.
+    if((delta > 0) !== (dirAccum > 0)) dirAccum = 0;
+    dirAccum += delta;
+  }
+  if(y <= HEADER_SHOW_AT) setTopHidden(false);
+  else if(dirAccum <= -HEADER_DIR_THRESHOLD) setTopHidden(false);
+  else if(dirAccum >= HEADER_DIR_THRESHOLD && y > HEADER_HIDE_AT) setTopHidden(true);
+}
+
+if(headerTopBar && routeLogoEl){
+  syncTopBarHeight();
+  if('ResizeObserver' in window) new ResizeObserver(syncTopBarHeight).observe(headerTopBar);
+  else window.addEventListener('resize', syncTopBarHeight);
+
+  // Los enlaces de la franja (idioma, Contacto...) siguen siendo
+  // tabulables cuando está fuera de pantalla: si el foco entra ahí por
+  // teclado, la franja vuelve para que se vea dónde está el foco.
+  headerTopBar.addEventListener('focusin', () => { dirAccum = 0; setTopHidden(false); });
+}
+
+wideHeader.addEventListener('change', () => updateTopRetraction(window.scrollY, 0));
+
 function updateLiquidBar(pct, direction){
   if(!progressFill) return;
   progressFill.style.width = pct + '%';
@@ -270,11 +368,13 @@ function updateRouteFill(){
 
 function onScroll(){
   const currentY = window.scrollY;
-  const direction = currentY > lastScrollY ? 'down' : currentY < lastScrollY ? 'up' : null;
+  const delta = currentY - lastScrollY;
+  const direction = delta > 0 ? 'down' : delta < 0 ? 'up' : null;
   lastScrollY = currentY;
 
   const pct = getScrollPercent();
   updateHeaderCompaction();
+  updateTopRetraction(currentY, delta);
   updateLiquidBar(pct, direction);
   updateRouteFill();
   scrollTicking = false;
@@ -288,6 +388,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 window.addEventListener('resize', () => {
+  updateTopRetraction(window.scrollY, 0);
   measureCenters();
   updateRouteFill();
 });

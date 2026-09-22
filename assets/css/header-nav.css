@@ -163,9 +163,10 @@ header.navbar{
    los círculos (no pasan entre el texto y el nodo): se posicionan con
    --route-line-y, el centro vertical real de los nodos. */
 .nav-links::before{
-  content:''; position:absolute; left:32px; right:32px;
+  content:''; position:absolute; left:var(--route-line-start, 32px); right:32px;
   top:var(--route-line-y); height:var(--route-line-thickness);
   transform:translateY(-50%);
+  transition:left .34s cubic-bezier(.4,0,.2,1);
   border-radius:calc(var(--route-line-thickness) / 2);
   background:linear-gradient(90deg,
     rgba(53,154,204,.4) 0%,
@@ -289,6 +290,74 @@ header.navbar.navbar-scrolled .navbar-top{
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.5),
     0 16px 34px -18px rgba(8,12,65,.32), 0 2px 0 rgba(8,12,65,.05);
+}
+
+/* ============================================
+   RETIRADA DE LA FRANJA BLANCA (2026-09-22)
+   Segundo escalón del header, después del modo compacto: si el visitante
+   sigue bajando, el header ENTERO se desliza hacia arriba exactamente la
+   altura de .navbar-top, de modo que la franja blanca sale por encima del
+   viewport y la ruta oscura queda pegada al tope. Al mismo tiempo aparece
+   el logotipo en versión negativa (blanco/gris) dentro de la franja
+   oscura, que es la única identidad visible mientras dura ese estado.
+
+   Se hace con transform y NO colapsando la altura de .navbar-top: el
+   header sigue ocupando en el flujo lo mismo de siempre, así que no hay
+   reflow, ni cambia el alto del documento, ni se produce el micro-salto
+   del scroll que provoca animar una altura. La distancia exacta viaja en
+   --navbar-top-h, que nav.js mantiene al día con un ResizeObserver (la
+   franja mide ~121px en reposo y ~101px ya compacta).
+
+   Solo a partir de 960px. Por debajo de 721px .navbar-route está oculta y
+   el header ES la franja blanca (esconderla dejaría la página sin barra);
+   y entre 721 y 959px los cinco tramos de la ruta, que van centrados, se
+   acercan tanto al borde izquierdo que el logotipo chocaría con
+   "Servicios". En esa franja el header se queda en el modo compacto de
+   siempre, que es lo que ya hacía.
+   ============================================ */
+@media (min-width:960px){
+  header.navbar{
+    transition:transform .45s cubic-bezier(.4,0,.2,1);
+  }
+  header.navbar.navbar-hidetop{
+    transform:translateY(calc(-1 * var(--navbar-top-h, 101px)));
+  }
+
+  /* El logotipo negativo va absoluto, no como un ítem más del flex: así
+     los cinco tramos de la ruta no se mueven ni un píxel al aparecer o
+     desaparecer, y no hay que recolocar los nodos en cada transición.
+
+     El left parte del borde de contenido de .nav-links (contenedor de
+     1200px con 32px de padding) MÁS 37px, para que el logotipo gris
+     arranque justo donde arrancaba el azul al que sustituye: los dos PNG
+     no están recortados igual — cropped-logo-petroil.png lleva un 20% de
+     transparencia a la izquierda (a 96px de alto son esos 37px) y
+     Petroil-logo-blanco.png no lleva ninguna. Sin la compensación el
+     logotipo "saltaría" hacia la izquierda al cambiar de estado, justo lo
+     contrario del efecto buscado (el mismo logo que se vuelve gris).
+
+     No pueden tener el mismo tamaño: el logo azul mide ~108px de ancho de
+     dibujo útil, que traducidos a este PNG darían 73px de alto y no caben
+     en una franja de 71px. Se queda en 72px de ancho (≈48 de alto). */
+  .navbar-route{position:relative;}
+  .route-logo{
+    position:absolute; top:50%; z-index:2;
+    left:max(69px, calc((100% - 1200px) / 2 + 69px));
+    opacity:0; pointer-events:none;
+    transform:translateY(-50%) translateX(-12px) scale(.92);
+    transition:opacity .34s ease .06s, transform .38s cubic-bezier(.22,1.2,.36,1) .06s;
+  }
+  .route-logo img{display:block; width:var(--route-logo-w, 72px); height:auto;}
+  header.navbar.navbar-hidetop .route-logo{
+    opacity:1; pointer-events:auto;
+    transform:translateY(-50%) translateX(0) scale(1);
+  }
+  /* La línea de la ruta arranca DESPUÉS del logotipo, nunca por debajo.
+     measureCenters() (nav.js) lee este left ya calculado, así que el
+     tramo de líquido previo al primer nodo se recorta solo. */
+  header.navbar.navbar-hidetop .nav-links{
+    --route-line-start: calc(69px + var(--route-logo-w, 72px) + 24px);
+  }
 }
 
 .badge-soon{
@@ -470,6 +539,7 @@ body.nav-drawer-open{overflow:hidden;}
 
 @media (prefers-reduced-motion: reduce){
   .nav-drawer, .nav-overlay, .route-label, .route-node, .drawer-node, .hamburger span,
+  header.navbar, .route-logo, .nav-links::before,
   .navbar-top, .navbar-top-inner, .nav-logo img, .nav-logo, .btn-contacto, .lang-btn,
   .portal-link, .hamburger, .drawer-close, .drawer-link,
   .scroll-progress, .scroll-progress::after, .route-fill-line, .route-fill-line::after,
