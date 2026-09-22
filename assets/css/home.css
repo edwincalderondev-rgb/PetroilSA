@@ -41,13 +41,21 @@
 }
 
 /* ALLIANCES MARQUEE */
-.alliances{padding:50px 0; background:var(--mist); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-.alliances .eyebrow{display:block; text-align:center; margin-bottom:24px;}
+.alliances{padding:66px 0; background:var(--mist); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.alliances .eyebrow{display:block; text-align:center; margin-bottom:32px;}
 .marquee{overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
-.marquee-track{display:flex; gap:56px; width:max-content; animation:scrollLeft 34s linear infinite;}
+.marquee-track{display:flex; align-items:center; gap:70px; width:max-content; animation:scrollLeft 62s linear infinite;}
 .marquee:hover .marquee-track{animation-play-state:paused;}
-.marquee-track img{height:34px; width:auto; object-fit:contain; opacity:.75; filter:grayscale(30%); transition:opacity .2s;}
-.marquee-track img:hover{opacity:1;}
+/* Los logos NO comparten alto fijo: se acotan por alto Y por ancho, que es lo que
+   equilibra ópticamente un escudo casi cuadrado (Químicos del Caribe) contra un
+   logotipo muy apaisado (Palermo Tanks, PX Trading). Con `height` fijo los
+   apaisados se comían media pantalla y los cuadrados se veían diminutos. */
+.marquee-track img{width:auto; height:auto; max-height:52px; max-width:190px; object-fit:contain; opacity:.75; filter:grayscale(30%); transition:opacity .2s, filter .2s;}
+/* Logotipos apilados (proporción por debajo de ~1,5:1, hoy Químicos del Caribe y
+   Biomax): al tope común de 52 px quedan ópticamente diminutos al lado de un
+   logotipo apaisado, porque reparten el mismo alto entre símbolo y texto. */
+.marquee-track img.is-stacked{max-height:66px;}
+.marquee-track img:hover{opacity:1; filter:grayscale(0);}
 @keyframes scrollLeft{from{transform:translateX(0);} to{transform:translateX(-50%);}}
 
 /* USES — photo-forward cards */
