@@ -117,19 +117,16 @@ function updateHeaderCompaction(){
 //
 // Se hace con transform y no colapsando alturas: el header sigue ocupando
 // lo mismo en el flujo, así que no hay reflow ni salto del scroll.
-// Solo por encima de 960px, el mismo breakpoint que el CSS: por debajo de
-// 721px .navbar-route está oculta y la franja blanca ES el header entero,
-// y entre 721 y 959px el logotipo chocaría con "Servicios". Se acota aquí
-// además del CSS para no dejar la clase pegada al redimensionar.
 // ============================================
 const headerTopBar = siteHeader ? siteHeader.querySelector('.navbar-top') : null;
-// nav.js es compartido por las 27 páginas, pero el estado solo se activa en
-// las que llevan el logotipo negativo dentro de .navbar-route (#routeLogo).
-// De momento solo index.html: sin esta condición, el resto se quedaría sin
-// franja blanca Y sin logotipo, que es peor que no tener el efecto. Para
-// llevarlo a otra página basta con copiar ahí el bloque <a class="route-logo">.
+// El estado solo se activa en páginas que llevan el logotipo negativo dentro
+// de .navbar-route (#routeLogo): sin él, la página se quedaría sin franja
+// blanca Y sin logotipo, que es peor que no tener el efecto.
 const routeLogoEl = document.getElementById('routeLogo');
-const wideHeader = window.matchMedia('(min-width:960px)');
+// Por debajo de 721px .navbar-route está oculta y la franja blanca ES el
+// header entero: retirarla dejaría la página sin ninguna barra. Mismo
+// breakpoint que el @media del CSS.
+const wideHeader = window.matchMedia('(min-width:721px)');
 
 // Umbral de bajada mínimo antes de poder esconder la franja (por encima del
 // de compactación: primero encoge, luego desaparece), umbral por debajo del
@@ -138,10 +135,13 @@ const wideHeader = window.matchMedia('(min-width:960px)');
 const HEADER_HIDE_AT = 170;
 const HEADER_SHOW_AT = 90;
 const HEADER_DIR_THRESHOLD = 10;
+// Hueco mínimo entre el logotipo y el primer tramo de la ruta.
+const ROUTE_LOGO_GAP = 36;
 let topHidden = false;
 let dirAccum = 0;
 let retractUntil = 0;
 let retractRaf = null;
+let routeLogoFits = false;
 
 // La distancia a subir es la altura real de la franja, que cambia entre el
 // estado normal (~121px) y el compacto (~101px) y podría cambiar más si se
@@ -150,6 +150,29 @@ let retractRaf = null;
 function syncTopBarHeight(){
   if(!siteHeader || !headerTopBar) return;
   siteHeader.style.setProperty('--navbar-top-h', headerTopBar.offsetHeight + 'px');
+}
+
+// ¿Cabe el logotipo sin chocar con el primer tramo de la ruta?
+// Esto NO se puede escribir como un breakpoint: cada página tiene su propia
+// ruta —de 2 tramos ("Descripción / Contacto") a 6 largos ("1. Responsable
+// … 6. Documento")— y .nav-links los centra, así que cuanto más ancha es la
+// ruta más se acerca su primer tramo al borde izquierdo, justo donde va el
+// logotipo. Además i18n.js reescribe las etiquetas al cambiar de idioma y
+// las anchuras cambian otra vez. Por eso se mide en vez de suponerse, y se
+// vuelve a medir al redimensionar y al cambiar de idioma.
+//
+// Se usa offsetLeft/offsetWidth y no getBoundingClientRect() a propósito:
+// los offsets ignoran los transform, así que la medida es la misma esté el
+// logotipo visible, a medio desvanecer o desplazado por su transición.
+function measureRouteLogoFit(){
+  const navLinksEl = document.getElementById('navLinks');
+  const firstLink = navLinksEl ? navLinksEl.querySelector('.route-link') : null;
+  if(!routeLogoEl || !firstLink){ routeLogoFits = false; return; }
+  const logoRight = routeLogoEl.offsetLeft + routeLogoEl.offsetWidth;
+  const linkLeft = navLinksEl.offsetLeft + firstLink.offsetLeft;
+  // Con .navbar-route oculta (móvil) todos los offsets son 0 y la resta da
+  // 0: el caso se descarta solo, sin comprobar el display.
+  routeLogoFits = (linkLeft - logoRight) >= ROUTE_LOGO_GAP;
 }
 
 // Con el logotipo a la izquierda, la línea de la ruta arranca más a la
@@ -179,7 +202,9 @@ function setTopHidden(next){
 
 function updateTopRetraction(y, delta){
   if(!siteHeader || !headerTopBar || !routeLogoEl) return;
-  if(!wideHeader.matches){ setTopHidden(false); return; }
+  // routeLogoFits se consulta cacheado, no se mide aquí: esto corre en cada
+  // frame de scroll y leer offsetLeft fuerza un reflow.
+  if(!wideHeader.matches || !routeLogoFits){ setTopHidden(false); return; }
   if(delta){
     // El acumulado se reinicia al cambiar de sentido: así basta un gesto
     // corto hacia arriba para recuperar la franja aunque se venga de
@@ -192,10 +217,22 @@ function updateTopRetraction(y, delta){
   else if(dirAccum >= HEADER_DIR_THRESHOLD && y > HEADER_HIDE_AT) setTopHidden(true);
 }
 
+function refreshRouteLogoFit(){
+  measureRouteLogoFit();
+  updateTopRetraction(window.scrollY, 0);
+}
+
 if(headerTopBar && routeLogoEl){
   syncTopBarHeight();
+  measureRouteLogoFit();
   if('ResizeObserver' in window) new ResizeObserver(syncTopBarHeight).observe(headerTopBar);
   else window.addEventListener('resize', syncTopBarHeight);
+
+  // Las etiquetas de la ruta cambian de ancho al cambiar de idioma, y con
+  // ellas la posición del primer tramo.
+  document.addEventListener('petroil:i18n', refreshRouteLogoFit);
+  // Las fuentes pueden terminar de asentarse después de la primera medida.
+  window.addEventListener('load', refreshRouteLogoFit);
 
   // Los enlaces de la franja (idioma, Contacto...) siguen siendo
   // tabulables cuando está fuera de pantalla: si el foco entra ahí por
@@ -203,7 +240,7 @@ if(headerTopBar && routeLogoEl){
   headerTopBar.addEventListener('focusin', () => { dirAccum = 0; setTopHidden(false); });
 }
 
-wideHeader.addEventListener('change', () => updateTopRetraction(window.scrollY, 0));
+wideHeader.addEventListener('change', refreshRouteLogoFit);
 
 function updateLiquidBar(pct, direction){
   if(!progressFill) return;
@@ -388,7 +425,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 window.addEventListener('resize', () => {
-  updateTopRetraction(window.scrollY, 0);
+  refreshRouteLogoFit();
   measureCenters();
   updateRouteFill();
 });

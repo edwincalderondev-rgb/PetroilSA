@@ -293,7 +293,7 @@ header.navbar.navbar-scrolled .navbar-top{
 }
 
 /* ============================================
-   RETIRADA DE LA FRANJA BLANCA (2026-09-22)
+   RETIRADA DE LA FRANJA BLANCA (2026-09-22, a todo el sitio el 2026-09-28)
    Segundo escalón del header, después del modo compacto: si el visitante
    sigue bajando, el header ENTERO se desliza hacia arriba exactamente la
    altura de .navbar-top, de modo que la franja blanca sale por encima del
@@ -308,46 +308,53 @@ header.navbar.navbar-scrolled .navbar-top{
    --navbar-top-h, que nav.js mantiene al día con un ResizeObserver (la
    franja mide ~121px en reposo y ~101px ya compacta).
 
-   Solo a partir de 960px. Por debajo de 721px .navbar-route está oculta y
-   el header ES la franja blanca (esconderla dejaría la página sin barra);
-   y entre 721 y 959px los cinco tramos de la ruta, que van centrados, se
-   acercan tanto al borde izquierdo que el logotipo chocaría con
-   "Servicios". En esa franja el header se queda en el modo compacto de
-   siempre, que es lo que ya hacía.
+   OJO: los estilos base del logotipo (absoluto + invisible) van FUERA de
+   cualquier media query a propósito. Cuando vivían dentro del @media, en
+   la franja donde este no aplicaba el <a> se quedaba sin estilo ninguno:
+   un logotipo de 220px de ancho, en flujo normal, dentro de la barra
+   oscura. Aquí solo se acota el ESTADO (.navbar-hidetop), nunca el
+   ocultamiento.
    ============================================ */
-@media (min-width:960px){
+.navbar-route{position:relative;}
+
+/* El logotipo negativo va absoluto, no como un ítem más del flex: así los
+   tramos de la ruta no se mueven ni un píxel al aparecer o desaparecer, y
+   no hay que recolocar los nodos en cada transición.
+
+   El left parte del borde de contenido de .nav-links (contenedor de
+   1200px con 32px de padding) MÁS 37px, para que el logotipo gris arranque
+   justo donde arrancaba el azul al que sustituye: los dos PNG no están
+   recortados igual — cropped-logo-petroil.png lleva un 20% de
+   transparencia a la izquierda (a 96px de alto son esos 37px) y
+   Petroil-logo-blanco.png no lleva ninguna. Sin la compensación el
+   logotipo "saltaría" hacia la izquierda al cambiar de estado, justo lo
+   contrario del efecto buscado (el mismo logo que se vuelve gris).
+
+   No pueden tener el mismo tamaño: el logo azul mide ~108px de ancho de
+   dibujo útil, que traducidos a este PNG darían 73px de alto y no caben en
+   una franja de 71px. Se queda en 72px de ancho (≈48 de alto). */
+.route-logo{
+  position:absolute; top:50%; z-index:2;
+  left:max(69px, calc((100% - 1200px) / 2 + 69px));
+  opacity:0; pointer-events:none;
+  transform:translateY(-50%) translateX(-12px) scale(.92);
+  transition:opacity .34s ease .06s, transform .38s cubic-bezier(.22,1.2,.36,1) .06s;
+}
+.route-logo img{display:block; width:var(--route-logo-w, 72px); height:auto;}
+
+/* El estado solo existe donde hay barra de ruta que dejar a la vista: por
+   debajo de 721px .navbar-route está oculta y la franja blanca ES el
+   header entero, así que retirarla dejaría la página sin ninguna barra.
+   El resto de la decisión (¿cabe el logotipo sin chocar con el primer
+   tramo de ESTA ruta, en ESTE idioma?) no se puede escribir como un
+   breakpoint: la mide nav.js página por página. */
+@media (min-width:721px){
   header.navbar{
     transition:transform .45s cubic-bezier(.4,0,.2,1);
   }
   header.navbar.navbar-hidetop{
     transform:translateY(calc(-1 * var(--navbar-top-h, 101px)));
   }
-
-  /* El logotipo negativo va absoluto, no como un ítem más del flex: así
-     los cinco tramos de la ruta no se mueven ni un píxel al aparecer o
-     desaparecer, y no hay que recolocar los nodos en cada transición.
-
-     El left parte del borde de contenido de .nav-links (contenedor de
-     1200px con 32px de padding) MÁS 37px, para que el logotipo gris
-     arranque justo donde arrancaba el azul al que sustituye: los dos PNG
-     no están recortados igual — cropped-logo-petroil.png lleva un 20% de
-     transparencia a la izquierda (a 96px de alto son esos 37px) y
-     Petroil-logo-blanco.png no lleva ninguna. Sin la compensación el
-     logotipo "saltaría" hacia la izquierda al cambiar de estado, justo lo
-     contrario del efecto buscado (el mismo logo que se vuelve gris).
-
-     No pueden tener el mismo tamaño: el logo azul mide ~108px de ancho de
-     dibujo útil, que traducidos a este PNG darían 73px de alto y no caben
-     en una franja de 71px. Se queda en 72px de ancho (≈48 de alto). */
-  .navbar-route{position:relative;}
-  .route-logo{
-    position:absolute; top:50%; z-index:2;
-    left:max(69px, calc((100% - 1200px) / 2 + 69px));
-    opacity:0; pointer-events:none;
-    transform:translateY(-50%) translateX(-12px) scale(.92);
-    transition:opacity .34s ease .06s, transform .38s cubic-bezier(.22,1.2,.36,1) .06s;
-  }
-  .route-logo img{display:block; width:var(--route-logo-w, 72px); height:auto;}
   header.navbar.navbar-hidetop .route-logo{
     opacity:1; pointer-events:auto;
     transform:translateY(-50%) translateX(0) scale(1);
